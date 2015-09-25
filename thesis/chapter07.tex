@@ -1,0 +1,36 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Discussion and conclusion}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Theoretically all methods perform about the same when $p$ is separable. If $p$ is not separable \texttt{DM} has a clear advantage. If we assume that $\gamma$ is proportional to $m^2/n^2$, which we concluded in section \ref{sec:rrest}, and use $n = \rho$ as suggested in section \ref{sec:restvar}, we get that \texttt{KPM}$(\rho)$ performs asymptotically equal to \texttt{KPM}. This follows from table \ref{tab:cc}. \\
+
+When $p$ is separable, the results from section \ref{sec:stimem} and \ref{sec:stimek} shows that \texttt{KPM}$(n)$ is faster and asymptotically better than \texttt{DM}. This contradicts the results from theoretical complexity, and might be due to the smaller memory demand. \\
+
+The reason for the high parallel performance in section \ref{sec:speed} is the natural independence in the method. The only communication needed between processors is when adding results, this can be done in $\log_2(\texttt{nP})$ additions. Note that a good restart variable also gives a good problem size to use with parallel computations. \\
+
+Regarding convergence all methods can perform equally well, the drawback is the need to choose an appropriate $\delta$ for \texttt{KPM}$(n)$. With a larger $\delta$ \texttt{KPM}$(n)$ is less accurate, but with smaller $\delta$ we restart too many times, making the methods inefficient. The rule of thumbs is start at $\delta=10^{-3}$ with $\rho = k = n = 10$, and decrease $\delta$ with one order of magnitude each time $\rho = k = n$ is doubled. \\
+
+Table \ref{tab:mr} shows that \texttt{KPM}$(n)$ for $n \leq \rho$ uses the least amount of memory. This is one of the main reasons to use KPM instead of \texttt{DM} on this type of problems. \\
+
+In section \ref{sec:compare} we used what we had learned about $\gamma$, $n$ and $\delta$ to make \texttt{KPM}$(n)$ run as fast as possible with $p$ non-separable. \texttt{DM} was faster than \texttt{KPM}$(\rho)$, but not asymptotically, as suggested by table \ref{tab:cc}. With more processors \texttt{KPM}$(n)$ would have been faster because of the high parallel efficiency and the low cost of solving each of the $m$ independent problems. \\
+
+%that KPM$(\rho)$ has the same complexity as KPM. So if $p$ is separable all methods perform equally well, if $p$ is non-separable DM requires fewer operations. 
+
+ %if $p$ is separable. If $p$ is not separable DM has again an advantage over KPM and KPM$(n)$. \\
+
+
+
+It is worth noting that \texttt{DM} did not work when $\rho>300$ due to memory shortage, while \texttt{KPM}$(n)$ had no problem with $\rho = 1000$ and $n = 40$. \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Further work}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+To obtain better results KPM should be implemented in a more parallel friendly language, as for example \texttt{C}. It would also be a benefit to use a large computer, making it easier to get data with larger $\rho$ and $k$.
+
+It would also be interesting to see how KPM could be used to solve other equations than the heat equation.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{My code}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+If you are interested in any of the code used here you can find it at: \\
+\emph{https://github.com/sindreka/Prosjektoppgave}

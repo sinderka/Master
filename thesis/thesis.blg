@@ -1,0 +1,63 @@
+This is BibTeX, Version 0.99d (TeX Live 2015)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: thesis.aux
+A level-1 auxiliary file: front.aux
+A level-1 auxiliary file: preface.aux
+A level-1 auxiliary file: acknowledgment.aux
+A level-1 auxiliary file: summary.aux
+A level-1 auxiliary file: chapter01.aux
+A level-1 auxiliary file: chapter02.aux
+A level-1 auxiliary file: chapter03.aux
+A level-1 auxiliary file: chapter04.aux
+A level-1 auxiliary file: chapter05.aux
+A level-1 auxiliary file: chapter06.aux
+A level-1 auxiliary file: chapter07.aux
+The style file: plain.bst
+Database file #1: refs.bib
+Warning--entry type for "parfor" isn't style-file defined
+--line 121 of file refs.bib
+Warning--entry type for "parpool" isn't style-file defined
+--line 133 of file refs.bib
+Warning--empty journal in fivepoint
+You've used 11 entries,
+            2118 wiz_defined-function locations,
+            558 strings with 5342 characters,
+and the built_in function-call counts, 3081 in all, are:
+= -- 294
+> -- 105
+< -- 10
++ -- 45
+- -- 32
+* -- 168
+:= -- 486
+add.period$ -- 32
+call.type$ -- 11
+change.case$ -- 48
+chr.to.int$ -- 0
+cite$ -- 12
+duplicate$ -- 149
+empty$ -- 266
+format.name$ -- 32
+if$ -- 681
+int.to.chr$ -- 0
+int.to.str$ -- 11
+missing$ -- 12
+newline$ -- 57
+num.names$ -- 18
+pop$ -- 68
+preamble$ -- 1
+purify$ -- 40
+quote$ -- 0
+skip$ -- 126
+stack$ -- 0
+substring$ -- 125
+swap$ -- 48
+text.length$ -- 10
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 38
+warning$ -- 1
+while$ -- 24
+width$ -- 13
+write$ -- 118
+(There were 3 warnings)

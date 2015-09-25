@@ -1,0 +1,69 @@
+% !TEX encoding = UTF-8 Unicode
+% !TEX spellcheck = en-US
+
+
+% This is the root file of your thesis: thesis.tex
+% A line starting with % is a comment. In some cases, I have included a command preceded by a %. You may activate the command by removing the %.
+
+%%===================================
+\documentclass[12pt]{report}
+\usepackage{ramsstyle}
+%%===================================
+%Write the various parts of your thesis as separate files and include them into the main file by the command \include{name of included file}. When you compile the LaTeX file, you may choose which subfiles to include by the command
+
+%\includeonly{chapter01,chapter02}
+%\usepackage{amsmath}
+% Påskeegg
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{wasysym}
+%\usepackage{babelbib}
+%\usepackage{wsuipa} %closedniomega
+%\usepackage{tipa} % \textpalhook \textrhoticity
+%\usepackage{tipx} \textpalhookvar
+%
+%\usepackage[options]{natbib}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{mathtools}
+
+%%===================================
+\begin{document}
+\include{front} % This is the titlepage
+\setcounter{page}{0}
+\pagenumbering{roman}
+\include{preface}
+\include{acknowledgment}
+\include{summary}
+\tableofcontents
+\setcounter{page}{0}
+%\setcounter{section}{1}
+\pagenumbering{arabic}
+\include{chapter01}
+\include{chapter02}
+\include{chapter03}
+\include{chapter04}
+\include{chapter05}
+\include{chapter06}
+\include{chapter07}
+% Include more chapters as required.
+%%=========================================
+%\appendix
+%\include{acronyms}
+%\include{appendix-b}
+% Include more appendices as required.
+%%=========================================
+%\bibliographystyle{apa}
+%\addcontentsline{toc}{chapter}{\bibname}
+\bibliographystyle{plain}
+\bibliography{refs}
+
+%%=========================================
+%\include{vitae}         % Your curriculum Vitae     
+%%=============================================
+
+\end{document}
