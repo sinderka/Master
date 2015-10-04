@@ -3,7 +3,7 @@ m = length(A);
 if n == m
     %%%%%Projection method for the full krylov space
     hn = norm(v,2);
-    [V,H,~] = Arnoldi(A,v,n);
+    [V,H,~] = Arnoldi(A,v,n,conv);
     vector = zeros(n,k); vector(1,:) = Zn(end,:);
     [Zn] = integrate(H,vector,n,k,ht,hn);
     U = V(:,1:n)*Zn;
@@ -15,7 +15,7 @@ else
     hn = norm(v,2);
     iter = 0;
     while diff > conv %hn > conv
-        [V,H,hm] = Arnoldi(A,v,n);
+        [V,H,hm] = Arnoldi(A,v,n,conv);
         vector = zeros(n,k); vector(1,:) = Zn(end,:);
         [Zn] = integrate(H,vector,n,k,ht,hn);
         %(H,F,n,k,ht,hn)

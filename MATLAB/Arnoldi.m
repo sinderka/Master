@@ -1,4 +1,4 @@
-function [V,H,hn]=Arnoldi(A,v,n)
+function [V,H,hn]=Arnoldi(A,v,n,conv)
 m = length(A);
 n = min(n,m);
 V = zeros(m,n+1);
@@ -7,18 +7,18 @@ V(:,1) = v/(norm(v,2));
 for j = 1:1:n
     z = A*V(:,j);
     for i = 1:1:j
-    H(i,j) = V(:,i)'*z;
-    z = z-H(i,j)*V(:,i);
+        H(i,j) = V(:,i)'*z;
+        z = z-H(i,j)*V(:,i);
     end
     hn = norm(z,2);
-    if hn < 10^-5
+    if hn < conv
         return;
     elseif (j+1<=n)
         H(j+1,i) = hn;
         V(:,j+1) = z/(hn);
     elseif (j <= n)
         V(:,j+1) = z/(hn);
-    else 
+    else
         return;
     end
 end

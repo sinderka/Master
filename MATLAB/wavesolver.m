@@ -1,10 +1,10 @@
 %function [ utdata ] = wavesolver( m,n,k,prob,solmeth,conv,para )
 clear
 close all
-m = 5;
+m = 11;
 k = 100;
-n = m^2;
-solmeth = 3;
+n = 20;
+solmeth = 2;
 prob = 1;
 conv = 10^-5;
 %%% Initsiell data
@@ -34,7 +34,18 @@ if solmeth == 1
     utdata(2) = toc;
     utdata(1) = iter;
 elseif solmeth == 2
-    
+        %U = zeros(m^2,k);
+    tic;
+    v = zeros((m-2)^2,1);
+    %for i = 1:(m-2)^2
+    v(1) = 1;
+    v(end) = 1;
+    [U,iter] = KPMwave( U,A,V,F,v,k,m,ht,n,conv );
+    %U = U +Utemp;
+    %v(i) = 0;
+    %end
+    utdata(2) = toc;
+    utdata(1) = iter;
 elseif solmeth == 3 % it works!
     utdata(1) = 1;
     tic;

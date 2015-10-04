@@ -1,68 +1,59 @@
-%function [ output_args ] = untitled( input_args )
-%function [ utdata ] = wawesolver( m,n,k,prob,solmeth,conv,para )
-% Case: Få 1D sak til å fungere med forskjellige "startverdi
-% betingelser"!
-clear
-close all
-m = 100;
-k = 100;
-%%% Initsiell data
-utdata = zeros(1,3);
-X = linspace(0,1,m);
-hs =X(2)-X(1);
-T = linspace(0,1,k); 
-ht = T(2)-T(1);
-A = -1/hs^2*gallery('tridiag', m-2);
+%function [U,iter] = KPMwave( Zn,A,V,F,v,k,m,ht,n,conv )
+                           %( U,A,V,F,v,k,m,ht,(m-2)^2,conv );
 
-ant = 1;
+U = zeros(m^2,k);
+U(:,1) = Zn(:,1);
 
-
-
-% INIT U
-U = zeros(m,k);
-% INIT F
-%F = pi^2*sin(pi*X)'*ones(1,k);
-%F = (2-X.*(1-X))'*sin(T);%
-%F = -2*ones(m,k);
-F = (1+pi^2)*sin(pi*X)'*exp(-T);
-% INIT V
-%V = zeros(m,1);
-%V = (2-X.*(1-X))';
-V = -sin(pi*X)';
-
-
-
-% Integrate
-U(:,1) = sin(pi*X);
-%U(:,1) = X.*(X-1);
-%U(:,1) = zeros(m,1);
-U(2:end-1,2) = U(2:end-1,1) + ht*V(2:end-1) + 0.5*ht^2*(A*U(2:end-1,1) + F(2:end-1,1));
-
-for i = 3:k
-    U(2:end-1,i) = 2*U(2:end-1,i-1) - U(2:end-1,i-2) + ht^2*(A*U(2:end-1,i-1) + F(2:end-1,i-1));
+helpvector = zeros((m-2)^2,1);
+for qq = 0:m-3
+    helpvector(qq*(m-2)+1:qq*(m-2)+m-2) = (qq+1)*m+2:m-1 +(1+ qq)*m;
 end
 
-
-% Plotting
-
-mesh(U)
-
-%correctsolution = sin(pi*X)'*ones(1,k);
-%correctsolution = sin(pi*X)'*cos(pi*T);
-%correctsolution = (X.*(X-1))'*ones(1,k);
-%correctsolution = (X.*(1-X))'*sin(T);
-correctsolution = sin(pi*X)'*exp(-T);
-
-figure(2)
-mesh(correctsolution)
-
-
-figure(3)
-mesh(U-correctsolution)
-error = max(max(abs(U-correctsolution)))
-
-
-
+%m = length(A);
+if n == (m-2)^2
+    %%%%%Projection method for the full krylov space
+    hn = norm(v,2);
+    [Vm,Hm,~] = Arnoldi(A,v,n,conv);
+    
+    Zn(helpvector,1) = Vm(:,1:n)'*U(helpvector,1);
+    %vector = zeros(n,k); vector(1,:) = Zn(end,:);
+    %[Zn] = integrate(H,vector,n,k,ht,hn);
+    %Zn = doubleintegrate(Zn,V,F,A,ht,n,k );
+    [Zn] = locintegrate( Zn,V,F,Hm,ht,m,k );
+    U(helpvector,:) = Vm(:,1:n)*Zn(helpvector,:);
+    iter = 1;
+else
+    %%%%%Projection method for any krylov space
+    U = zeros(m^2,k);
+    hn = norm(v,2);
+    iter = 0;
+    [Vm,Hm,hm] = Arnoldi(A,v,n);
+    Zn(helpvector,1) = Vm(:,1:n)'*U(helpvector,1);
+    [Zn] = locintegrate( Zn,V,F,Hm,ht,m,k );
+    U(helpvector,:) = U(helpvector,:) + Vm(helpvector,1:n)*Zn;
+    hn = hm;
+    while hn > conv
+        [Vm,Hm,hm] = Arnoldi(A,v,n,conv);
+        %vector = zeros(n,k); vector(1,:) = Zn(end,:);
+        %[Zn] = integrate(H,vector,n,k,ht,hn);
+        %[Zn] = locintegrate( Zn,V,F,A,ht,m,k );
+        [Zn] = locintegrate( Zn,V,F,Hm,ht,m,k );
+        U(helpvector,:) = U(helpvector,:) + Vm(helpvector,1:n)*Zn;
+        %(H,F,n,k,ht,hn)
+        hn = hm;
+        v = V(helpvector,end);
+        %diff = max(max(abs(ns)));
+        iter = iter+1;
+    end
+end
 
 %end
+function [Zn] = locintegrate( Zn,V,F,H,ht,k )
+Zn(helpvector,2) = Zn(helpvector,1) - ht * V(helpvector) + 0.5*ht^2*(H*Zn(helpvector,1) + F(helpvector,1));
+for i = 3:k
+    Zn(helpvector,i) = 2*Zn(helpvector,i-1) - Zn(helpvector,i-2) + ht^2*(H*Zn(helpvector,i-1) + F(helpvector,i-1));
+end
 
+end
+
+end
