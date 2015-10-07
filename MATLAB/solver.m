@@ -16,7 +16,7 @@ if nargin == 0
     n = 20;
     eqn = 'heat';
     prob = 3;
-    solmeth = 3;
+    solmeth = 1;
     conv = 10^-15;
     para = 4;
     

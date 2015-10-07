@@ -3,10 +3,10 @@ clear
 close all
 m = 11;
 k = 100;
-n = 20;
+n = 1;
 solmeth = 2;
 prob = 1;
-conv = 10^-5;
+conv = 10^-15;
 %%% Initsiell data
 utdata = zeros(1,3);
 X = linspace(0,1,m);
@@ -55,7 +55,7 @@ elseif solmeth == 3 % it works!
     
 end
 utdata(3) = max(max(max(abs(U-correctsolution))));
-if 0
+if 1
     video(U,m,k,0.05);
     video(correctsolution,m,k,0.05);
     video(U-correctsolution,m,k,0.05);
