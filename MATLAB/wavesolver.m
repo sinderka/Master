@@ -6,7 +6,7 @@ k = 100;
 n = 1;
 solmeth = 2;
 prob = 1;
-conv = 10^-15;
+conv = 10^-5;
 %%% Initsiell data
 utdata = zeros(1,3);
 X = linspace(0,1,m);
