@@ -1,59 +1,59 @@
-%function [U,iter] = KPMwave( Zn,A,V,F,v,k,m,ht,n,conv )
-                           %( U,A,V,F,v,k,m,ht,(m-2)^2,conv );
+clear
+close all
+m = 11;
+k = 100;
+n = 1;
+solmeth = 2;
+prob = 1;
+conv = 10^-5;
+%%% Initsiell data
+utdata = zeros(1,3);
+X = linspace(0,1,m);
+hs =X(2)-X(1);
+T = linspace(0,1,k);
+ht = T(2)-T(1);
+A = -1/hs^2*gallery('poisson', m-2);
+
+disk = ht^2/(hs^2);
+
+%%% Kode starter her! %%%
+
+%%%% Problem data %%%%
+
+[ U0,V0,F,correctsolution] = getWaveTestFunctions( prob,m,k,X,T );
+
+%%%% Matriser og vectorer %%%%
+
+Atilde = [sparse((m-2)^2,(m-2)^2),A;speye((m-2)^2),sparse((m-2)^2,(m-2)^2)];
+v = helpvector(m);
+U0tilde = [U0(v);V0(v)];
+%U0tilde = [V0(v);U0(v)];
 
 U = zeros(m^2,k);
-U(:,1) = Zn(:,1);
-
-helpvector = zeros((m-2)^2,1);
-for qq = 0:m-3
-    helpvector(qq*(m-2)+1:qq*(m-2)+m-2) = (qq+1)*m+2:m-1 +(1+ qq)*m;
-end
-
-%m = length(A);
-if n == (m-2)^2
-    %%%%%Projection method for the full krylov space
-    hn = norm(v,2);
-    [Vm,Hm,~] = Arnoldi(A,v,n,conv);
+%V = zeros(m^2,k);
+if solmeth == 1
     
-    Zn(helpvector,1) = Vm(:,1:n)'*U(helpvector,1);
-    %vector = zeros(n,k); vector(1,:) = Zn(end,:);
-    %[Zn] = integrate(H,vector,n,k,ht,hn);
-    %Zn = doubleintegrate(Zn,V,F,A,ht,n,k );
-    [Zn] = locintegrate( Zn,V,F,Hm,ht,m,k );
-    U(helpvector,:) = Vm(:,1:n)*Zn(helpvector,:);
-    iter = 1;
-else
-    %%%%%Projection method for any krylov space
-    U = zeros(m^2,k);
-    hn = norm(v,2);
-    iter = 0;
-    [Vm,Hm,hm] = Arnoldi(A,v,n);
-    Zn(helpvector,1) = Vm(:,1:n)'*U(helpvector,1);
-    [Zn] = locintegrate( Zn,V,F,Hm,ht,m,k );
-    U(helpvector,:) = U(helpvector,:) + Vm(helpvector,1:n)*Zn;
-    hn = hm;
-    while hn > conv
-        [Vm,Hm,hm] = Arnoldi(A,v,n,conv);
-        %vector = zeros(n,k); vector(1,:) = Zn(end,:);
-        %[Zn] = integrate(H,vector,n,k,ht,hn);
-        %[Zn] = locintegrate( Zn,V,F,A,ht,m,k );
-        [Zn] = locintegrate( Zn,V,F,Hm,ht,m,k );
-        U(helpvector,:) = U(helpvector,:) + Vm(helpvector,1:n)*Zn;
-        %(H,F,n,k,ht,hn)
-        hn = hm;
-        v = V(helpvector,end);
-        %diff = max(max(abs(ns)));
-        iter = iter+1;
-    end
-end
-
-%end
-function [Zn] = locintegrate( Zn,V,F,H,ht,k )
-Zn(helpvector,2) = Zn(helpvector,1) - ht * V(helpvector) + 0.5*ht^2*(H*Zn(helpvector,1) + F(helpvector,1));
-for i = 3:k
-    Zn(helpvector,i) = 2*Zn(helpvector,i-1) - Zn(helpvector,i-2) + ht^2*(H*Zn(helpvector,i-1) + F(helpvector,i-1));
-end
+elseif solmeth == 2
+    
+elseif solmeth == 3
+Utemp = test2(Atilde,Atilde*U0tilde,2*(m-2)^2,k,ht,1);
 
 end
+%V(v,:) = Utemp((m-2)^2+1:end,:);
 
+U(v,:) = Utemp(1:(m-2)^2,:);
+
+U(v,:) = U(v,:) + U0(v)*ones(1,k);
+%V(v,:) = V(v,:) + V0(v)*ones(1,k);
+
+%video(U-correctsolution,m,k,0.05)
+if 0
+    video(U,m,k,0.05)
+    %video(V,m,k,0.05)
+    video(correctsolution,m,k,0.05)
+    video(U-correctsolution,m,k,0.05)
 end
+
+max(max(max(abs(U-correctsolution))))
+
+
