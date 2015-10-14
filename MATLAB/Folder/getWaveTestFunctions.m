@@ -10,9 +10,9 @@ if prob == 1
         end
     end
     % INIT F
-    F = zeros(m^2,k);
+    F = sparse(m^2,k);
     % INIT V
-    V0 = zeros(m^2,1);
+    V0 = sparse(m^2,1);
     correctsolution = zeros(m^2,k);
 for j = 1:k
     for i = 1:m
