@@ -1,10 +1,9 @@
-%function [ utdata ] = wavesolver( m,n,k,prob,solmeth,conv,para )
 clear
 close all
-m = 11;
-k = 100;
-n = 1;
-solmeth = 2;
+m = 50;
+k = 2000;
+n = 2*(m-2);
+solmeth = 1;
 prob = 1;
 conv = 10^-5;
 %%% Initsiell data
@@ -13,51 +12,61 @@ X = linspace(0,1,m);
 hs =X(2)-X(1);
 T = linspace(0,1,k);
 ht = T(2)-T(1);
-A = -1/hs^2*gallery('poisson', m-2);
+
+%%%% Feiler er noe rare greier!!! %%%%
 
 disk = ht^2/(hs^2);
 
-[U,V,F,correctsolution] = getWaveTestFunctions( prob,m,k,X,T );
+%%% Kode starter her! %%%
+
+%%%% Problem data %%%%
+
+[ U0,V0,F,correctsolution] = getWaveTestFunctions( prob,m,k,X,T );
+%%%% Burde være generell og bruke F?
+
+%%%% Matriser og vectorer %%%%
+A = -1/hs^2*gallery('poisson', m-2);
+Atilde = [sparse((m-2)^2,(m-2)^2),A;speye((m-2)^2),sparse((m-2)^2,(m-2)^2)];
+
+
+v = helpvector(m);
+U0tilde = [U0(v);V0(v)];
 
 
 if solmeth == 1
-    %U = zeros(m^2,k);
     tic;
-    v = zeros((m-2)^2,1);
-    %for i = 1:(m-2)^2
-    v(1) = 1;
-    v(end) = 1;
-    [U,iter] = KPMwave( U,A,V,F,v,k,m,ht,(m-2)^2,conv );
-    %U = U +Utemp;
-    %v(i) = 0;
-    %end
-    utdata(2) = toc;
+    [Utemp,iter] = KPMwave(Atilde,U0tilde,m,2*(m-2)^2,k,ht,conv);
     utdata(1) = iter;
+    utdata(2) = toc;
 elseif solmeth == 2
-        %U = zeros(m^2,k);
     tic;
-    v = zeros((m-2)^2,1);
-    %for i = 1:(m-2)^2
-    v(1) = 1;
-    v(end) = 1;
-    [U,iter] = KPMwave( U,A,V,F,v,k,m,ht,n,conv );
-    %U = U +Utemp;
-    %v(i) = 0;
-    %end
+    [Utemp,utdata(1)] = KPMwave(Atilde,U0tilde,m,n,k,ht,conv);
     utdata(2) = toc;
-    utdata(1) = iter;
-elseif solmeth == 3 % it works!
+elseif solmeth == 3
     utdata(1) = 1;
     tic;
-    U = doubleintegrate( U,V,F,A,ht,m,k );
+    Utemp = integrate(Atilde,Atilde*U0tilde,2*(m-2)^2,k,ht);
+    
     utdata(2) = toc;
-    
-    
 end
+
+
+U = zeros(m^2,k);
+U(v,:) = Utemp(1:(m-2)^2,:);
+U(v,:) = U(v,:) + U0(v)*ones(1,k);
+
+V = zeros(m^2,k);
+V(v,:) = Utemp((m-2)^2+1:end,:);
+V(v,:) = V(v,:) + U0(v)*ones(1,k);
+
+if 0
+    video(U,m,k,0.05)
+    video(V,m,k,0.05)
+    %video(correctsolution,m,k,0.05)
+    %video(U-correctsolution,m,k,0.05)
+end
+
 utdata(3) = max(max(max(abs(U-correctsolution))));
-if 1
-    video(U,m,k,0.05);
-    video(correctsolution,m,k,0.05);
-    video(U-correctsolution,m,k,0.05);
-end
 utdata
+
+

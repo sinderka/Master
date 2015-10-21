@@ -10,9 +10,9 @@ if prob == 1
         end
     end
     % INIT F
-    F = zeros(m^2,k);
+    F = sparse(m^2,k);
     % INIT V
-    V0 = zeros(m^2,1);
+    V0 = sparse(m^2,1);
     correctsolution = zeros(m^2,k);
 for j = 1:k
     for i = 1:m
@@ -21,6 +21,15 @@ for j = 1:k
         end
     end
 end
+% elseif prob == 2
+%     sol = @(t,x,y) (x-1)*x*(y-1)*y*(t^2-t+1);
+%     U_0 = @(x,y) (x-1)*x*(y-1)*y;
+%     V_0 = @(x,y) -(x-1)*x*(y-1)*y;
+%     F_func = @(t,x,y) 2*x*y*(x-1)+2*(t^2-t+1)*(y*(y-1)+x*(x-1));
+%     
+%     U0 = 
+    
+    
 end
 
 
