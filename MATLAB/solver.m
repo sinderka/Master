@@ -9,6 +9,11 @@ function [utdata] = solver(m,k,n,eqn,prob,solmeth,conv,para)
 % conv:  Convergence criterion (10^-5)
 % para:  number of processors used(4)
 
+
+%%%%%%%%%%%%%%%%% TODO %%%%%%%%%%%%%%%%%
+%%% Prøve å la alle programmene bruke samme KPM sak
+%%% 
+
 %%% default values
 if nargin == 0
     m = 20;
