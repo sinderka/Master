@@ -1,10 +1,12 @@
 function video(U,m,k,T)
 
+%%% TODO %%%%
+% Fikse fargene på videoen
+
 for i = 1:k
-    mesh(reshape(U(:,i),m,m),reshape(U(:,1),m,m)-max(max(U)))
+    mesh(reshape(U(:,i),m,m))
+    caxis([min(min(U)),max(max(U))])
     axis([0,m,0,m,min(min(U)),max(max(U))])
-    %something colour
-    %set(gcf,'Color',[1,0.4,0.6])
     drawnow
     pause(T)
 end
