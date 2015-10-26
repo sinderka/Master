@@ -3,9 +3,9 @@ function Zn = integrate(H,F,n,k,ht) %%% Intigrere direkte
 %%%%%Solves the equation z'-H*z= F Numerically
 %%% ht is stepsize, n is the size of the square matrix H
 %%% k is the number of time-steps.
-if min(size(F)) == 1
+if size(F,2) == 1 %min(size(F)) == 1
     
-    mat = inv(eye(n)-ht/2*H);
+    mat = inv(eye(n)-(ht/2)*H);
     Zn = zeros(n,k);
     Zn(:,2) = mat*(ht*F);
     for j = 3:1:k

@@ -5,6 +5,7 @@ m = 40;
 k = 40;
 n = 40;
 solmeth = 2;
+restart = 1;
 prob = 5;
 conv = 10^-5;
 para = 4; %%%%% ARG %%%%%%
@@ -42,44 +43,27 @@ F2tilde = [sparse((m-2)^2,1);F2(vec)];
 % F1tilde = [F1;sparse(m^2,1)];
 % F2tilde = [F2;sparse(m^2,1)];
 
-
+Utemp1 = sparse(2*(m-2)^2,k); iter1 = 0;
+Utemp2 = sparse(2*(m-2)^2,k); iter2 = 0;
+Utemp3 = sparse(2*(m-2)^2,k); iter3 = 0;
 
 
 if solmeth == 1
-    Utemp1 = sparse(2*(m-2)^2,k); iter1 = 0;
-    Utemp2 = sparse(2*(m-2)^2,k); iter2 = 0;
-    Utemp3 = sparse(2*(m-2)^2,k); iter3 = 0;
+    
     tic;
-    if ~(max(U0tilde) == 0 &&  min(U0tilde) == 0)
-        [Utemp1,iter1] = KPM(Atilde,Atilde*U0tilde,1,k,n,2*(m-2)^2,ht,conv,0);
+    if max(abs(U0tilde)) ~= 0
+        [Utemp1,iter1] = KPM(Atilde,Atilde*U0tilde,1,k,n,2*(m-2)^2,ht,conv,restart);
     end
-    if ~(max(G1) == 0 &&  min(G1) == 0) || ~(max(F1) == 0 &&  min(F1) == 0)
-        [Utemp2,iter2] = KPM(Atilde,F1tilde,G1,k,n,2*(m-2)^2,ht,conv,0);
+    if max(abs(G1)) ~= 0 || max(abs(F1)) ~= 0
+        [Utemp2,iter2] = KPM(Atilde,F1tilde,G1,k,n,2*(m-2)^2,ht,conv,restart);
     end
-    if ~(max(G2) == 0 &&  min(G2) == 0) || ~(max(F2) == 0 &&  min(F2) == 0)
-        [Utemp3,iter3] = KPM(Atilde,F2tilde,G2,k,n,2*(m-2)^2,ht,conv,0);
+    if max(abs(G2)) ~= 0 || max(abs(F2)) ~= 0
+        [Utemp3,iter3] = KPM(Atilde,F2tilde,G2,k,n,2*(m-2)^2,ht,conv,restart);
     end
     Utemp = Utemp1 + Utemp2 + Utemp3;
     utdata(1) = max([iter1,iter2,iter3]);
     utdata(2) = toc;
 elseif solmeth == 2
-    Utemp1 = sparse(length(F1tilde),k); iter1 = 0;
-    Utemp2 = sparse(length(F1tilde),k); iter2 = 0;
-    Utemp3 = sparse(length(F1tilde),k); iter3 = 0;
-    tic;
-    if ~(max(U0tilde) == 0 &&  min(U0tilde) == 0)
-        [Utemp1,iter1] = KPM(Atilde,Atilde*U0tilde,1,k,n,2*(m-2)^2,ht,conv,1);
-    end
-    if ~(max(G1) == 0 &&  min(G1) == 0) || ~(max(F1) == 0 &&  min(F1) == 0)
-        [Utemp2,iter2] = KPM(Atilde,F1tilde,G1,k,n,2*(m-2)^2,ht,conv,1);
-    end
-    if ~(max(G2) == 0 &&  min(G2) == 0) || ~(max(F2) == 0 &&  min(F2) == 0)
-        [Utemp3,iter3] = KPM(Atilde,F2tilde,G2,k,n,2*(m-2)^2,ht,conv,1);
-    end
-    Utemp = Utemp1 + Utemp2 + Utemp3;
-    utdata(1) = max([iter1,iter2,iter3]);
-    utdata(2) = toc;
-elseif solmeth == 3
     utdata(1) = 0;
     tic;
     Utemp = integrate(Atilde,Atilde*U0tilde*ones(1,k)+F1tilde*G1+F2tilde*G2,2*(m-2)^2,k,ht);
