@@ -1,7 +1,10 @@
 function [U,iter] = KPM(A,v,F,k,n,h,ht,conv,restart)
-%function [U,iter] = KPMwave(A,U0,G,m,n,k,ht,conv,restarted)
 
-%help = helpvector(m);
+if max(abs(v)) == 0 || max(max(abs(F))) == 0
+    U = sparse(h,k);
+    iter = 0;
+    return
+end
 
 if max(F) == min(F)
     vtilde = v*F(1);
