@@ -16,14 +16,7 @@ function [utdata] = solver(m,k,n,eqn,prob,solmeth,conv,para)
 
 %%% default values
 if nargin == 0
-    m = 20;
-    k = 20;
-    n = 20;
-    eqn = 'heat';
-    prob = 3;
-    solmeth = 1;
-    conv = 10^-15;
-    para = 4;
+
     
     
 end

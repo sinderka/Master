@@ -1,10 +1,12 @@
-function [U,iter] = KPM(A,v,F,k,n,h,ht,conv,restart)
+function [U,iter] = KPM(J,A,v,F,k,n,h,ht,conv,restart)
 
 if max(abs(v)) == 0 || max(max(abs(F))) == 0
     U = sparse(h,k);
     iter = 0;
     return
-elseif max(F) == min(F)
+end
+
+if max(F) == min(F)
     vtilde = v*F(1);
 else
     vtilde = v*F;
@@ -18,7 +20,9 @@ iter = 1;
 
 temp = Vm(:,1:n)'*vtilde;
 
-[Zn] = integrate(Hm,temp,n,k,ht);
+Jtilde = Vm(:,1:n)'*J*Vm(:,1:n);
+
+[Zn] = integrate(Jtilde*Hm,temp,n,k,ht);
 
 ns = Vm(:,1:n)*Zn;
 U = U + ns;
@@ -29,8 +33,8 @@ if restart
         [Vm,Hm,hm] = Arnoldi(A,v,n,conv);
         
         temp = [hn*Zn(end,:);sparse(n-1,k)];
-        
-        [Zn] = integrate(Hm,temp,n,k,ht);
+        Jtilde = Vm(:,1:n)'*J*Vm(:,1:n);
+        [Zn] = integrate(Jtilde*Hm,temp,n,k,ht);
         ns =  Vm(:,1:n)*Zn;
         
         diff = max(max(abs(ns)));
