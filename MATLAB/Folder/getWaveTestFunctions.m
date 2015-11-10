@@ -1,4 +1,7 @@
-function [ U0,V0,F1,F2,G1,G2,correctsolution] = getWaveTestFunctions( prob,m,k,X,T )
+function [ U0,V0,F1,F2,G1,G2,correctsolution] = getWaveTestFunctions( prob,X,T )
+%Skriv en programdefinosjon her
+m = length(X); k = length(T);
+
 if prob == 1
     sol = @(t,x,y) sin(pi*x)*sin(pi*y)*cos(sqrt(2)*pi*t);
     u0 = @(x,y) sin(pi*x)*sin(pi*y);
@@ -67,4 +70,4 @@ for j = 1:k
     end
 end
 end
-
+%function

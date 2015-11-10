@@ -1,7 +1,9 @@
 function video(U,m,k,T)
-
-%%% TODO %%%%
-% Fikse fargene på videoen
+figure(1)
+if max(max(U)) == min(min(U))
+    display('Something went wrong with the video!')
+    return
+end
 
 for i = 1:k
     mesh(reshape(U(:,i),m,m))
