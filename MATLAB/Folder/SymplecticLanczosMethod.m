@@ -1,7 +1,8 @@
-function [S,Htilde,Vend,xiend] = SymplecticLanczosMethod(H,J,v,var)
+function [S,Htilde,Vend,xiend] = SymplecticLanczosMethod(H,v,var,~)
 %Skriv en programdefinosjon her
-n = length(H)/2;
 
+n = length(H)/2;
+J = [sparse(n,n),speye(n);-speye(n),sparse(n,n)];
 delta = zeros(var,1);
 beta = zeros(var,1);
 xi = zeros(var+1,1);
