@@ -10,9 +10,9 @@ for i = 1:k
 ener(i) = 0.5*y(:,i)'*A*y(:,i);
 end
 
-figure(2)
-plot(1:k,initEnergy-ener)
-Max_Energy_Difference = max(max(ener))-min(min(ener));
+%figure(2)
+%plot(1:k,initEnergy-ener)
+Max_Energy_Difference = max(abs(ener-initEnergy));
 
 end
 

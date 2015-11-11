@@ -1,7 +1,8 @@
 function [ error ] = getError( U,u )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
-
+%%% TODO 
+% Gir av og til rare svar
 
 k = size(U,2);
 Err1 = zeros(1,k);
@@ -15,7 +16,7 @@ for i = 1:m
     Err2(i) = norm(u(i,:)-U(i,:) ,Inf)/max(abs(u(i,:)));
 end
 
-error = min([Err1,Err2]); % rart?
+error = max([Err1,Err2]); % rart?
 
 end
 

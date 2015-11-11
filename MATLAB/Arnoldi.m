@@ -1,4 +1,5 @@
-function [V,H,hn]=Arnoldi(A,v,n,conv)
+function [V,H,v,hn]=Arnoldi(A,v,n,conv)
+%%%%SKRIV EN PROGRAMDEFINISJON
 m = length(A);
 n = min(n,m);
 V = zeros(m,n+1);
@@ -12,6 +13,10 @@ for j = 1:1:n
     end
     hn = norm(z,2);
     if hn < conv
+        v = zeros(m,1);
+        V = V(:,1:j);
+        hn = 0;
+        H = H(1:j,1:j);
         return;
     elseif (j+1<=n)
         H(j+1,i) = hn;
@@ -19,10 +24,14 @@ for j = 1:1:n
     elseif (j <= n)
         V(:,j+1) = z/(hn);
     else
+        display('Skjer dette virkelig?')
+        v = V(:,end);
+        V = V(:,1:n);
         return;
     end
 end
-
+v = V(:,end);
+V = V(:,1:n);
 
 
 end

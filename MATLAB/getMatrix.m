@@ -1,7 +1,7 @@
 function [A] = getMatrix( m , hs, eqn )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
-
+%%% TODO Maxwell må fikses!
 
 %%%%% Denne funksjonen skal fungere for varme, bølge og maxwell
 if strcmp(eqn,'heat')

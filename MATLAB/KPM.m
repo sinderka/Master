@@ -1,43 +1,34 @@
-function [U,iter] = KPM(A,v,F,k,n,h,ht,conv,restart)
-
+function [U,iter] = KPM(A,v,F,n,ht,conv,restart,alg)
+%Skriv en programdefinosjon her
+l = size(A,1);
+k = length(F);
 if max(abs(v)) == 0 || max(max(abs(F))) == 0
-    U = sparse(h,k);
+    U = sparse(l,k);
     iter = 0;
     return
-elseif max(F) == min(F)
-    vtilde = v*F(1);
-else
-    vtilde = v*F;
 end
-
-U = zeros(h,k);
-
-hn = norm(v,2);
+U = zeros(l,k);
 iter = 1;
-[Vm,Hm,hm] = Arnoldi(A,v,n,conv);
+h = norm(v,2);
+[Vn,Hn,vnext,hnext] = alg(A,v,n,conv);
 
-temp = Vm(:,1:n)'*vtilde;
+%temp = Vn'*v*F;[Zn] = integrate(Hn,temp,k,ht);
+[Zn] = integrate(Hn,[h*F(1,:);sparse(length(Hn)-1,k)],k,ht);
 
-[Zn] = integrate(Hm,temp,n,k,ht);
-
-ns = Vm(:,1:n)*Zn;
+ns = Vn*Zn;
 U = U + ns;
-diff = hm;
+diff = hnext;
+%h = hnext; v = vnext;
 if restart
-    while diff > conv
-        hn = hm; v = Vm(:,end);
-        [Vm,Hm,hm] = Arnoldi(A,v,n,conv);
-        
-        temp = [hn*Zn(end,:);sparse(n-1,k)];
-        
-        [Zn] = integrate(Hm,temp,n,k,ht);
-        ns =  Vm(:,1:n)*Zn;
-        
+    while diff > conv 
+        h = hnext; v = vnext;
+        [Vn,Hn,vnext,hnext] = alg(A,v,n,conv);
+        [Zn] = integrate(Hn,[h*Zn(end,:);sparse(length(Hn)-1,k)],k,ht);
+        ns =  Vn*Zn;
         diff = max(max(abs(ns)));
         U = U + ns;
         iter = iter+1;
-        
+        %Zn = Vn'*U; % Kommenter dette inn når du må!
     end
 end
 end
-
