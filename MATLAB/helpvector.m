@@ -1,4 +1,10 @@
-function v = helpvector(m)
+function v = helpvector(m,eqn)
+
+if strcmp(eqn,'maxwell1D')
+    v = 2:m-1;
+    return
+end
+    
 
 v = zeros((m-2)^2,1);
 for qq = 0:m-3

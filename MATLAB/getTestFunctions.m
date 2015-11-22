@@ -1,4 +1,4 @@
-function [Ustart, V,F,correctsolution] = getTestFunctions( prob,X,T,eqn )
+function [Ustart, V,F,correctsolution] = getTestFunctions( prob,X,T,eqn,hs )
 %Takes 3 agruments;
 % prob: a number corresponding to a test problem
 % X: a set of points in spacial direction
@@ -10,12 +10,12 @@ function [Ustart, V,F,correctsolution] = getTestFunctions( prob,X,T,eqn )
 % V: A list of vectors to generate the Krylov space
 % correctsolution: The correct solution.
 
-%%% TODO 
+%%% TODO
 % Legg til maxwell problemer
 m = length(X); k = length(T);
 
 
-vec = helpvector(m);
+vec = helpvector(m,eqn);
 if strcmp(eqn,'heat') % Sjekk!!!
     if prob == 1
         sol = @(t,x,y)  t/(t+1)*x*(x-1)*y*(y-1);
@@ -124,10 +124,70 @@ elseif strcmp(eqn,'wave')
     Ustart = [getInitial(u0,X);getInitial(v0,X)];
     V =  [Ustart,V]; F = [ones(1,k);F];
     correctsolution = getSolution(sol,X,T);
-elseif strcmp(eqn,'maxwell')
+elseif strcmp(eqn,'maxwell1D')
+    if prob == 1
+        u0 = @(x) exp(-100*(x-0.5)^2);
+        v0 = @(x) exp(-100*(x-0.5)^2);
+        
+        correctsolution = sparse(m,k);
+        
+    elseif prob == 2
+        u0 = @(x) 0;
+        v0 = @(x) cos(pi*x);
+        
+        %v0 = @(x) sin(pi*x);
+        %u0 = @(x) cos(pi*x);
+        solE = @(t,x) sin(pi * x) * sin(pi * t);
+        %solB = @(t,x) cos(pi * x) * cos(pi * t);
+        F = ones(1,k);
+        %V = zeros(2*(m-2),1);
+        %V(m-2) = 1/(2*hs); V(1) = -1/(2*hs);
+        %F(2,:) = cos(pi*T);
+        %V(m-1) = -1/(2*hs); V(end) = -1/(2*hs);
+        correctsolution = zeros(m,k);
+        for j = 1:k
+            for i = 1:m
+                correctsolution(i,j) = solE(T(j),X(i));
+                %correctsolution(m+i,j) = solB(T(j),X(i));
+            end
+        end
+    end
+    U0 = zeros(m-2,1); V0 = zeros(m,1);
+    %V0(1) = V0(T(1)); V0(end) = v0(T(end));
+    for i = 1:m
+        V0(i) = v0(X(i));
+    end
+    
+    for i = vec
+        U0(i-1) = u0(X(i));
+    end
+    Ustart = [U0;V0];
+    V = [Ustart];
+    
+elseif strcmp(eqn,'maxwell3D')
     %fyll inn!
+    
+elseif strcmp(eqn,'random')
+    Ustart = rand(2*(m-2)^2,1);
+    V = Ustart;
+    F = ones(1,k);
+    correctsolution = sparse(m^2,k);
+elseif strcmp(eqn,'semirandom')
+    try
+        load('semirandomV.mat','V');
+    catch
+        V = -1;
+    end
+    
+    if size(V,1) ~= 2*(m-2)^2
+        V = rand(2*(m-2)^2,1);
+        save('semirandomV.mat','V');
+    end
+    Ustart = V;
+    F = ones(1,k);
+    correctsolution = sparse(m^2,k);
+    
 end
-
 
     function correctsolution = getSolution(sol,X,T)
         correctsolution = zeros(m^2,k);

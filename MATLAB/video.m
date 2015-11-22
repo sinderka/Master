@@ -1,7 +1,18 @@
-function video(U,m,k,T)
+function video(U,m,k,T,eqn)
 figure(1)
 if max(max(U)) == min(min(U))
     display('Something went wrong with the video!')
+    return
+end
+
+if strcmp(eqn,'maxwell1D')
+    for i = 1:k
+        plot(U(:,i))
+        caxis([min(min(U)),max(max(U))])
+        axis([0,m,min(min(U)),max(max(U))])
+        drawnow
+        pause(T)
+    end
     return
 end
 
