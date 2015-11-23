@@ -11,7 +11,7 @@ elseif strcmp(eqn, 'wave')
     A = 1/hs^2*gallery('poisson', m-2);
     A = [sparse((m-2)^2,(m-2)^2),speye((m-2)^2);-A,sparse((m-2)^2,(m-2)^2)];
 elseif strcmp(eqn,'maxwell1D')
-    G = 1/(2*hs)*gallery('tridiag',ones(m-2,1),zeros(m-1,1),-ones(m-2,1));
+    G = 1/(2*hs)*gallery('tridiag',-ones(m-2,1),zeros(m-1,1),ones(m-2,1));
     
     
     %cols = 1/(2*hs)*[-ones(m-2,1),sparse(m-2,1),ones(m-2,1)];
@@ -19,7 +19,7 @@ elseif strcmp(eqn,'maxwell1D')
     %spdiags([sparse(m-2,1),sparse(m-2,1),-ones(m-2,1),sparse(m-2,1),ones()])
     
     
-    G(1,:) = [];G(1,1) = 0.5/hs; G(end,end+1) = -0.5/hs;A = [sparse(m-2,m-2),G;-G',sparse(m,m)];
+    G(1,:) = [];G(1,1) = -1/hs; G(end,end+1) = 1/hs;A = [sparse(m-2,m-2),G;-G',sparse(m,m)];
     %A = [sparse(m-2,m-2),G;G,sparse(m,m)];
     %G(1,2) = -1/hs; G(end,end-1) = -1/hs;
     %A = [sparse(m-2,m-2),G;G,sparse(m-2,m-2)];
