@@ -47,7 +47,7 @@ mat = inv(speye(n)-A*ht/2); %U(:,2) = mat*ht/2*(F(:,2)+F(:,1));
 %ht = 1/k;
 for j = 2:1:k
 % Trapez method
-%    U(:,j) = mat*(U(:,j-1) + ht/2*A*U(:,j-1)+ht/2*(F(:,j)+F(:,j-1)));
+    U(:,j) = mat*(U(:,j-1) + ht/2*A*U(:,j-1)+ht/2*(F(:,j)+F(:,j-1)));
     
 % ""Modified Euler""
 %    U(:,j) = U(:,j-1) +ht/2*A*U(:,j-1) + ht/2*F(:,j-1) + ht/2*A*U(:,j-1)+ht^2/2*A^2*U(:,j-1)  + ht^2/2*A*F(:,j-1) + ht/2*F(:,j);
@@ -60,7 +60,7 @@ for j = 2:1:k
 
 % Eksplisitt midpoint rule approximert F % Fungerer ikke !! % Energien
 % stiger lineært
-    U(:,j) = U(:,j-1) + ht*( A*( U(:,j-1) + ht/2*( A*U(:,j-1) + F(:,j-1) ) ) + F(:,j) );
+%   U(:,j) = U(:,j-1) + ht*( A*( U(:,j-1) + ht/2*( A*U(:,j-1) + F(:,j-1) ) ) + F(:,j) );
 
 % Implisitt midpoint rule dobbel steglengde
 %    U(:,j) = ( speye(n) - A*ht )\(U(:,j-2) + 2*ht * ( A*U(:,j-2)/2 + F(:,j-1) ));

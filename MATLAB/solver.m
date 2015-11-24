@@ -8,7 +8,7 @@ function utdata = solver(m,n,k,eqn,alg,restart,prob,conv,para)
 %tic;
 if nargin < 9
     m = 10*4;
-    k = 40*4;
+    k = 80*4;
     n = 4;%2*(m-2)^2;
     restart = 1;
     prob = 1;
