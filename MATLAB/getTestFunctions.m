@@ -1,4 +1,4 @@
-function [Ustart, V,F,correctsolution] = getTestFunctions( prob,X,T,eqn,hs )
+function [Ustart, V,F,correctsolution] = getTestFunctions( prob,X,T,eqn )
 %Takes 3 agruments;
 % prob: a number corresponding to a test problem
 % X: a set of points in spacial direction
@@ -15,7 +15,7 @@ function [Ustart, V,F,correctsolution] = getTestFunctions( prob,X,T,eqn,hs )
 m = length(X); k = length(T);
 
 
-vec = helpvector(m,eqn);
+[vec,~] = helpvector(m,eqn);
 if strcmp(eqn,'heat') % Sjekk!!!
     if prob == 1
         sol = @(t,x,y)  t/(t+1)*x*(x-1)*y*(y-1);
@@ -126,12 +126,6 @@ elseif strcmp(eqn,'wave')
     correctsolution = getSolution(sol,X,T);
 elseif strcmp(eqn,'maxwell1D')
     if prob == 1
-        u0 = @(x) exp(-100*(x-0.5)^2);
-        v0 = @(x) exp(-100*(x-0.5)^2);
-        
-        correctsolution = sparse(m,k);
-        
-    elseif prob == 2
         u0 = @(x) 0;
         v0 = @(x) cos(pi*x);
         

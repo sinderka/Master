@@ -7,14 +7,14 @@ function utdata = solver(m,n,k,eqn,alg,restart,prob,conv,para)
 %%% Initiell data
 %tic;
 if nargin < 9
-    m = 10*4;
-    k = 80*4;
+    m = 40;
+    k = 40;
     n = 4;%2*(m-2)^2;
     restart = 1;
     prob = 1;
     conv = 10^-14;
     para = 4; %%%%% ARG %%%%%%
-    eqn = 'wave';
+    eqn = 'maxwell1D';
     alg = 3;
 end
 %Alt over dette burde være argumenter +
@@ -34,7 +34,7 @@ utdata = zeros(1,5); % Burde legge til forskjellen mellom energi og
 X = linspace(0,1,m);hs =X(2)-X(1);
 T = linspace(0,1,k);ht = T(2)-T(1);
 
-vec = helpvector(m,eqn);
+[vec,height] = helpvector(m,eqn);
 
 %disk = ht^2/(hs^2);
 
@@ -76,7 +76,7 @@ if alg == 1 || alg == 2
     end
     utdata(1) = iter;
     utdata(2) = toc;
-    U = zeros(m^2,k);
+    U = zeros(height,k);
     Utemp = Utemp + U0*ones(1,k);
     U(vec,:) = Utemp(1:(m-2)^2,:);
 end
@@ -88,10 +88,16 @@ for i = 1:size(F,1)
     tempVF = tempVF + V(:,i)*F(i,:);
 end
 Utemp1 = integrate(A,tempVF,k,ht);
-Utemp1 = Utemp1 + U0*ones(1,k);
-U1 = zeros(m^2,k);
-U1(vec,:) = Utemp1(1:(m-2)^2,:);
 Time = toc;
+
+
+Utemp1 = Utemp1 + U0*ones(1,k);
+U1 = zeros(height,k);
+if strcmp(eqn,'maxwell1D')
+    U1(vec,:) = Utemp1(1:length(A)/2-1,:); % OBS: Dette er en dårlig løsning!
+else
+    U1(vec,:) = Utemp1(1:length(A)/2,:);
+end
 
 
 if alg ~= 3
@@ -112,9 +118,9 @@ if 0
     %V = zeros(m^2,k);
     %V(vec,:) = Utemp((m-2)^2+1:end,:);
     %V(vec,:) = V(vec,:) + U0(vec)*ones(1,k);
-    video(U,m,k,0.05,eqn)
+    %video(U,m,k,0.05,eqn)
     %video(V,m,k,0.05)
-    video(correctsolution,m,k,0.05,eqn)
+    %video(correctsolution,m,k,0.05,eqn)
     video(U-correctsolution,m,k,0.05,eqn)
     %energy(Jtilde*Atilde,Utemp);
 end

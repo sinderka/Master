@@ -19,7 +19,9 @@ elseif strcmp(eqn,'maxwell1D')
     %spdiags([sparse(m-2,1),sparse(m-2,1),-ones(m-2,1),sparse(m-2,1),ones()])
     
     
-    G(1,:) = [];G(1,1) = -1/hs; G(end,end+1) = 1/hs;A = [sparse(m-2,m-2),G;-G',sparse(m,m)];
+    G(1,:) = [];G(1,1) = -1/hs; G(end,end+1) = 1/hs;A = -[sparse(m-2,m-2),G;-G',sparse(m,m)];
+    
+    A(1,m-1) = 0.5*A(1,m-1); A(m-2,end) = 0.5*A(m-2,end);
     %A = [sparse(m-2,m-2),G;G,sparse(m,m)];
     %G(1,2) = -1/hs; G(end,end-1) = -1/hs;
     %A = [sparse(m-2,m-2),G;G,sparse(m-2,m-2)];
