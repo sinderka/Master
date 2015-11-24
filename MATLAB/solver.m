@@ -7,8 +7,8 @@ function utdata = solver(m,n,k,eqn,alg,restart,prob,conv,para)
 %%% Initiell data
 %tic;
 if nargin < 9
-    m = 40;
-    k = 40;
+    m = 6;
+    k = 10;
     n = 4;%2*(m-2)^2;
     restart = 1;
     prob = 1;
@@ -78,7 +78,11 @@ if alg == 1 || alg == 2
     utdata(2) = toc;
     U = zeros(height,k);
     Utemp = Utemp + U0*ones(1,k);
-    U(vec,:) = Utemp(1:(m-2)^2,:);
+    if strcmp(eqn,'maxwell1D')
+        U(vec,:) = Utemp(1:length(A)/2-1,:); % OBS: Dette er en dårlig løsning!
+    else
+        U(vec,:) = Utemp(1:length(A)/2,:);
+    end
 end
 
 
@@ -114,14 +118,14 @@ end
 %utdata(3) = getError(U,correctsolution);
 utdata(3) = max(max(abs(U-correctsolution)));
 utdata(4) = energy(A,Utemp);
-if 0
+if 1
     %V = zeros(m^2,k);
     %V(vec,:) = Utemp((m-2)^2+1:end,:);
     %V(vec,:) = V(vec,:) + U0(vec)*ones(1,k);
-    %video(U,m,k,0.05,eqn)
+    video(U,m,k,0.05,eqn)
     %video(V,m,k,0.05)
     %video(correctsolution,m,k,0.05,eqn)
-    video(U-correctsolution,m,k,0.05,eqn)
+    %video(U-correctsolution,m,k,0.05,eqn)
     %energy(Jtilde*Atilde,Utemp);
 end
 end

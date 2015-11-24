@@ -145,6 +145,23 @@ elseif strcmp(eqn,'maxwell1D')
                 %correctsolution(m+i,j) = solB(T(j),X(i));
             end
         end
+%     elseif prob == 2
+%         u0 = @(x) exp(-100*(x-0.5)^2);
+%         v0 = @(x) exp(-100*(x-0.5)^2);
+%         correctsolution = sparse(m,k);
+%         F = ones(1,k);
+%     elseif prob == 3
+%         u0 = @(x) cos(x);
+%         v0 = @(x) cos(x);
+%         solE = @(t,x) cos(x-t);
+%         F = ones(1,k);
+%         correctsolution = zeros(m,k);
+%         for j = 1:k
+%             for i = 1:m
+%                 correctsolution(i,j) = solE(T(j),X(i));
+%                 %correctsolution(m+i,j) = solB(T(j),X(i));
+%             end
+%         end
     end
     U0 = zeros(m-2,1); V0 = zeros(m,1);
     %V0(1) = V0(T(1)); V0(end) = v0(T(end));
