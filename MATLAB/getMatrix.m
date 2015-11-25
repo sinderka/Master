@@ -33,11 +33,11 @@ elseif strcmp(eqn,'maxwell1D')
     %G(1,2) = -1/hs; G(end,end-1) = -1/hs;
     %A = [sparse(m-2,m-2),G;G,sparse(m-2,m-2)];
     %J = [sparse(m,m-2),speye(m);-speye(m-2),sparse(m-2,m)];
-    J = [sparse(m-1,m-1),speye(m-1);-speye(m-1),sparse(m-1,m-1)];
+    %J = [sparse(m-1,m-1),speye(m-1);-speye(m-1),sparse(m-1,m-1)];
     %J = [sparse(m,m),speye(m);-speye(m),sparse(m,m)];
-    isequal(J,-(J)')
-    isequal(J*A,-(J*A)')
-    a = 2;
+    %isequal(J,-(J)')
+    %isequal(J*A,(J*A)')
+    %a = 2;
     % elseif strcmp(eqn,'maxwell2D')
     %     T = 1/(2*hs)*gallery('tridiag',-ones(m-3,1),zeros(m-2,1),ones(m-3,1));
     %         %%%% ddx

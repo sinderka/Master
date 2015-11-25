@@ -14,7 +14,7 @@ linetype = {'k:+','k:o','k:*','k:.','k:x','k:s','k:d','k:^','k:v','k:<','k:>','k
 [p,b] = getPandB(m,n,k,alg,restart,prob,conv,para);
 ant1 = length(p)-1; ant2 = length(b)-1;
 a = 1; b = 1; c = 1; d = 1; e = 1; f = 1; g = 1; h = 1;
-utdata = zeros(ant2,ant1,5);
+utdata = zeros(ant2,ant1,6);
 for i = 1:ant1
     [a0,b0,c0,d0,e0,f0,g0,h0] = addOne(m,n,k,alg,restart,prob,conv,para,a,c,b,d,e,f,g,h,-1);
     a = max(1,a0*(a0-a)); b = max(1,b0*(b0-b)); c = max(1,c0*(c0-c)); d = max(1,d0*(d0-d)); e = max(1,e0*(e0-e)); f = max(1,f0*(f0-f)); g = max(1,g0*(g0-g)); h = max(1,h0*(h0-h));
@@ -26,11 +26,11 @@ end
 
 for i = 1:ant2
     if strcmp(type,'plot')
-        plot(p(2:end),utdata(:,data,i),char(linetype(i)))
+        plot(p(2:end),utdata(i,:,data),char(linetype(i)))
     elseif strcmp(type,'loglog')
-        loglog(p(2:end),utdata(:,data,i),char(linetype(i)))
+        loglog(p(2:end),utdata(i,:,data),char(linetype(i)))
     elseif strcmp(type,'semilogx')
-        semilogx(p(2:end),utdata(:,data,i),char(linetype(i)))
+        semilogx(p(2:end),utdata(i,:,data),char(linetype(i)))
     elseif strcmp(type,'semilogy')
         semilogy(p(2:end),utdata(i,:,data),char(linetype(i)))
     end
@@ -50,6 +50,8 @@ xlabel(xlab);
 %set(gcf,'CurrentAxes',h)
 %text(1,1,char(additionalInfo),'FontSize',12)
 title(char(additionalInfo))
+%dim = [0.9 0.1 0.3 0.3];
+%annotation('textbox',dim,'String',char(additionalInfo),'FitBoxToText','on');
 
 legend(char(leg));
 h = set(findall(gcf,'-property','FontSize'), 'Fontsize',18);
@@ -153,6 +155,10 @@ elseif data == 3
     ylab = {'Error'};
 elseif data == 4
     ylab = {'Energy error'};
+elseif data == 5
+    ylab = {'Difference error'};
+elseif data == 6
+    ylab = {'Defference energy'};
 end
 if m(1) == -1
     xlab = {'m'};

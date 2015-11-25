@@ -45,7 +45,7 @@ mat = inv(speye(n)-A*ht/2); %U(:,2) = mat*ht/2*(F(:,2)+F(:,1));
 % Midpoint rule approximert F
 %U(:,2) =
 %ht = 1/k;
-for j = 2:1:k
+for j = 3:1:k
 % Trapez method
     U(:,j) = mat*(U(:,j-1) + ht/2*A*U(:,j-1)+ht/2*(F(:,j)+F(:,j-1)));
     

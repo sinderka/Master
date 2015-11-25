@@ -7,15 +7,15 @@ function utdata = solver(m,n,k,eqn,alg,restart,prob,conv,para)
 %%% Initiell data
 %tic;
 if nargin < 9
-    m = 6;
-    k = 10;
+    m = 50;
+    k = 500;
     n = 4;%2*(m-2)^2;
-    restart = 1;
+    restart = 0;
     prob = 1;
     conv = 10^-14;
     para = 4; %%%%% ARG %%%%%%
-    eqn = 'maxwell1D';
-    alg = 3;
+    eqn = 'wave';
+    alg = 1;
 end
 %Alt over dette burde være argumenter +
 % if ~verifyData(m,n,k,eqn,alg,restart,prob,para)
@@ -30,7 +30,7 @@ end
 
 
 %%% Initsiell data
-utdata = zeros(1,5); % Burde legge til forskjellen mellom energi og
+utdata = zeros(1,6);
 X = linspace(0,1,m);hs =X(2)-X(1);
 T = linspace(0,1,k);ht = T(2)-T(1);
 
@@ -106,10 +106,12 @@ end
 
 if alg ~= 3
     utdata(5) = max(max(abs(U-U1)));
+    utdata(6) = abs(energy(A,Utemp-Utemp1));
 else
     utdata(1) = 0;
     utdata(2) = Time;
     utdata(5) = -1;
+    utdata(6) = -1;
     Utemp = Utemp1;
     U = U1;
 end
@@ -118,7 +120,7 @@ end
 %utdata(3) = getError(U,correctsolution);
 utdata(3) = max(max(abs(U-correctsolution)));
 utdata(4) = energy(A,Utemp);
-if 1
+if 0
     %V = zeros(m^2,k);
     %V(vec,:) = Utemp((m-2)^2+1:end,:);
     %V(vec,:) = V(vec,:) + U0(vec)*ones(1,k);
