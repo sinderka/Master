@@ -7,36 +7,23 @@ function utdata = solver(m,n,k,eqn,alg,restart,prob,conv,para)
 %%% Initiell data
 %tic;
 if nargin < 9
-    m = 50;
-    k = 500;
+    m = 100;
+    k = 100;
     n = 4;%2*(m-2)^2;
     restart = 0;
     prob = 1;
     conv = 10^-14;
-    para = 4; %%%%% ARG %%%%%%
+    para = 4; %%%%% If need be %%%%%%
     eqn = 'wave';
     alg = 1;
 end
-%Alt over dette burde være argumenter +
-% if ~verifyData(m,n,k,eqn,alg,restart,prob,para)
-%     utdata = -ones(1,4);
-%     return
-% end
-%m,n,k,eqn,alg,restart,prob,conv,para
-%datastore1 = datastorage(m,n,k,restart,eqn,prob,para,alg,conv,1) % Sjekker om krylov må
-%benyttes
-%datastore2 = datastorage(m,n,k,restart,eqn,prob,para,alg,conv,2) % Sjekker
-%om den er løst av direkte integrasjons metoden
-
 
 %%% Initsiell data
 utdata = zeros(1,6);
 X = linspace(0,1,m);hs =X(2)-X(1);
 T = linspace(0,1,k);ht = T(2)-T(1);
-
 [vec,height] = helpvector(m,eqn);
 
-%disk = ht^2/(hs^2);
 
 
 %%%%%%%%%% TODO %%%%%%%%%%
@@ -46,7 +33,7 @@ T = linspace(0,1,k);ht = T(2)-T(1);
 %%% Feilen mellom direkte metode og Krylov metode burde også være med,
 %%% alltid!
 
-
+% Get problem information
 [A] = getMatrix( m , hs, eqn );
 [U0,V,F,correctsolution] = getTestFunctions( prob,X,T,eqn );
 V(:,1) = A*V(:,1);
@@ -60,11 +47,13 @@ V(:,1) = A*V(:,1);
 % beregne feil X--
 % annet
 
+% Chose solution method and solve
 if alg == 1 || alg == 2
     if alg == 1
         algo = @Arnoldi;
     elseif alg == 2
         algo = @SymplecticLanczosMethod;
+        n = n/2;
     end
     tic;
     iter = 0;
@@ -120,6 +109,8 @@ end
 %utdata(3) = getError(U,correctsolution);
 utdata(3) = max(max(abs(U-correctsolution)));
 utdata(4) = energy(A,Utemp);
+
+% Plot
 if 0
     %V = zeros(m^2,k);
     %V(vec,:) = Utemp((m-2)^2+1:end,:);
