@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  14 SEP 2015 10:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  2 DEC 2015 18:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -916,8 +916,29 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_below_shortintertext_sep=\dimen154
 ) (./thesis.aux
 (./front.aux) (./preface.aux) (./acknowledgment.aux) (./summary.aux)
-(./chapter01.aux) (./chapter02.aux) (./chapter03.aux) (./chapter04.aux)
-(./chapter05.aux) (./chapter06.aux) (./chapter07.aux))
+(./chapter01.aux) (./chapter02.aux
+
+LaTeX Warning: Label `fig:errora' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:errora' multiply defined.
+
+
+LaTeX Warning: Label `fig:errorb' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:errorb' multiply defined.
+
+
+LaTeX Warning: Label `fig:errorb' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:errorb' multiply defined.
+
+
+LaTeX Warning: Label `fig:energy' multiply defined.
+
+))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
@@ -935,8 +956,7 @@ LaTeX Font Info:    ... okay on input line 35.
 LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 35.
 LaTeX Font Info:    Try loading font information for FML+futm on input line 35.
 
-
-(/usr/lib/texlive/texmf-dist/tex/latex/fourier/fmlfutm.fd
+ (/usr/lib/texlive/texmf-dist/tex/latex/fourier/fmlfutm.fd
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
 LaTeX Font Info:    ... okay on input line 35.
@@ -1064,7 +1084,7 @@ Package caption Info: End \AtBeginDocument code.
 \openout2 = `front.aux'.
 
  (./front.tex
-<fig/rams.pdf, id=124, 382.32837pt x 73.073pt>
+<fig/rams.pdf, id=36, 382.32837pt x 73.073pt>
 File: fig/rams.pdf Graphic file (type pdf)
  <use fig/rams.pdf>
 Package pdftex.def Info: fig/rams.pdf used on input line 8.
@@ -1096,18 +1116,14 @@ LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <17.28> not available
 ]
 \openout2 = `summary.aux'.
 
- (./summary.tex
-Underfull \hbox (badness 10000) in paragraph at lines 7--8
-
- []
-
-) [3
+ (./summary.tex) [3
 
 
 ]
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <24.88> not available
 (Font)              Font shape `T1/futs/b/n' tried instead on input line 42.
- (./thesis.toc
+
+(./thesis.toc
 LaTeX Font Info:    Try loading font information for FML+futmi on input line 1.
 
  (/usr/lib/texlive/texmf-dist/tex/latex/fourier/fmlfutmi.fd
@@ -1126,6 +1142,7 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 6.43999pt on input line 1.
 LaTeX Font Info:    Try loading font information for U+wasy on input line 1.
+
 (/usr/lib/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
@@ -1141,10 +1158,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <12> not available
 (Font)              Font shape `T1/futs/b/n' tried instead on input line 4.
- [4
-
-
-])
+)
 \tf@toc=\write4
 \openout4 = `thesis.toc'.
 
@@ -1153,653 +1167,174 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.46 \include{chapter01}
-                         [1]
+                         [1
+
+
+]
 \openout2 = `chapter01.aux'.
 
  (./chapter01.tex
 Chapter 1.
-
-Underfull \hbox (badness 10000) in paragraph at lines 5--7
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 10--13
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 19--21
-
- []
-
 [2
 
 
-]) [3]
+]
+Chapter 2.
+
+Overfull \hbox (2.16014pt too wide) in paragraph at lines 34--42
+ [][] 
+ []
+
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 49.
+(/usr/lib/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+) [3
+
+]
+
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 89.
+
+[4]
+
+LaTeX Warning: File `compareintegrateenergy.jpg' not found on input line 104.
+
+
+! Package pdftex.def Error: File `compareintegrateenergy.jpg' not found.
+
+See the pdftex.def package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.104 ...scale = 0.34]{compareintegrateenergy.jpg}
+                                                  
+Using draft setting for this image.
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+<../MATLAB/fig/waveenergy2algint.jpg, id=97, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/waveenergy2algint.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/waveenergy2algint.jpg>
+Package pdftex.def Info: ../MATLAB/fig/waveenergy2algint.jpg used on input line
+ 116.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/semiwaveenergy2algint.jpg, id=98, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/semiwaveenergy2algint.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/semiwaveenergy2algint.jpg>
+Package pdftex.def Info: ../MATLAB/fig/semiwaveenergy2algint.jpg used on input 
+line 123.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/waveerror2algint.jpg, id=99, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/waveerror2algint.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/waveerror2algint.jpg>
+Package pdftex.def Info: ../MATLAB/fig/waveerror2algint.jpg used on input line 
+135.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/semiwaveerror2algint.jpg, id=100, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/semiwaveerror2algint.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/semiwaveerror2algint.jpg>
+Package pdftex.def Info: ../MATLAB/fig/semiwaveerror2algint.jpg used on input l
+ine 142.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+ [5 <../MATLAB/fig/waveenergy2algint.jpg> <../MATLAB/fig/semiwaveenergy2algint.
+jpg>] [6 <../MATLAB/fig/waveerror2algint.jpg> <../MATLAB/fig/semiwaveerror2algi
+nt.jpg>]
+Chapter 3.
+<../MATLAB/fig/compareEnergy.jpg, id=112, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/compareEnergy.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/compareEnergy.jpg>
+Package pdftex.def Info: ../MATLAB/fig/compareEnergy.jpg used on input line 157
+.
+(pdftex.def)             Requested size: 204.76228pt x 153.57172pt.
+
+<../MATLAB/fig/compareIter.jpg, id=113, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/compareIter.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/compareIter.jpg>
+Package pdftex.def Info: ../MATLAB/fig/compareIter.jpg used on input line 158.
+(pdftex.def)             Requested size: 204.76228pt x 153.57172pt.
+ [7
+
+ <../MATLAB/fig/compareEnergy.jpg> <../MATLAB/fig/compareIter.jpg>]
+Chapter 4.
+) [8
+
+]
 \openout2 = `chapter02.aux'.
 
  (./chapter02.tex
-Chapter 2.
-! Double superscript.
-l.15 ...ectors $v^i$ together with $h_{i,j} = v^i^
-                                                  \top Av^j$, are found by u...
-I treat `x^1^2' essentially like `x^1{}^2'.
-
-! Double superscript.
-<argument> ..._n &= H_n \label {eqn:prop2} \\ v^i^
-                                                  {\top } v^j &= \delta _{i,...
-l.20 \end{align}
-                
-I treat `x^1^2' essentially like `x^1{}^2'.
-
-! Double superscript.
-<argument> ..._n &= H_n \label {eqn:prop2} \\ v^i^
-                                                  {\top } v^j &= \delta _{i,...
-l.20 \end{align}
-                
-I treat `x^1^2' essentially like `x^1{}^2'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 20--22
-
- []
-
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 27.
-[4
-
-
-
-]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 68.
- (/usr/lib/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [5] [6]
-LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 15.89755pt on input line 156.
-LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 15.89755pt on input line 156.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 156.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 156.
-
-[7]) [8]
-\openout2 = `chapter03.aux'.
-
- (./chapter03.tex
-Chapter 3.
-
-Underfull \hbox (badness 10000) in paragraph at lines 48--49
-
- []
-
-[9
-
-
-
-] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 92--93
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
-
- []
-
-
-Overfull \hbox (9.27255pt too wide) in paragraph at lines 96--97
-[]\T1/futs/m/n/12 The par-al-lel com-pu-ta-tions was im-ple-mented with MAT-LAB
-'s com-mands \T1/cmtt/m/n/12 parpool \T1/futs/m/n/12 and \T1/cmtt/m/n/12 parfor
-\T1/futs/m/n/12 ,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 103--105
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 108--109
-
- []
-
-[11]
-Underfull \hbox (badness 10000) in paragraph at lines 110--111
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 112--113
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 126--129
-
- []
-
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 142--143
-
- []
-
-) [13]
-\openout2 = `chapter04.aux'.
-
- (./chapter04.tex
-Chapter 4.
-
-Underfull \hbox (badness 10000) in paragraph at lines 21--22
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
-
- []
-
-[14
-
-
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 61--62
-
- []
-
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 63--64
-
- []
-
-) [16]
-\openout2 = `chapter05.aux'.
-
- (./chapter05.tex
 Chapter 5.
+<../MATLAB/fig/energyovertimetrapezoidal.jpg, id=122, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energyovertimetrapezoidal.jpg Graphic file (type jpg)
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2.
+<use ../MATLAB/fig/energyovertimetrapezoidal.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energyovertimetrapezoidal.jpg used on in
+put line 9.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
+<../MATLAB/fig/energyovertimeeuler.jpg, id=123, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energyovertimeeuler.jpg Graphic file (type jpg)
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2.
+<use ../MATLAB/fig/energyovertimeeuler.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energyovertimeeuler.jpg used on input li
+ne 16.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 22.88956pt on input line 2.
-LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 22.88956pt on input line 2.
-<fig/s1conv1.jpg, id=408, 562.1pt x 421.575pt>
-File: fig/s1conv1.jpg Graphic file (type jpg)
- <use fig/s1conv1.jpg>
-Package pdftex.def Info: fig/s1conv1.jpg used on input line 14.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+<../MATLAB/fig/energyovertimemidpoint.jpg, id=124, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energyovertimemidpoint.jpg Graphic file (type jpg)
 
-<fig/s2conv2.jpg, id=409, 562.1pt x 421.575pt>
-File: fig/s2conv2.jpg Graphic file (type jpg)
- <use fig/s2conv2.jpg>
-Package pdftex.def Info: fig/s2conv2.jpg used on input line 20.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [17
+<use ../MATLAB/fig/energyovertimemidpoint.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energyovertimemidpoint.jpg used on input
+ line 22.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+) [9
 
 
 
- <./fig/s1conv1.jpg> <./fig/s2conv2.jpg>]
-<fig/s9rest1.jpg, id=417, 562.1pt x 421.575pt>
-File: fig/s9rest1.jpg Graphic file (type jpg)
- <use fig/s9rest1.jpg>
-Package pdftex.def Info: fig/s9rest1.jpg used on input line 33.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/s10rest2.jpg, id=418, 562.1pt x 421.575pt>
-File: fig/s10rest2.jpg Graphic file (type jpg)
- <use fig/s10rest2.jpg>
-Package pdftex.def Info: fig/s10rest2.jpg used on input line 39.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 47.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gamma' on input line 47.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 47.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 47.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 47.
-
-<fig/s3antvsm1.jpg, id=420, 570.13pt x 422.57875pt>
-File: fig/s3antvsm1.jpg Graphic file (type jpg)
- <use fig/s3antvsm1.jpg>
-Package pdftex.def Info: fig/s3antvsm1.jpg used on input line 52.
-(pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
-
-<fig/s4antvsm2.jpg, id=421, 570.13pt x 422.57875pt>
-File: fig/s4antvsm2.jpg Graphic file (type jpg)
- <use fig/s4antvsm2.jpg>
-Package pdftex.def Info: fig/s4antvsm2.jpg used on input line 58.
-(pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
-
-[18 <./fig/s9rest1.jpg> <./fig/s10rest2.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 65--66
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
-
- []
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 69.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\rho' on input line 69.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 69.
-
-<fig/n5timevsm1.jpg, id=431, 562.1pt x 421.575pt>
-File: fig/n5timevsm1.jpg Graphic file (type jpg)
- <use fig/n5timevsm1.jpg>
-Package pdftex.def Info: fig/n5timevsm1.jpg used on input line 74.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/n6timevsm2.jpg, id=432, 570.13pt x 422.57875pt>
-File: fig/n6timevsm2.jpg Graphic file (type jpg)
- <use fig/n6timevsm2.jpg>
-Package pdftex.def Info: fig/n6timevsm2.jpg used on input line 80.
-(pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
-
-[19 <./fig/s3antvsm1.jpg> <./fig/s4antvsm2.jpg>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 89.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 89.
-
-<fig/n7timevsk1.jpg, id=439, 570.13pt x 422.57875pt>
-File: fig/n7timevsk1.jpg Graphic file (type jpg)
- <use fig/n7timevsk1.jpg>
-Package pdftex.def Info: fig/n7timevsk1.jpg used on input line 94.
-(pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
-
-<fig/n8timevsk2.jpg, id=440, 570.13pt x 422.57875pt>
-File: fig/n8timevsk2.jpg Graphic file (type jpg)
- <use fig/n8timevsk2.jpg>
-Package pdftex.def Info: fig/n8timevsk2.jpg used on input line 100.
-(pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
-
-[20 <./fig/n5timevsm1.jpg> <./fig/n6timevsm2.jpg> <./fig/n7timevsk1.jpg> <./fig
-/n8timevsk2.jpg>]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 112.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\delta' on input line 112.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 112.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 112.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\gamma' on input line 112.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 112.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 112.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\epsilon' on input line 112.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 112.
-
-<fig/s13antvstol1m.jpg, id=449, 562.1pt x 421.575pt>
-File: fig/s13antvstol1m.jpg Graphic file (type jpg)
-
-<use fig/s13antvstol1m.jpg>
-Package pdftex.def Info: fig/s13antvstol1m.jpg used on input line 118.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/s14antvstol2m.jpg, id=450, 562.1pt x 421.575pt>
-File: fig/s14antvstol2m.jpg Graphic file (type jpg)
-
-<use fig/s14antvstol2m.jpg>
-Package pdftex.def Info: fig/s14antvstol2m.jpg used on input line 124.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/s13antvstol1m10.jpg, id=451, 578.16pt x 423.5825pt>
-File: fig/s13antvstol1m10.jpg Graphic file (type jpg)
-
-<use fig/s13antvstol1m10.jpg>
-Package pdftex.def Info: fig/s13antvstol1m10.jpg used on input line 130.
-(pdftex.def)             Requested size: 212.41261pt x 155.61783pt.
-
-<fig/s14antvstol2m10.jpg, id=452, 570.13pt x 422.57875pt>
-File: fig/s14antvstol2m10.jpg Graphic file (type jpg)
-
-<use fig/s14antvstol2m10.jpg>
-Package pdftex.def Info: fig/s14antvstol2m10.jpg used on input line 136.
-(pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
- [21 <./fig/s13antvstol1m.jpg> <./fig/s14antvstol2m.jpg> <./fig/s13antvstol1m10
-.jpg> <./fig/s14antvstol2m10.jpg>]
-<fig/s15errvstol1m.jpg, id=460, 562.1pt x 421.575pt>
-File: fig/s15errvstol1m.jpg Graphic file (type jpg)
-
-<use fig/s15errvstol1m.jpg>
-Package pdftex.def Info: fig/s15errvstol1m.jpg used on input line 152.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/s16errvstol2m.jpg, id=461, 562.1pt x 421.575pt>
-File: fig/s16errvstol2m.jpg Graphic file (type jpg)
-
-<use fig/s16errvstol2m.jpg>
-Package pdftex.def Info: fig/s16errvstol2m.jpg used on input line 158.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/s15errvstol1m10.jpg, id=462, 562.1pt x 421.575pt>
-File: fig/s15errvstol1m10.jpg Graphic file (type jpg)
-
-<use fig/s15errvstol1m10.jpg>
-Package pdftex.def Info: fig/s15errvstol1m10.jpg used on input line 164.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/s16errvstol2m10.jpg, id=463, 562.1pt x 421.575pt>
-File: fig/s16errvstol2m10.jpg Graphic file (type jpg)
-
-<use fig/s16errvstol2m10.jpg>
-Package pdftex.def Info: fig/s16errvstol2m10.jpg used on input line 170.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/s20antvstol1k.jpg, id=470, 562.1pt x 421.575pt>
-File: fig/s20antvstol1k.jpg Graphic file (type jpg)
-
-<use fig/s20antvstol1k.jpg>
-Package pdftex.def Info: fig/s20antvstol1k.jpg used on input line 190.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/s21antvstol2k.jpg, id=471, 570.13pt x 422.57875pt>
-File: fig/s21antvstol2k.jpg Graphic file (type jpg)
-
-<use fig/s21antvstol2k.jpg>
-Package pdftex.def Info: fig/s21antvstol2k.jpg used on input line 196.
-(pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
-
-<fig/s20antvstol1k10.jpg, id=472, 562.1pt x 421.575pt>
-File: fig/s20antvstol1k10.jpg Graphic file (type jpg)
-
-<use fig/s20antvstol1k10.jpg>
-Package pdftex.def Info: fig/s20antvstol1k10.jpg used on input line 201.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/s21antvstol2k10.jpg, id=473, 562.1pt x 421.575pt>
-File: fig/s21antvstol2k10.jpg Graphic file (type jpg)
-
-<use fig/s21antvstol2k10.jpg>
-Package pdftex.def Info: fig/s21antvstol2k10.jpg used on input line 207.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [22 <./fig/s15errvstol1m.jpg> <./fig/s16errvstol2m.jpg> <./fig/s15errvstol1m10
-.jpg> <./fig/s16errvstol2m10.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 213--214
-
- []
-
-<fig/s22errvstol1k.jpg, id=480, 562.1pt x 421.575pt>
-File: fig/s22errvstol1k.jpg Graphic file (type jpg)
-
-<use fig/s22errvstol1k.jpg>
-Package pdftex.def Info: fig/s22errvstol1k.jpg used on input line 220.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/s23errvstol2k.jpg, id=481, 562.1pt x 421.575pt>
-File: fig/s23errvstol2k.jpg Graphic file (type jpg)
-
-<use fig/s23errvstol2k.jpg>
-Package pdftex.def Info: fig/s23errvstol2k.jpg used on input line 226.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/s22errvstol1k10.jpg, id=482, 562.1pt x 421.575pt>
-File: fig/s22errvstol1k10.jpg Graphic file (type jpg)
-
-<use fig/s22errvstol1k10.jpg>
-Package pdftex.def Info: fig/s22errvstol1k10.jpg used on input line 231.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/s23errvstol2k10.jpg, id=483, 562.1pt x 421.575pt>
-File: fig/s23errvstol2k10.jpg Graphic file (type jpg)
-
-<use fig/s23errvstol2k10.jpg>
-Package pdftex.def Info: fig/s23errvstol2k10.jpg used on input line 237.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [23 <./fig/s20antvstol1k.jpg> <./fig/s21antvstol2k.jpg> <./fig/s20antvstol1k10
-.jpg> <./fig/s21antvstol2k10.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 243--245
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 246--247
-
- []
-
-[24 <./fig/s22errvstol1k.jpg> <./fig/s23errvstol2k.jpg> <./fig/s22errvstol1k10.
-jpg> <./fig/s23errvstol2k10.jpg>]
-<fig/sisteplot1.jpg, id=501, 570.13pt x 422.57875pt>
-File: fig/sisteplot1.jpg Graphic file (type jpg)
- <use fig/sisteplot1.jpg>
-Package pdftex.def Info: fig/sisteplot1.jpg used on input line 255.
-(pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
-
-<fig/sisteplot2.jpg, id=502, 570.13pt x 422.57875pt>
-File: fig/sisteplot2.jpg Graphic file (type jpg)
- <use fig/sisteplot2.jpg>
-Package pdftex.def Info: fig/sisteplot2.jpg used on input line 261.
-(pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
-)
-[25 <./fig/sisteplot1.jpg> <./fig/sisteplot2.jpg>]
-\openout2 = `chapter06.aux'.
-
- (./chapter06.tex
-Chapter 6.
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 2.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 6--7
-
- []
-
-<fig/p1conv1.jpg, id=511, 562.1pt x 421.575pt>
-File: fig/p1conv1.jpg Graphic file (type jpg)
- <use fig/p1conv1.jpg>
-Package pdftex.def Info: fig/p1conv1.jpg used on input line 16.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<fig/p2conv2.jpg, id=512, 562.1pt x 421.575pt>
-File: fig/p2conv2.jpg Graphic file (type jpg)
- <use fig/p2conv2.jpg>
-Package pdftex.def Info: fig/p2conv2.jpg used on input line 23.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [26
-
-
-
-]
-<fig/u1para1.jpg, id=520, 570.13pt x 422.57875pt>
-File: fig/u1para1.jpg Graphic file (type jpg)
- <use fig/u1para1.jpg>
-Package pdftex.def Info: fig/u1para1.jpg used on input line 37.
-(pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
-
-<fig/u2para2.jpg, id=521, 562.1pt x 421.575pt>
-File: fig/u2para2.jpg Graphic file (type jpg)
- <use fig/u2para2.jpg>
-Package pdftex.def Info: fig/u2para2.jpg used on input line 44.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [27 <./fig/p1conv1.jpg> <./fig/p2conv2.jpg> <./fig/u1para1.jpg> <./fig/u2para2
-.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 97--98
-
- []
-
-<fig/comp2.jpg, id=531, 570.13pt x 422.57875pt>
-File: fig/comp2.jpg Graphic file (type jpg)
- <use fig/comp2.jpg>
-Package pdftex.def Info: fig/comp2.jpg used on input line 107.
-(pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
-File: fig/comp2.jpg Graphic file (type jpg)
-
-<use fig/comp2.jpg>
-Package pdftex.def Info: fig/comp2.jpg used on input line 113.
-(pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
- [28]
-Underfull \hbox (badness 10000) in paragraph at lines 119--120
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 121--122
-
- []
-
-) [29 <./fig/comp2.jpg>]
-\openout2 = `chapter07.aux'.
-
- (./chapter07.tex
-Chapter 7.
-
-Underfull \hbox (badness 10000) in paragraph at lines 5--6
-
- []
-
-
-Overfull \hbox (3.35915pt too wide) in paragraph at lines 7--8
-\T1/futs/m/n/12 asymp-tot-i-cally bet-ter than \T1/cmtt/m/n/12 DM\T1/futs/m/n/1
-2 . This con-tra-dicts the re-sults from the-o-ret-i-cal com-plex-ity, and migh
-t
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 7--8
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--10
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 11--12
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 13--14
-
- []
-
-[30
-
-
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 15--16
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
-
- []
-
-[31] [32
-
-]) [33
-
-] (./thesis.bbl [34
-
-
-])
+ <../MATLAB/fig/energyovertimetrapezoidal.jpg> <../MATLAB/fig/energyovertimeeul
+er.jpg> <../MATLAB/fig/energyovertimemidpoint.jpg>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 69.
- [35]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
- (./thesis.aux (./front.aux)
-(./preface.aux) (./acknowledgment.aux) (./summary.aux) (./chapter01.aux)
-(./chapter02.aux) (./chapter03.aux) (./chapter04.aux) (./chapter05.aux)
-(./chapter06.aux) (./chapter07.aux))
+ (./thesis.aux (./front.aux) (./preface.aux)
+(./acknowledgment.aux) (./summary.aux) (./chapter01.aux) (./chapter02.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 642989059483CAECFBE078D6B9B578B4;1902.
+(rerunfilecheck)             Checksum: 341485F72D3D4ED4DB2287C1608EBEB8;471.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 69.
  ) 
 Here is how much of TeX's memory you used:
- 11048 strings out of 493089
- 159135 string characters out of 6137984
- 258376 words of memory out of 5000000
- 14024 multiletter control sequences out of 15000+600000
- 84970 words of font info for 116 fonts, out of 8000000 for 9000
+ 10516 strings out of 493089
+ 151954 string characters out of 6137984
+ 247179 words of memory out of 5000000
+ 13695 multiletter control sequences out of 15000+600000
+ 69000 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,15n,43p,795b,676s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,10n,39p,971b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/lib/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/l
 ib/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/lib/texlive/texmf-dist/
-fonts/type1/public/fourier/fourier-bb.pfb></usr/lib/texlive/texmf-dist/fonts/ty
-pe1/public/fourier/fourier-mcl.pfb></usr/lib/texlive/texmf-dist/fonts/type1/pub
-lic/fourier/fourier-mex.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/fou
-rier/fourier-ml.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/fourier/fou
-rier-mlit.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/fourier/fourier-m
-s.pfb></usr/lib/texlive/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/li
-b/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/lib/texlive/texm
-f-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/lib/texlive/texmf-dist/fonts/t
-ype1/adobe/utopia/putri8a.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/c
-m-super/sftt0900.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/s
-ftt1095.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1200.p
-fb></usr/lib/texlive/texmf-dist/fonts/type1/public/wasy2-ps/wasy10.pfb>
-Output written on thesis.pdf (40 pages, 1025040 bytes).
+fonts/type1/public/fourier/fourier-mex.pfb></usr/lib/texlive/texmf-dist/fonts/t
+ype1/public/fourier/fourier-ms.pfb></usr/lib/texlive/texmf-dist/fonts/type1/ado
+be/utopia/putb8a.pfb></usr/lib/texlive/texmf-dist/fonts/type1/adobe/utopia/putr
+8a.pfb></usr/lib/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/l
+ib/texlive/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/lib/texlive/te
+xmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on thesis.pdf (13 pages, 736738 bytes).
 PDF statistics:
- 669 PDF objects out of 1000 (max. 8388607)
- 571 compressed objects within 6 object streams
- 156 named destinations out of 1000 (max. 500000)
- 411 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 168 PDF objects out of 1000 (max. 8388607)
+ 133 compressed objects within 2 object streams
+ 31 named destinations out of 1000 (max. 500000)
+ 115 words of extra memory for PDF output out of 10000 (max. 10000000)
 

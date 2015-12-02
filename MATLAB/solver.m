@@ -1,21 +1,22 @@
 
-function utdata = solver(m,n,k,eqn,alg,restart,prob,conv,para)
+function utdata = solver(m,n,k,eqn,alg,integrator,restart,prob,conv,para)
 %Rekkefølge inn: m,n,k,eqn,alg,restart,prob,conv,para
 %Skriv en programdefinosjon her
 %clear
 %close all
 %%% Initiell data
 %tic;
-if nargin < 9
-    m = 100;
-    k = 100;
+if nargin < 10
+    m = 20;
+    k = 20;
     n = 4;%2*(m-2)^2;
     restart = 0;
     prob = 1;
     conv = 10^-14;
     para = 4; %%%%% If need be %%%%%%
     eqn = 'wave';
-    alg = 1;
+    alg = 3;
+    integrator = 3;
 end
 
 %%% Initsiell data
@@ -23,6 +24,7 @@ utdata = zeros(1,6);
 X = linspace(0,1,m);hs =X(2)-X(1);
 T = linspace(0,1,k);ht = T(2)-T(1);
 [vec,height] = helpvector(m,eqn);
+
 
 
 
@@ -47,6 +49,15 @@ V(:,1) = A*V(:,1);
 % beregne feil X--
 % annet
 
+if integrator == 1
+    int = @trapezoidal;
+elseif integrator == 2
+    int = @forwardeuler;
+elseif integrator == 3
+    int = @implicitmidpoint;
+end
+
+
 % Chose solution method and solve
 if alg == 1 || alg == 2
     if alg == 1
@@ -59,7 +70,7 @@ if alg == 1 || alg == 2
     iter = 0;
     Utemp = 0;
     for i = 1:size(F,1)
-        [Utemp1,iter1] = KPM(A,V(:,i),F(i,:),n,ht,conv,restart,algo);
+        [Utemp1,iter1] = KPM(A,V(:,i),F(i,:),n,ht,conv,restart,algo,int);
         Utemp = Utemp + Utemp1;
         iter = max(iter1,iter);
     end
@@ -80,7 +91,7 @@ tempVF = 0;
 for i = 1:size(F,1)
     tempVF = tempVF + V(:,i)*F(i,:);
 end
-Utemp1 = integrate(A,tempVF,k,ht);
+Utemp1 = int(A,tempVF,k,ht);
 Time = toc;
 
 

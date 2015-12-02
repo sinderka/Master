@@ -1,4 +1,4 @@
-function plottool(m,n,k,eqn,alg,restart,prob,conv,para,data,type,help,name,save)
+function plottool(m,n,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save)
 %m,n,k,para,conv,alg,restart,prob kan være lister med tall
 %eqn Angir hvilken ligning som løses
 %help sier noe om hvordan hjelpelinjen skal se ut
@@ -11,16 +11,17 @@ linetype = {'k:+','k:o','k:*','k:.','k:x','k:s','k:d','k:^','k:v','k:<','k:>','k
 
 
 
-[p,b] = getPandB(m,n,k,alg,restart,prob,conv,para);
+[p,b] = getPandB(m,n,k,alg,int,restart,prob,conv,para);
 ant1 = length(p)-1; ant2 = length(b)-1;
-a = 1; b = 1; c = 1; d = 1; e = 1; f = 1; g = 1; h = 1;
+a = 1; b = 1; c = 1; d = 1; e = 1; f = 1; g = 1; h = 1; aa = 1;
 utdata = zeros(ant2,ant1,6);
 for i = 1:ant1
-    [a0,b0,c0,d0,e0,f0,g0,h0] = addOne(m,n,k,alg,restart,prob,conv,para,a,c,b,d,e,f,g,h,-1);
-    a = max(1,a0*(a0-a)); b = max(1,b0*(b0-b)); c = max(1,c0*(c0-c)); d = max(1,d0*(d0-d)); e = max(1,e0*(e0-e)); f = max(1,f0*(f0-f)); g = max(1,g0*(g0-g)); h = max(1,h0*(h0-h));
+    [a0,b0,c0,d0,e0,f0,g0,h0,aa0] = addOne(m,n,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,-1);
+    a = max(1,a0*(a0-a)); b = max(1,b0*(b0-b)); c = max(1,c0*(c0-c)); d = max(1,d0*(d0-d)); e = max(1,e0*(e0-e)); f = max(1,f0*(f0-f)); g = max(1,g0*(g0-g)); h = max(1,h0*(h0-h)); aa = max(1,aa0*(aa0-aa));
     for j = 1:ant2
-        [a,b,c,d,e,f,g,h] = addOne(m,n,k,alg,restart,prob,conv,para,a,c,b,d,e,f,g,h,-2);
-        utdata(j,i,:) = solver(m(a),n(b),k(c),eqn,alg(f),restart(g),prob(h),conv(d),para(e));
+        [a,b,c,d,e,f,g,h,aa] = addOne(m,n,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,-2);
+        %utdata(j,i,:) = solver(m(a),n(b),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e));
+        utdata(j,i,:) = energyTest(m(a),n(b),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e));
     end
 end
 
@@ -38,7 +39,7 @@ for i = 1:ant2
 end
 
 
-[ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,k,eqn,alg,restart,prob,conv,para,data);
+[ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,k,eqn,alg,int,restart,prob,conv,para,data);
 %Må lage kode for legende!!!! Må jeg lage noe for tittel?
 %text(0.25,2.5,xlab,'Interpreter','latex')
 if help(1)
@@ -64,7 +65,7 @@ end
 hold off
 end
 
-function [p,b] = getPandB(m,n,k,alg,restart,prob,conv,para)
+function [p,b] = getPandB(m,n,k,alg,int,restart,prob,conv,para)
 if length(m) > 1
     if m(1) == -1
         p = m;
@@ -103,6 +104,13 @@ if length(alg) > 1
         b = alg;
     end
 end
+if length(int) > 1
+    if int(1) == -1
+        p = int;
+    elseif int(1) == -2
+        b = int;
+    end
+end
 if length(restart) > 1
     if restart(1) == -1
         p = restart;
@@ -126,7 +134,7 @@ if length(conv) > 1
 end
 end
 
-function [a,b,c,d,e,f,g,h] = addOne(m,n,k,alg,restart,prob,conv,para,a,c,b,d,e,f,g,h,var)
+function [a,b,c,d,e,f,g,h,aa] = addOne(m,n,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,var)
 if m(1) == var
     a = a + 1;
 elseif n(1) == var
@@ -143,10 +151,12 @@ elseif restart(1) == var
     g = g + 1;
 elseif prob(1) == var
     h = h + 1;
+elseif int(1) == var
+    aa = aa + 1;
 end
 end
 
-function [ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,k,eqn,alg,restart,prob,conv,para,data)
+function [ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,k,eqn,alg,int,restart,prob,conv,para,data)
 if data == 1
     ylab = {'Iterations'};
 elseif data == 2
@@ -158,7 +168,7 @@ elseif data == 4
 elseif data == 5
     ylab = {'Difference error'};
 elseif data == 6
-    ylab = {'Defference energy'};
+    ylab = {'Difference energy'};
 end
 if m(1) == -1
     xlab = {'m'};
@@ -172,6 +182,8 @@ elseif conv(1) == -1
     xlab = {'Convergence criterion'};
 elseif alg(1) == -1
     xlab = {'Solution method'};
+elseif int(1) == -1
+    xlab = {'solution method'};
 elseif restart(1) == -1
     xlab = {'Restart'};
 elseif prob(1) == -1
@@ -214,6 +226,17 @@ elseif alg(1) == -2
         end
         leg(i) = {stri};
     end
+elseif int(1) == -2
+    for i = 1:ant2
+        if int(i+1) == 1
+            stri = 'Trapezoidal rule';
+        elseif int(i+1) == 2
+            stri = 'Forward Euler';
+        elseif int(i+1) == 3
+            stri = 'Midpoint rule';
+        end
+        leg(i) = {stri};
+    end
 elseif restart(1) == -2
     for i = 1:ant2
         stri = strcat('Restart=',num2str(restart(i+1)));
@@ -246,6 +269,17 @@ if length(alg) == 1
         stri = 'SympLan';
     elseif alg == 3
         stri = 'DirMet';
+    end
+    additionalInfo(end+1) = {stri};
+end
+    
+if length(int) == 1
+    if int == 1
+        stri = 'Trapezoidal rule';
+    elseif int == 2
+        stri = 'Forward Euler';
+    elseif int == 3
+        stri = 'Midpoint rule';
     end
     additionalInfo(end+1) = {stri};
 end

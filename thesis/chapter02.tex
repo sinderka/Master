@@ -1,177 +1,30 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Krylov subspace and methods}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Compare time integration methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%This section will be concerned with deriving KPM.
-\label{sec:krylov}
-In this chapter some solution techniques will be derived.
-The Krylov subspace will be presented in section \ref{sec:subspace}, KPM will be derived for the heat equation in section \ref{sec:fullKPM} and \ref{sec:rest}. In section \ref{sec:nonsep} it is show how KPM can be used when $p$ is not separable. The method we will compare KPM to will be introduced in section \ref{sec:DM}. 
- %in section \ref{sec:nonsep}.
+This section will be concerned with comparing the integrators. How well they estimate the error and energy will be the primary concern.
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Krylov subspace} \label{sec:subspace}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The Krylov subspace is the space $W_n (A,v) = \{v,Av, \cdots, A^{n-1}v\} = \{v^1,v^2,\cdots,v^n\} $, where $n \leq m$. %Define $\nu$ as the $W_\nu(A,v)$ span $A$. 
-The vectors $v^i$ together with $h_{i,j} = v^i^\top Av^j$, are found by using Arnoldi's algorithm, shown in algorithm \ref{alg:arnoldi}. Letting $V_n$ be the $m \times n$ matrix consisting of column vectors $\{v^1,v^2,\cdots,v^n \}$ and $H_n$ be the $n \times n$ upper Hessenberg matrix containing all elements $(h_{i,j})_{i,j=1,\cdots,n}$, the following holds \cite{kryprop}
-\begin{align}\
-AV_n & = V_n H_n + h_{n+1,n}v_{n+1}e^\top_n \label{eqn:prop1} \\
-V^{\top}_n AV_n &= H_n \label{eqn:prop2} \\
-v^i^{\top} v^j &= \delta_{i,j}. \label{eqn:prop3}
-\end{align}
-Here, $e_n$ is the $n$th canonical vector in $\mathbb{R}^n$ and $\delta_{i,j}$ is Kronecker's delta.\\
-
-
-
-
-\begin{algorithm} 
-\begin{algorithmic} \caption{Arnoldi's algorithm\cite{arnold}} \label{alg:arnoldi}  
-\STATE Start with $A$, $v^1 = v/\|v \|_2$ and $n$
-\FOR{$j = 1,2,\cdots, n $} 
-   \STATE Compute $h_{i,j} = \langle Av^j,v^i \rangle $ for $i = 1,2,\cdots, j$
-    \STATE Compute $w_j = A v^j - \Sigma_{i=1}^{j} h_{i,j}v^i $
-    \STATE $h_{j+1,j} = \| w_j \|_2$
-    \IF{$h_{j+1,j} = 0$} 
-        \STATE\textbf{STOP}
-    \ENDIF 
-   \STATE $v^{j+1} = w_j/h_{j+1,j}$
-\ENDFOR
-\end{algorithmic} 
-\end{algorithm}
-%Let us assume that $\nu \leq m$ is the index such that $W_v(A,v)=\mathbb{R}^m$.
-%Let us define $\nu  \leq m$ as the constant where $W_\nu(A,v)$ spans $A$, meaning we run Arnoldi's algorithm until the stopping criterium is met.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Krylov projection method} \label{sec:fullKPM}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-Let $z(t) = [z_1(t), z_2(t), \cdots, z_m(t)] \in \mathbb{R}^m $ be the vector satisfying $q(t) = V_m z(t)$, where $q(t)$ is from equation \eqref{eqn:numheat}, and $V_m$ is obtained by running algorithm \ref{alg:arnoldi} with $n = m$. 
-We derive KPM by writing this into \eqref{eqn:numheat}, that is
-\begin{equation*}  \begin{aligned} \label{eqn:KPMtemp1}
-V_m z'(t) - A V_m z(t) &= f(t) v \\
-z(0)& = 0.
-\end{aligned} \end{equation*}
-Multiplying by $V_m^{\top}$ and using equation \eqref{eqn:prop2} gives
-\begin{equation*} 
-\begin{aligned} \label{eqn:KPMtemp2}
-z'(t)-H_m z(t) &= f(t) V_m^{\top}  v  \\
-z(0)& = 0.
-\end{aligned}
-\end{equation*}
-Using equation \eqref{eqn:prop3} and $v = \|v \|_2 v^1 $, we get
-\begin{equation} 
-\begin{aligned} \label{eqn:krylov}
-z'(t) -H_m z(t) &=  \|v \|_2 e_1 f(t)\\
-z(0)& = 0.
-\end{aligned}
-\end{equation}
-By solving equation \eqref{eqn:krylov} for $z(t)$ and calculating $ q(t) = V_m z(t) $ the solution is obtained. A step by step description is given in algorithm \ref{alg:fullkry}. 
-%\end{proof}
-The method will be denoted \texttt{KPM}.\\
-\begin{algorithm}
-\begin{algorithmic} \caption{The Krylov projection method} \label{alg:fullkry} 
-\STATE Start with $A$,$f(t)$ and $v$.
-\STATE Compute $[V_m ,H_m] = \texttt{arnoldi}(A,v)$
-\STATE Solve $  \xi'(t) = H_m \xi(t) + f(t) \| v \|_2 e_1  $ for $\xi(t)$
-\STATE $ q_m (t) \leftarrow  V_m \xi(t) $
-\end{algorithmic} 
-\end{algorithm}
-
-Consider the residual of equation \eqref{eqn:numheat} at $q_n(t) = V_n z (t)$, that is
-\begin{equation*}
-r_n(t) = f(t) v - q_n'(t) +Aq_n(t).
-\end{equation*}
-Because
-\begin{equation*}
-r_n(t) = f(t)v -V_n z'(t) + A V_n z(t)
-\end{equation*}
-using equation \eqref{eqn:prop1} and \eqref{eqn:krylov} we get
-\begin{equation} \label{eqn:rn}
-r_n(t) = h_{n+1,n}e_n^\top z(t) v_{n+1}.
-\end{equation}
-
-Because $h_{n+1,n} = 0$ for some $n \leq m$, this shows the finite termination of the procedure. %Note that this means that $q_n$ is an approximation to $q$.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Restarting the Krylov projection method} \label{sec:rest}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-If $n < m$ so that $h_{n+1,n} \neq 0$, we can restart the procedure described above. Consider first the following equation
-\begin{equation}\label{eqn:restkry}
-\begin{aligned}
- (q-q_n)'(t) -A (q-q_n)(t) &= r_n(t) \\
-(q-q_n)(0)& = 0
-\end{aligned}
-\end{equation}
-where $r_n(t)$ is as in equation \eqref{eqn:rn}. Solving this equation for $(q-q_n)(t)$ can improve the approximation of $q(t)$ via iterative refinement.
-Equation \eqref{eqn:restkry} is of the same form as equation \eqref{eqn:krylov}. We derive KPM as before, by writing $q(t) = V_m z(t)$ and $q_n(t) = \tilde{V}_n \tilde{\zeta}(t) $.
-%Let $\tilde{V}_n$/$\tilde{\zeta}(t)$ be as $V_n$/$\zeta(t)$, with zeros columns/rows added to make it the same size as $V_m$/$z(t)$. \\
-Let $\tilde{V}_n$ be equal to $V_n$, but with zeros-columns added to make it the same size as $V_m$. 
-%Let $\tilde{V}_n$ be the $m \times m$ matrix with the first $n$ columns equal to the first $n$ columns of $V_m$, and all additional elements equal to zero. The first $n$ rows of  $\tilde{\zeta}(t)$ is equal to $\zeta(t)$, where $q_n(t) = V_n \zeta(t)$. The rest of the elements in $\tilde{\zeta}(t)$ are equal to zero.
-We then get
-\begin{equation*}
-\begin{aligned}
- (V_m z-\tilde{V}_n \tilde{\zeta})'(t)-A (V_m z-\tilde{V}_n \tilde{\zeta})(t) &=  h_{n+1,n}e_n^\top \tilde{\zeta}(t) v^{n+1}  \\
-(z-\tilde{\zeta})(0)& = 0 .
-\end{aligned}
-\end{equation*}
-Multiplying by $V_m^{\top}$ and using equation \eqref{eqn:prop2} gives
-\begin{equation*}
-\begin{aligned}
- (z-\tilde{\zeta})'(t)-\tilde{H_n} (z-\tilde{\zeta})(t) &= V_m^\top h_{n+1,n}e_n^\top \tilde{\zeta}(t) v^{n+1}  \\
-(z-\tilde{\zeta})(0)& = 0.
-\end{aligned}
-\end{equation*}
-Let $\tilde{\xi}(t) = (z-\tilde{\zeta})(t)$, and simplify
-\begin{equation*} 
-\begin{aligned}
- \tilde{\xi} '(t) -\tilde{H_n} \tilde{\xi}(t) &= h_{n+1,n}e_n^\top \tilde{\zeta} (t)  \\
-\tilde{\xi}(0)& = 0.
-\end{aligned}
-\end{equation*}
-Drop all except the $n$ first rows of $\tilde{\xi}(t)$, and we are left with
-\begin{equation}\label{eqn:restkry2}
-\begin{aligned}
- \xi '(t) -H_n \xi(t) &= h_{n+1,n}e_n^\top \zeta (t)  \\
-\xi(0)& = 0.
-\end{aligned}
-\end{equation}
-
-Each restart we generate a new Krylov subspace $W_n(A,v^{n+1})$, solve equation \eqref{eqn:restkry2} for $\xi(t)$ and obtain $ q_n(t) =  V_n\xi(t)$. By summing together $q_n(t)$, we converge towards $q(t)$\cite{elenaconv}. Note that the current value of $\zeta(t)$ equals the previous value of $\xi(t)$, and that $h_{n+1,n}$ is from the previous $H_n$. See algorithm \ref{alg:restkry} for a step by step description. We will call $n$ a restart variable, and denote the method with \texttt{KPM}$(n)$.
-\begin{algorithm}
-\begin{algorithmic} \caption{The Krylov projection method with restart} \label{alg:restkry} 
-\STATE Start with $A$,$f(t)$,$v$, $n$ and $i = 0$
-\STATE Compute $[V_n,H_n,h_{n+1,n}^i,v^{n+1}] = \texttt{arnoldi}(A,v)$
-\STATE Solve $  \xi_i'(t) = H_n \xi_i(t) + f(t) \| v \|_2 e_1  $ for $\xi_i(t)$
-\STATE $ q_n(t) \leftarrow  V_n \xi_i(t) $
-%\STATE $\xi_i(t) \leftarrow z(t)$
-\WHILE{convergence criterion not satisfied} 
-    \STATE $i \leftarrow i + 1$
-    \STATE Compute $[V_n,H_n,h_{n+1,n}^i,v^{n+1}] = \texttt{arnoldi}(A,v^{n+1},n)$
-    \STATE Solve $ \xi_i'(t) = H_n \xi_i(t) + h_{n+1,n}^{i-1}e_n^\top \xi_{i-1}(t)  $ for $\xi_i(t)$
-    \STATE $ q_n(t) \leftarrow q_n(t) + V_n \xi_i(t) $
-\ENDWHILE
-\end{algorithmic} 
-\end{algorithm}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{When $p$ is not seperable} \label{sec:nonsep}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Let $P(t)$ be a vector consisting of elements $p(t, x_i, y_j)$, so that $P(t) = [P_1(t),P_2(t),\cdots, P_m(t)]$. Writing equation \eqref{eqn:numheat} as
-
-\begin{equation}
-\begin{aligned}
-q'_j(t) -A q_j(t) &= P_j(t) e_j \\
-q_j(0) &= 0\\
-q(t) &= \sum \limits_{i = 1}^m q_j(t),
-\end{aligned}
-\end{equation}
-where $e_j$ is the $j$th canonical vector in $\mathbb{R}^{m}$, we can then solve the original equation without requiring separability. 
-An important thing to note here is the need for parallel processing power, since $m$ problems must be solved and not just one.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Direct method} \label{sec:DM}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Since the objective of this report is to measure how KPM performs, we need something to compare it to. For this, solve 
-\begin{equation} \label{eqn:DI}
-q'(t) -A q(t) = P(t)
-\end{equation}
-for $q(t)$, without using KPM. Let $P(t)$ be as in section \ref{sec:nonsep} and denote the method \texttt{DM} for direct method. Note that it is not possible to use more than one processing unit on this problem.
-%\newpage
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energyovertimetrapezoidal.jpg}
+                %\includegraphics[width=\textwidth]{test}
+                \caption{ Tekst her! }
+                \label{fig:errora}
+        \end{subfigure}%
+        ~
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energyovertimeeuler.jpg}
+                %\includegraphics[width=\textwidth]{test}
+                \caption{ Tekst her! }
+                \label{fig:errorb}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energyovertimemidpoint.jpg}
+                %\includegraphics[width=\textwidth]{test}
+                \caption{ Tekst her! }
+                \label{fig:errorb}
+        \end{subfigure}
+        \caption{Figure of the difference in energy at a point in time. It is clear that only trapezoidal rule gives a suitable approximation of the error. Forward euler has an ever increasing energy, while the midpoint rule gives periodic energy. }
+        \label{fig:energy}
+\end{figure}
+After looking at figure \ref{fig:energy} it is easy to conclude that trapezoidal rule outperforms the other two methods.
