@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  2 DEC 2015 18:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  3 DEC 2015 18:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -918,25 +918,38 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 (./front.aux) (./preface.aux) (./acknowledgment.aux) (./summary.aux)
 (./chapter01.aux) (./chapter02.aux
 
-LaTeX Warning: Label `fig:errora' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:errora' multiply defined.
-
-
-LaTeX Warning: Label `fig:errorb' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:errorb' multiply defined.
-
-
-LaTeX Warning: Label `fig:errorb' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:errorb' multiply defined.
-
-
 LaTeX Warning: Label `fig:energy' multiply defined.
+
+) (./chapter03.aux
+
+LaTeX Warning: Label `fig:intconvtrap' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:intconvtrap' multiply defined.
+
+
+LaTeX Warning: Label `fig:intconveul' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:intconveul' multiply defined.
+
+
+LaTeX Warning: Label `fig:intconv' multiply defined.
+
+
+LaTeX Warning: Label `fig:intconvtrap' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:intconvtrap' multiply defined.
+
+
+LaTeX Warning: Label `fig:intconveul' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:intconveul' multiply defined.
+
+
+LaTeX Warning: Label `fig:intconv' multiply defined.
 
 ))
 \openout1 = `thesis.aux'.
@@ -1247,68 +1260,123 @@ ine 142.
 jpg>] [6 <../MATLAB/fig/waveerror2algint.jpg> <../MATLAB/fig/semiwaveerror2algi
 nt.jpg>]
 Chapter 3.
-<../MATLAB/fig/compareEnergy.jpg, id=112, 1204.5pt x 903.375pt>
-File: ../MATLAB/fig/compareEnergy.jpg Graphic file (type jpg)
-
-<use ../MATLAB/fig/compareEnergy.jpg>
-Package pdftex.def Info: ../MATLAB/fig/compareEnergy.jpg used on input line 157
-.
-(pdftex.def)             Requested size: 204.76228pt x 153.57172pt.
-
-<../MATLAB/fig/compareIter.jpg, id=113, 1204.5pt x 903.375pt>
-File: ../MATLAB/fig/compareIter.jpg Graphic file (type jpg)
-
-<use ../MATLAB/fig/compareIter.jpg>
-Package pdftex.def Info: ../MATLAB/fig/compareIter.jpg used on input line 158.
-(pdftex.def)             Requested size: 204.76228pt x 153.57172pt.
- [7
-
- <../MATLAB/fig/compareEnergy.jpg> <../MATLAB/fig/compareIter.jpg>]
-Chapter 4.
-) [8
+) [7
 
 ]
 \openout2 = `chapter02.aux'.
 
  (./chapter02.tex
-Chapter 5.
-<../MATLAB/fig/energyovertimetrapezoidal.jpg, id=122, 1204.5pt x 903.375pt>
+Chapter 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--7
+
+ []
+
+
+Overfull \hbox (57.0622pt too wide) in paragraph at lines 14--23
+[][]
+ []
+
+<../MATLAB/fig/intconvtrap.jpg, id=117, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/intconvtrap.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/intconvtrap.jpg>
+Package pdftex.def Info: ../MATLAB/fig/intconvtrap.jpg used on input line 31.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+
+<../MATLAB/fig/intconveul.jpg, id=118, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/intconveul.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/intconveul.jpg>
+Package pdftex.def Info: ../MATLAB/fig/intconveul.jpg used on input line 38.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+
+<../MATLAB/fig/intconvmid.jpg, id=119, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/intconvmid.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/intconvmid.jpg>
+Package pdftex.def Info: ../MATLAB/fig/intconvmid.jpg used on input line 44.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+ [8
+
+
+
+]
+<../MATLAB/fig/energyovertimetrapezoidal.jpg, id=127, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energyovertimetrapezoidal.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energyovertimetrapezoidal.jpg>
 Package pdftex.def Info: ../MATLAB/fig/energyovertimetrapezoidal.jpg used on in
-put line 9.
+put line 57.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/energyovertimeeuler.jpg, id=123, 1204.5pt x 903.375pt>
+<../MATLAB/fig/energyovertimeeuler.jpg, id=128, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energyovertimeeuler.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energyovertimeeuler.jpg>
 Package pdftex.def Info: ../MATLAB/fig/energyovertimeeuler.jpg used on input li
-ne 16.
+ne 64.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/energyovertimemidpoint.jpg, id=124, 1204.5pt x 903.375pt>
+<../MATLAB/fig/energyovertimemidpoint.jpg, id=129, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energyovertimemidpoint.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energyovertimemidpoint.jpg>
 Package pdftex.def Info: ../MATLAB/fig/energyovertimemidpoint.jpg used on input
- line 22.
+ line 70.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
-) [9
+) [9 <../MATLAB/fig/intconvtrap.jpg> <../MATLAB/fig/intconveul.jpg> <../MATLAB/
+fig/intconvmid.jpg> <../MATLAB/fig/energyovertimetrapezoidal.jpg> <../MATLAB/fi
+g/energyovertimeeuler.jpg> <../MATLAB/fig/energyovertimemidpoint.jpg>]
+\openout2 = `chapter03.aux'.
+
+ (./chapter03.tex
+Chapter 5.
+<../MATLAB/fig/compareEnergy.jpg, id=138, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/compareEnergy.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/compareEnergy.jpg>
+Package pdftex.def Info: ../MATLAB/fig/compareEnergy.jpg used on input line 15.
+
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/compareIter.jpg, id=139, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/compareIter.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/compareIter.jpg>
+Package pdftex.def Info: ../MATLAB/fig/compareIter.jpg used on input line 21.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/energytestrestart0.jpg, id=140, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energytestrestart0.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/energytestrestart0.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energytestrestart0.jpg used on input lin
+e 35.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/energytestrestart1.jpg, id=141, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energytestrestart1.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/energytestrestart1.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energytestrestart1.jpg used on input lin
+e 41.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+ [10
 
 
 
- <../MATLAB/fig/energyovertimetrapezoidal.jpg> <../MATLAB/fig/energyovertimeeul
-er.jpg> <../MATLAB/fig/energyovertimemidpoint.jpg>]
+ <../MATLAB/fig/compareEnergy.jpg> <../MATLAB/fig/compareIter.jpg>]) [11 <../MA
+TLAB/fig/energytestrestart0.jpg> <../MATLAB/fig/energytestrestart1.jpg>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 69.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
- (./thesis.aux (./front.aux) (./preface.aux)
-(./acknowledgment.aux) (./summary.aux) (./chapter01.aux) (./chapter02.aux))
+ (./thesis.aux (./front.aux)
+(./preface.aux) (./acknowledgment.aux) (./summary.aux) (./chapter01.aux)
+(./chapter02.aux) (./chapter03.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 341485F72D3D4ED4DB2287C1608EBEB8;471.
+(rerunfilecheck)             Checksum: 5B48FAC355DB321D9057F9A41DE870B6;432.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1316,13 +1384,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 69.
  ) 
 Here is how much of TeX's memory you used:
- 10516 strings out of 493089
- 151954 string characters out of 6137984
- 247179 words of memory out of 5000000
- 13695 multiletter control sequences out of 15000+600000
- 69000 words of font info for 82 fonts, out of 8000000 for 9000
+ 10574 strings out of 493089
+ 153232 string characters out of 6137984
+ 248313 words of memory out of 5000000
+ 13730 multiletter control sequences out of 15000+600000
+ 70348 words of font info for 86 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 36i,10n,39p,971b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,14n,39p,971b,490s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/lib/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/l
 ib/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/lib/texlive/texmf-dist/
 fonts/type1/public/fourier/fourier-mex.pfb></usr/lib/texlive/texmf-dist/fonts/t
@@ -1331,10 +1399,10 @@ be/utopia/putb8a.pfb></usr/lib/texlive/texmf-dist/fonts/type1/adobe/utopia/putr
 8a.pfb></usr/lib/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/l
 ib/texlive/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/lib/texlive/te
 xmf-dist/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on thesis.pdf (13 pages, 736738 bytes).
+Output written on thesis.pdf (15 pages, 1096412 bytes).
 PDF statistics:
- 168 PDF objects out of 1000 (max. 8388607)
- 133 compressed objects within 2 object streams
- 31 named destinations out of 1000 (max. 500000)
- 115 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 191 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 500000)
+ 140 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -5,7 +5,8 @@ if size(F,2) == 1
         U(:,i+1) = expm(A*i*ht)*F;
     end
 else
-    U = zeros(length(F),length(T));
+    %U = zeros(size(F,1),size(F,2));
+    U = zeros(size(F));
     for i = 0:k-1
         U(:,i+1) = expm(A*i*ht)*F(:,i+1);
     end

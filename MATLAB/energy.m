@@ -16,7 +16,7 @@ if alg == 1 || alg == 3
         ener(i) = 0.5*y(:,i)'*A*y(:,i);
     end
     
-    figure(2); plot(1:k,initEnergy-ener)
+    figure(2); plot(1:k,initEnergy-ener, 'k:.')
     Max_Energy_Difference = max(abs(ener-initEnergy));
 elseif alg == 2
     k = size(y,2);
@@ -27,6 +27,7 @@ elseif alg == 2
     for i = 1:k
         energyerror(i) = 1/2*y(:,i)'*J*A*y(:,i) + y(:,i)'*J*vnext*e2n'*Zn(:,i);
     end
+    figure(2); plot(1:k,energyerror(1)-energyerror, 'k:.')
     Max_Energy_Difference = max(abs(energyerror(1)-energyerror));
     
 end

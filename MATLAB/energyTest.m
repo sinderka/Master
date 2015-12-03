@@ -1,19 +1,23 @@
-function utdata = energyTest(m,n,k,eqn,alg,integrator,restart,prob,conv,para)
+function utdata = energyTest(m,n,k,eqn,~,integrator,restart,prob,conv,~)
+
+%%% I denne koden er det masse feil!
+
 %function utdata = energyTest
 %%% Funke itj!
 % Initsiell
 if nargin < 10
-    m = 20;
-    k = 20;
+    m = 40;
+    k = 40;
     n = 4;%2*(m-2)^2-2;
-    restart = 1;
+    restart = 0;
     prob = 1;
     conv = 10^-14;
     para = 4; %%%%% ARG %%%%%%
-    eqn = 'semirandom';
+    eqn = 'wave';
     alg = 2;
     integrator = 1;
 end
+algo = @SymplecticLanczosMethod; n = n/2;
 utdata = zeros(1,6); % Burde legge til forskjellen mellom energi og
 X = linspace(0,1,m);hs =X(2)-X(1);
 T = linspace(0,1,k);ht = T(2)-T(1);
@@ -27,28 +31,24 @@ elseif integrator == 2
     int = @forwardeuler;
 elseif integrator == 3
     int = @implicitmidpoint;
+elseif integrator == 4
+    int = @expintegrate;
 end
-if alg == 1 || alg == 2
-    if alg == 1
-        algo = @Arnoldi;
-    elseif alg == 2
-        algo = @SymplecticLanczosMethod;
-        n = n/2;
-    end
-    tic;
-    iter = 0;
-    Utemp = 0;
-    for i = 1:1%size(F,1)
-        [Utemp1,iter1,vnext,Zn] = KPMloc(A,V(:,i),F(i,:),n,ht,conv,restart,algo,int);
-        Utemp = Utemp + Utemp1;
-        iter = max(iter1,iter);
-    end
-    utdata(1) = iter;
-    utdata(2) = toc;
-    U = zeros(height,k);
+
+tic;
+iter = 0;
+%Utemp = 0;
+[Utemp,iter1,vnext,Zn] = KPMloc(A,V(:,1),F(1,:),n,ht,conv,restart,algo,int);
+%Utemp = Utemp + Utemp1;
+iter = max(iter1,iter);
+utdata(1) = iter;
+utdata(2) = toc;
+U = zeros(height,k);
+if integrator ~= 4
     Utemp = Utemp + U0*ones(1,k);
-    U(vec,:) = Utemp(1:length(A)/2,:);
 end
+U(vec,:) = Utemp(1:length(A)/2,:);
+
 tic;
 tempVF = 0;
 for i = 1:size(F,1)
@@ -61,18 +61,14 @@ Time = toc;
 
 %Utemp1 = Utemp1 + U0*ones(1,k);
 U1 = zeros(height,k);
-if strcmp(eqn,'maxwell1D')
-    U1(vec,:) = Utemp1(1:length(A)/2-1,:); % OBS: Dette er en dårlig løsning!
-else
-    U1(vec,:) = Utemp1(1:length(A)/2,:);
-end
+
+U1(vec,:) = Utemp1(1:length(A)/2,:);
 
 
-if alg ~= 3
-    utdata(5) = max(max(abs(U-U1)));
+utdata(5) = max(max(abs(U-U1)));
     %utdata(6) = abs(energy(A,Utemp-Utemp1));
     %er = Utemp-Utemp1;
-    utdata(6) = energy(A,Utemp-Utemp1,alg,Zn,vnext);
+utdata(6) = energy(A,Utemp-Utemp1,2,Zn,vnext);
     %J = [sparse((m-2)^2,(m-2)^2),speye((m-2)^2);-speye((m-2)^2),sparse((m-2)^2,(m-2)^2)];
     %e2n = zeros(size(Zn,1),1); e2n(end) = 1;
     %energyerror = zeros(1,k);
@@ -80,14 +76,6 @@ if alg ~= 3
     %    energyerror(i) = 1/2*er(:,i)'*J*A*er(:,i) + er(:,i)'*J*vnext*e2n'*Zn(:,i);
     %end
     %utdata(6) = max(abs(energyerror));
-else
-    utdata(1) = 0;
-    utdata(2) = Time;
-    utdata(5) = -1;
-    utdata(6) = -1;
-    Utemp = Utemp1;
-    U = U1;
-end
 
 
 %utdata(3) = getError(U,correctsolution);

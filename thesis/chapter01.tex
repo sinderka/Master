@@ -148,31 +148,7 @@ As we can see from the figure above the trapezoidal rule and midpoint rule is ab
         \label{fig:error}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Symplectic Lanzcos method preserves the energy without restart}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We here want to show that if we use symplectic Lanczos method, the restart will not change the energy. \\
-%\begin{figure}
-%\centering
-\includegraphics[scale = 0.17]{../MATLAB/fig/compareEnergy.jpg}
-\includegraphics[scale = 0.17]{../MATLAB/fig/compareIter.jpg}
-%\caption{Caption}
-%\label{fig:my_label}
-%\end{figure}
-
-The figures above implies that restarting the symplectic Lanzcos method does not change the energy. But for Arnoldi it changes quite a bit.
-To be completely sure that this is what happens, we are going to do everything a bit more precise.
-
-The residual energy of the symplectic Lanzcos method is
-$$ \frac{1}{2} e_r^{\top} J A e_r + e_r^\top J r_{n+1} e_{2n}^\top z $$
-with $ e_r = y-y_n $ (analytical solution minus approximated solution) and $r_{n+1}$ is given by the symplectic lanzcos method. 
 
 
 
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Some results and explanation}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We will now show some numerical experiments using a randomly generated Hamiltonian matrix(\texttt{semirandom}).
