@@ -1,4 +1,4 @@
-function utdata = energyTest(m,n,k,eqn,~,integrator,restart,prob,conv,~)
+function utdata = energyTest(m,n,k,eqn,alg,integrator,restart,prob,conv,~)
 
 %%% I denne koden er det masse feil!
 
@@ -17,7 +17,11 @@ if nargin < 10
     alg = 2;
     integrator = 1;
 end
-algo = @SymplecticLanczosMethod; n = n/2;
+if alg == 2
+    algo = @SymplecticLanczosMethod; n = n/2;
+elseif alg == 1
+    algo = @Arnoldi;
+end
 utdata = zeros(1,6); % Burde legge til forskjellen mellom energi og
 X = linspace(0,1,m);hs =X(2)-X(1);
 T = linspace(0,1,k);ht = T(2)-T(1);
@@ -68,7 +72,7 @@ U1(vec,:) = Utemp1(1:length(A)/2,:);
 utdata(5) = max(max(abs(U-U1)));
     %utdata(6) = abs(energy(A,Utemp-Utemp1));
     %er = Utemp-Utemp1;
-utdata(6) = energy(A,Utemp-Utemp1,2,Zn,vnext);
+utdata(6) = energy(A,Utemp-Utemp1,T,alg,Zn,vnext);
     %J = [sparse((m-2)^2,(m-2)^2),speye((m-2)^2);-speye((m-2)^2),sparse((m-2)^2,(m-2)^2)];
     %e2n = zeros(size(Zn,1),1); e2n(end) = 1;
     %energyerror = zeros(1,k);

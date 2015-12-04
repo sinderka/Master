@@ -119,7 +119,7 @@ end
 
 %utdata(3) = getError(U,correctsolution);
 utdata(3) = max(max(abs(U-correctsolution)));
-utdata(4) = energy(A,Utemp);
+utdata(4) = energy(A,Utemp,T);
 
 % Plot
 if 0

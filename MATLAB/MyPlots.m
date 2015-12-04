@@ -11,22 +11,36 @@ function MyPlots
 % plottool(20,6,20,'semirandom',[-2,1,2,3],1,[-1,0,1]  ,1, 1e-14, 1  ,   1 ,'plot',    0   ,'compareIter',1)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %energiTemp
 % Andre bildene bildene på restart symp lanczos method
+% energyTest(m,n,k,eqn,alg,integrator,restart,prob,conv,~)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% energyTest(40,4,40,'semirandom',2,1,0,1,1e-14,11)
+% title(char({'semirandom', 'm=40','n=4', 'k=40','restart=0', 'convergence criterion=1e-14','trapezoidal rule'}))
+% saveit('energytestrestart0','t', 'Energy1')
+% 
+% energyTest(40,4,40,'semirandom',2,1,1,1,1e-14,11)
+% title(char({'semirandom', 'm=40','n=4', 'k=40','restart=1', 'convergence criterion=1e-14','trapezoidal rule'}))
+% saveit('energytestrestart1','t', 'Energy1')
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%energiTemp
+% Tredje bildene bildene på restart symp lanczos method
 % energyTest(m,n,k,eqn,~,integrator,restart,prob,conv,~)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-energyTest(40,4,40,'wave',2,1,0,1,1e-14,11)
-title(char({'wave', 'm=40','n=4', 'k=40','restart=0', 'convergence criterion=1e-14','trapezoidal rule'}))
-saveit('energytestrestart0','time', 'Energy1')
-
-energyTest(40,4,40,'wave',2,1,1,1,1e-14,11)
-title(char({'wave', 'm=40','n=4', 'k=40','restart=1', 'convergence criterion=1e-14','trapezoidal rule'}))
-saveit('energytestrestart1','time', 'Energy1')
+% energyTest(40,4,40,'semirandom',1,1,0,1,1e-14,1)
+% title(char({'semirandom', 'm=40','n=4', 'k=40','restart=0', 'convergence criterion=1e-14','trapezoidal rule'}))
+% saveit('energyarnrestart0','t', 'Energy1')
+% 
+% energyTest(40,4,40,'semirandom',1,1,1,1,1e-14,1)
+% title(char({'semirandom', 'm=40','n=4', 'k=40','restart=1', 'convergence criterion=1e-14','trapezoidal rule'}))
+% saveit('energyarnrestart1','t', 'Energy1')
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
 
 
@@ -38,15 +52,15 @@ saveit('energytestrestart1','time', 'Energy1')
 %solver(m,n,k,eqn,alg,integrator,restart,prob,conv,para)
 %%%%%%%%%%%%%%DISSE MANGLER LEGENDE OG SVART%%%%%%%%%%%%%%FARGE!!!!!!!!%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% solver(20,4,20,'wave',2,1,0,1,1e-14,1)
-% title(char({'wave', 'm=20','n=4', 'k=20','restart=0', 'convergence criterion=1e-14','trapezoidal rule'}))
-% saveit('energyovertimetrapezoidal','time', 'Energy1')
-% solver(20,4,20^2,'wave',2,2,0,1,1e-14,1)
-% title(char({'wave', 'm=20','n=4', 'k=20','restart=0', 'convergence criterion=1e-14','forward Euler'}))
-% saveit('energyovertimeeuler','time', 'Energy1')
-% solver(20,4,20,'wave',2,3,0,1,1e-14,1)
-% title(char({'wave', 'm=20','n=4', 'k=20','restart=0', 'convergence criterion=1e-14','midpoint rule'}))
-% saveit('energyovertimemidpoint','time', 'Energy1')
+solver(20,4,20,'wave',2,1,0,1,1e-14,1)
+title(char({'wave', 'm=20','n=4', 'k=20','restart=0', 'convergence criterion=1e-14','trapezoidal rule'}))
+saveit('energyovertimetrapezoidal','t', 'Energy1')
+solver(20,4,20^2,'wave',2,2,0,1,1e-14,1)
+title(char({'wave', 'm=20','n=4', 'k=20','restart=0', 'convergence criterion=1e-14','forward Euler'}))
+saveit('energyovertimeeuler','t', 'Energy1')
+solver(20,4,20,'wave',2,3,0,1,1e-14,1)
+title(char({'wave', 'm=20','n=4', 'k=20','restart=0', 'convergence criterion=1e-14','midpoint rule'}))
+saveit('energyovertimemidpoint','t', 'Energy1')
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

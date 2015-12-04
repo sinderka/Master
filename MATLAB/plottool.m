@@ -191,7 +191,7 @@ elseif conv(1) == -1
 elseif alg(1) == -1
     xlab = {'solution method'};
 elseif int(1) == -1
-    xlab = {'solution method'};
+    xlab = {'integration method'};
 elseif restart(1) == -1
     xlab = {'restart'};
 elseif prob(1) == -1

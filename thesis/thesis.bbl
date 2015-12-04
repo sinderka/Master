@@ -1,65 +1,24 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{1}
 
-\bibitem{trap}
-CRUZ-URIBE D. and NEUGEBAUER C.J.
-\newblock Sharp error bounds for the trapezoidal rule and simpson’s rule.
-\newblock {\em Journal of Inequalities in Pure and Applied Mathematics,},
-  Volume 3, Issue 4, Article 49, 2002.
+\bibitem{trapezoidal}
+Endre S{\"u}li and David~F. Mayers.
+\newblock {\em {An Introduction to Numerical Analysis}}, chapter 7.2
+  Newton--Cotes formulae, pages 202--203.
+\newblock  
+  , 2003.
 
-\bibitem{elena}
-Celledoni E. and Moret I.
-\newblock A krylov projection method for system of odes.
-\newblock {\em Applied Numerical Mathematics 23 (1997) 365-378}, 1997.
+\bibitem{forwardeuler}
+Endre S{\"u}li and David~F. Mayers.
+\newblock {\em {An Introduction to Numerical Analysis}}, chapter 12.2 One-step
+  methods, page 317.
+\newblock  
+  , 2003.
 
-\bibitem{elenaconv}
-Celledoni E. and Moret I.
-\newblock A krylov projection method for system of odes.
-\newblock {\em Applied Numerical Mathematics 23 (1997) 365-378}, page 372,
-  1997.
-
-\bibitem{heat}
-A.~Einstein.
-\newblock Über die von der molekularkinetischen theorie der wärme geforderte
-  bewegung von in ruhenden flüssigkeiten suspendierten teilchen.
-\newblock {\em Annalen der Physik, vol. 322, Issue 8, pp.549-560}, 1905.
-
-\bibitem{complex}
-Cohn Henry, Kleinberg Robert, Szegedy Bal~azs, and Umans Christopher.
-\newblock Group-theoretic algorithms for matrix multiplication.
-\newblock {\em Proceedings of the 46th Annual Symposium on Foundations of
-  Computer Science, 23-25 October 2005, Pittsburgh, PA, IEEE Computer Society,
-  pp. 379-388}, 2005.
-
-\bibitem{fivepoint}
-Abramowitz Milton and Stegun Irene~A.
-\newblock Handbook of mathematical functions.
-\newblock Tenth Printing, December 1972.
-\newblock with corrections.
-
-\bibitem{parfor}
-http://se.mathworks.com/help/matlab/ref/parfor.html, September 2015.
-
-\bibitem{parpool}
-http://se.mathworks.com/help/distcomp/parpool.html, September 2015.
-
-\bibitem{kryprop}
-Saad Yousef.
-\newblock {\em Iterative Methods for Sparse Linear Systems}, volume SECOND
-  EDITION, chapter 6.3.1, pages 154--155.
-\newblock Siam, 2003.
-\newblock Proposition 6.5.
-
-\bibitem{arnold}
-Saad Yousef.
-\newblock {\em Iterative Methods for Sparse Linear Systems}, volume SECOND
-  EDITION, chapter 6.3.1, page 154.
-\newblock Siam, 2003.
-\newblock Algorithm 6.1.
-
-\bibitem{krycomplex}
-Saad Yousef.
-\newblock {\em Iterative Methods for Sparse Linear Systems}, volume SECOND
-  EDITION, chapter 6.4.1, pages 160--161.
-\newblock Siam, 2003.
+\bibitem{midpoint}
+Endre S{\"u}li and David~F. Mayers.
+\newblock {\em {An Introduction to Numerical Analysis}}, chapter Definition
+  10.1, page 286.
+\newblock  
+  , 2003.
 
 \end{thebibliography}

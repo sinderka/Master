@@ -3,6 +3,10 @@
 \BOOKMARK [1][-]{section*.2}{Summary and Conclusions}{}% 3
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 4
 \BOOKMARK [0][-]{chapter.2}{Explonation}{}% 5
-\BOOKMARK [0][-]{chapter.3}{Some results and explanation}{}% 6
-\BOOKMARK [0][-]{chapter.4}{Compare time integration methods}{}% 7
-\BOOKMARK [0][-]{chapter.5}{SLM energy preservation}{}% 8
+\BOOKMARK [1][-]{section.2.1}{Projection methods}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{Zero initial condition}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.3}{Discretization}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.4}{Lingo}{chapter.2}% 9
+\BOOKMARK [0][-]{chapter.3}{Compare time integration methods}{}% 10
+\BOOKMARK [0][-]{chapter.4}{Energy preservation for SLM }{}% 11
+\BOOKMARK [0][-]{chapter.5}{Some interesting results}{}% 12
