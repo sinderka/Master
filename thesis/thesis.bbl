@@ -1,24 +1,44 @@
 \begin{thebibliography}{1}
 
+\bibitem{min}
+Sindre Ekslenad.
+\newblock A krylov projection method for the heat equation.
+
+\bibitem{SLMO}
+Heike~Faßbender Peter~Benner.
+\newblock An implicitly restarted symplecuc lanczos method for the hamlltonlan
+  eigenvalue problem.
+\newblock {\em LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111}, 1997.
+
+\bibitem{SLM}
+Martin~Stoll Peter~Benner, Heike~Faßbender.
+\newblock A hamiltonian krylov–schur-type method based on the symplectic
+  lanczos process.
+\newblock {\em Linear Algebra and its Applications}, (435):578–600, 2011.
+
 \bibitem{trapezoidal}
 Endre S{\"u}li and David~F. Mayers.
 \newblock {\em {An Introduction to Numerical Analysis}}, chapter 7.2
   Newton--Cotes formulae, pages 202--203.
-\newblock  
-  , 2003.
+\newblock cambridge university press, 2003.
 
 \bibitem{forwardeuler}
 Endre S{\"u}li and David~F. Mayers.
 \newblock {\em {An Introduction to Numerical Analysis}}, chapter 12.2 One-step
   methods, page 317.
-\newblock  
-  , 2003.
+\newblock cambridge university press, 2003.
 
 \bibitem{midpoint}
 Endre S{\"u}li and David~F. Mayers.
 \newblock {\em {An Introduction to Numerical Analysis}}, chapter Definition
   10.1, page 286.
-\newblock  
-  , 2003.
+\newblock cambridge university press, 2003.
+
+\bibitem{arnold}
+Saad Yousef.
+\newblock {\em {Iterative Methods for Sparse Linear Systems}}, volume SECOND
+  EDITION, chapter 6.3.1, page 154.
+\newblock Siam, 2003.
+\newblock Algorithm 6.1.
 
 \end{thebibliography}

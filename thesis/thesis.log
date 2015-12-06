@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  4 DEC 2015 17:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  6 DEC 2015 15:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -916,23 +916,7 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_below_shortintertext_sep=\dimen154
 ) (./thesis.aux
 (./front.aux) (./preface.aux) (./acknowledgment.aux) (./summary.aux)
-(./chapter01.aux) (./chapter02.aux) (./chapter03.aux
-
-LaTeX Warning: Label `fig:intconvtrap' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:intconvtrap' multiply defined.
-
-
-LaTeX Warning: Label `fig:intconveul' multiply defined.
-
-
-LaTeX Warning: Label `sub@fig:intconveul' multiply defined.
-
-
-LaTeX Warning: Label `fig:intconv' multiply defined.
-
-))
+(./chapter01.aux) (./chapter02.aux) (./chapter03.aux) (./chapter04.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
@@ -950,7 +934,8 @@ LaTeX Font Info:    ... okay on input line 35.
 LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 35.
 LaTeX Font Info:    Try loading font information for FML+futm on input line 35.
 
- (/usr/lib/texlive/texmf-dist/tex/latex/fourier/fmlfutm.fd
+
+(/usr/lib/texlive/texmf-dist/tex/latex/fourier/fmlfutm.fd
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
 LaTeX Font Info:    ... okay on input line 35.
@@ -1078,7 +1063,7 @@ Package caption Info: End \AtBeginDocument code.
 \openout2 = `front.aux'.
 
  (./front.tex
-<fig/rams.pdf, id=48, 382.32837pt x 73.073pt>
+<fig/rams.pdf, id=52, 382.32837pt x 73.073pt>
 File: fig/rams.pdf Graphic file (type pdf)
  <use fig/rams.pdf>
 Package pdftex.def Info: fig/rams.pdf used on input line 8.
@@ -1169,90 +1154,70 @@ l.46 \include{chapter01}
 
  (./chapter01.tex
 Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 14--16
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
 [2
 
 
 ]
 Chapter 2.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
+put line 29.
 
-LaTeX Warning: Reference `alg:arnoldi' on page 3 undefined on input line 23.
-
-
-LaTeX Warning: Reference `alg:symlanz' on page 3 undefined on input line 23.
-
-
-LaTeX Warning: Reference `alg:PM' on page 3 undefined on input line 23.
-
-
-Overfull \hbox (10.5876pt too wide) in paragraph at lines 23--29
+Overfull \hbox (10.5876pt too wide) in paragraph at lines 25--44
 \T1/futs/m/n/12 sim-i-lar in na-ture, with the only dif-fer-ence be-ing the or-
 thog-o-nal-i-sa-tion method. KPM uses Arnoldi's
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 23--29
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 30--31
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 32--33
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--35
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 78.
+(/usr/lib/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 96--97
 
  []
 
 [3
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 36--37
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 62--67
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 68--69
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 76--78
-
- []
-
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 96.
-(/usr/lib/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-Underfull \hbox (badness 10000) in paragraph at lines 103--104
+] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 125--130
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 145--147
+Underfull \hbox (badness 10000) in paragraph at lines 131--132
 
  []
 
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-)
-Underfull \hbox (badness 10000) in paragraph at lines 162--46
+Underfull \hbox (badness 10000) in paragraph at lines 139--141
 
  []
 
-[6] [7]
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 166--167
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 208--210
+
+ []
+
+[7])
+Underfull \hbox (badness 10000) in paragraph at lines 225--46
+
+ []
+
+[8]
 \openout2 = `chapter02.aux'.
 
  (./chapter02.tex
@@ -1267,7 +1232,7 @@ Overfull \hbox (72.69817pt too wide) in paragraph at lines 11--20
 [][]
  []
 
-<../MATLAB/fig/intconvtrap.jpg, id=137, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intconvtrap.jpg, id=221, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intconvtrap.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intconvtrap.jpg>
@@ -1286,25 +1251,25 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 5.51999pt on input line 30.
 
-<../MATLAB/fig/intconveul.jpg, id=138, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intconveul.jpg, id=222, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intconveul.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intconveul.jpg>
 Package pdftex.def Info: ../MATLAB/fig/intconveul.jpg used on input line 35.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/intconvmid.jpg, id=139, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intconvmid.jpg, id=223, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intconvmid.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intconvmid.jpg>
 Package pdftex.def Info: ../MATLAB/fig/intconvmid.jpg used on input line 41.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
- [8
+ [9
 
 
 
 ]
-<../MATLAB/fig/energyovertimetrapezoidal.jpg, id=151, 1204.5pt x 903.375pt>
+<../MATLAB/fig/energyovertimetrapezoidal.jpg, id=235, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energyovertimetrapezoidal.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energyovertimetrapezoidal.jpg>
@@ -1312,7 +1277,7 @@ Package pdftex.def Info: ../MATLAB/fig/energyovertimetrapezoidal.jpg used on in
 put line 54.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/energyovertimeeuler.jpg, id=152, 1204.5pt x 903.375pt>
+<../MATLAB/fig/energyovertimeeuler.jpg, id=236, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energyovertimeeuler.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energyovertimeeuler.jpg>
@@ -1320,21 +1285,21 @@ Package pdftex.def Info: ../MATLAB/fig/energyovertimeeuler.jpg used on input li
 ne 60.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/energyovertimemidpoint.jpg, id=153, 1204.5pt x 903.375pt>
+<../MATLAB/fig/energyovertimemidpoint.jpg, id=237, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energyovertimemidpoint.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energyovertimemidpoint.jpg>
 Package pdftex.def Info: ../MATLAB/fig/energyovertimemidpoint.jpg used on input
  line 65.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
-) [9 <../MATLAB/fig/intconvtrap.jpg> <../MATLAB/fig/intconveul.jpg> <../MATLAB/
-fig/intconvmid.jpg> <../MATLAB/fig/energyovertimetrapezoidal.jpg> <../MATLAB/fi
-g/energyovertimeeuler.jpg> <../MATLAB/fig/energyovertimemidpoint.jpg>]
+) [10 <../MATLAB/fig/intconvtrap.jpg> <../MATLAB/fig/intconveul.jpg> <../MATLAB
+/fig/intconvmid.jpg> <../MATLAB/fig/energyovertimetrapezoidal.jpg> <../MATLAB/f
+ig/energyovertimeeuler.jpg> <../MATLAB/fig/energyovertimemidpoint.jpg>]
 \openout2 = `chapter03.aux'.
 
  (./chapter03.tex
 Chapter 4.
-<../MATLAB/fig/compareEnergy.jpg, id=162, 1204.5pt x 903.375pt>
+<../MATLAB/fig/compareEnergy.jpg, id=244, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/compareEnergy.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/compareEnergy.jpg>
@@ -1342,18 +1307,18 @@ Package pdftex.def Info: ../MATLAB/fig/compareEnergy.jpg used on input line 15.
 
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/compareIter.jpg, id=163, 1204.5pt x 903.375pt>
+<../MATLAB/fig/compareIter.jpg, id=245, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/compareIter.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/compareIter.jpg>
 Package pdftex.def Info: ../MATLAB/fig/compareIter.jpg used on input line 21.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [10
+ [11
 
 
 
  <../MATLAB/fig/compareEnergy.jpg> <../MATLAB/fig/compareIter.jpg>]
-<../MATLAB/fig/energytestrestart0.jpg, id=169, 1204.5pt x 903.375pt>
+<../MATLAB/fig/energytestrestart0.jpg, id=252, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energytestrestart0.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energytestrestart0.jpg>
@@ -1361,7 +1326,7 @@ Package pdftex.def Info: ../MATLAB/fig/energytestrestart0.jpg used on input lin
 e 34.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/energytestrestart1.jpg, id=170, 1204.5pt x 903.375pt>
+<../MATLAB/fig/energytestrestart1.jpg, id=253, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energytestrestart1.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energytestrestart1.jpg>
@@ -1373,7 +1338,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
-<../MATLAB/fig/energyarnrestart0.jpg, id=172, 1204.5pt x 903.375pt>
+<../MATLAB/fig/energyarnrestart0.jpg, id=255, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energyarnrestart0.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energyarnrestart0.jpg>
@@ -1381,7 +1346,7 @@ Package pdftex.def Info: ../MATLAB/fig/energyarnrestart0.jpg used on input line
  54.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/energyarnrestart1.jpg, id=173, 1204.5pt x 903.375pt>
+<../MATLAB/fig/energyarnrestart1.jpg, id=256, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energyarnrestart1.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energyarnrestart1.jpg>
@@ -1393,1009 +1358,61 @@ Underfull \hbox (badness 10000) in paragraph at lines 68--69
 
  []
 
-[11 <../MATLAB/fig/energytestrestart0.jpg> <../MATLAB/fig/energytestrestart1.jp
+[12 <../MATLAB/fig/energytestrestart0.jpg> <../MATLAB/fig/energytestrestart1.jp
 g> <../MATLAB/fig/energyarnrestart0.jpg> <../MATLAB/fig/energyarnrestart1.jpg>]
 )
 Underfull \hbox (badness 10000) in paragraph at lines 70--48
 
  []
 
-[12]
+[13]
 \openout2 = `chapter04.aux'.
 
  (./chapter04.tex
 Chapter 5.
-) [13
+) [14
 
 
 
-] (./thesis.bbl
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 \newblock 
-                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 \newblock 
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 \newblock 
-                        
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 \newblock 
-                           
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 \newblock 
-                              
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 \newblock 
-                                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 \newblock 
-                                    
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 \newblock 
-                                       
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 \newblock 
-                                          
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 \newblock  
-                                             
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 \newblock  
-                                                
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 ...block  
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 ...ck  
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 ... 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 ... 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 ... 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 ... 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 ... 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.7 ... 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.8   
-         , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.8   
-            , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.8   
-               , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.8   
-                  , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.8   
-                     , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \newblock 
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \newblock 
-                      
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \newblock 
-                         
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \newblock 
-                            
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \newblock 
-                               
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \newblock 
-                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \newblock 
-                                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \newblock 
-                                        
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \newblock 
-                                           
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \newblock  
-                                              
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 \newblock  
-                                                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 ...lock  
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 ...k  
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 ...�� 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 ...�� 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 ...�� 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 ...�� 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 ...�� 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.14 ...�� 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.15   
-          , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.15   
-             , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.15   
-                , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.15   
-                   , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.15   
-                      , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \newblock 
-                   
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \newblock 
-                      
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \newblock 
-                         
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \newblock 
-                            
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \newblock 
-                               
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \newblock 
-                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \newblock 
-                                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \newblock 
-                                        
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \newblock 
-                                           
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \newblock  
-                                              
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 \newblock  
-                                                 
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 ...lock  
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 ...k  
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 ...�� 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 ...�� 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 ...�� 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 ...�� 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 ...�� 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.21 ...�� 
-                                                  
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.22   
-          , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.22   
-             , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.22   
-                , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.22   
-                   , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-! Package inputenc Error: Unicode char \u8: not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.22   
-                      , 2003.
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-)
+] (./thesis.bbl)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 69.
- [14
+ [15
 
 
 ]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 69.
- (./thesis.aux (./front.aux) (./preface.aux) (./acknowledgment.aux)
-(./summary.aux) (./chapter01.aux) (./chapter02.aux) (./chapter03.aux)
-(./chapter04.aux))
+ (./thesis.aux (./front.aux) (./preface.aux)
+(./acknowledgment.aux) (./summary.aux) (./chapter01.aux) (./chapter02.aux)
+(./chapter03.aux) (./chapter04.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 69.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 69.
-
-
-Package rerunfilecheck Warning: File `thesis.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `thesis.out':
-(rerunfilecheck)             Before: 7555434CA553B99CCC33913303C068C4;619
-(rerunfilecheck)             After:  1C813E2EC29B5AA9DCE8273BD7B180F1;679.
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: There were multiply-defined labels.
-
+Package rerunfilecheck Info: File `thesis.out' has not changed.
+(rerunfilecheck)             Checksum: 1C813E2EC29B5AA9DCE8273BD7B180F1;679.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 69.
  ) 
 Here is how much of TeX's memory you used:
- 10658 strings out of 493089
- 154053 string characters out of 6137984
- 247753 words of memory out of 5000000
- 13783 multiletter control sequences out of 15000+600000
- 103751 words of font info for 124 fonts, out of 8000000 for 9000
+ 10758 strings out of 493089
+ 155285 string characters out of 6137984
+ 262001 words of memory out of 5000000
+ 13819 multiletter control sequences out of 15000+600000
+ 96594 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,14n,39p,712b,543s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,14n,44p,698b,680s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/lib/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/l
 ib/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/lib/texlive/texmf-dist/
-fonts/type1/public/fourier/fourier-mex.pfb></usr/lib/texlive/texmf-dist/fonts/t
-ype1/public/fourier/fourier-mlit.pfb></usr/lib/texlive/texmf-dist/fonts/type1/p
-ublic/fourier/fourier-ms.pfb></usr/lib/texlive/texmf-dist/fonts/type1/adobe/uto
-pia/putb8a.pfb></usr/lib/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb
-></usr/lib/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/lib/tex
-live/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/lib/texlive/texmf-di
-st/fonts/type1/public/cm-super/sftt1200.pfb>
-Output written on thesis.pdf (18 pages, 959893 bytes).
+fonts/type1/public/fourier/fourier-bb.pfb></usr/lib/texlive/texmf-dist/fonts/ty
+pe1/public/fourier/fourier-mex.pfb></usr/lib/texlive/texmf-dist/fonts/type1/pub
+lic/fourier/fourier-ml.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/four
+ier/fourier-mlit.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/fourier/fo
+urier-ms.pfb></usr/lib/texlive/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb><
+/usr/lib/texlive/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/lib/texli
+ve/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/lib/texlive/texmf-dist/
+fonts/type1/adobe/utopia/putri8a.pfb></usr/lib/texlive/texmf-dist/fonts/type1/p
+ublic/cm-super/sftt1200.pfb>
+Output written on thesis.pdf (19 pages, 979001 bytes).
 PDF statistics:
- 241 PDF objects out of 1000 (max. 8388607)
- 197 compressed objects within 2 object streams
- 52 named destinations out of 1000 (max. 500000)
- 154 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 343 PDF objects out of 1000 (max. 8388607)
+ 291 compressed objects within 3 object streams
+ 110 named destinations out of 1000 (max. 500000)
+ 162 words of extra memory for PDF output out of 10000 (max. 10000000)
 

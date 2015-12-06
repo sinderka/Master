@@ -3,30 +3,30 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 It can be proved that a restart of SLM does not alter the energy. This chapter is devoted to showing that this still hold with numerical approximations.
 
-The residual energy of the symplectic Lanzcos method is
+The residual energy of the symplectic Lanczos method is
 \begin{equation}
 \frac{1}{2} e_r^{\top} J A e_r + e_r^\top J r_{n+1} e_{2n}^\top z
 \end{equation}
-with $ e_r = u-u_n $ (analytical solution minus approximated solution) and $r_{n+1}$ is the residual vector given by the symplectic Lanzcos method. 
+with $ e_r = u-u_n $ (analytical solution minus approximated solution) and $r_{n+1}$ is the residual vector given by the symplectic Lanczos method. 
 
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy.jpg}
                 \caption{ The difference in energy with and without restart. }
-                \label{fig:intconvtrap}
+                \label{fig:compareEnergy}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter.jpg}
                 \caption{ The number of iterations performed with and without restarting.  }
-                \label{fig:intconveul}
+                \label{fig:compareIter}
         \end{subfigure}
         \caption{ The figure shows how the different methods change the energy with and without restarting.  }
-        \label{fig:intconv}
+        \label{fig:compare}
 \end{figure}
 
-The figures above implies that restarting the symplectic Lanzcos method does indeed not change the energy. But for Arnoldi's method it changes quite a bit. 
+The figures above implies that restarting the symplectic Lanczos method does indeed not change the energy. But for Arnoldi's method it changes quite a bit. 
 
 \begin{figure}[H]
         \centering

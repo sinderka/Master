@@ -3,7 +3,7 @@
 
 
 @Article{trap,
-  Title                    = {SHARP ERROR BOUNDS FOR THE TRAPEZOIDAL RULE AND SIMPSON’S RULE},
+  Title                    = {{SHARP ERROR BOUNDS FOR THE TRAPEZOIDAL RULE AND SIMPSON{\rq}S RULE}},
   Author                   = {D., CRUZ-URIBE and C.J., NEUGEBAUER},
   Journal                  = {Journal of Inequalities in Pure and Applied Mathematics,},
   Year                     = {2002},
@@ -14,7 +14,7 @@
 }
 
 @Article{elena,
-  Title                    = {A Krylov projection method for system of ODEs},
+  Title                    = {{A Krylov projection method for system of ODEs}},
   Author                   = {E., Celledoni and I., Moret},
   Journal                  = {Applied Numerical Mathematics 23 (1997) 365-378},
   Year                     = {1997},
@@ -25,7 +25,7 @@
 }
 
 @Article{elenaconv,
-  Title                    = {A Krylov projection method for system of ODEs},
+  Title                    = {{A Krylov projection method for system of ODEs}},
   Author                   = {E., Celledoni and I., Moret},
   Journal                  = {Applied Numerical Mathematics 23 (1997) 365-378},
   Year                     = {1997},
@@ -36,8 +36,8 @@
   Url                      = {http://www.sciencedirect.com/science/article/pii/S0168927497000330}
 }
 
-@Article{,
-  Title                    = {Über die von der molekularkinetischen Theorie der Wärme geforderte Bewegung von in ruhenden Flüssigkeiten suspendierten Teilchen},
+@Article{heat,
+  Title                    = {{{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen}},
   Author                   = {Einstein, A.},
   Journal                  = {Annalen der Physik, vol. 322, Issue 8, pp.549-560},
   Year                     = {1905},
@@ -46,9 +46,17 @@
   Timestamp                = {2015.09.14}
 }
 
+@Unpublished{min,
+  Title                    = {A Krylov projection Method for the heat equation},
+  Author                   = {Sindre Ekslenad},
+
+  Owner                    = {sindreka},
+  Timestamp                = {2015.12.06}
+}
+
 @Article{complex,
-  Title                    = {Group-theoretic Algorithms for Matrix Multiplication},
-  Author                   = {Henry, Cohn and Robert, Kleinberg and Bal azs, Szegedy and Christopher, Umans},
+  Title                    = {{Group-theoretic Algorithms for Matrix Multiplication}},
+  Author                   = {Henry, Cohn and Robert, Kleinberg and {Bal azs}, Szegedy and Christopher, Umans},
   Journal                  = {Proceedings of the 46th Annual Symposium on Foundations of Computer Science, 23-25 October 2005, Pittsburgh, PA, IEEE Computer Society, pp. 379-388},
   Year                     = {2005},
 
@@ -57,8 +65,8 @@
 }
 
 @Article{fivepoint,
-  Title                    = {Handbook of Mathematical Functions},
-  Author                   = {Milton, Abramowitz and Irene A.,Stegun},
+  Title                    = {{Handbook of Mathematical Functions}},
+  Author                   = {Milton, Abramowitz and {Irene A.}, Stegun},
   Year                     = {1972},
 
   Month                    = {December},
@@ -69,8 +77,66 @@
   Timestamp                = {2015.09.09}
 }
 
+@Article{SLMO,
+  Title                    = {An Implicitly Restarted SymplecUc Lanczos Method for the Hamlltonlan Eigenvalue Problem},
+  Author                   = {Peter Benner, Heike Faßbender},
+  Journal                  = {LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111},
+  Year                     = {1997},
+
+  Chapter                  = {6. NUMERICAL PROPERTIES OF THE IMPLICITLY RESTARTED SYMPLECTIC LANCZOS METHOD},
+  Owner                    = {sindreka},
+  Publisher                = {cambridge university press},
+  School                   = {University of Oxford},
+  Timestamp                = {2015.12.06}
+}
+
+@Article{SLM,
+  Title                    = {A Hamiltonian Krylov–Schur-type method based on the symplectic Lanczos process},
+  Author                   = {Peter Benner, Heike Faßbender, Martin Stoll},
+  Journal                  = {Linear Algebra and its Applications},
+  Year                     = {2011},
+  Number                   = {435},
+  Pages                    = {578–600},
+
+  Owner                    = {sindreka},
+  Timestamp                = {2015.12.06}
+}
+
+@InBook{forwardeuler,
+  Title                    = {{An Introduction to Numerical Analysis}},
+  Author                   = {S{\"u}li, Endre and Mayers, David F.},
+  Chapter                  = {12.2 One-step methods},
+  Pages                    = {317},
+  Publisher                = {cambridge university press},
+  Year                     = {2003},
+
+  School                   = {University of Oxford}
+}
+
+@InBook{midpoint,
+  Title                    = {{An Introduction to Numerical Analysis}},
+  Author                   = {S{\"u}li, Endre and Mayers, David F.},
+  Chapter                  = {Definition 10.1},
+  Pages                    = {286},
+  Publisher                = {cambridge university press},
+  Year                     = {2003},
+
+  School                   = {University of Oxford}
+}
+
+@InBook{trapezoidal,
+  Title                    = {{An Introduction to Numerical Analysis}},
+  Author                   = {S{\"u}li, Endre and Mayers, David F.},
+  Chapter                  = {7.2 Newton--Cotes formulae},
+  Pages                    = {202-203},
+  Publisher                = {cambridge university press},
+  Year                     = {2003},
+
+  School                   = {University of Oxford}
+}
+
 @InBook{arnold,
-  Title                    = {Iterative Methods for Sparse Linear Systems},
+  Title                    = {{Iterative Methods for Sparse Linear Systems}},
   Author                   = {Yousef, Saad},
   Chapter                  = {6.3.1},
   Pages                    = {154},
@@ -84,10 +150,10 @@
 }
 
 @InBook{krycomplex,
-  Title                    = {Iterative Methods for Sparse Linear Systems},
+  Title                    = {{Iterative Methods for Sparse Linear Systems}},
   Author                   = {Yousef, Saad},
   Chapter                  = {6.4.1},
-  Pages                    = {160-161},
+  Pages                    = {160--161},
   Publisher                = {Siam},
   Year                     = {2003},
   Volume                   = {SECOND EDITION},
@@ -97,10 +163,10 @@
 }
 
 @InBook{kryprop,
-  Title                    = {Iterative Methods for Sparse Linear Systems},
+  Title                    = {{Iterative Methods for Sparse Linear Systems}},
   Author                   = {Yousef, Saad},
   Chapter                  = {6.3.1},
-  Pages                    = {154-155},
+  Pages                    = {154--155},
   Publisher                = {Siam},
   Year                     = {2003},
   Note                     = {Proposition 6.5},
@@ -111,7 +177,7 @@
 }
 
 @Book{saad,
-  Title                    = {Iterative Methods for Sparse Linear Systems},
+  Title                    = {{Iterative Methods for Sparse Linear Systems}},
   Author                   = {Yousef, Saad},
   Publisher                = {Siam},
   Year                     = {2003},
@@ -119,7 +185,7 @@
 }
 
 @Electronic{parfor,
-  Title                    = {http://se.mathworks.com/help/matlab/ref/parfor.html},
+  Title                    = {{http://se.mathworks.com/help/matlab/ref/parfor.html}},
   Month                    = {September},
   Organization             = {MATLAB},
   Url                      = {http://se.mathworks.com/help/matlab/ref/parfor.html},
@@ -131,7 +197,7 @@
 }
 
 @Electronic{parpool,
-  Title                    = {http://se.mathworks.com/help/distcomp/parpool.html},
+  Title                    = {{http://se.mathworks.com/help/distcomp/parpool.html}},
   Month                    = {September},
   Organization             = {MATLAB},
   Url                      = {http://se.mathworks.com/help/distcomp/parpool.html},
