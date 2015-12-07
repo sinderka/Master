@@ -170,13 +170,13 @@ if data == 1
 elseif data == 2
     ylab = {'time'};
 elseif data == 3
-    ylab = {'error'};
+    ylab = {'error1'};
 elseif data == 4
-    ylab = {'energy error'};
+    ylab = {'energy1'};
 elseif data == 5
-    ylab = {'difference error'};
+    ylab = {'error2'};
 elseif data == 6
-    ylab = {'difference energy'};
+    ylab = {'energy2'};
 end
 if m(1) == -1
     xlab = {'m'};
@@ -187,7 +187,7 @@ elseif k(1) == -1
 elseif para(1) == -1
     xlab = {'# processors'};
 elseif conv(1) == -1
-    xlab = {'convergence criterion'};
+    xlab = {'\epsilon'};
 elseif alg(1) == -1
     xlab = {'solution method'};
 elseif int(1) == -1
@@ -226,11 +226,11 @@ elseif conv(1) == -2
 elseif alg(1) == -2
     for i = 1:ant2
         if alg(i+1) == 1
-            stri = 'Arnoldi';
+            stri = 'KPM';
         elseif alg(i+1) == 2
-            stri = 'SympLan';
+            stri = 'SLM';
         elseif alg(i+1) == 3
-            stri = 'DirMet';
+            stri = 'DM';
         end
         leg(i) = {stri};
     end
@@ -272,11 +272,11 @@ if length(k) == 1
 end
 if length(alg) == 1
     if alg == 1
-        stri = 'Arnoldi';
+        stri = 'KPM';
     elseif alg == 2
-        stri = 'SympLan';
+        stri = 'SLM';
     elseif alg == 3
-        stri = 'DirMet';
+        stri = 'DM';
     end
     additionalInfo(end+1) = {stri};
 end
@@ -296,11 +296,11 @@ if length(restart) == 1
     additionalInfo(end+1) = {stri};
 end
 if length(prob) == 1
-    stri = strcat('prob=',num2str(prob));
+    stri = strcat('problem=',num2str(prob));
     additionalInfo(end+1) = {stri};
 end
 if length(conv) == 1
-    stri = strcat('convergence criterion=1e',num2str(log10(conv)));
+    stri = strcat('\epsilon=1e',num2str(log10(conv)));
     additionalInfo(end+1) = {stri};
 end
 if length(para) == 1

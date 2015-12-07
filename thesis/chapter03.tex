@@ -1,13 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Energy preservation for SLM }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-It can be proved that a restart of SLM does not alter the energy. This chapter is devoted to showing that this still hold with numerical approximations.
+It can be proved that a restart of SLM does not alter the energy \cite{luli}. This chapter is devoted to showing that this still hold with numerical approximations. \\
 
 The residual energy of the symplectic Lanczos method is
 \begin{equation}
-\frac{1}{2} e_r^{\top} J A e_r + e_r^\top J r_{n+1} e_{2n}^\top z
+\frac{1}{2} e_r^{\top} J A e_r + e_r^\top J v_{n+1} e_{2\tilde{n}}^\top z
 \end{equation}
-with $ e_r = u-u_n $ (analytical solution minus approximated solution) and $r_{n+1}$ is the residual vector given by the symplectic Lanczos method. 
+with $ e_r = u-u_n $ (analytical solution minus approximated solution) and $v_{\tilde{n}+1}$ is the residual vector given by the symplectic Lanczos method. 
 
 \begin{figure}[H]
         \centering
@@ -41,7 +41,7 @@ The figures above implies that restarting the symplectic Lanczos method does ind
                 \caption{ With restart, the number of iterations $= 47$ }
                 \label{fig:energytestrestart1}
         \end{subfigure}
-        \caption{ The figures shows the change in energy over time. Mer tekst  }
+        \caption{ The figures shows the change in energy over time.}
         \label{fig:energytestrestart}
 \end{figure}
 The figure above shows very little change in energy with SLM, with and without several restarts. \\
@@ -61,10 +61,12 @@ The figures below shows the same as figure \ref{fig:energytestrestart}, but with
                 \caption{ With restart, the number of iterations $ = 48$ }
                 \label{fig:energyarnrestart1}
         \end{subfigure}
-        \caption{ Figures showing the change in energy over time. Mer tekst  }
+        \caption{ Figures showing the change in energy over time. }
         \label{fig:energyarnrestart}
 \end{figure}
 
 When comparing figure \ref{fig:energytestrestart0} and \ref{fig:energytestrestart1} it becomes clear that SLM's does not alter the energy significantly when performing the restart. Figure \ref{fig:energyarnrestart0} and \ref{fig:energyarnrestart1} shows that this is not the case for KPM.\\
 
-!!!!!!!!!!!!!!!!!!!!!!!ER dette overbevisende nok?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+%!!!!!!!!!!!!!!!!Burde jeg gjøre det samme for feilen?(JA)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+
+%!!!!!!!!!!!!!!!!!!!!!!!ER dette overbevisende nok?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\

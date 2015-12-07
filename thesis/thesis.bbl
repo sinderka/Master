@@ -1,20 +1,35 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
+
+\bibitem{elena}
+Celledoni E. and Moret I.
+\newblock {A Krylov projection method for system of ODEs}.
+\newblock {\em Applied Numerical Mathematics 23 (1997) 365-378}, 1997.
 
 \bibitem{min}
-Sindre Ekslenad.
-\newblock A krylov projection method for the heat equation.
+Sindre Eskeland.
+\newblock {A Krylov projection Method for the heat equation}.
+
+\bibitem{luli}
+Lu~Li.
+\newblock {SYMPLECTIC LANCOZS METHOD FOR SOLVING HAMILTONIAN SYSTEMS}.
+
+\bibitem{fivepoint}
+Abramowitz Milton and Stegun {Irene A.}
+\newblock {Handbook of Mathematical Functions}.
+\newblock Tenth Printing, December 1972.
+\newblock with corrections.
 
 \bibitem{SLMO}
-Heike~Faßbender Peter~Benner.
-\newblock An implicitly restarted symplecuc lanczos method for the hamlltonlan
-  eigenvalue problem.
+Heike~Fa{\ss}bender {Peter Benner}.
+\newblock {An Implicitly Restarted SymplecUc Lanczos Method for the Hamlltonlan
+  Eigenvalue Problem}.
 \newblock {\em LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111}, 1997.
 
 \bibitem{SLM}
-Martin~Stoll Peter~Benner, Heike~Faßbender.
-\newblock A hamiltonian krylov–schur-type method based on the symplectic
-  lanczos process.
-\newblock {\em Linear Algebra and its Applications}, (435):578–600, 2011.
+Heike Fa{\ss}bender Martin~Stoll {Peter Benner}.
+\newblock {A Hamiltonian Krylov--Schur-type method based on the symplectic
+  Lanczos process}.
+\newblock {\em Linear Algebra and its Applications}, (435):578--600, 2011.
 
 \bibitem{trapezoidal}
 Endre S{\"u}li and David~F. Mayers.

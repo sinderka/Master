@@ -5,7 +5,7 @@
 \contentsline {chapter}{\numberline {2}Explonation}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Projection methods}{3}{section.2.1}
 \contentsline {section}{\numberline {2.2}Zero initial condition}{5}{section.2.2}
-\contentsline {section}{\numberline {2.3}Discretization}{5}{section.2.3}
+\contentsline {section}{\numberline {2.3}Discretization}{6}{section.2.3}
 \contentsline {section}{\numberline {2.4}Lingo}{7}{section.2.4}
 \contentsline {chapter}{\numberline {3}Compare time integration methods}{9}{chapter.3}
 \contentsline {chapter}{\numberline {4}Energy preservation for SLM }{11}{chapter.4}

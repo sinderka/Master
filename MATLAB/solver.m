@@ -106,7 +106,7 @@ end
 
 if alg ~= 3
     utdata(5) = max(max(abs(U-U1)));
-    utdata(6) = abs(energy(A,Utemp-Utemp1));
+    utdata(6) = abs(energy(A,Utemp-Utemp1,T));
 else
     utdata(1) = 0;
     utdata(2) = Time;
