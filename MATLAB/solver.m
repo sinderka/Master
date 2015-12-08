@@ -9,14 +9,14 @@ function utdata = solver(m,n,k,eqn,alg,integrator,restart,prob,conv,para)
 if nargin < 10
     m = 20;
     k = 20;
-    n = 4;%2*(m-2)^2;
+    n = m;%2*(m-2)^2;
     restart = 0;
     prob = 1;
     conv = 10^-14;
     para = 4; %%%%% If need be %%%%%%
-    eqn = 'wave';
-    alg = 3;
-    integrator = 3;
+    eqn = 'semirandom';
+    alg = 1;
+    integrator = 1;
 end
 
 %%% Initsiell data
@@ -42,7 +42,6 @@ V(:,1) = A*V(:,1);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 % PLAN:
 % funksjon
-% Verifiser inndata
 % Initial stuff X
 % Få tak i testfunksjoner X--
 % en forløkke som løser problemet
@@ -122,11 +121,12 @@ utdata(3) = max(max(abs(U-correctsolution)));
 utdata(4) = energy(A,Utemp,T);
 
 % Plot
-if 0
+if 1
     %V = zeros(m^2,k);
     %V(vec,:) = Utemp((m-2)^2+1:end,:);
     %V(vec,:) = V(vec,:) + U0(vec)*ones(1,k);
-    video(U,m,k,0.05,eqn)
+    %video(U,m,k,0.05,eqn)
+    video(U1-U,m,k,0.05,eqn)
     %video(V,m,k,0.05)
     %video(correctsolution,m,k,0.05,eqn)
     %video(U-correctsolution,m,k,0.05,eqn)

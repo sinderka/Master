@@ -1,4 +1,11 @@
 function U = expintegrate(A,F,k,ht)
+%solves the problem du/dt = Au+F
+%indata
+% A: mxm matrix
+% F: k row
+% k: number of points in time
+% ht: step size in time
+
 if size(F,2) == 1
     U = zeros(length(A),k);
     for i = 0:k-1

@@ -4,6 +4,7 @@
 #*.fig
 #*.jpg
 *.bib~
+*.mat
 
 ### LaTeX ###
 *.acn

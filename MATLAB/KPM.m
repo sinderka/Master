@@ -1,5 +1,17 @@
 function [U,iter] = KPM(A,v,F,n,ht,conv,restart,alg,int)
-%Skriv en programdefinosjon her
+%Indata
+% A: mxm matrix
+% v: m vector
+% F: k row of timedependant function
+% n: real number 0<n<=m
+% ht: stepsize in time
+% conv: convergence criterion
+% restart: A boolean value
+% alg: an ortogonalisation algorithm (Arnoldi or SLM)
+% int: an integration method (trapezoidal rule)
+%outdata
+% U: Solution to problem du/dt = Au+v*F
+% iter: number of restarts preformed
 l = size(A,1);
 k = length(F);
 if max(abs(v)) == 0 || max(max(abs(F))) == 0

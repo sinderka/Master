@@ -11,7 +11,6 @@ The relevant integrators are trapezoidal rule, forward euler, and midpoint rule.
 	Trapezoidal rule \cite{trapezoidal} & $U_{i+1} = U_{i}+h_t g \Big( \frac{1}{2}(t_i+t_{i+1}),\frac{1}{2}(U_i+U_{i+1}) \Big)$ & 
 	$U_{i+1} = (I- \frac{A h_t}{2})\backslash \Big(  U_i + \frac{h_t}{2} \big( A U_i+(F_{i+1}+F_i) \big)  \Big) $\\
 	Forward Euler \cite{forwardeuler} & $ U_{i+1} = U_i + h_t g ( t_i, U_i ) $ & $ U_{i+1} = U_i + h_t \big( A U_i + F_i \big) $ \\
-	
 	Midpoint rule \cite{midpoint} & $U_{i+2} = y_i + h_t + g \Big(  t_{i+1} , \frac{1}{2}(U_i + U_{i+2})    \Big) $ & 
 	$U_{i+2} = ( I - A h_t )\backslash \Big( U_i + 2h_t \big( \frac{A U_i}{2} + F_{i+1} \big) \Big) $ \\
 \end{tabular}
