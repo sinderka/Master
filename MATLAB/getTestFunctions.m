@@ -1,10 +1,10 @@
 function [Ustart, V,F,correctsolution] = getTestFunctions( prob,X,T,eqn )
-%Takes 3 agruments;
+%Takes 4 agruments;
 % prob: a number corresponding to a test problem
 % X: a set of points in spacial direction
 % T: a set of points in time
 % eqn: spesifies which equation we are solving
-%Returns 3 matrices
+%Returns 4 matrices
 % Ustart: The initial value of the testproblem
 % F: A list of vectors depending on time
 % V: A list of vectors to generate the Krylov space
@@ -145,23 +145,23 @@ elseif strcmp(eqn,'maxwell1D')
                 %correctsolution(m+i,j) = solB(T(j),X(i));
             end
         end
-%     elseif prob == 2
-%         u0 = @(x) exp(-100*(x-0.5)^2);
-%         v0 = @(x) exp(-100*(x-0.5)^2);
-%         correctsolution = sparse(m,k);
-%         F = ones(1,k);
-%     elseif prob == 3
-%         u0 = @(x) cos(x);
-%         v0 = @(x) cos(x);
-%         solE = @(t,x) cos(x-t);
-%         F = ones(1,k);
-%         correctsolution = zeros(m,k);
-%         for j = 1:k
-%             for i = 1:m
-%                 correctsolution(i,j) = solE(T(j),X(i));
-%                 %correctsolution(m+i,j) = solB(T(j),X(i));
-%             end
-%         end
+        %     elseif prob == 2
+        %         u0 = @(x) exp(-100*(x-0.5)^2);
+        %         v0 = @(x) exp(-100*(x-0.5)^2);
+        %         correctsolution = sparse(m,k);
+        %         F = ones(1,k);
+        %     elseif prob == 3
+        %         u0 = @(x) cos(x);
+        %         v0 = @(x) cos(x);
+        %         solE = @(t,x) cos(x-t);
+        %         F = ones(1,k);
+        %         correctsolution = zeros(m,k);
+        %         for j = 1:k
+        %             for i = 1:m
+        %                 correctsolution(i,j) = solE(T(j),X(i));
+        %                 %correctsolution(m+i,j) = solB(T(j),X(i));
+        %             end
+        %         end
     end
     U0 = zeros(m-2,1); V0 = zeros(m,1);
     %V0(1) = V0(T(1)); V0(end) = v0(T(end));
@@ -184,19 +184,35 @@ elseif strcmp(eqn,'random')
     F = ones(1,k);
     correctsolution = sparse(m^2,k);
 elseif strcmp(eqn,'semirandom')
-    try
-        load('semirandomV.mat','V');
-    catch
-        V = -1;
+    if prob == 1
+        try
+            load('semirandomV.mat','V');
+        catch
+            V = -1;
+        end
+        
+        if size(V,1) ~= 2*(m-2)^2
+            V = rand(2*(m-2)^2,1);
+            save('semirandomV.mat','V');
+        end
+        Ustart = V;
+        F = ones(1,k);
+        correctsolution = sparse(m^2,k);
+    elseif prob == 2
+        try
+            load('semirandomV1.mat','V');
+        catch
+            V = -1;
+        end
+        
+        if size(V,1) ~= 2*(m-2)^2
+            V = rand(2*(m-2)^2,1);
+            save('semirandomV1.mat','V');
+        end
+        Ustart = V;
+        F = rand(1,k);
+        correctsolution = sparse(m^2,k);
     end
-    
-    if size(V,1) ~= 2*(m-2)^2
-        V = rand(2*(m-2)^2,1);
-        save('semirandomV.mat','V');
-    end
-    Ustart = V;
-    F = ones(1,k);
-    correctsolution = sparse(m^2,k);
     
 end
 

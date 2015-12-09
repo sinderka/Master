@@ -38,12 +38,6 @@ for m = 1:1:var
    xi(m+2) = norm(vmtilde,2);
    V(:,m+2) = 1/xi(m+2)*vmtilde;
    V(:,m+2) = V(:,m+2)+[V(:,2:m+1),W(:,1:m)]*[sparse(m,m),speye(m);-speye(m),sparse(m,m)]*[V(:,2:m+1),W(:,1:m)]'*J*V(:,m+2);
-   if xi(m+2) < conv % dette må testes!
-       display('Skjer dette noen sinne? (SLM)')
-       V = V(:,1:m+1); W = W(1:m); xi = xi(1:m+1);
-       delta = delta(1:m); nu = nu(1:m); beta = beta(1:m);
-       continue
-   end
 end
 
 S = [V(:,2:end-1),W];

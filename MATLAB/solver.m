@@ -11,10 +11,10 @@ if nargin < 10
     k = 20;
     n = m;%2*(m-2)^2;
     restart = 0;
-    prob = 1;
+    prob = 3;
     conv = 10^-14;
     para = 4; %%%%% If need be %%%%%%
-    eqn = 'semirandom';
+    eqn = 'wave';
     alg = 1;
     integrator = 1;
 end
@@ -119,7 +119,7 @@ end
 %utdata(3) = getError(U,correctsolution);
 utdata(3) = max(max(abs(U-correctsolution)));
 utdata(4) = energy(A,Utemp,T);
-
+figure(5);plot(T,max(U-U1), 'k:.')
 % Plot
 if 1
     %V = zeros(m^2,k);

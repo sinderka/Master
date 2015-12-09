@@ -75,8 +75,7 @@ utdata(5) = max(max(abs(U-U1)));
 utdata(6) = energy(A,Utemp-Utemp1,T,alg,Zn,vnext);
 
 
-figure(5)
-plot(T,max(U-U1), 'k:.')
+figure(5);plot(T,max(U-U1), 'k:.')
     %J = [sparse((m-2)^2,(m-2)^2),speye((m-2)^2);-speye((m-2)^2),sparse((m-2)^2,(m-2)^2)];
     %e2n = zeros(size(Zn,1),1); e2n(end) = 1;
     %energyerror = zeros(1,k);

@@ -21,13 +21,8 @@ for j = 1:1:n
     elseif (j+1<=n)
         H(j+1,i) = hn;
         V(:,j+1) = z/(hn);
-    elseif (j <= n)
+    else 
         V(:,j+1) = z/(hn);
-    else
-        display('Skjer dette virkelig?')
-        v = V(:,end);
-        V = V(:,1:n);
-        return;
     end
 end
 v = V(:,end);

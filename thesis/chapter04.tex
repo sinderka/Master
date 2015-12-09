@@ -1,11 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Some interesting results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The energy has already been considered quite thoroughly, but there are still interesting factors to consider. This chapter will discus how the different methods compare in relation to computation time, number of iterations, and error. This will be done with  \texttt{wave} and \texttt{semirandom} both with constant and varying energy
 
-\section{with the wave equation}
+
+\section{constant energy with the wave equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The energy has already been considered quite thoroughly, but there are still interesting factors to consider. This chapter will discus how the different methods compare in relation to computation time, number of iterations, and error. The \texttt{wave} framework will be used due to the need for comparing the difficulty of solving the problem with different sizes.\\
-!!!!!!!!!!!!!!!!!!!!!Dette må gjøres for andre problemer, dette er jo bare teit!!!!!!!!!!!!!!!!!!!!!!!\\
+ The \texttt{wave} framework will be used due to the need for comparing the difficulty of solving the problem with different sizes.\\
+%!!!!!!!!!!!!!!!!!!!!!Dette må gjøres for andre problemer, dette er jo bare teit!!!!!!!!!!!!!!!!!!!!!!!\\
 
 
 
@@ -71,11 +73,11 @@ The energy has already been considered quite thoroughly, but there are still int
         \label{fig:resultenergy}
 \end{figure}
 
+It is pretty clear that the figure in this section gives no useful information about the difference between the two methods in other tings than computation time.
 
 
 
-
-\section{with the semirandom equation}
+\section{constant energy with the semirandom equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -142,3 +144,133 @@ The energy has already been considered quite thoroughly, but there are still int
         \label{fig:sresultenergy}
 \end{figure}
 
+The figures in this section shows a little better how the energy for the different methods change, but the error is apparently useless in this setting due to it being the difference between two calculated numbers, and not the analytical solution. 
+
+\section{Varying energy with the wave equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vresulttimem.jpg}
+                \caption{  }
+                \label{fig:vresulttimem}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vresulttimek.jpg}
+                \caption{  }
+                \label{fig:vresulttimek}
+        \end{subfigure}
+        \caption{ For both cases KPM is faster than the other, and with DM faster than SLM.  }
+        \label{fig:vresulttime}
+\end{figure}
+
+
+
+\begin{figure}[H]
+        \centering
+
+                \includegraphics[width=0.45\textwidth]{../MATLAB/fig/vresultiter.jpg}
+        \label{fig:vresultiter}
+        \caption{The number of iterations are almost equal for the two methods.}
+\end{figure}
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vresulterrorr.jpg}
+                \caption{  }
+                \label{fig:vresulterror1}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vresulterror.jpg}
+                \caption{  }
+                \label{fig:vresulterror2}
+        \end{subfigure}
+        \caption{ The error is nearly identical.  }
+        \label{fig:vresulterror}
+\end{figure}
+
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vresultenergyr.jpg}
+                \caption{  }
+                \label{fig:vresultenergy1}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vresultenergy.jpg}
+                \caption{  }
+                \label{fig:vresultenergy2}
+        \end{subfigure}
+        \caption{ SLM and KPM has the best energy estimation, with DM not far behind. }
+        \label{fig:vresultenergy}
+\end{figure}
+
+\section{Varying energy with the semirandom equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vsresulttimem.jpg}
+                \caption{  }
+                \label{fig:vsresulttimem}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vsresulttimek.jpg}
+                \caption{  }
+                \label{fig:vsresulttimek}
+        \end{subfigure}
+        \caption{ For both cases KPM is faster than the other, and with DM faster than SLM.  }
+        \label{fig:vsresulttime}
+\end{figure}
+
+
+
+\begin{figure}[H]
+        \centering
+
+                \includegraphics[width=0.45\textwidth]{../MATLAB/fig/vsresultiter.jpg}
+        \label{fig:vsresultiter}
+        \caption{The number of iterations are almost equal for the two methods.}
+\end{figure}
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vsresulterrorr.jpg}
+                \caption{  }
+                \label{fig:vsresulterror1}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vsresulterror.jpg}
+                \caption{  }
+                \label{fig:vsresulterror2}
+        \end{subfigure}
+        \caption{ The error is nearly identical.  }
+        \label{fig:vsresulterror}
+\end{figure}
+
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vsresultenergyr.jpg}
+                \caption{  }
+                \label{fig:vsresultenergy1}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vsresultenergy.jpg}
+                \caption{  }
+                \label{fig:vsresultenergy2}
+        \end{subfigure}
+        \caption{ SLM and KPM has the best energy estimation, with DM not far behind. }
+        \label{fig:vsresultenergy}
+\end{figure}
