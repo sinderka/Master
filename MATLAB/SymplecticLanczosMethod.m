@@ -1,5 +1,14 @@
-function [S,Htilde,Vend,xiend] = SymplecticLanczosMethod(H,v,var,conv)
-%Skriv en programdefinosjon her
+function [S,Htilde,Vend,xiend] = SymplecticLanczosMethod(H,v,var,~)
+% Ortohonalisation method 
+%Input
+% H: a hamiltonian matrix mxm matrix
+% v: a m vector
+% var: half the size of the resulting orthogonal system
+%Returns
+% S: a 2*var x m system of orthogonal vectors
+% Htilde: a 2*var x 2*var matrix
+% Vend: residual vector
+% xiend: size of residual vector
 
 n = length(H)/2;
 J = [sparse(n,n),speye(n);-speye(n),sparse(n,n)];

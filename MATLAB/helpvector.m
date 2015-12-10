@@ -1,4 +1,14 @@
 function [v,height] = helpvector(m,eqn)
+% Returns a list of indecis corresponding to non-edge points in a 1 and 2 D
+% system.
+%input:
+% m: number of points in eqch spacial direction
+% eqn: Decides if it is a 1 D og a 2 D system.
+%Returns:
+% v: a vector og sice m-2 (1D) or 2*(m-2)^2 corresponding to non edge
+% points.
+% height: m or m^2, dependant on the eqnation.
+
 
 if strcmp(eqn,'maxwell1D')
     height = m;

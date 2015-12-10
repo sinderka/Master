@@ -1,5 +1,16 @@
 function [V,H,v,hn]=Arnoldi(A,v,n,conv)
-%%%%SKRIV EN PROGRAMDEFINISJON
+% Ortohonalisation method 
+%Input
+% A: an mxm matrix
+% v: a m vector
+% n: the size of the resulting orthogonal system
+% conv: iterations will abort when hn is les than conv
+%Returns
+% V: a var x m system of orthogonal vectors
+% H: a var x var matrix
+% v: residual vector
+% hn: size of residual vector
+
 m = length(A);
 n = min(n,m);
 V = zeros(m,n+1);

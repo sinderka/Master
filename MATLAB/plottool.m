@@ -1,10 +1,27 @@
 function plottool(m,n,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save)
-%m,n,k,para,conv,alg,restart,prob kan være lister med tall
-%eqn Angir hvilken ligning som løses
-%help sier noe om hvordan hjelpelinjen skal se ut
-%type sier noe om hvilke type plott som skal benyttes
-%data sier noe om hva av utdataen som skal plottes
-%leg, lab og name angir tekst og navn på figuren
+% a tool that helps make plotting easier. 
+%input
+% m: number of points in eqch spacial direction X
+% n: restart variable (size of orthogonal space) X
+% k: number of space in time. X
+% eqn: says something about with algorithm to solve 
+% alg(1,2,3): declares with ortogonalisation method to use X
+% int(1,2,3): declares with integration method to use X
+% restart(0,1): should the method restart or not X
+% prob: says smoething about with particular problem to solve
+% conv: convergence criterion used in arnoldi og KPM X
+% para: currently nothing
+% data(1,2,3,4,5,6): what data is relevant to plot
+% type: with kind of plot
+% help(0 or [1,smth]): adds a helpline increasing with smth exponetial
+% name: name of saved picture
+% save(0,1): boolean value for saving or not
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Special: 
+% This tool can plot several diffenet plots.
+% start a list X with -1 to make this be the differnent points on the x axis
+% Start a list with -2 to make it diffenret graphs.
+
 
 linetype = {'k:+','k:o','k:*','k:.','k:x','k:s','k:d','k:^','k:v','k:<','k:>','k:p','k:h'};
 

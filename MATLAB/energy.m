@@ -1,4 +1,15 @@
 function Max_Energy_Difference = energy(A,y,T,alg,Zn,vnext)
+% returns the energy to the system
+%Indata
+% A: an mxm matrix
+% y: a matrix of the solution
+% T: a list of points in time
+%Optional inputs(only for slm without restart):
+% alg: numerical values of 1,2,3, depending on the orthogonalisation method used.
+% Zn: return from slm
+% vnext: residual vector
+
+
 if nargin == 3
     alg = 1;
 end

@@ -1,7 +1,11 @@
 function [A] = getMatrix( m , hs, eqn )
-%UNTITLED Summary of this function goes here
-%   Detailed explanation goes here
-%%% TODO Maxwell må fikses!
+% returns a matrix dependantn on what problems is to be sovled
+%input:
+% m: number of points in space
+% hs: stempelngth in space
+% eqn: a string coresponding to an equation
+%returns:
+% a matrix
 
 %%%%% Denne funksjonen skal fungere for varme, bølge og maxwell
 if strcmp(eqn,'heat')

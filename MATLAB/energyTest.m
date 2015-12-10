@@ -1,9 +1,24 @@
 function utdata = energyTest(m,n,k,eqn,alg,integrator,restart,prob,conv,~)
-
-%%% I denne koden er det masse feil!
-
-%function utdata = energyTest
-%%% Funke itj!
+% Solves a problem dependant on the indata
+%input
+% m: number of points in eqch spacial direction X
+% n: restart variable (size of orthogonal space) X
+% k: number of space in time. X
+% eqn: says something about with algorithm to solve 
+% alg(1,2,3): declares with ortogonalisation method to use X
+% integrator(1,2,3): declares with integration method to use X
+% restart(0,1): should the method restart or not X
+% prob: says smoething about with particular problem to solve
+% conv: convergence criterion used in arnoldi og KPM X
+% para: currently nothing
+%returns:
+% utdata:
+% utdata(1): number of ioeration performed
+% utdata(2): computation time
+% utdata(3): error
+% utdata(4): energy
+% utdata(5): error difference
+% utdata(6): energy difference
 % Initsiell
 if nargin < 10
     m = 40;

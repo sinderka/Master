@@ -1,4 +1,8 @@
 function MyPlots
+%%% All plots used in my master thesis
+%%% Uncomment the rights sections to obtain pictures
+
+
 %data: 1 == iter, 2 == time, 3 == error, 4 == energy, 5 == Difference in error between KPm and DI, 6 == differnce in energy between KPM and DI 
 %plottool(m ,n ,k ,eqn         ,alg , int       ,restart, prob,conv,  para,data,type ,help,   name     ,save)
 %start med -1: punkte på x aksen
