@@ -22,7 +22,6 @@ function utdata = solver(m,n,k,eqn,alg,integrator,restart,prob,conv,para)
 % utdata(6): energy difference
 
 %%% Initiell data
-%tic;
 if nargin < 10
     m = 20;
     k = 20;
@@ -44,27 +43,12 @@ T = linspace(0,1,k);ht = T(2)-T(1);
 
 
 
-
-%%%%%%%%%% TODO %%%%%%%%%%
-%%% Skrive bølge, maxwell og varme sammen så mye som mulig %%%
-%%% Legge til beskrivelse til ferdige funksjoner %%%
-%%% Lage en database av resultater, så beregninger går fortere!
-%%% Feilen mellom direkte metode og Krylov metode burde også være med,
-%%% alltid!
-
 % Get problem information
 [A] = getMatrix( m , hs, eqn );
 [U0,V,F,correctsolution] = getTestFunctions( prob,X,T,eqn );
 V(:,1) = A*V(:,1);
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% PLAN:
-% funksjon
-% Initial stuff X
-% Få tak i testfunksjoner X--
-% en forløkke som løser problemet
-% beregne feil X--
-% annet
 
+% Chose integration method
 if integrator == 1
     int = @trapezoidal;
 elseif integrator == 2
