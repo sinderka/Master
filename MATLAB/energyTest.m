@@ -21,14 +21,14 @@ function utdata = energyTest(m,n,k,eqn,alg,integrator,restart,prob,conv,~)
 % utdata(6): energy difference
 % Initsiell
 if nargin < 10
-    m = 40;
-    k = 40;
+    m = 20;
+    k = 20;
     n = 4;%2*(m-2)^2-2;
-    restart = 0;
-    prob = 1;
+    restart = 1;
+    prob = 2;
     conv = 10^-14;
     para = 4; %%%%% ARG %%%%%%
-    eqn = 'wave';
+    eqn = 'semirandom';
     alg = 2;
     integrator = 1;
 end
@@ -37,13 +37,18 @@ if alg == 2
 elseif alg == 1
     algo = @Arnoldi;
 end
-utdata = zeros(1,6); % Burde legge til forskjellen mellom energi og
+%%% Initsiell data
+utdata = zeros(1,6);
 X = linspace(0,1,m);hs =X(2)-X(1);
 T = linspace(0,1,k);ht = T(2)-T(1);
 [vec,height] = helpvector(m,eqn);
+
+% Get problem information
 [A] = getMatrix( m , hs, eqn );
 [U0,V,F,correctsolution] = getTestFunctions( prob,X,T,eqn );
 V(:,1) = A*V(:,1);
+
+% Chose integration method
 if integrator == 1
     int = @trapezoidal;
 elseif integrator == 2
@@ -56,10 +61,14 @@ end
 
 tic;
 iter = 0;
-%Utemp = 0;
-[Utemp,iter1,vnext,Zn] = KPMloc(A,V(:,1),F(1,:),n,ht,conv,restart,algo,int);
-%Utemp = Utemp + Utemp1;
-iter = max(iter1,iter);
+Utemp = 0;
+for i = 1:size(F,1)
+    [Utemp1,iter1,vnext,Zn] = KPMloc(A,V(:,i),F(i,:),n,ht,conv,restart,algo,int);
+    Utemp = Utemp + Utemp1;
+    iter = max(iter1,iter);
+end% End forloop
+
+
 utdata(1) = iter;
 utdata(2) = toc;
 U = zeros(height,k);
@@ -73,12 +82,12 @@ tempVF = 0;
 for i = 1:size(F,1)
     tempVF = tempVF + V(:,i)*F(i,:);
 end
-%Utemp1 = integrateloc(A,V(:,1)*F(1,:),T);
-Utemp1 = expintegrate(A,U0,k,ht);
-Time = toc;
+Utemp1 = int(A,tempVF,k,ht);
+%Utemp1 = expintegrate(A,U0,k,ht);
+%Time = toc;
 
 
-%Utemp1 = Utemp1 + U0*ones(1,k);
+Utemp1 = Utemp1 + U0*ones(1,k);
 U1 = zeros(height,k);
 
 U1(vec,:) = Utemp1(1:length(A)/2,:);
@@ -87,7 +96,9 @@ U1(vec,:) = Utemp1(1:length(A)/2,:);
 utdata(5) = max(max(abs(U-U1)));
     %utdata(6) = abs(energy(A,Utemp-Utemp1));
     %er = Utemp-Utemp1;
-utdata(6) = energy(A,Utemp-Utemp1,T,alg,Zn,vnext);
+figure(2);utdata(6) = energy(A,Utemp-Utemp1,T,alg,Zn,vnext);
+
+figure(7);energy(A,Utemp1,T,alg,Zn,vnext);
 
 
 figure(5);plot(T,max(U-U1), 'k:.')
@@ -107,21 +118,21 @@ utdata(4) = energy(A,Utemp,T);
 
 %figure(17);plot(energyerror)
 %utdata
-if 0
+if 1
     video(U-U1,m,k,0.05,eqn)
-    pause
-    video(U1,m,k,0.05,eqn)
-    pause
+    %pause
+    %video(U1,m,k,0.05,eqn)
+    %pause
     %V = zeros(m^2,k);
     %V(vec,:) = Utemp((m-2)^2+1:end,:);
     %V(vec,:) = V(vec,:) + U0(vec)*ones(1,k);
-    video(U,m,k,0.05,eqn)
+    %video(U,m,k,0.05,eqn)
     %video(V,m,k,0.05)
     %video(correctsolution,m,k,0.05,eqn)
-    pause
-    video(U-correctsolution,m,k,0.05,eqn)
-    pause
-    video(U1-correctsolution,m,k,0.05,eqn)
+    %pause
+    %video(U-correctsolution,m,k,0.05,eqn)
+    %pause
+    %video(U1-correctsolution,m,k,0.05,eqn)
     %energy(Jtilde*Atilde,Utemp);
 end
 end
