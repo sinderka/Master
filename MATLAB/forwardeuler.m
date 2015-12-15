@@ -1,12 +1,12 @@
-function [ U ] = forwardeuler( A,F,k,ht )
-%solves the problem du/dt = Au+F
+function [ U ] = forwardeuler( A,F,ht )
+%solves the problem du/dt = A*u+F
 %indata
 % A: mxm matrix
-% F: k row
-% k: number of points in time
+% F: mxk matrix
 % ht: step size in time
 %outdata
 % U: the solution
+k = size(F,2);
 n = size(A,1);
 U = zeros(n,k);
 for i = 2:k

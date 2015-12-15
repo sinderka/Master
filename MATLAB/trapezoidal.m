@@ -1,12 +1,12 @@
-function [ U ] = trapezoidal( A,F,k,ht )
+function [ U ] = trapezoidal( A,F,ht )
 %solves the problem du/dt = Au+F
 %indata
 % A: mxm matrix
-% F: k row
-% k: number of points in time
+% F: mxk matrix
 % ht: step size in time
 %outdata
 % U: the solution
+k = size(F,2);
 n = size(A,1);
 U = zeros(n,k);
 mat = inv(speye(n)-A*ht/2);

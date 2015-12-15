@@ -2,6 +2,9 @@
 \chapter{Compare time integration methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %!!!!!!!!!!!!!!!!!!!!!!!!Endre $y$( $u$ eller $U$) til noe annet!!!!!!!!!!!!!!!!!!!!\\
+!!!!!!!!!!!!!!!!!!!!!!!!Fiks midpoint rule!!!!!!!!!!!!!!!!!!!!\\
+!!!!!!!!!!!!!!!!!!!!!!!!Legg til errorplott!!!!!!!!!!!!!!!!!!\\
+!!!!!!!!!!!!!!!!!!!!!!!!Se hvordan energien øker ved større tidslengde!!!!!!!!!!!\\
 This section will be concerned with comparing the integrators. How well they estimate the error and energy will be the primary concern.\\
 
 The relevant integrators are trapezoidal rule, forward euler, and midpoint rule. The definition, and the iteration scheme, of the different methods are given in the table below. 
@@ -41,6 +44,8 @@ Convergence of the different methods are shown in figure \ref{fig:intconv}
                 \caption{ Help line decreases with $m^2$. }
                 \label{fig:intconvmid}
         \end{subfigure}
+        
+        
         \caption{Figure of the convergence for the different integration methods. All methods converge with the expected rate. }
         \label{fig:intconv}
 \end{figure}
@@ -61,6 +66,23 @@ Convergence of the different methods are shown in figure \ref{fig:intconv}
         \end{subfigure}
         \begin{subfigure}[b]{0.30\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/energyovertimemidpoint.jpg}
+                \caption{  }
+                \label{fig:errormid}
+        \end{subfigure}
+        
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorovertimetrapezoidal.jpg}
+                \caption{  }
+                \label{fig:errortrap}
+        \end{subfigure}%
+        ~
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorovertimeeuler.jpg}
+                \caption{  }
+                \label{fig:erroreul}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorovertimemidpoint.jpg}
                 \caption{  }
                 \label{fig:errormid}
         \end{subfigure}

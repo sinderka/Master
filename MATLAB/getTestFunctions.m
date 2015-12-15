@@ -200,17 +200,27 @@ elseif strcmp(eqn,'semirandom')
         correctsolution = sparse(m^2,k);
     elseif prob == 2
         try
-            load('semirandomV1.mat','V');
+            load('semirandomV.mat','V');
         catch
             V = -1;
         end
         
         if size(V,1) ~= 2*(m-2)^2
             V = rand(2*(m-2)^2,1);
-            save('semirandomV1.mat','V');
+            save('semirandomV.mat','V');
+        end
+        
+        try 
+            load('semirandomF.mat','F')
+        catch
+            F = -1;
         end
         Ustart = V;
-        F = rand(1,k);
+        if size(F,2) ~= k
+            F = rand(1,k);
+            save('semirandomF.mat','F');
+        end
+
         correctsolution = sparse(m^2,k);
     end
     

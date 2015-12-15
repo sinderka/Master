@@ -1,4 +1,5 @@
 function utdata = energyTest(m,n,k,eqn,alg,integrator,restart,prob,conv,~)
+display('Dette programmet er for tiden ødelagt')
 % Solves a problem dependant on the indata
 %input
 % m: number of points in eqch spacial direction X
@@ -13,7 +14,7 @@ function utdata = energyTest(m,n,k,eqn,alg,integrator,restart,prob,conv,~)
 % para: currently nothing
 %returns:
 % utdata:
-% utdata(1): number of ioeration performed
+% utdata(1): number of iteration performed
 % utdata(2): computation time
 % utdata(3): error
 % utdata(4): energy
@@ -23,9 +24,9 @@ function utdata = energyTest(m,n,k,eqn,alg,integrator,restart,prob,conv,~)
 if nargin < 10
     m = 20;
     k = 20;
-    n = 4;%2*(m-2)^2-2;
-    restart = 1;
-    prob = 2;
+    n = 6;%2*(m-2)^2-2;
+    restart = 0;
+    prob = 1;
     conv = 10^-14;
     para = 4; %%%%% ARG %%%%%%
     eqn = 'semirandom';
@@ -63,7 +64,7 @@ tic;
 iter = 0;
 Utemp = 0;
 for i = 1:size(F,1)
-    [Utemp1,iter1,vnext,Zn] = KPMloc(A,V(:,i),F(i,:),n,ht,conv,restart,algo,int);
+    [Utemp1,iter1,Hn,Vn,Zn] = KPMloc(A,V(:,i),F(i,:),n,ht,conv,restart,algo,int);
     Utemp = Utemp + Utemp1;
     iter = max(iter1,iter);
 end% End forloop
@@ -82,7 +83,7 @@ tempVF = 0;
 for i = 1:size(F,1)
     tempVF = tempVF + V(:,i)*F(i,:);
 end
-Utemp1 = int(A,tempVF,k,ht);
+Utemp1 = int(A,tempVF,ht);
 %Utemp1 = expintegrate(A,U0,k,ht);
 %Time = toc;
 
@@ -94,34 +95,22 @@ U1(vec,:) = Utemp1(1:length(A)/2,:);
 
 
 utdata(5) = max(max(abs(U-U1)));
-    %utdata(6) = abs(energy(A,Utemp-Utemp1));
-    %er = Utemp-Utemp1;
-figure(2);utdata(6) = energy(A,Utemp-Utemp1,T,alg,Zn,vnext);
+figure(5);plot(T,max(abs(U-U1)), 'k:.');
 
-figure(7);energy(A,Utemp1,T,alg,Zn,vnext);
+figure(7); plot(T,energy(A,Utemp,U0,alg,Hn,Vn,Zn,restart) - energy(A,Utemp1,U0),'k:.');
+utdata(6) = max(abs(energy(A,Utemp,U0,alg,Hn,Vn,Zn,restart) - energy(A,Utemp1,U0)));
 
+figure(2);plot(T,energy(A,Utemp,U0,alg,Hn,Vn,Zn,restart),'k:.')
+utdata(4) = max(abs(energy(A,Utemp,U0,alg,Hn,Vn,Zn,restart)));
 
-figure(5);plot(T,max(U-U1), 'k:.')
-    %J = [sparse((m-2)^2,(m-2)^2),speye((m-2)^2);-speye((m-2)^2),sparse((m-2)^2,(m-2)^2)];
-    %e2n = zeros(size(Zn,1),1); e2n(end) = 1;
-    %energyerror = zeros(1,k);
-    %for i = 1:k
-    %    energyerror(i) = 1/2*er(:,i)'*J*A*er(:,i) + er(:,i)'*J*vnext*e2n'*Zn(:,i);
-    %end
-    %utdata(6) = max(abs(energyerror));
-
-
-%utdata(3) = getError(U,correctsolution);
+figure(11);plot(T,max(abs(U-correctsolution)),'k:.');
 utdata(3) = max(max(abs(U-correctsolution)));
-utdata(4) = energy(A,Utemp,T);
 
 
-%figure(17);plot(energyerror)
-%utdata
-if 1
+if 0
     video(U-U1,m,k,0.05,eqn)
     %pause
-    %video(U1,m,k,0.05,eqn)
+    video(U1,m,k,0.05,eqn)
     %pause
     %V = zeros(m^2,k);
     %V(vec,:) = Utemp((m-2)^2+1:end,:);
@@ -136,8 +125,7 @@ if 1
     %energy(Jtilde*Atilde,Utemp);
 end
 end
-function [U,iter,vnext,Zn] = KPMloc(A,v,F,n,ht,conv,restart,alg,int)
-%Skriv en programdefinosjon her
+function [U,iter,Hn,Vn,Zn] = KPMloc(A,v,F,n,ht,conv,restart,alg,int)
 l = size(A,1);
 k = length(F);
 if max(abs(v)) == 0 || max(max(abs(F))) == 0
@@ -149,8 +137,7 @@ U = zeros(l,k);
 iter = 1;
 h = norm(v,2);
 [Vn,Hn,vnext,hnext] = alg(A,v,n,conv);
-%[Zn] = integrateloc(Hn,[h*F(1,:);sparse(length(Hn)-1,k)],T);
-[Zn] = int(Hn,[h*F(1,:);sparse(length(Hn)-1,k)],k,ht);
+[Zn] = int(Hn,[h*F(1,:);sparse(length(Hn)-1,k)],ht);
 
 ns = Vn*Zn;
 U = U + ns;
@@ -159,8 +146,7 @@ if restart
     while diff > conv
         h = hnext; v = vnext;
         [Vn,Hn,vnext,hnext] = alg(A,v,n,conv);
-        %[Zn] = integrateloc(Hn,[h*Zn(end,:);sparse(length(Hn)-1,k)],T);
-        [Zn] = int(Hn,[h*Zn(end,:);sparse(length(Hn)-1,k)],k,ht);
+        [Zn] = int(Hn,[h*Zn(end,:);sparse(length(Hn)-1,k)],ht);
         ns =  Vn*Zn;
         diff = max(max(abs(ns)));
         U = U + ns;

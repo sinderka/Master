@@ -24,7 +24,7 @@ iter = 1;
 h = norm(v,2);
 [Vn,Hn,vnext,hnext] = alg(A,v,n,conv);
 
-[Zn] = int(Hn,[h*F(1,:);sparse(length(Hn)-1,k)],k,ht);
+[Zn] = int(Hn,[h*F(1,:);sparse(length(Hn)-1,k)],ht);
 
 ns = Vn*Zn;
 U = U + ns;
@@ -33,7 +33,7 @@ if restart
     while diff > conv 
         h = hnext; v = vnext;
         [Vn,Hn,vnext,hnext] = alg(A,v,n,conv);
-        [Zn] = int(Hn,[h*Zn(end,:);sparse(length(Hn)-1,k)],k,ht);
+        [Zn] = int(Hn,[h*Zn(end,:);sparse(length(Hn)-1,k)],ht);
         ns =  Vn*Zn;
         diff = max(max(abs(ns)));
         U = U + ns;

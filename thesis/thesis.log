@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  11 DEC 2015 11:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  15 DEC 2015 19:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -916,7 +916,75 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_below_shortintertext_sep=\dimen154
 ) (./thesis.aux
 (./front.aux) (./preface.aux) (./acknowledgment.aux) (./summary.aux)
-(./chapter01.aux) (./chapter02.aux) (./chapter03.aux) (./chapter04.aux))
+(./chapter01.aux) (./chapter02.aux
+
+LaTeX Warning: Label `fig:errortrap' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:errortrap' multiply defined.
+
+
+LaTeX Warning: Label `fig:erroreul' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:erroreul' multiply defined.
+
+
+LaTeX Warning: Label `fig:errormid' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:errormid' multiply defined.
+
+) (./chapter03.aux
+
+LaTeX Warning: Label `fig:energytestrestart0' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:energytestrestart0' multiply defined.
+
+
+LaTeX Warning: Label `fig:energytestrestart1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:energytestrestart1' multiply defined.
+
+
+LaTeX Warning: Label `fig:energyarnrestart0' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:energyarnrestart0' multiply defined.
+
+
+LaTeX Warning: Label `fig:energyarnrestart1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:energyarnrestart1' multiply defined.
+
+
+LaTeX Warning: Label `fig:energytestrestart02' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:energytestrestart02' multiply defined.
+
+
+LaTeX Warning: Label `fig:energytestrestart12' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:energytestrestart12' multiply defined.
+
+
+LaTeX Warning: Label `fig:energyarnrestart1' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:energyarnrestart1' multiply defined.
+
+
+LaTeX Warning: Label `fig:energyarnrestart02' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:energyarnrestart02' multiply defined.
+
+) (./chapter04.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
@@ -934,14 +1002,12 @@ LaTeX Font Info:    ... okay on input line 35.
 LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 35.
 LaTeX Font Info:    Try loading font information for FML+futm on input line 35.
 
-
-(/usr/lib/texlive/texmf-dist/tex/latex/fourier/fmlfutm.fd
+ (/usr/lib/texlive/texmf-dist/tex/latex/fourier/fmlfutm.fd
 File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
 )
 LaTeX Font Info:    ... okay on input line 35.
 LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 35.
 LaTeX Font Info:    Try loading font information for FMS+futm on input line 35.
-
 
 (/usr/lib/texlive/texmf-dist/tex/latex/fourier/fmsfutm.fd
 File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
@@ -1063,7 +1129,7 @@ Package caption Info: End \AtBeginDocument code.
 \openout2 = `front.aux'.
 
  (./front.tex
-<fig/rams.pdf, id=68, 382.32837pt x 73.073pt>
+<fig/rams.pdf, id=76, 382.32837pt x 73.073pt>
 File: fig/rams.pdf Graphic file (type pdf)
  <use fig/rams.pdf>
 Package pdftex.def Info: fig/rams.pdf used on input line 8.
@@ -1220,385 +1286,516 @@ LaTeX Warning: `h' float specifier changed to `ht'.
  (./chapter02.tex
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 5--6
+Underfull \hbox (badness 10000) in paragraph at lines 5--8
 
  []
 
 
-Overfull \hbox (79.27417pt too wide) in paragraph at lines 10--18
+Overfull \hbox (79.27417pt too wide) in paragraph at lines 12--20
 [][]
  []
 
-<../MATLAB/fig/intconvtrap.jpg, id=246, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intconvtrap.jpg, id=256, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intconvtrap.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intconvtrap.jpg>
-Package pdftex.def Info: ../MATLAB/fig/intconvtrap.jpg used on input line 26.
+Package pdftex.def Info: ../MATLAB/fig/intconvtrap.jpg used on input line 28.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 28.
+(Font)              scaled to size 10.07397pt on input line 30.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 28.
+(Font)              scaled to size 7.63599pt on input line 30.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 28.
+(Font)              scaled to size 5.51999pt on input line 30.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 28.
+(Font)              scaled to size 10.07397pt on input line 30.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 28.
+(Font)              scaled to size 7.63599pt on input line 30.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 28.
+(Font)              scaled to size 5.51999pt on input line 30.
 
-<../MATLAB/fig/intconveul.jpg, id=247, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intconveul.jpg, id=257, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intconveul.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intconveul.jpg>
-Package pdftex.def Info: ../MATLAB/fig/intconveul.jpg used on input line 33.
+Package pdftex.def Info: ../MATLAB/fig/intconveul.jpg used on input line 35.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/intconvmid.jpg, id=248, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intconvmid.jpg, id=258, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intconvmid.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intconvmid.jpg>
-Package pdftex.def Info: ../MATLAB/fig/intconvmid.jpg used on input line 39.
-(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
-
-<../MATLAB/fig/energyovertimetrapezoidal.jpg, id=249, 1204.5pt x 903.375pt>
-File: ../MATLAB/fig/energyovertimetrapezoidal.jpg Graphic file (type jpg)
-
-<use ../MATLAB/fig/energyovertimetrapezoidal.jpg>
-Package pdftex.def Info: ../MATLAB/fig/energyovertimetrapezoidal.jpg used on in
-put line 52.
-(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
-
-<../MATLAB/fig/energyovertimeeuler.jpg, id=250, 1204.5pt x 903.375pt>
-File: ../MATLAB/fig/energyovertimeeuler.jpg Graphic file (type jpg)
-
-<use ../MATLAB/fig/energyovertimeeuler.jpg>
-Package pdftex.def Info: ../MATLAB/fig/energyovertimeeuler.jpg used on input li
-ne 58.
-(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
-
-<../MATLAB/fig/energyovertimemidpoint.jpg, id=251, 1204.5pt x 903.375pt>
-File: ../MATLAB/fig/energyovertimemidpoint.jpg Graphic file (type jpg)
-
-<use ../MATLAB/fig/energyovertimemidpoint.jpg>
-Package pdftex.def Info: ../MATLAB/fig/energyovertimemidpoint.jpg used on input
- line 63.
+Package pdftex.def Info: ../MATLAB/fig/intconvmid.jpg used on input line 41.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
  [9
 
 
 
- <../MATLAB/fig/intconvtrap.jpg> <../MATLAB/fig/intconveul.jpg> <../MATLAB/fig/
-intconvmid.jpg>]) [10 <../MATLAB/fig/energyovertimetrapezoidal.jpg> <../MATLAB/
-fig/energyovertimeeuler.jpg> <../MATLAB/fig/energyovertimemidpoint.jpg>]
+]
+<../MATLAB/fig/energyovertimetrapezoidal.jpg, id=269, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energyovertimetrapezoidal.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/energyovertimetrapezoidal.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energyovertimetrapezoidal.jpg used on in
+put line 56.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+
+<../MATLAB/fig/energyovertimeeuler.jpg, id=270, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energyovertimeeuler.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/energyovertimeeuler.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energyovertimeeuler.jpg used on input li
+ne 62.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+
+<../MATLAB/fig/energyovertimemidpoint.jpg, id=271, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energyovertimemidpoint.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/energyovertimemidpoint.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energyovertimemidpoint.jpg used on input
+ line 67.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+
+<../MATLAB/fig/errorovertimetrapezoidal.jpg, id=272, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/errorovertimetrapezoidal.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/errorovertimetrapezoidal.jpg>
+Package pdftex.def Info: ../MATLAB/fig/errorovertimetrapezoidal.jpg used on inp
+ut line 73.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+
+<../MATLAB/fig/errorovertimeeuler.jpg, id=273, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/errorovertimeeuler.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/errorovertimeeuler.jpg>
+Package pdftex.def Info: ../MATLAB/fig/errorovertimeeuler.jpg used on input lin
+e 79.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+
+<../MATLAB/fig/errorovertimemidpoint.jpg, id=274, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/errorovertimemidpoint.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/errorovertimemidpoint.jpg>
+Package pdftex.def Info: ../MATLAB/fig/errorovertimemidpoint.jpg used on input 
+line 84.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+) [10 <../MATLAB/fig/intconvtrap.jpg> <../MATLAB/fig/intconveul.jpg> <../MATLAB
+/fig/intconvmid.jpg> <../MATLAB/fig/energyovertimetrapezoidal.jpg> <../MATLAB/f
+ig/energyovertimeeuler.jpg> <../MATLAB/fig/energyovertimemidpoint.jpg> <../MATL
+AB/fig/errorovertimetrapezoidal.jpg> <../MATLAB/fig/errorovertimeeuler.jpg> <..
+/MATLAB/fig/errorovertimemidpoint.jpg>]
 \openout2 = `chapter03.aux'.
 
  (./chapter03.tex
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 4--5
+Underfull \hbox (badness 10000) in paragraph at lines 4--6
 
  []
 
-<../MATLAB/fig/compareEnergy.jpg, id=269, 1204.5pt x 903.375pt>
-File: ../MATLAB/fig/compareEnergy.jpg Graphic file (type jpg)
+<../MATLAB/fig/energytestrestart0.jpg, id=282, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energytestrestart0.jpg Graphic file (type jpg)
 
-<use ../MATLAB/fig/compareEnergy.jpg>
-Package pdftex.def Info: ../MATLAB/fig/compareEnergy.jpg used on input line 15.
-
+<use ../MATLAB/fig/energytestrestart0.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energytestrestart0.jpg used on input lin
+e 60.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/compareIter.jpg, id=270, 1204.5pt x 903.375pt>
-File: ../MATLAB/fig/compareIter.jpg Graphic file (type jpg)
+<../MATLAB/fig/energytestrestart1.jpg, id=283, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energytestrestart1.jpg Graphic file (type jpg)
 
-<use ../MATLAB/fig/compareIter.jpg>
-Package pdftex.def Info: ../MATLAB/fig/compareIter.jpg used on input line 21.
+<use ../MATLAB/fig/energytestrestart1.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energytestrestart1.jpg used on input lin
+e 66.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/errortestrestart0.jpg, id=284, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/errortestrestart0.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/errortestrestart0.jpg>
+Package pdftex.def Info: ../MATLAB/fig/errortestrestart0.jpg used on input line
+ 72.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/errortestrestart1.jpg, id=285, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/errortestrestart1.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/errortestrestart1.jpg>
+Package pdftex.def Info: ../MATLAB/fig/errortestrestart1.jpg used on input line
+ 78.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
  [11
 
 
 
- <../MATLAB/fig/compareEnergy.jpg> <../MATLAB/fig/compareIter.jpg>]
-<../MATLAB/fig/energytestrestart0.jpg, id=278, 1204.5pt x 903.375pt>
-File: ../MATLAB/fig/energytestrestart0.jpg Graphic file (type jpg)
-
-<use ../MATLAB/fig/energytestrestart0.jpg>
-Package pdftex.def Info: ../MATLAB/fig/energytestrestart0.jpg used on input lin
-e 34.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<../MATLAB/fig/energytestrestart1.jpg, id=279, 1204.5pt x 903.375pt>
-File: ../MATLAB/fig/energytestrestart1.jpg Graphic file (type jpg)
-
-<use ../MATLAB/fig/energytestrestart1.jpg>
-Package pdftex.def Info: ../MATLAB/fig/energytestrestart1.jpg used on input lin
-e 40.
-(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 47--48
+]
+Underfull \hbox (badness 10000) in paragraph at lines 87--88
 
  []
 
-<../MATLAB/fig/energyarnrestart0.jpg, id=281, 1204.5pt x 903.375pt>
+<../MATLAB/fig/energyarnrestart0.jpg, id=293, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energyarnrestart0.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energyarnrestart0.jpg>
 Package pdftex.def Info: ../MATLAB/fig/energyarnrestart0.jpg used on input line
- 54.
+ 94.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/energyarnrestart1.jpg, id=282, 1204.5pt x 903.375pt>
+<../MATLAB/fig/energyarnrestart1.jpg, id=294, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energyarnrestart1.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energyarnrestart1.jpg>
 Package pdftex.def Info: ../MATLAB/fig/energyarnrestart1.jpg used on input line
- 60.
+ 100.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--69
+<../MATLAB/fig/errorarnrestart0.jpg, id=295, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/errorarnrestart0.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/errorarnrestart0.jpg>
+Package pdftex.def Info: ../MATLAB/fig/errorarnrestart0.jpg used on input line 
+106.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/errorarnrestart1.jpg, id=296, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/errorarnrestart1.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/errorarnrestart1.jpg>
+Package pdftex.def Info: ../MATLAB/fig/errorarnrestart1.jpg used on input line 
+112.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+ [12 <../MATLAB/fig/energytestrestart0.jpg> <../MATLAB/fig/energytestrestart1.j
+pg> <../MATLAB/fig/errortestrestart0.jpg> <../MATLAB/fig/errortestrestart1.jpg>
+]
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
 
  []
 
-) [12 <../MATLAB/fig/energytestrestart0.jpg> <../MATLAB/fig/energytestrestart1.
-jpg> <../MATLAB/fig/energyarnrestart0.jpg> <../MATLAB/fig/energyarnrestart1.jpg
->] [13]
+<../MATLAB/fig/energytestrestart02.jpg, id=307, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energytestrestart02.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/energytestrestart02.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energytestrestart02.jpg used on input li
+ne 168.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/energytestrestart12.jpg, id=308, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energytestrestart12.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/energytestrestart12.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energytestrestart12.jpg used on input li
+ne 174.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/errortestrestart02.jpg, id=309, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/errortestrestart02.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/errortestrestart02.jpg>
+Package pdftex.def Info: ../MATLAB/fig/errortestrestart02.jpg used on input lin
+e 180.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/errortestrestart12.jpg, id=310, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/errortestrestart12.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/errortestrestart12.jpg>
+Package pdftex.def Info: ../MATLAB/fig/errortestrestart12.jpg used on input lin
+e 186.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+ [13 <../MATLAB/fig/energyarnrestart0.jpg> <../MATLAB/fig/energyarnrestart1.jpg
+> <../MATLAB/fig/errorarnrestart0.jpg> <../MATLAB/fig/errorarnrestart1.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 193--194
+
+ []
+
+<../MATLAB/fig/energyarnrestart02.jpg, id=318, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energyarnrestart02.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/energyarnrestart02.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energyarnrestart02.jpg used on input lin
+e 200.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/energyarnrestart12.jpg, id=319, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/energyarnrestart12.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/energyarnrestart12.jpg>
+Package pdftex.def Info: ../MATLAB/fig/energyarnrestart12.jpg used on input lin
+e 206.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/errorarnrestart02.jpg, id=320, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/errorarnrestart02.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/errorarnrestart02.jpg>
+Package pdftex.def Info: ../MATLAB/fig/errorarnrestart02.jpg used on input line
+ 212.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+
+<../MATLAB/fig/errorarnrestart12.jpg, id=321, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/errorarnrestart12.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/errorarnrestart12.jpg>
+Package pdftex.def Info: ../MATLAB/fig/errorarnrestart12.jpg used on input line
+ 218.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+ [14 <../MATLAB/fig/energytestrestart02.jpg> <../MATLAB/fig/energytestrestart12
+.jpg> <../MATLAB/fig/errortestrestart02.jpg> <../MATLAB/fig/errortestrestart12.
+jpg>])
+Underfull \hbox (badness 10000) in paragraph at lines 226--49
+
+ []
+
+[15 <../MATLAB/fig/energyarnrestart02.jpg> <../MATLAB/fig/energyarnrestart12.jp
+g> <../MATLAB/fig/errorarnrestart02.jpg> <../MATLAB/fig/errorarnrestart12.jpg>]
 \openout2 = `chapter04.aux'.
 
- (./chapter04.tex
+(./chapter04.tex
 Chapter 5.
-<../MATLAB/fig/resulttimem.jpg, id=297, 1204.5pt x 903.375pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 6--14
+
+ []
+
+<../MATLAB/fig/resulttimem.jpg, id=337, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/resulttimem.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/resulttimem.jpg>
-Package pdftex.def Info: ../MATLAB/fig/resulttimem.jpg used on input line 18.
+Package pdftex.def Info: ../MATLAB/fig/resulttimem.jpg used on input line 28.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/resulttimek.jpg, id=298, 1204.5pt x 903.375pt>
+<../MATLAB/fig/resulttimek.jpg, id=338, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/resulttimek.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/resulttimek.jpg>
-Package pdftex.def Info: ../MATLAB/fig/resulttimek.jpg used on input line 24.
+Package pdftex.def Info: ../MATLAB/fig/resulttimek.jpg used on input line 34.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
+ [16
 
-<../MATLAB/fig/resultiter.jpg, id=299, 1204.5pt x 903.375pt>
+
+
+]
+<../MATLAB/fig/resultiter.jpg, id=343, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/resultiter.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/resultiter.jpg>
-Package pdftex.def Info: ../MATLAB/fig/resultiter.jpg used on input line 37.
+Package pdftex.def Info: ../MATLAB/fig/resultiter.jpg used on input line 47.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [14
 
-
-
- <../MATLAB/fig/resulttimem.jpg> <../MATLAB/fig/resulttimek.jpg>]
-<../MATLAB/fig/resulterrorr.jpg, id=305, 1204.5pt x 903.375pt>
+<../MATLAB/fig/resulterrorr.jpg, id=344, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/resulterrorr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/resulterrorr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/resulterrorr.jpg used on input line 45.
+Package pdftex.def Info: ../MATLAB/fig/resulterrorr.jpg used on input line 55.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/resulterror.jpg, id=306, 1204.5pt x 903.375pt>
+<../MATLAB/fig/resulterror.jpg, id=345, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/resulterror.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/resulterror.jpg>
-Package pdftex.def Info: ../MATLAB/fig/resulterror.jpg used on input line 51.
+Package pdftex.def Info: ../MATLAB/fig/resulterror.jpg used on input line 61.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/resultenergyr.jpg, id=307, 1204.5pt x 903.375pt>
+<../MATLAB/fig/resultenergyr.jpg, id=346, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/resultenergyr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/resultenergyr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/resultenergyr.jpg used on input line 63.
+Package pdftex.def Info: ../MATLAB/fig/resultenergyr.jpg used on input line 73.
 
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/resultenergy.jpg, id=308, 1204.5pt x 903.375pt>
+<../MATLAB/fig/resultenergy.jpg, id=347, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/resultenergy.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/resultenergy.jpg>
-Package pdftex.def Info: ../MATLAB/fig/resultenergy.jpg used on input line 69.
+Package pdftex.def Info: ../MATLAB/fig/resultenergy.jpg used on input line 79.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [15 <../MATLAB/fig/resultiter.jpg> <../MATLAB/fig/resulterrorr.jpg> <../MATLAB
-/fig/resulterror.jpg> <../MATLAB/fig/resultenergyr.jpg> <../MATLAB/fig/resulten
-ergy.jpg>]
-<../MATLAB/fig/sresulttimem.jpg, id=317, 1204.5pt x 903.375pt>
+ [17 <../MATLAB/fig/resulttimem.jpg> <../MATLAB/fig/resulttimek.jpg> <../MATLAB
+/fig/resultiter.jpg> <../MATLAB/fig/resulterrorr.jpg> <../MATLAB/fig/resulterro
+r.jpg>]
+<../MATLAB/fig/sresulttimem.jpg, id=355, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/sresulttimem.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/sresulttimem.jpg>
-Package pdftex.def Info: ../MATLAB/fig/sresulttimem.jpg used on input line 89.
+Package pdftex.def Info: ../MATLAB/fig/sresulttimem.jpg used on input line 99.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/sresulttimek.jpg, id=318, 1204.5pt x 903.375pt>
+<../MATLAB/fig/sresulttimek.jpg, id=356, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/sresulttimek.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/sresulttimek.jpg>
-Package pdftex.def Info: ../MATLAB/fig/sresulttimek.jpg used on input line 95.
+Package pdftex.def Info: ../MATLAB/fig/sresulttimek.jpg used on input line 105.
+
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/sresultiter.jpg, id=319, 1204.5pt x 903.375pt>
+<../MATLAB/fig/sresultiter.jpg, id=357, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/sresultiter.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/sresultiter.jpg>
-Package pdftex.def Info: ../MATLAB/fig/sresultiter.jpg used on input line 108.
+Package pdftex.def Info: ../MATLAB/fig/sresultiter.jpg used on input line 118.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<../MATLAB/fig/sresulterrorr.jpg, id=320, 1204.5pt x 903.375pt>
+ [18 <../MATLAB/fig/resultenergyr.jpg> <../MATLAB/fig/resultenergy.jpg> <../MAT
+LAB/fig/sresulttimem.jpg> <../MATLAB/fig/sresulttimek.jpg>]
+<../MATLAB/fig/sresulterrorr.jpg, id=364, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/sresulterrorr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/sresulterrorr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/sresulterrorr.jpg used on input line 116
+Package pdftex.def Info: ../MATLAB/fig/sresulterrorr.jpg used on input line 126
 .
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/sresulterror.jpg, id=321, 1204.5pt x 903.375pt>
+<../MATLAB/fig/sresulterror.jpg, id=365, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/sresulterror.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/sresulterror.jpg>
-Package pdftex.def Info: ../MATLAB/fig/sresulterror.jpg used on input line 122.
+Package pdftex.def Info: ../MATLAB/fig/sresulterror.jpg used on input line 132.
 
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [16 <../MATLAB/fig/sresulttimem.jpg> <../MATLAB/fig/sresulttimek.jpg> <../MATL
-AB/fig/sresultiter.jpg>]
-<../MATLAB/fig/sresultenergyr.jpg, id=328, 1204.5pt x 903.375pt>
+
+<../MATLAB/fig/sresultenergyr.jpg, id=366, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/sresultenergyr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/sresultenergyr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/sresultenergyr.jpg used on input line 13
+Package pdftex.def Info: ../MATLAB/fig/sresultenergyr.jpg used on input line 14
 4.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/sresultenergy.jpg, id=329, 1204.5pt x 903.375pt>
+<../MATLAB/fig/sresultenergy.jpg, id=367, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/sresultenergy.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/sresultenergy.jpg>
-Package pdftex.def Info: ../MATLAB/fig/sresultenergy.jpg used on input line 140
+Package pdftex.def Info: ../MATLAB/fig/sresultenergy.jpg used on input line 150
 .
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-<../MATLAB/fig/vresulttimem.jpg, id=330, 1204.5pt x 903.375pt>
+ [19 <../MATLAB/fig/sresultiter.jpg> <../MATLAB/fig/sresulterrorr.jpg> <../MATL
+AB/fig/sresulterror.jpg> <../MATLAB/fig/sresultenergyr.jpg> <../MATLAB/fig/sres
+ultenergy.jpg>]
+<../MATLAB/fig/vresulttimem.jpg, id=375, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vresulttimem.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vresulttimem.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vresulttimem.jpg used on input line 155.
+Package pdftex.def Info: ../MATLAB/fig/vresulttimem.jpg used on input line 165.
 
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/vresulttimek.jpg, id=331, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vresulttimek.jpg, id=376, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vresulttimek.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vresulttimek.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vresulttimek.jpg used on input line 161.
+Package pdftex.def Info: ../MATLAB/fig/vresulttimek.jpg used on input line 171.
 
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [17 <../MATLAB/fig/sresulterrorr.jpg> <../MATLAB/fig/sresulterror.jpg> <../MAT
-LAB/fig/sresultenergyr.jpg> <../MATLAB/fig/sresultenergy.jpg>]
-<../MATLAB/fig/vresultiter.jpg, id=338, 1204.5pt x 903.375pt>
+
+<../MATLAB/fig/vresultiter.jpg, id=377, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vresultiter.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vresultiter.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vresultiter.jpg used on input line 174.
+Package pdftex.def Info: ../MATLAB/fig/vresultiter.jpg used on input line 184.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/vresulterrorr.jpg, id=339, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vresulterrorr.jpg, id=378, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vresulterrorr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vresulterrorr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vresulterrorr.jpg used on input line 182
+Package pdftex.def Info: ../MATLAB/fig/vresulterrorr.jpg used on input line 192
 .
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/vresulterror.jpg, id=340, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vresulterror.jpg, id=379, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vresulterror.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vresulterror.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vresulterror.jpg used on input line 188.
+Package pdftex.def Info: ../MATLAB/fig/vresulterror.jpg used on input line 198.
 
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [18 <../MATLAB/fig/vresulttimem.jpg> <../MATLAB/fig/vresulttimek.jpg> <../MATL
+ [20 <../MATLAB/fig/vresulttimem.jpg> <../MATLAB/fig/vresulttimek.jpg> <../MATL
 AB/fig/vresultiter.jpg>]
-<../MATLAB/fig/vresultenergyr.jpg, id=347, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vresultenergyr.jpg, id=386, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vresultenergyr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vresultenergyr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vresultenergyr.jpg used on input line 20
+Package pdftex.def Info: ../MATLAB/fig/vresultenergyr.jpg used on input line 21
 0.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/vresultenergy.jpg, id=348, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vresultenergy.jpg, id=387, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vresultenergy.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vresultenergy.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vresultenergy.jpg used on input line 206
+Package pdftex.def Info: ../MATLAB/fig/vresultenergy.jpg used on input line 216
 .
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/vsresulttimem.jpg, id=349, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vsresulttimem.jpg, id=388, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vsresulttimem.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vsresulttimem.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vsresulttimem.jpg used on input line 220
+Package pdftex.def Info: ../MATLAB/fig/vsresulttimem.jpg used on input line 230
 .
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/vsresulttimek.jpg, id=350, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vsresulttimek.jpg, id=389, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vsresulttimek.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vsresulttimek.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vsresulttimek.jpg used on input line 226
+Package pdftex.def Info: ../MATLAB/fig/vsresulttimek.jpg used on input line 236
 .
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [19 <../MATLAB/fig/vresulterrorr.jpg> <../MATLAB/fig/vresulterror.jpg> <../MAT
+ [21 <../MATLAB/fig/vresulterrorr.jpg> <../MATLAB/fig/vresulterror.jpg> <../MAT
 LAB/fig/vresultenergyr.jpg> <../MATLAB/fig/vresultenergy.jpg>]
-<../MATLAB/fig/vsresultiter.jpg, id=357, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vsresultiter.jpg, id=397, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vsresultiter.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vsresultiter.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vsresultiter.jpg used on input line 239.
+Package pdftex.def Info: ../MATLAB/fig/vsresultiter.jpg used on input line 249.
 
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/vsresulterrorr.jpg, id=358, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vsresulterrorr.jpg, id=398, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vsresulterrorr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vsresulterrorr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vsresulterrorr.jpg used on input line 24
+Package pdftex.def Info: ../MATLAB/fig/vsresulterrorr.jpg used on input line 25
 7.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/vsresulterror.jpg, id=359, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vsresulterror.jpg, id=399, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vsresulterror.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vsresulterror.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vsresulterror.jpg used on input line 253
+Package pdftex.def Info: ../MATLAB/fig/vsresulterror.jpg used on input line 263
 .
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
- [20 <../MATLAB/fig/vsresulttimem.jpg> <../MATLAB/fig/vsresulttimek.jpg> <../MA
+ [22 <../MATLAB/fig/vsresulttimem.jpg> <../MATLAB/fig/vsresulttimek.jpg> <../MA
 TLAB/fig/vsresultiter.jpg>]
-<../MATLAB/fig/vsresultenergyr.jpg, id=366, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vsresultenergyr.jpg, id=406, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vsresultenergyr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vsresultenergyr.jpg>
 Package pdftex.def Info: ../MATLAB/fig/vsresultenergyr.jpg used on input line 2
-65.
+75.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/vsresultenergy.jpg, id=367, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vsresultenergy.jpg, id=407, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vsresultenergy.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vsresultenergy.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vsresultenergy.jpg used on input line 27
+Package pdftex.def Info: ../MATLAB/fig/vsresultenergy.jpg used on input line 28
 1.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-) [21 <../MATLAB/fig/vsresulterrorr.jpg> <../MATLAB/fig/vsresulterror.jpg> <../
+) [23 <../MATLAB/fig/vsresulterrorr.jpg> <../MATLAB/fig/vsresulterror.jpg> <../
 MATLAB/fig/vsresultenergyr.jpg> <../MATLAB/fig/vsresultenergy.jpg>] (./thesis.b
-bl [22
+bl [24
 
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 70.
- [23]
+ [25]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 70.
  (./thesis.aux (./front.aux) (./preface.aux) (./acknowledgment.aux) (./summary.
 aux) (./chapter01.aux)
@@ -1606,14 +1803,18 @@ aux) (./chapter01.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 70.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 70.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 5689E9C964C5D0A6585883DD49D5BDDA;1029.
+(rerunfilecheck)             Checksum: E3989A25C4C202CB07CD21E2F62EB3B1;1152.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 70.
  ) 
 Here is how much of TeX's memory you used:
- 11004 strings out of 493089
- 161530 string characters out of 6137984
- 266083 words of memory out of 5000000
- 14007 multiletter control sequences out of 15000+600000
+ 11085 strings out of 493089
+ 164309 string characters out of 6137984
+ 266508 words of memory out of 5000000
+ 14068 multiletter control sequences out of 15000+600000
  96594 words of font info for 126 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,15n,44p,890b,680s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1628,10 +1829,10 @@ urier-ms.pfb></usr/lib/texlive/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb><
 ve/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/lib/texlive/texmf-dist/
 fonts/type1/adobe/utopia/putri8a.pfb></usr/lib/texlive/texmf-dist/fonts/type1/p
 ublic/cm-super/sftt1200.pfb>
-Output written on thesis.pdf (27 pages, 2827673 bytes).
+Output written on thesis.pdf (29 pages, 3518909 bytes).
 PDF statistics:
- 451 PDF objects out of 1000 (max. 8388607)
- 362 compressed objects within 4 object streams
- 140 named destinations out of 1000 (max. 500000)
- 334 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 492 PDF objects out of 1000 (max. 8388607)
+ 388 compressed objects within 4 object streams
+ 147 named destinations out of 1000 (max. 500000)
+ 415 words of extra memory for PDF output out of 10000 (max. 10000000)
 

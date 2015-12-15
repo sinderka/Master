@@ -51,6 +51,12 @@ for i = 1:ant2
         semilogx(p(2:end),utdata(i,:,data),char(linetype(i)))
     elseif strcmp(type,'semilogy')
         semilogy(p(2:end),utdata(i,:,data),char(linetype(i)))
+    elseif strcmp(type, 'table')
+        format long
+        data = [p(2:end);utdata(:,:,data)]'
+        format short
+        %save((strcat(name,'.mat')),'data')
+        return
     end
     hold on
 end

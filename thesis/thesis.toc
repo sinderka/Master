@@ -9,8 +9,10 @@
 \contentsline {section}{\numberline {2.4}Lingo}{7}{section.2.4}
 \contentsline {chapter}{\numberline {3}Compare time integration methods}{9}{chapter.3}
 \contentsline {chapter}{\numberline {4}Energy preservation for SLM }{11}{chapter.4}
-\contentsline {chapter}{\numberline {5}Some interesting results}{14}{chapter.5}
-\contentsline {section}{\numberline {5.1}Constant energy with the wave equation}{14}{section.5.1}
-\contentsline {section}{\numberline {5.2}Constant energy with the semirandom equation}{16}{section.5.2}
-\contentsline {section}{\numberline {5.3}Varying energy with the wave equation}{18}{section.5.3}
-\contentsline {section}{\numberline {5.4}Varying energy with the semirandom equation}{20}{section.5.4}
+\contentsline {section}{\numberline {4.1}Constant energy}{11}{section.4.1}
+\contentsline {section}{\numberline {4.2}Varying energy}{13}{section.4.2}
+\contentsline {chapter}{\numberline {5}Some interesting results}{16}{chapter.5}
+\contentsline {section}{\numberline {5.1}Constant energy with the wave equation}{16}{section.5.1}
+\contentsline {section}{\numberline {5.2}Constant energy with the semirandom equation}{18}{section.5.2}
+\contentsline {section}{\numberline {5.3}Varying energy with the wave equation}{20}{section.5.3}
+\contentsline {section}{\numberline {5.4}Varying energy with the semirandom equation}{22}{section.5.4}
