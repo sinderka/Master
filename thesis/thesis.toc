@@ -2,17 +2,19 @@
 \contentsline {section}{Acknowledgment}{ii}{section*.1}
 \contentsline {section}{Summary and Conclusions}{iii}{section*.2}
 \contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
-\contentsline {chapter}{\numberline {2}Explonation}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Projection methods}{3}{section.2.1}
-\contentsline {section}{\numberline {2.2}Zero initial condition}{5}{section.2.2}
-\contentsline {section}{\numberline {2.3}Discretization}{6}{section.2.3}
-\contentsline {section}{\numberline {2.4}Lingo}{7}{section.2.4}
-\contentsline {chapter}{\numberline {3}Compare time integration methods}{9}{chapter.3}
-\contentsline {chapter}{\numberline {4}Energy preservation for SLM }{11}{chapter.4}
-\contentsline {section}{\numberline {4.1}Constant energy}{11}{section.4.1}
-\contentsline {section}{\numberline {4.2}Varying energy}{13}{section.4.2}
-\contentsline {chapter}{\numberline {5}Some interesting results}{16}{chapter.5}
-\contentsline {section}{\numberline {5.1}Constant energy with the wave equation}{16}{section.5.1}
-\contentsline {section}{\numberline {5.2}Constant energy with the semirandom equation}{18}{section.5.2}
-\contentsline {section}{\numberline {5.3}Varying energy with the wave equation}{20}{section.5.3}
-\contentsline {section}{\numberline {5.4}Varying energy with the semirandom equation}{22}{section.5.4}
+\contentsline {chapter}{\numberline {2}Explonation}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Projection methods}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Zero initial condition}{6}{section.2.2}
+\contentsline {section}{\numberline {2.3}Discretization}{7}{section.2.3}
+\contentsline {section}{\numberline {2.4}Lingo}{8}{section.2.4}
+\contentsline {chapter}{\numberline {3}Compare time integration methods}{10}{chapter.3}
+\contentsline {chapter}{\numberline {4}Energy preservation for SLM }{12}{chapter.4}
+\contentsline {section}{\numberline {4.1}Constant energy}{13}{section.4.1}
+\contentsline {section}{\numberline {4.2}Varying energy}{15}{section.4.2}
+\contentsline {chapter}{\numberline {5}Some interesting results}{18}{chapter.5}
+\contentsline {section}{\numberline {5.1}The best restartvariable}{18}{section.5.1}
+\contentsline {section}{\numberline {5.2}de greiene med forskjellige K og k!}{19}{section.5.2}
+\contentsline {section}{\numberline {5.3}Constant energy with the wave equation}{20}{section.5.3}
+\contentsline {section}{\numberline {5.4}Constant energy with the semirandom equation}{22}{section.5.4}
+\contentsline {section}{\numberline {5.5}Varying energy with the wave equation}{24}{section.5.5}
+\contentsline {section}{\numberline {5.6}Varying energy with the semirandom equation}{26}{section.5.6}

@@ -3,7 +3,6 @@ function [ U ] = implicitmidpoint( A,F,ht )
 %indata
 % A: mxm matrix
 % F: mxk matrix
-% k: number of points in time
 % ht: step size in time
 %outdata
 % U: the solution

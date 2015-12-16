@@ -1,4 +1,4 @@
-function plottool(m,n,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save)
+function plottool(m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save)
 % a tool that helps make plotting easier. 
 %input
 % m: number of points in eqch spacial direction X
@@ -28,16 +28,16 @@ linetype = {'k:+','k:o','k:*','k:.','k:x','k:s','k:d','k:^','k:v','k:<','k:>','k
 
 
 
-[p,b] = getPandB(m,n,k,alg,int,restart,prob,conv,para);
-ant1 = length(p)-1; ant2 = length(b)-1;
-a = 1; b = 1; c = 1; d = 1; e = 1; f = 1; g = 1; h = 1; aa = 1;
+[p,bc] = getPandB(m,n,simtime,K,k,alg,int,restart,prob,conv,para);
+ant1 = length(p)-1; ant2 = length(bc)-1;
+a = 1; b = 1; c = 1; d = 1; e = 1; f = 1; g = 1; h = 1; aa = 1; bb = 1; cc = 1;
 utdata = zeros(ant2,ant1,6);
 for i = 1:ant1
-    [a0,b0,c0,d0,e0,f0,g0,h0,aa0] = addOne(m,n,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,-1);
-    a = max(1,a0*(a0-a)); b = max(1,b0*(b0-b)); c = max(1,c0*(c0-c)); d = max(1,d0*(d0-d)); e = max(1,e0*(e0-e)); f = max(1,f0*(f0-f)); g = max(1,g0*(g0-g)); h = max(1,h0*(h0-h)); aa = max(1,aa0*(aa0-aa));
+    [a0,b0,c0,d0,e0,f0,g0,h0,aa0,bb0,cc0] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,bb,cc,-1);
+    a = max(1,a0*(a0-a)); b = max(1,b0*(b0-b)); c = max(1,c0*(c0-c)); d = max(1,d0*(d0-d)); e = max(1,e0*(e0-e)); f = max(1,f0*(f0-f)); g = max(1,g0*(g0-g)); h = max(1,h0*(h0-h)); aa = max(1,aa0*(aa0-aa)); bb = max(1,bb0*(bb0-bb)); cc = max(1,cc0*(cc0-cc));
     for j = 1:ant2
-        [a,b,c,d,e,f,g,h,aa] = addOne(m,n,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,-2);
-        utdata(j,i,:) = solver(m(a),n(b),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e));
+        [a,b,c,d,e,f,g,h,aa,bb,cc] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,bb,cc,-2);
+        utdata(j,i,:) = solver(m(a),n(b),simtime(bb),K(cc),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e));
         %utdata(j,i,:) = energyTest(m(a),n(b),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e));
     end
 end
@@ -53,16 +53,17 @@ for i = 1:ant2
         semilogy(p(2:end),utdata(i,:,data),char(linetype(i)))
     elseif strcmp(type, 'table')
         format long
-        data = [p(2:end);utdata(:,:,data)]'
+        format shortEng
+        format compact
+        data = ([bc',[p(2:end);utdata(:,:,data)]])'
         format short
-        %save((strcat(name,'.mat')),'data')
         return
     end
     hold on
 end
 
 
-[ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,k,eqn,alg,int,restart,prob,conv,para,data);
+[ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data);
 %Må lage kode for legende!!!! Må jeg lage noe for tittel?
 %text(0.25,2.5,xlab,'Interpreter','latex')
 if help(1)
@@ -81,6 +82,9 @@ legend(char(leg));
 h = set(findall(gcf,'-property','FontSize'), 'Fontsize',18);
 set(h,'Location','Best');
 if save
+    pause(0.5)
+    drawnow
+    pause(0.5)
     location = strcat('/home/shomeb/s/sindreka/Master/MATLAB/fig/',name);
     saveas(gcf,location,'fig');
     saveas(gcf,location,'jpeg');
@@ -88,7 +92,7 @@ end
 hold off
 end
 
-function [p,b] = getPandB(m,n,k,alg,int,restart,prob,conv,para)
+function [p,b] = getPandB(m,n,simtime,K,k,alg,int,restart,prob,conv,para)
 if length(m) > 1
     if m(1) == -1
         p = m;
@@ -104,6 +108,23 @@ if length(n) > 1
         b = n;
     end
 end
+
+if length(simtime) > 1
+    if simetime(1) == -1
+        p = simtime;
+    elseif simtime(1) == -2
+        b = simtime;
+    end
+end
+
+if length(K) > 1
+    if K(1) == -1
+        p = K;
+    elseif K(1) == -2
+        b = K;
+    end
+end
+
 
 if length(k) > 1
     if k(1) == -1
@@ -157,20 +178,26 @@ if length(conv) > 1
 end
 end
 
-function [a,b,c,d,e,f,g,h,aa] = addOne(m,n,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,var)
+function [a,b,c,d,e,f,g,h,aa,bb,cc] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,bb,cc,var)
 if m(1) == var
     a = a + 1;
 end
 if n(1) == var
     b = b + 1;
 end
+if simtime(1) == var
+    bb = bb + 1;
+end
+if K(1) == var
+    cc = cc + 1;
+end
 if k(1) == var
     c = c + 1;
 end
-if para(1) == var
+if conv(1) == var
     d = d + 1;
 end
-if conv(1) == var
+if para(1) == var
     e = e + 1;
 end
 if alg(1) == var
@@ -187,7 +214,7 @@ if int(1) == var
 end
 end
 
-function [ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,k,eqn,alg,int,restart,prob,conv,para,data)
+function [ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data)
 if data == 1
     ylab = {'iterations'};
 elseif data == 2
@@ -205,6 +232,10 @@ if m(1) == -1
     xlab = {'m'};
 elseif n(1) == -1
     xlab = {'n'};
+elseif simtime(1) == -1
+    xlab = {'simulated time'};
+elseif K(1) == -1
+    xlab = {'K'};
 elseif k(1) == -1
     xlab = {'k'};
 elseif para(1) == -1
@@ -228,22 +259,32 @@ if m(1) == -2
     end
 elseif n(1) == -2
     for i = 1:ant2
-        stri = strcat('n=',num2str(m(i+1)));
+        stri = strcat('n=',num2str(n(i+1)));
+        leg(i) = {stri};
+    end
+elseif simtime(1) == -2
+    for i = 1:ant2
+        stri = strcat('simulated time: ',num2str(simtime(i+1)));
+        leg(i) = {stri};
+    end
+elseif K(1) == -2
+    for i = 1:ant2
+        stri = strcat('K: ',num2str(K(i+1)));
         leg(i) = {stri};
     end
 elseif k(1) == -2
     for i = 1:ant2
-        stri = strcat('k=',num2str(m(i+1)));
+        stri = strcat('k=',num2str(k(i+1)));
         leg(i) = {stri};
     end
 elseif para(1) == -2
     for i = 1:ant2
-        stri = strcat('# processors=',num2str(m(i+1)));
+        stri = strcat('# processors=',num2str(para(i+1)));
         leg(i) = {stri};
     end
 elseif conv(1) == -2
     for i = 1:ant2
-        stri = strcat('convergence criterion=',num2str(m(i+1)));
+        stri = strcat('convergence criterion=',num2str(conv(i+1)));
         leg(i) = {stri};
     end
 elseif alg(1) == -2
@@ -287,6 +328,14 @@ if length(m) == 1
 end
 if length(n) == 1
     stri = strcat('n=',num2str(n));
+    additionalInfo(end+1) = {stri};
+end
+if length(simtime) == 1
+    stri = strcat('simulated time: ',num2str(simtime));
+    additionalInfo(end+1) = {stri};
+end
+if length(K) == 1
+    stri = strcat('K=',num2str(simtime));
     additionalInfo(end+1) = {stri};
 end
 if length(k) == 1

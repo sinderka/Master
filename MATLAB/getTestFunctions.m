@@ -12,6 +12,8 @@ function [Ustart, V,F,correctsolution] = getTestFunctions( prob,X,T,eqn )
 
 %%% TODO
 % Legg til maxwell problemer
+% Første vektoren i V skal være initsialbetingelser! Uansett!!!!!!
+
 m = length(X); k = length(T);
 
 
@@ -133,7 +135,7 @@ elseif strcmp(eqn,'maxwell1D')
         %u0 = @(x) cos(pi*x);
         solE = @(t,x) sin(pi * x) * sin(pi * t);
         %solB = @(t,x) cos(pi * x) * cos(pi * t);
-        F = ones(1,k);
+        F = [ones(1,k);zeros(1,k)];
         %V = zeros(2*(m-2),1);
         %V(m-2) = 1/(2*hs); V(1) = -1/(2*hs);
         %F(2,:) = cos(pi*T);
@@ -173,7 +175,7 @@ elseif strcmp(eqn,'maxwell1D')
         U0(i-1) = u0(X(i));
     end
     Ustart = [U0;V0];
-    V = [Ustart];
+    V = [Ustart,zeros(2*m-2,1)];
     
 elseif strcmp(eqn,'maxwell3D')
     %fyll inn!
@@ -192,11 +194,13 @@ elseif strcmp(eqn,'semirandom')
         end
         
         if size(V,1) ~= 2*(m-2)^2
-            V = rand(2*(m-2)^2,1);
+            V = [zeros(2*(m-2)^2,1),rand(2*(m-2)^2,1)];
             save('semirandomV.mat','V');
         end
-        Ustart = V;
-        F = ones(1,k);
+        
+        Ustart = V(:,1);
+        
+        F = ones(2,k);
         correctsolution = sparse(m^2,k);
     elseif prob == 2
         try
@@ -206,7 +210,7 @@ elseif strcmp(eqn,'semirandom')
         end
         
         if size(V,1) ~= 2*(m-2)^2
-            V = rand(2*(m-2)^2,1);
+            V = [zeros(2*(m-2)^2,1),rand(2*(m-2)^2,1)];
             save('semirandomV.mat','V');
         end
         
@@ -215,9 +219,9 @@ elseif strcmp(eqn,'semirandom')
         catch
             F = -1;
         end
-        Ustart = V;
+        Ustart = V(:,1);
         if size(F,2) ~= k
-            F = rand(1,k);
+            F = [zeros(1,k);rand(1,k);];
             save('semirandomF.mat','F');
         end
 

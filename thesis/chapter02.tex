@@ -2,23 +2,25 @@
 \chapter{Compare time integration methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %!!!!!!!!!!!!!!!!!!!!!!!!Endre $y$( $u$ eller $U$) til noe annet!!!!!!!!!!!!!!!!!!!!\\
-!!!!!!!!!!!!!!!!!!!!!!!!Fiks midpoint rule!!!!!!!!!!!!!!!!!!!!\\
+!!!!!!!!!!!!!!!!!!!!!!!!Oppdater iterasjonsskjema for midpoint rule!!!!!!!!!!!!!!!!!!!!\\
 !!!!!!!!!!!!!!!!!!!!!!!!Legg til errorplott!!!!!!!!!!!!!!!!!!\\
 !!!!!!!!!!!!!!!!!!!!!!!!Se hvordan energien øker ved større tidslengde!!!!!!!!!!!\\
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Dimensjoner på $I$-er i integrasjonsmetodene?!!!!!!!!!!!!!!!!!!!!\\
 This section will be concerned with comparing the integrators. How well they estimate the error and energy will be the primary concern.\\
 
 The relevant integrators are trapezoidal rule, forward euler, and midpoint rule. The definition, and the iteration scheme, of the different methods are given in the table below. 
 
 \begin{table}
-\begin{tabular}{l l l}
-	Trapezoidal rule \cite{trapezoidal} & $U_{i+1} = U_{i}+h_t g \Big( \frac{1}{2}(t_i+t_{i+1}),\frac{1}{2}(U_i+U_{i+1}) \Big)$ & 
-	$U_{i+1} = (I- \frac{A h_t}{2})\backslash \Big(  U_i + \frac{h_t}{2} \big( A U_i+(F_{i+1}+F_i) \big)  \Big) $\\
-	Forward Euler \cite{forwardeuler} & $ U_{i+1} = U_i + h_t g ( t_i, U_i ) $ & $ U_{i+1} = U_i + h_t \big( A U_i + F_i \big) $ \\
-	Midpoint rule \cite{midpoint} & $U_{i+2} = y_i + h_t + g \Big(  t_{i+1} , \frac{1}{2}(U_i + U_{i+2})    \Big) $ & 
-	$U_{i+2} = ( I - A h_t )\backslash \Big( U_i + 2h_t \big( \frac{A U_i}{2} + F_{i+1} \big) \Big) $ \\
+\begin{tabular}{l l}
+	Trapezoidal rule \cite{trapezoidal} & $U_{i+1} = U_{i}+h_t g \Big( \frac{1}{2}(t_i+t_{i+1}),\frac{1}{2}(U_i+U_{i+1}) \Big)$
+	\\ & $U_{i+1} = (I- \frac{A h_t}{2}) ^{-1} \Big(  U_i + \frac{h_t}{2} \big( A U_i+(F_{i+1}+F_i) \big)  \Big) $\\
+	Forward Euler \cite{forwardeuler} & $ U_{i+1} = U_i + h_t g ( t_i, U_i ) $ \\ & $ U_{i+1} = U_i + h_t \big( A U_i + F_i \big) $ \\
+	Midpoint rule \cite{midpoint} & $U_{i+1} = U_i + h_t + g \Big(  t_{i+\frac{1}{2}} , \frac{1}{2}(U_i + U_{i+1})    \Big) $ \\ & 
+	$U_{i+\frac{1}{2}} = U_i + \frac{h_t}{2} ( A U_i + F_i )$ \\ &
+    $U_{i+1} = (I-\frac{A h_t}{2}) ^{-1} (U_{i+\frac{1}{2}} + \frac{h_t}{2} F_{i+ \frac{1}{2}})$
 \end{tabular}
 \label{tab:intmet}
-\caption{ Proposed methods for integrating in time. A problem that arises with the midpoint rule is the need to know $F_{i+\frac{1}{2}}$, this is solved by doubling the step size. Er denne tabellen fin nok?}
+\caption{ Proposed methods for integrating in time. Note that since the midpoint rule uses $F_{i+\frac{1}{2}}$ and because of the restart, we need to save twice as many points in time for midpoint rule, as for the others !!!!!!Skriv noe om hva dette betyr!!!. Er denne tabellen fin nok?}
 \end{table}
 
 Convergence of the different methods are shown in figure \ref{fig:intconv}

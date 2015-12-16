@@ -1,9 +1,10 @@
-function video(U,m,k,T,eqn)
+function video(U,m,T,eqn)
 figure(1)
 if max(max(U)) == min(min(U))
     display('Something went wrong with the video!')
     return
 end
+k = size(U,2);
 
 if strcmp(eqn,'maxwell1D')
     for i = 1:k

@@ -22,59 +22,71 @@ with $ e_r = u-u_n $ (analytical solution minus approximated solution) and $v_{\
 %\end{figure}
 
 
-!!!!!!!!!!!!!!!!!!!!!!!Dette skal være en tabell!!!!!!!!!!!!!!!!!!!\\
-\begin{table}
-\centering
-\begin{tabular}{l l l}
-\texttt{restart} & Arnoldi & SLM  \\
-0 & 0.110487355414080 & 0.000000000203727 \\
-1 & 0.000000000116415 & 0.000000000203727 \\
-Iterations & 7 & 6 \\
-\end{tabular}
-\caption{!!!!!SKRIV NOE!!!!!!!!!!}
-\label{tab:SLMCE}
-\end{table}
-
-%\begin{figure}[H]
-%        \centering
-%        \begin{subfigure}[b]{0.45\textwidth}
-%                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy.jpg}
-%                \caption{ The difference in energy with and without restart. }
-%                \label{fig:compareEnergy}
-%        \end{subfigure}
-%        ~
-%        \begin{subfigure}[b]{0.45\textwidth}
-%                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter.jpg}
-%                \caption{ The number of iterations performed with and without restarting.  }
-%                \label{fig:compareIter}
-%        \end{subfigure}
-%        \caption{ The figure shows how the different methods change the energy with and without restarting.  }
-%        \label{fig:compare}
-%\end{figure}
-
-The figures above implies that restarting the SLM does indeed not change the energy. But for KPM it changes quite a bit. 
+%!!!!!!!!!!!!!!!!!!!!!!!Dette skal være en tab%ell!!!!!!!!!!!!!!!!!!!\\
+%\begin{table}
+%\centering
+%\begin{tabular}{l l l}
+%\texttt{restart} & Arnoldi & SLM  \\
+%0 & 0.110487355414080 & 0.000000000203727 \\
+%1 & 0.000000000116415 & 0.000000000203727 \\
+%Iterations & 7 & 6 \\
+%\end{tabular}
+%\caption{!!!!!SKRIV NOE!!!!!!!!!!}
+%\label{tab:SLMCE}
+%\end{table}
 
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy.jpg}
+                \caption{ The difference in energy with and without restart. }
+                \label{fig:compareEnergy}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter.jpg}
+                \caption{ The number of iterations performed with and without restarting.  }
+                \label{fig:compareIter}
+        \end{subfigure}
+        \caption{ The figure shows how the different methods change the energy with and without restarting.  }
+        \label{fig:compare}
+\end{figure}
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Det bildene under her skal også ha $\epsilon =$1e-6(eller noe) !!!!!!!!!!!!!!!!!!\\
+The figures above implies that restarting the SLM does indeed not change the energy. But for KPM it changes quite a bit. 
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/energytestrestart0.jpg}
                 \caption{ Without restart. }
                 \label{fig:energytestrestart0}
         \end{subfigure}
         ~
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energytestrestart2.jpg}
+                \caption{ With restart, the number of iterations $= x$ }
+                \label{fig:energytestrestart2}
+        \end{subfigure}
+        ~
+		\begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/energytestrestart1.jpg}
                 \caption{ With restart, the number of iterations $= 10$ }
                 \label{fig:energytestrestart1}
         \end{subfigure}
         
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart0.jpg}
                 \caption{ Without restart. }
                 \label{fig:energytestrestart0}
         \end{subfigure}
         ~
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart2.jpg}
+                \caption{ With restart, the number of iterations $= x$ }
+                \label{fig:energytestrestart2}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart1.jpg}
                 \caption{ With restart, the number of iterations $= 10$ }
                 \label{fig:energytestrestart1}
@@ -90,25 +102,37 @@ The figures below shows the same as figure \ref{fig:energytestrestart}, but with
 
 \begin{figure}[H]
         \centering
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/energyarnrestart0.jpg}
                 \caption{  Without restart. }
                 \label{fig:energyarnrestart0}
         \end{subfigure}%
         ~
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energyarnrestart2.jpg}
+                \caption{ With restart, the number of iterations $ = 4$ }
+                \label{fig:energyarnrestart2}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/energyarnrestart1.jpg}
                 \caption{ With restart, the number of iterations $ = 11$ }
                 \label{fig:energyarnrestart1}
         \end{subfigure}
         
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart0.jpg}
                 \caption{  Without restart. }
                 \label{fig:energyarnrestart0}
         \end{subfigure}%
         ~
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart2.jpg}
+                \caption{ With restart, the number of iterations $ = 4$ }
+                \label{fig:energyarnrestart2}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart1.jpg}
                 \caption{ With restart, the number of iterations $ = 11$ }
                 \label{fig:energyarnrestart1}
@@ -123,7 +147,7 @@ When comparing figure \ref{fig:energytestrestart0} and \ref{fig:energytestrestar
 
 %!!!!!!!!!!!!!!!!!!!!!!!ER dette overbevisende nok?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
 \section{Varying energy}
-
+!!!!!!!!!!!!!!!!!!Figurene her fungerer ikke!!!!!!!!!!!!!!!!!!!!!!!\\
 %\begin{figure}
 %	\centering
 %	\includegraphics[width=0.45 \textwidth]{../MATLAB/fig/semirandomenergy2.jpg}
@@ -131,58 +155,70 @@ When comparing figure \ref{fig:energytestrestart0} and \ref{fig:energytestrestar
 %	\label{fig:semirandomenergy1}
 %\end{figure}
 
-\begin{table}
-\centering
-\begin{tabular}{l l l}
-\texttt{restart} & Arnoldi & SLM  \\
-0 & 0.008206143327698 & 0.004387334709463 \\
-1 & 0.000000000058208 & 0.000000000014552 \\
-Iterations & 7 & 6 \\
-\end{tabular}
-\caption{!!!!!!!!!!!!!!!!SKRIV NOE!!!!!!!!!!!!!!!!\\!!!!!!!!Formater tallene penere!!!!!!!!}
-\label{tab:SLMVE}
-\end{table}
+%\begin{table}
+%\centering
+%\begin{tabular}{l l l}
+%\texttt{restart} & Arnoldi & SLM  \\
+%0 & 0.008206143327698 & 0.004387334709463 \\
+%1 & 0.000000000058208 & 0.000000000014552 \\
+%Iterations & 7 & 6 \\
+%\end{tabular}
+%\caption{!!!!!!!!!!!!!!!!SKRIV NOE!!!!!!!!!!!!!!!!\\!!!!!!!!Formater tallene penere!!!!!!!!}
+%\label{tab:SLMVE}
+%\end{table}
 
-%\begin{figure}[H]
-%        \centering
-%        \begin{subfigure}[b]{0.45\textwidth}
-%                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy2.jpg}
-%                \caption{ The difference in energy with and without restart. }
-%                \label{fig:compareEnergy}
-%        \end{subfigure}
-%        ~
-%        \begin{subfigure}[b]{0.45\textwidth}
-%                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter2.jpg}
-%                \caption{ The number of iterations performed with and without restarting.  }
-%                \label{fig:compareIter}
-%        \end{subfigure}
-%        \caption{ The figure shows how the different methods change the energy with and without restarting.  }
-%        \label{fig:compare}
-%\end{figure}
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy2.jpg}
+                \caption{ The difference in energy with and without restart. }
+                \label{fig:compareEnergy}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter2.jpg}
+                \caption{ The number of iterations performed with and without restarting.  }
+                \label{fig:compareIter}
+        \end{subfigure}
+        \caption{ The figure shows how the different methods change the energy with and without restarting.  }
+        \label{fig:compare}
+\end{figure}
 
 The figures above implies that restarting the SLM does indeed not change the energy. But for KPM it changes quite a bit. 
 
 \begin{figure}[H]
         \centering
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/energytestrestart02.jpg}
                 \caption{ Without restart. }
                 \label{fig:energytestrestart02}
         \end{subfigure}
         ~
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energytestrestart22.jpg}
+                \caption{ With restart, the number of iterations $= 4$ }
+                \label{fig:energytestrestart22}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/energytestrestart12.jpg}
                 \caption{ With restart, the number of iterations $= 9$ }
                 \label{fig:energytestrestart12}
         \end{subfigure}
         
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart02.jpg}
                 \caption{ Without restart. }
                 \label{fig:energytestrestart02}
         \end{subfigure}
         ~
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart22.jpg}
+                \caption{ With restart, the number of iterations $= 4$ }
+                \label{fig:energytestrestart22}
+        \end{subfigure}
+        ~
+		\begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart12.jpg}
                 \caption{ With restart, the number of iterations $= 9$ }
                 \label{fig:energytestrestart12}
@@ -196,25 +232,37 @@ The figures below shows the same as figure \ref{fig:energytestrestart2}, but wit
 
 \begin{figure}[H]
         \centering
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/energyarnrestart02.jpg}
                 \caption{  Without restart. }
                 \label{fig:energyarnrestart02}
         \end{subfigure}%
         ~
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energyarnrestart22.jpg}
+                \caption{ With restart, the number of iterations $ = 4$ }
+                \label{fig:energyarnrestart22}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/energyarnrestart12.jpg}
                 \caption{ With restart, the number of iterations $ = 11$ }
-                \label{fig:energyarnrestart1}
+                \label{fig:energyarnrestart12}
         \end{subfigure}
         
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart02.jpg}
                 \caption{  Without restart. }
                 \label{fig:energyarnrestart02}
         \end{subfigure}%
         ~
-        \begin{subfigure}[b]{0.45\textwidth}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart22.jpg}
+                \caption{ With restart, the number of iterations $ = 4$ }
+                \label{fig:energyarnrestart22}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart12.jpg}
                 \caption{ With restart, the number of iterations $ = 11$ }
                 \label{fig:energyarnrestart12}
