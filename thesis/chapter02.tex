@@ -2,10 +2,11 @@
 \chapter{Compare time integration methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %!!!!!!!!!!!!!!!!!!!!!!!!Endre $y$( $u$ eller $U$) til noe annet!!!!!!!!!!!!!!!!!!!!\\
-!!!!!!!!!!!!!!!!!!!!!!!!Oppdater iterasjonsskjema for midpoint rule!!!!!!!!!!!!!!!!!!!!\\
+%!!!!!!!!!!!!!!!!!!!!!!!!Oppdater iterasjonsskjema for midpoint rule!!!!!!!!!!!!!!!!!!!!\\
 !!!!!!!!!!!!!!!!!!!!!!!!Legg til errorplott!!!!!!!!!!!!!!!!!!\\
 !!!!!!!!!!!!!!!!!!!!!!!!Se hvordan energien øker ved større tidslengde!!!!!!!!!!!\\
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!Dimensjoner på $I$-er i integrasjonsmetodene?!!!!!!!!!!!!!!!!!!!!\\
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Teste på problemer med ikke konstant energi!!!!!!!!!!!!!!!!!!!!!!\\
 This section will be concerned with comparing the integrators. How well they estimate the error and energy will be the primary concern.\\
 
 The relevant integrators are trapezoidal rule, forward euler, and midpoint rule. The definition, and the iteration scheme, of the different methods are given in the table below. 
@@ -92,3 +93,42 @@ Convergence of the different methods are shown in figure \ref{fig:intconv}
         \label{fig:error}
 \end{figure}
 After looking at figure \ref{fig:error} it is easy to conclude that trapezoidal rule outperforms the other two integration methods.
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energychangtimetrapezoidal.jpg}
+                \caption{  }
+                \label{fig:errortrapc}
+        \end{subfigure}%
+        ~
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energychangtimeeuler.jpg}
+                \caption{  }
+                \label{fig:erroreulc}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energychangtimemidpoint.jpg}
+                \caption{  }
+                \label{fig:errormicd}
+        \end{subfigure}
+        
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorchangtimetrapezoidal.jpg}
+                \caption{  }
+                \label{fig:errortrapc}
+        \end{subfigure}%
+        ~
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorchangtimeeuler.jpg}
+                \caption{  }
+                \label{fig:erroreulc}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorchangtimemidpoint.jpg}
+                \caption{  }
+                \label{fig:errormidc}
+        \end{subfigure}
+        \caption{Figure of the difference in energy at a point in time. It is clear that only trapezoidal rule gives a suitable approximation of the error. Forward euler has an linearly increasing energy, while the midpoint rule gives periodic energy.}
+        \label{fig:error}
+\end{figure}
