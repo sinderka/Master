@@ -52,15 +52,16 @@ if strcmp(eqn,'heat') % Sjekk!!!
         sol = @(t,x,y)sin(x*y*t)*(x-1)*(y-1);
         f = @(t,x,y) t^2*(x-1)*(y-1)*y^2*sin(t*x*y)-2*t*(y-1)*y*cos(t*x*y)+(x-1)*x*(y-1)*y*cos(t*x*y)-t*(x-1)*x*(2*cos(t*x*y)-t*x*(y-1)*sin(t*x*y));
         V = speye((m-2)^2);
-        F = getSolution(f,X,T);
+        F = getSolution(X,T,f);
         F = F(vec,:);
     end
     Ustart = getInitial(u0,X);
     V =  [Ustart,V]; F = [ones(1,k);F];
-    correctsolution = getSolution(sol,X,T);
-elseif strcmp(eqn,'wave')
+    correctsolution = getSolution(X,T,sol);
+elseif strcmp(eqn,'wave') % Kun problem 1 og 2 fungerer
     if prob == 1
-        sol = @(t,x,y) sin(pi*x)*sin(pi*y)*cos(sqrt(2)*pi*t);
+        sol1 = @(t,x,y)  sin(pi*x)*sin(pi*y)*cos(sqrt(2)*pi*t);
+        sol2 = @(t,x,y) -sin(pi*x)*sin(pi*y)*sqrt(2)*pi*sin(sqrt(2)*pi*t);
         u0 = @(x,y) sin(pi*x)*sin(pi*y);
         v0 = @(x,y) 0;
         v1 = @(x,y) 0; f1 = @(t) 0;
@@ -68,7 +69,8 @@ elseif strcmp(eqn,'wave')
         V = [[sparse((m-2)^2,1);getV(v1,X)],[sparse((m-2)^2,1);getV(v2,X)]];
         F = [getTime(f1,T);getTime(f2,T)];
     elseif prob == 2
-        sol = @(t,x,y) (x-1)*x*(y-1)*y*(t^2-t+1);
+        sol1 = @(t,x,y) (x-1)*x*(y-1)*y*(t^2-t+1);
+        sol2 = @(t,x,y) (x-1)*x*(y-1)*y*(2*t-1);
         u0 = @(x,y) (x-1)*x*(y-1)*y;
         v0 = @(x,y) -(x-1)*x*(y-1)*y;
         v1 = @(x,y) (x-1)*x*(y-1)*y; f1 = @(t) 1;
@@ -76,7 +78,8 @@ elseif strcmp(eqn,'wave')
         V = [[sparse((m-2)^2,1);getV(v1,X)],[sparse((m-2)^2,1);getV(v2,X)]];
         F = [getTime(f1,T);getTime(f2,T)];
     elseif prob == 3
-        sol = @(t,x,y) sin(pi*x)*y*(y-1)*(t^2+1);
+        sol1 = @(t,x,y) sin(pi*x)*y*(y-1)*(t^2+1);
+        sol2 = @(t,x,y) sin(pi*x)*y*(y-1)*(2*t);
         u0 = @(x,y) sin(pi*x)*y*(y-1);
         v0 = @(x,y) 0;
         v1 = @(x,y) 2*sin(pi*x)*y*(y-1); f1 = @(t) 1;
@@ -125,8 +128,8 @@ elseif strcmp(eqn,'wave')
     
     Ustart = [getInitial(u0,X);getInitial(v0,X)];
     V =  [Ustart,V]; F = [ones(1,k);F];
-    correctsolution = getSolution(sol,X,T);
-elseif strcmp(eqn,'maxwell1D')
+    correctsolution = getSolution(X,T,sol1,sol2);
+elseif strcmp(eqn,'maxwell1D') % Må sjekkes
     if prob == 1
         u0 = @(x) 0;
         v0 = @(x) cos(pi*x);
@@ -134,7 +137,7 @@ elseif strcmp(eqn,'maxwell1D')
         %v0 = @(x) sin(pi*x);
         %u0 = @(x) cos(pi*x);
         solE = @(t,x) sin(pi * x) * sin(pi * t);
-        %solB = @(t,x) cos(pi * x) * cos(pi * t);
+        solB = @(t,x) cos(pi * x) * cos(pi * t);
         F = [ones(1,k);zeros(1,k)];
         %V = zeros(2*(m-2),1);
         %V(m-2) = 1/(2*hs); V(1) = -1/(2*hs);
@@ -144,7 +147,7 @@ elseif strcmp(eqn,'maxwell1D')
         for j = 1:k
             for i = 1:m
                 correctsolution(i,j) = solE(T(j),X(i));
-                %correctsolution(m+i,j) = solB(T(j),X(i));
+                correctsolution(m+i,j) = solB(T(j),X(i));
             end
         end
         %     elseif prob == 2
@@ -171,21 +174,21 @@ elseif strcmp(eqn,'maxwell1D')
         V0(i) = v0(X(i));
     end
     
-    for i = vec
+    for i = 2:m-1
         U0(i-1) = u0(X(i));
     end
     Ustart = [U0;V0];
     V = [Ustart,zeros(2*m-2,1)];
     
-elseif strcmp(eqn,'maxwell3D')
+elseif strcmp(eqn,'maxwell3D') % uferdig
     %fyll inn!
     
-elseif strcmp(eqn,'random')
+elseif strcmp(eqn,'random') % ubrukelig
     Ustart = rand(2*(m-2)^2,1);
     V = Ustart;
     F = ones(1,k);
-    correctsolution = sparse(m^2,k);
-elseif strcmp(eqn,'semirandom')
+    correctsolution = sparse(2*m^2,k);
+elseif strcmp(eqn,'semirandom') % Kjenner ikke løsningen på problemet den løser
     if prob == 1
         try
             load('semirandomV.mat','V');
@@ -201,7 +204,7 @@ elseif strcmp(eqn,'semirandom')
         Ustart = V(:,1);
         
         F = ones(2,k);
-        correctsolution = sparse(m^2,k);
+        correctsolution = sparse(2*m^2,k);
     elseif prob == 2
         try
             load('semirandomV.mat','V');
@@ -214,7 +217,7 @@ elseif strcmp(eqn,'semirandom')
             save('semirandomV.mat','V');
         end
         
-        try 
+        try
             load('semirandomF.mat','F')
         catch
             F = -1;
@@ -224,18 +227,31 @@ elseif strcmp(eqn,'semirandom')
             F = [zeros(1,k);rand(1,k);];
             save('semirandomF.mat','F');
         end
-
-        correctsolution = sparse(m^2,k);
+        
+        correctsolution = sparse(2*m^2,k);
     end
     
 end
 
-    function correctsolution = getSolution(sol,X,T)
-        correctsolution = zeros(m^2,k);
-        for j = 1:k
-            for i = 1:m
-                for l = 1:m
-                    correctsolution(l+(i-1)*m,j) = sol(T(j),X(i),X(l));
+    function correctsolution = getSolution(X,T,sol1,sol2)
+        
+        if nargin == 4
+            correctsolution = zeros(2*m^2,k);
+            for j = 1:k
+                for i = 1:m
+                    for l = 1:m
+                        correctsolution(l+(i-1)*m,j) = sol1(T(j),X(i),X(l));
+                        correctsolution(m^2+l+(i-1)*m,j)=sol2(T(j),X(i),X(l));
+                    end
+                end
+            end
+        else
+            correctsolution = zeros(m^2,k);
+            for j = 1:k
+                for i = 1:m
+                    for l = 1:m
+                        correctsolution(l+(i-1)*m,j) = sol1(T(j),X(i),X(l));
+                    end
                 end
             end
         end
@@ -247,7 +263,11 @@ end
                 U0(i+(j-1)*m,1) = u0(X(j),X(i));
             end
         end
-        U0 = U0(vec);
+        if strcmp(eqn,'wave')
+            U0 = U0(vec(1:length(vec)/2));
+        else
+            U0 = U0(vec);
+        end
     end
     function F = getTime(f,T)
         F = zeros(1,k);
@@ -262,6 +282,11 @@ end
                 V0(i+(j-1)*m,1) = v(X(j),X(i));
             end
         end
-        V0 = V0(vec);
+        if strcmp(eqn,'wave')
+            V0 = V0(vec(1:length(vec)/2)); % denne lager problemer senere!
+        else
+            V0 = V0(vec);
+        end
+        
     end
 end

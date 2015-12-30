@@ -29,17 +29,17 @@ function utdata = solver(m,n,simtime,K,k,eqn,alg,integrator,restart,prob,conv,pa
 %%% Initiell data
 if nargin < 10
     m = 20;
-    simtime = 3; %liste med "k" = [simtime,K,k ]; ?
-    K = 3;
+    simtime = 10;
+    K = 2;
     k = 20;
     n = 6;%2*(m-2)^2;
     restart = 1;
-    prob = 2;
+    prob = 1;
     conv = 10^-14;
     para = 4; %%%%% If need be %%%%%%
-    eqn = 'semirandom';
-    alg = 1;
-    integrator = 1;
+    eqn = 'wave';
+    alg = 2;
+    integrator = 3;
 end
 
 %%%% lage en funksjon som tar seg av dette? Og alt tilknyttet dette?
@@ -143,40 +143,45 @@ if alg ~= 3
     utdata(5) = max(max(abs(U-U1)));
     figure(5);plot(T,max(abs(U-U1)), 'k:.')
     
-    figure(7); plot(T,energy(A,Utemp-Utemp1,U0),'k:.');
-    utdata(6) = max(abs(energy(A,Utemp-Utemp1,U0)));
+    figure(7); plot(T,energy(A,U(vec,:)-U1(vec,:),U0),'k:.');
+    utdata(6) = max(abs(energy(A,U(vec,:)-U1(vec,:),U0)));
 else
     utdata(1) = 0;
     utdata(2) = Time;
     utdata(5) = -1;
     utdata(6) = -1;
-    Utemp = Utemp1;
     U = U1;
 end
 
 
 utdata(3) = max(max(abs(U-correctsolution)));
-figure(11); plot(T,max(abs(U-correctsolution)),'k:.');
-
-figure(2); plot(T,energy(A,Utemp,U0),'k:.');
-utdata(4) = max(abs(energy(A,Utemp,U0)));
+figure(11); plot(T,max((U-correctsolution)),'k:.');
 
 
-figure(11);plot(T,max(abs(U-correctsolution)),'k:.');
+if (prob == 1)
+    utdata(4) = abs(max(abs(energy(A,U(vec,:),U0))));
+    figure(2); plot(T,energy(A,U(vec,:),U0),'k:.');
+else
+    figure(2); plot(T,energy(A,U(vec,:)-correctsolution(vec,:),U0),'k:.');
+    utdata(4) = abs(max(abs(energy(A,U(vec,:)-correctsolution(vec,:),U0))));
+end
+
+%energy(A,U(vec,:)-correctsolution(vec,:),U0)
+%energy(A,U(vec,:),U0)
+%energy(A,correctsolution(vec,:),U0)
+
+figure(11);plot(T,max((U-correctsolution)),'k:.');
 
 
 % Plot
 if 0
-    %V = zeros(m^2,k);
-    %V(vec,:) = Utemp((m-2)^2+1:end,:);
-    %V(vec,:) = V(vec,:) + U0(vec)*ones(1,k);
-    video(U,m,0.05,eqn)
-    video(U1,m,0.05,eqn)
-    video(U-U1,m,0.05,eqn)
-    %video(V,m,0.05)
-    %video(correctsolution,m,0.05,eqn)
-    video(U-correctsolution,m,0.05,eqn)
-    video(U1-correctsolution,m,0.05,eqn)
-    %energy(Jtilde*Atilde,Utemp);
+    %video(U(m^2+1:end,:),m,0.05,eqn)
+    %video(U(1:m^2,:),m,0.05,eqn)
+    %video(U1(m^2+1:end,:),m,0.05,eqn)
+    %video(U(1:m^2,:)-U1(1:m^2,:),m,0.05,eqn)
+    %video(U(m^2+1:end,:)-correctsolution(m^2+1:end,:),m,0.05,eqn)
+    %video(U(m^2+1:end,:),m,0.05,eqn)
+    %video(correctsolution(m^2+1:end,:)-U(m^2+1:end,:),m,0.05,eqn)
+    %video(correctsolution(1:m^2,:)-U(1:m^2,:),m,0.5,eqn)
 end
 end

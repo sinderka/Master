@@ -11,16 +11,26 @@ function [v,height,lastrelevant] = helpvector(m,eqn)
 
 
 if strcmp(eqn,'maxwell1D')
-    height = m;
-    v = 2:m-1;
-    lastrelevant = m-2; % Sikkert feil!
+    height = 2*m;
+    v = [2:m-1,m+1:2*m];
+    lastrelevant = 2*m-2; % Sikkert feil!
     return
-end
+elseif strcmp(eqn,'heat')
     
-height = m^2;
-v = zeros((m-2)^2,1);
-for qq = 0:m-3
-    v(qq*(m-2)+1:qq*(m-2)+m-2) = (qq+1)*m+2:m-1 +(1+ qq)*m;
+    height = m^2;
+    v = zeros((m-2)^2,1);
+    for qq = 0:m-3
+        v(qq*(m-2)+1:qq*(m-2)+m-2) = (qq+1)*m+2:m-1 +(1+ qq)*m;
+    end
+    lastrelevant = (m-2)^2;
+else
+    
+    height = 2*m^2;
+    v = zeros((m-2)^2,1);
+    for qq = 0:(m-2)-1
+        v(qq*(m-2)+1:qq*(m-2)+m-2) = (qq+1)*m+2:m-1 +(1+ qq)*m;
+    end
+    v = [v;v+m^2];
+    lastrelevant = 2*(m-2)^2;
 end
-lastrelevant = (m-2)^2;
 end

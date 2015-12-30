@@ -19,12 +19,15 @@ end
 if 1%alg == 1 || alg == 3 || restart == 1
     k = size(y,2);
     m = length(A)/2;
+%     if size(y,1) ~= 2*m
+%         m = (m-1)/2;
+%     end
     %A = [sparse(m,m),speye(m);-speye(m),sparse(m,m)]*A;
     Jm = [sparse(m,m),speye(m);-speye(m),sparse(m,m)];
     energyerror = zeros(1,k);
     for i = 1:k
         %energyerror(i) = 0.5*y(:,i)'*Jm*A*y(:,i) + y(:,i)'*Jm*U0;
-        energyerror(i) = 0.5*y(:,i)'*Jm*A*y(:,i);% + y(:,i)'*Jm*A*U0;
+        energyerror(i) = 0.5*y(:,i)'*Jm*A*y(:,i);%+ U0'*Jm*A*y(:,i);% + y(:,i)'*Jm*A*U0;
     end
     energychange = energyerror(1)-energyerror;
 elseif alg == 2 && restart == 0

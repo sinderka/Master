@@ -110,7 +110,7 @@ if length(n) > 1
 end
 
 if length(simtime) > 1
-    if simetime(1) == -1
+    if simtime(1) == -1
         p = simtime;
     elseif simtime(1) == -2
         b = simtime;
