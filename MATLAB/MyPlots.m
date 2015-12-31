@@ -24,7 +24,7 @@ function MyPlots
 %restartvariable
 
 % figures under chapter "integrating over loong time"
-integratinglongtime
+%integratinglongtime
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -91,16 +91,6 @@ integratinglongtime
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%plottools
-% Bilder i restartvariabel for tid og energi
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% plottool(40,[-1,4,6,8,10,20,40],1,1,40,'semirandom',[-2,1,2],1,1,1, 1e-14, 1    , 2 ,'semilogy',0   ,'restarttimeprob1',1);
-% plottool(40,[-1,4,6,8,10,20,40],1,1,40,'semirandom',[-2,1,2],1,1,2, 1e-14, 1    , 2 ,'semilogy',0   ,'restarttimeprob2',1);
-% plottool(40,[-1,4,6,8,10,20,40],1,1,40,'semirandom',[-2,1,2],1,0,1, 1e-14, 1    , 6 ,'semilogy',0   ,'restartenergyprob1',1);
-% plottool(40,[-1,4,6,8,10,20,40],1,1,40,'semirandom',[-2,1,2],1,0,2, 1e-14, 1    , 6 ,'semilogy',0   ,'restartenergyprob2',1);
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 end
 
 % Hvert kapitel/delkapitel som hører litt sammen har samme funksjon,
@@ -341,22 +331,37 @@ end
 
 function restartvariable
 %plottool(m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save)
-plottool([-2,20,40,60],[-1,4,6,10,20,40],1,1,20,'wave',1,1,1,1,1e-14,4,2,'plot',0,'restarttime',1)
-plottool([-2,20,40,60],[-1,4,6,10,20,40],1,1,20,'wave',1,1,1,1,1e-14,4,1,'plot',0,'restartiter',1)
-plottool([-2,20,40,60],[-1,4,6,10,20,40],1,1,20,'wave',1,1,1,1,1e-14,4,3,'plot',0,'restarterror',1)
-plottool([-2,20,40,60],[-1,4,6,10,20,40],1,1,20,'wave',1,1,1,1,1e-14,4,4,'plot',0,'restartenergy',1)
+plottool([-2,20,40,60,80],[-1,4,6,10,20,40],1,1,20,'wave',1,1,1,1,1e-14,4,2,'plot',0,'restarttime',1)
+plottool([-2,20,40,60,80],[-1,4,6,10,20,40],1,1,20,'wave',1,1,1,1,1e-14,4,1,'plot',0,'restartiter',1)
+plottool([-2,20,40,60,80],[-1,4,6,10,20,40],1,1,20,'wave',1,1,1,1,1e-14,4,3,'plot',0,'restarterror',1)
+plottool([-2,20,40,60,80],[-1,4,6,10,20,40],1,1,20,'wave',1,1,1,1,1e-14,4,4,'plot',0,'restartenergy',1)
+
+
+plottool([-2,20,40,60,80],[-1,4,6,10,20,40],1,1,20,'wave',1,1,1,2,1e-14,4,2,'plot',0,'restarttime2',1)
+plottool([-2,20,40,60,80],[-1,4,6,10,20,40],1,1,20,'wave',1,1,1,2,1e-14,4,1,'plot',0,'restartiter2',1)
+plottool([-2,20,40,60,80],[-1,4,6,10,20,40],1,1,20,'wave',1,1,1,2,1e-14,4,3,'plot',0,'restarterror2',1)
+plottool([-2,20,40,60,80],[-1,4,6,10,20,40],1,1,20,'wave',1,1,1,2,1e-14,4,4,'plot',0,'restartenergy2',1)
 end
 
 function integratinglongtime
 %plottool(m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save)
-plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],1,0,1,1e-14,4,3,'loglog',0,'longtime10',1)
-plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],1,1,1,1e-14,4,3,'loglog',0,'longtime11',1)
+plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],1,0,1,1e-14,4,3,'semilogy',0,'longtime10',1)
+plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],1,1,1,1e-14,4,3,'semilogy',0,'longtime11',1)
 
-plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],2,0,1,1e-14,4,3,'loglog',0,'longtime20',1)
-plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],2,1,1,1e-14,4,3,'loglog',0,'longtime21',1)
+plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],2,0,1,1e-14,4,3,'semilogy',0,'longtime20',1)
+plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],2,1,1,1e-14,4,3,'semilogy',0,'longtime21',1)
 
-plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],3,0,1,1e-14,4,3,'loglog',0,'longtime30',1)
-plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],3,1,1,1e-14,4,3,'loglog',0,'longtime31',1)
+plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],3,0,1,1e-14,4,3,'semilogy',0,'longtime30',1)
+plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],3,1,1,1e-14,4,3,'semilogy',0,'longtime31',1)
+
+plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],1,0,2,1e-14,4,3,'semilogy',0,'longtime102',1)
+plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],1,1,2,1e-14,4,3,'semilogy',0,'longtime112',1)
+
+plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],2,0,2,1e-14,4,3,'semilogy',0,'longtime202',1)
+plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],2,1,2,1e-14,4,3,'semilogy',0,'longtime212',1)
+
+plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],3,0,2,1e-14,4,3,'semilogy',0,'longtime302',1)
+plottool(20,6,[-1,1,5,10,20,40],1,1000,'wave',[-2,1,2,3],3,1,2,1e-14,4,3,'semilogy',0,'longtime312',1)
 
 end
 

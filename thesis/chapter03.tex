@@ -29,7 +29,7 @@ with $ e_r = u-u_n $ (analytical solution minus approximated solution) and $v_{\
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/compareError.jpg}
                 \caption{ The difference in error with and without restart. }
-                \label{fig:compareEnergy}
+                \label{fig:compareError}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
@@ -65,19 +65,19 @@ with $ e_r = u-u_n $ (analytical solution minus approximated solution) and $v_{\
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart0.jpg}
                 \caption{ Without restart. }
-                \label{fig:energytestrestart0}
+                \label{fig:errortestrestart0}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart2.jpg}
                 \caption{ With restart, the number of iterations $= x$ }
-                \label{fig:energytestrestart2}
+                \label{fig:errortestrestart2}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart1.jpg}
                 \caption{ With restart, the number of iterations $= 10$ }
-                \label{fig:energytestrestart1}
+                \label{fig:errortestrestart1}
         \end{subfigure}
         
         
@@ -111,19 +111,19 @@ The figures below shows the same as figure \ref{fig:energytestrestart}, but with
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart0.jpg}
                 \caption{  Without restart. }
-                \label{fig:energyarnrestart0}
+                \label{fig:errorarnrestart0}
         \end{subfigure}%
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart2.jpg}
                 \caption{ With restart, the number of iterations $ = 4$ }
-                \label{fig:energyarnrestart2}
+                \label{fig:errorarnrestart2}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart1.jpg}
                 \caption{ With restart, the number of iterations $ = 11$ }
-                \label{fig:energyarnrestart1}
+                \label{fig:errorarnrestart1}
         \end{subfigure}
         \caption{ Figures showing the change in energy over time. }
         \label{fig:energyarnrestart}
@@ -160,22 +160,22 @@ When comparing figure \ref{fig:energytestrestart0} and \ref{fig:energytestrestar
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy2.jpg}
                 \caption{ The difference in energy with and without restart. }
-                \label{fig:compareEnergy}
+                \label{fig:compareEnergy2}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/compareError2.jpg}
                 \caption{ The difference in energy with and without restart. }
-                \label{fig:compareEnergy}
+                \label{fig:compareError2}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter2.jpg}
                 \caption{ The number of iterations performed with and without restarting.  }
-                \label{fig:compareIter}
+                \label{fig:compareIter2}
         \end{subfigure}
         \caption{ The figure shows how the different methods change the energy with and without restarting.  }
-        \label{fig:compare}
+        \label{fig:compare2}
 \end{figure}
 
 The figures above implies that restarting the SLM does indeed not change the energy. But for KPM it changes quite a bit. 
@@ -203,22 +203,22 @@ The figures above implies that restarting the SLM does indeed not change the ene
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart02.jpg}
                 \caption{ Without restart. }
-                \label{fig:energytestrestart02}
+                \label{fig:errortestrestart02}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart22.jpg}
                 \caption{ With restart, the number of iterations $= 4$ }
-                \label{fig:energytestrestart22}
+                \label{fig:errortestrestart22}
         \end{subfigure}
         ~
 		\begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart12.jpg}
                 \caption{ With restart, the number of iterations $= 9$ }
-                \label{fig:energytestrestart12}
+                \label{fig:errortestrestart12}
         \end{subfigure}
         \caption{ The figures shows the change in energy over time.}
-        \label{fig:energytestrestart2}
+        \label{fig:energytestrestart2next}
 \end{figure}
 The figure above shows very little change in energy with SLM, with and without several restarts. \\
 
@@ -247,22 +247,22 @@ The figures below shows the same as figure \ref{fig:energytestrestart2}, but wit
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart02.jpg}
                 \caption{  Without restart. }
-                \label{fig:energyarnrestart02}
+                \label{fig:errorarnrestart02}
         \end{subfigure}%
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart22.jpg}
                 \caption{ With restart, the number of iterations $ = 4$ }
-                \label{fig:energyarnrestart22}
+                \label{fig:errorarnrestart22}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart12.jpg}
                 \caption{ With restart, the number of iterations $ = 11$ }
-                \label{fig:energyarnrestart12}
+                \label{fig:errorarnrestart12}
         \end{subfigure}
         \caption{ Figures showing the change in energy over time. }
-        \label{fig:energyarnrestart2}
+        \label{fig:energyarnrestart2next}
 \end{figure}
 
 When comparing figure \ref{fig:energytestrestart0} and \ref{fig:energytestrestart1} it becomes clear that SLM's does not alter the energy significantly when performing the restart. Figure \ref{fig:energyarnrestart0} and \ref{fig:energyarnrestart1} shows that this is not the case for KPM.\\
