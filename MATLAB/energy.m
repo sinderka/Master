@@ -1,4 +1,4 @@
-function energychange = energy(A,y,U0,alg,Hn,Vn,Zn,restart)
+function energychange = energy(A,y,alg,Hn,Vn,Zn,restart)
 % returns the energy to the system
 %Indata
 % A: an mxm matrix
@@ -10,7 +10,7 @@ function energychange = energy(A,y,U0,alg,Hn,Vn,Zn,restart)
 % vnext: residual vector
 
 
-if nargin == 3
+if nargin == 2
     alg = 1;
 end
 
@@ -27,7 +27,7 @@ if 1%alg == 1 || alg == 3 || restart == 1
     energyerror = zeros(1,k);
     for i = 1:k
         %energyerror(i) = 0.5*y(:,i)'*Jm*A*y(:,i) + y(:,i)'*Jm*U0;
-        energyerror(i) = 0.5*y(:,i)'*Jm*A*y(:,i);%+ U0'*Jm*A*y(:,i);% + y(:,i)'*Jm*A*U0;
+        energyerror(i) = 0.5*y(:,i)'*Jm*A*y(:,i);%+ y(:,i)'*Jm*U0;% + y(:,i)'*Jm*A*U0;
     end
     energychange = energyerror(1)-energyerror;
 elseif alg == 2 && restart == 0

@@ -1,10 +1,10 @@
 function plottool(m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save)
-% a tool that helps make plotting easier. 
+% a tool that helps make plotting easier.
 %input
 % m: number of points in eqch spacial direction X
 % n: restart variable (size of orthogonal space) X
 % k: number of space in time. X
-% eqn: says something about with algorithm to solve 
+% eqn: says something about with algorithm to solve
 % alg(1,2,3): declares with ortogonalisation method to use X
 % int(1,2,3): declares with integration method to use X
 % restart(0,1): should the method restart or not X
@@ -17,7 +17,7 @@ function plottool(m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,type,h
 % name: name of saved picture
 % save(0,1): boolean value for saving or not
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Special: 
+% Special:
 % This tool can plot several diffenet plots.
 % start a list X with -1 to make this be the differnent points on the x axis
 % Start a list with -2 to make it diffenret graphs.
@@ -37,59 +37,62 @@ for i = 1:ant1
     a = max(1,a0*(a0-a)); b = max(1,b0*(b0-b)); c = max(1,c0*(c0-c)); d = max(1,d0*(d0-d)); e = max(1,e0*(e0-e)); f = max(1,f0*(f0-f)); g = max(1,g0*(g0-g)); h = max(1,h0*(h0-h)); aa = max(1,aa0*(aa0-aa)); bb = max(1,bb0*(bb0-bb)); cc = max(1,cc0*(cc0-cc));
     for j = 1:ant2
         [a,b,c,d,e,f,g,h,aa,bb,cc] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,bb,cc,-2);
-        utdata(j,i,:) = solver(m(a),n(b),simtime(bb),K(cc),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e));
+        utdata(j,i,:) = solver(m(a),n(b),simtime(bb),K(cc),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e),0);
         %utdata(j,i,:) = energyTest(m(a),n(b),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e));
     end
 end
 
-for i = 1:ant2
-    if strcmp(type,'plot')
-        plot(p(2:end),utdata(i,:,data),char(linetype(i)))
-    elseif strcmp(type,'loglog')
-        loglog(p(2:end),utdata(i,:,data),char(linetype(i)))
-    elseif strcmp(type,'semilogx')
-        semilogx(p(2:end),utdata(i,:,data),char(linetype(i)))
-    elseif strcmp(type,'semilogy')
-        semilogy(p(2:end),utdata(i,:,data),char(linetype(i)))
-    elseif strcmp(type, 'table')
-        format long
-        format shortEng
-        format compact
-        data = ([bc',[p(2:end);utdata(:,:,data)]])'
-        format short
-        return
+
+for kk = 1:length(data)    
+    for i = 1:ant2
+        if strcmp(type,'plot')
+            plot(p(2:end),utdata(i,:,data(kk)),char(linetype(i)))
+        elseif strcmp(type,'loglog')
+            loglog(p(2:end),utdata(i,:,data(kk)),char(linetype(i)))
+        elseif strcmp(type,'semilogx')
+            semilogx(p(2:end),utdata(i,:,data(kk)),char(linetype(i)))
+        elseif strcmp(type,'semilogy')
+            semilogy(p(2:end),utdata(i,:,data(kk)),char(linetype(i)))
+        elseif strcmp(type, 'table')
+            format long
+            format shortEng
+            format compact
+            outdata = ([bc',[p(2:end);utdata(:,:,data(kk))]])'
+            format short
+            return
+        end
+        hold on
     end
-    hold on
+    
+    
+    [ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data(kk));
+    %Må lage kode for legende!!!! Må jeg lage noe for tittel?
+    %text(0.25,2.5,xlab,'Interpreter','latex')
+    if help(1)
+        plot(p(2:end),p(2:end).^help(2),'k-')
+        leg(end+1) = {'Helpline'};
+    end
+    ylabel(ylab);
+    xlabel(xlab);
+    %set(gcf,'CurrentAxes',h)
+    %text(1,1,char(additionalInfo),'FontSize',12)
+    title(char(additionalInfo))
+    %dim = [0.9 0.1 0.3 0.3];
+    %annotation('textbox',dim,'String',char(additionalInfo),'FitBoxToText','on');
+    
+    legend(char(leg));
+    h = set(findall(gcf,'-property','FontSize'), 'Fontsize',18);
+    set(h,'Location','Best');
+    if save
+        pause(0.5)
+        drawnow
+        pause(0.5)
+        location = strcat('/home/shomeb/s/sindreka/Master/MATLAB/fig/',name(kk));
+        saveas(gcf,location,'fig');
+        saveas(gcf,location,'jpeg');
+    end
+    hold off
 end
-
-
-[ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data);
-%Må lage kode for legende!!!! Må jeg lage noe for tittel?
-%text(0.25,2.5,xlab,'Interpreter','latex')
-if help(1)
-    plot(p(2:end),p(2:end).^help(2),'k-')
-    leg(end+1) = {'Helpline'};
-end
-ylabel(ylab);
-xlabel(xlab);
-%set(gcf,'CurrentAxes',h)
-%text(1,1,char(additionalInfo),'FontSize',12)
-title(char(additionalInfo))
-%dim = [0.9 0.1 0.3 0.3];
-%annotation('textbox',dim,'String',char(additionalInfo),'FitBoxToText','on');
-
-legend(char(leg));
-h = set(findall(gcf,'-property','FontSize'), 'Fontsize',18);
-set(h,'Location','Best');
-if save
-    pause(0.5)
-    drawnow
-    pause(0.5)
-    location = strcat('/home/shomeb/s/sindreka/Master/MATLAB/fig/',name);
-    saveas(gcf,location,'fig');
-    saveas(gcf,location,'jpeg');
-end
-hold off
 end
 
 function [p,b] = getPandB(m,n,simtime,K,k,alg,int,restart,prob,conv,para)
@@ -216,30 +219,30 @@ end
 
 function [ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data)
 if data == 1
-    ylab = {'iterations'};
+    ylab = {'r_n'};
 elseif data == 2
-    ylab = {'time'};
+    ylab = {'T_c'};
 elseif data == 3
-    ylab = {'error1'};
+    ylab = {'er_1'};
 elseif data == 4
-    ylab = {'energy1'};
+    ylab = {'en_1'};
 elseif data == 5
-    ylab = {'error2'};
+    ylab = {'er_2'};
 elseif data == 6
-    ylab = {'energy2'};
+    ylab = {'en_2'};
 end
 if m(1) == -1
     xlab = {'m'};
 elseif n(1) == -1
     xlab = {'n'};
 elseif simtime(1) == -1
-    xlab = {'simulated time'};
+    xlab = {'T_s'};
 elseif K(1) == -1
     xlab = {'K'};
 elseif k(1) == -1
     xlab = {'k'};
 elseif para(1) == -1
-    xlab = {'# processors'};
+    xlab = {'p_n'};
 elseif conv(1) == -1
     xlab = {'\epsilon'};
 elseif alg(1) == -1
@@ -247,7 +250,7 @@ elseif alg(1) == -1
 elseif int(1) == -1
     xlab = {'integration method'};
 elseif restart(1) == -1
-    xlab = {'restart'};
+    xlab = {'r_n'};
 elseif prob(1) == -1
     xlab = {'problem'};
 end
@@ -264,7 +267,7 @@ elseif n(1) == -2
     end
 elseif simtime(1) == -2
     for i = 1:ant2
-        stri = strcat('simulated time: ',num2str(simtime(i+1)));
+        stri = strcat('T_s: ',num2str(simtime(i+1)));
         leg(i) = {stri};
     end
 elseif K(1) == -2
@@ -279,18 +282,18 @@ elseif k(1) == -2
     end
 elseif para(1) == -2
     for i = 1:ant2
-        stri = strcat('# processors=',num2str(para(i+1)));
+        stri = strcat('p_n=',num2str(para(i+1)));
         leg(i) = {stri};
     end
 elseif conv(1) == -2
     for i = 1:ant2
-        stri = strcat('convergence criterion=',num2str(conv(i+1)));
+        stri = strcat('\epsilon=',num2str(conv(i+1)));
         leg(i) = {stri};
     end
 elseif alg(1) == -2
     for i = 1:ant2
         if alg(i+1) == 1
-            stri = 'KPM';
+            stri = 'Arnoldi';
         elseif alg(i+1) == 2
             stri = 'SLM';
         elseif alg(i+1) == 3
@@ -311,7 +314,7 @@ elseif int(1) == -2
     end
 elseif restart(1) == -2
     for i = 1:ant2
-        stri = strcat('restart=',num2str(restart(i+1)));
+        stri = strcat('r_n=',num2str(restart(i+1)));
         leg(i) = {stri};
     end
 elseif prob(1) == -2
@@ -331,7 +334,7 @@ if length(n) == 1
     additionalInfo(end+1) = {stri};
 end
 if length(simtime) == 1
-    stri = strcat('simulated time: ',num2str(simtime));
+    stri = strcat('T_s: ',num2str(simtime));
     additionalInfo(end+1) = {stri};
 end
 if length(K) == 1
@@ -344,7 +347,7 @@ if length(k) == 1
 end
 if length(alg) == 1
     if alg == 1
-        stri = 'KPM';
+        stri = 'Arnoldi';
     elseif alg == 2
         stri = 'SLM';
     elseif alg == 3
@@ -352,7 +355,7 @@ if length(alg) == 1
     end
     additionalInfo(end+1) = {stri};
 end
-    
+
 if length(int) == 1
     if int == 1
         stri = 'trapezoidal rule';
@@ -376,7 +379,7 @@ if length(conv) == 1
     additionalInfo(end+1) = {stri};
 end
 if length(para) == 1
-    stri = strcat('# processors=',num2str(para));
+    stri = strcat('p_n=',num2str(para));
     additionalInfo(end+1) = {stri};
 end
 end

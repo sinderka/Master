@@ -1,159 +1,220 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Energy preservation for SLM }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!!!!!!!!!!!!!!!Dette kapitelet skal deles i 2, og få bilder av erroren i tillegg til varierende energi seksjon.!!!!!!!\\
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!nesten alle figurer må lages på nytt!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-!!!!!!!!!!!!!!!!!!!!!!!!!!Nesten all tekst må skrives på nytt!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-!!!!!!!!!!!!!!!!!!!!!!!!!!!ARG!!! ALT HER ER FEIL!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-It can be proved that a restart of SLM does not alter the energy \cite{luli}. This chapter is devoted to showing that this still hold with numerical approximations. \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-!!!!!!!!!!!!!!!!!!!!!Bruker ikke denne energien!!!!!!!!!!!!!!!!!!!!!!!!\\
-!!!!!!!!!!!!!!!!!!!!!!!Må sjekke med Lu Li sin sak!!!!!!!!!!!!!!!!!!!!!\\
-The residual energy of the symplectic Lanczos method is
-\begin{equation}
-\frac{1}{2} e_r^{\top} J A e_r + e_r^\top J v_{n+1} e_{2\tilde{n}}^\top z
-\end{equation}
-with $ e_r = u-u_n $ (analytical solution minus approximated solution) and $v_{\tilde{n}+1}$ is the residual vector given by SLM. 
+\section{Time integration methods} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%!!!!!!!!!!!!!!!!Burde det vært restart her også?!!!!!!!!!!!!!!!\\
+This section will be concerned with comparing some different methods for integration in time. How well they estimate the error and energy will be the primary concern.\\
 
-\section{Constant energy}
+The relevant integration methods are trapezoidal rule, forward euler, and midpoint rule. The definition and the iteration scheme of the different methods are given in table \ref{tab:intmet}. 
 
+\begin{table}
+\begin{tabular}{l l}
+	Trapezoidal rule \cite{trapezoidal} & $U_{i+1} = U_{i}+h_t g \Big( \frac{1}{2}(t_i+t_{i+1}),\frac{1}{2}(U_i+U_{i+1}) \Big)$
+	\\ & $U_{i+1} = (I- \frac{A h_t}{2}) ^{-1} \Big(  U_i + \frac{h_t}{2} \big( A U_i+(F_{i+1}+F_i) \big)  \Big) $\\
+\hline	
+	Forward Euler \cite{forwardeuler} & $ U_{i+1} = U_i + h_t g ( t_i, U_i ) $ \\ & $ U_{i+1} = U_i + h_t \big( A U_i + F_i \big) $ \\
+	\hline
+	Midpoint rule \cite{midpoint} & $U_{i+1} = U_i + h_t + g \Big(  t_{i+\frac{1}{2}} , \frac{1}{2}(U_i + U_{i+1})    \Big) $ \\ & 
+	$U_{i+\frac{1}{2}} = U_i + \frac{h_t}{2} ( A U_i + F_i )$ \\ &
+    $U_{i+1} = (I-\frac{A h_t}{2}) ^{-1} (U_{i+\frac{1}{2}} + \frac{h_t}{2} F_{i+ \frac{1}{2}})$
+\end{tabular}
+
+\caption{Methods for integrating in time. Note that since the midpoint rule uses $F_{i+\frac{1}{2}}$ we need to save twice as many points for midpoint rule, as for the other methods.} 
+\label{tab:intmet}
+\end{table}
+
+
+\subsection{Constant energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/intconvtrap.jpg}
+                \caption{ Help line decreases with $k^2$. }
+                \label{fig:intconvtrap}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/intconveul.jpg}
+                \caption{ Help line decreases with $k$. }
+                \label{fig:intconveul}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/intconvmid.jpg}
+                \caption{ Help line decreases with $k^2$. }
+                \label{fig:intconvmid}
+        \end{subfigure}
+        
+        
+\caption{Figure of the convergence for the different integration methods. All methods converge with the expected rate.}
+\label{fig:intconv}
+\end{figure}
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energyovertimetrapezoidal.jpg}
+                \caption{ Energy with trapezoidal rule. }
+                \label{fig:energyovertimetrapezoidal}
+        \end{subfigure}%
+        ~
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energyovertimeeuler.jpg}
+                \caption{ Energy with forward Euler }
+                \label{fig:energyovertimeeuler}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energyovertimemidpoint.jpg}
+                \caption{ Energy with midpoint rule }
+                \label{fig:energyovertimemidpoint}
+        \end{subfigure}
+        
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorovertimetrapezoidal.jpg}
+                \caption{ Error with trapezoidal rule }
+                \label{fig:errorovertimetrapezoidal}
+        \end{subfigure}%
+        ~
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorovertimeeuler.jpg}
+                \caption{ Error with forward Euler }
+                \label{fig:errorovertimeeuler}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorovertimemidpoint.jpg}
+                \caption{ Error with midpoint rule }
+                \label{fig:errorovertimemidpoint}
+        \end{subfigure}
+        \caption{A snapshot of how energy and error changes over the simulated time with the different integration method without restart.}
+        \label{fig:error}
+\end{figure}
+Both trapezoidal rule and midpoint rule to gives a very precise estimation of energy and error. Forward Euler on the other hand gives a linearly increasing energy, and with that a larger error, making it useless as an integration method in this case. The reason for the wired shapes in figure \ref{fig:errorovertimetrapezoidal} and \ref{fig:errorovertimemidpoint} is the periodicity of the test problem. 
+\subsection{Varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/intconvtrap2.jpg}
+                %\includegraphics[width=\textwidth]{test}
+                \caption{ Help line decreases with $k^2$. }
+                \label{fig:intconvtrap2}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/intconveul2.jpg}
+                %\includegraphics[width=\textwidth]{test}
+                \caption{ Help line decreases with $k$. }
+                \label{fig:intconveul2}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/intconvmid2.jpg}
+                %\includegraphics[width=\textwidth]{test}
+                \caption{ Help line decreases with $k^2$. }
+                \label{fig:intconvmid2}
+        \end{subfigure}
+\caption{Figure of the convergence for the different integration methods. All methods converge with the expected rate.}
+\label{fig:intconv2}
+\end{figure}
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energychangtimetrapezoidal.jpg}
+                \caption{ Energy with trapezoidal rule. }
+                \label{fig:energychangtimetrapezoidal}
+        \end{subfigure}%
+        ~
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energychangtimeeuler.jpg}
+                \caption{ Energy with forward Euler. }
+                \label{fig:energychangtimeeuler}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/energychangtimemidpoint.jpg}
+                \caption{ Energy with midpoint rule. }
+                \label{fig:energychangtimemidpoint}
+        \end{subfigure}
+        
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorchangtimetrapezoidal.jpg}
+                \caption{ Error with trapezoidal rule. }
+                \label{fig:errorchangtimetrapezoidal}
+        \end{subfigure}%
+        ~
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorchangtimeeuler.jpg}
+                \caption{ Error with forward Euler. }
+                \label{fig:errorchangtimeeuler}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/errorchangtimemidpoint.jpg}
+                \caption{ Error with midpoint rule rule. }
+                \label{fig:errorchangtimemidpoint}
+        \end{subfigure}
+        \caption{A snapshot of how energy and error changes over the simulated time with the different integration method without restart.\\$\neptune$}
+        \label{fig:errorchang}
+\end{figure}
+In this case all methods gives a suitable convergence for the error and the energy. There is no longer any problems with forward Euler's increasing energy. Again the shapes on the figures is a property of the test problems, and not a flaw in the method.
+
+\section{Energy preservation for SLM }%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+It can be proved that a restart of SLM does not alter the energy \cite{luli}. This section is devoted to seeing holds with numerical approximations. \\
+
+
+
+\subsection{Constant energy} \label{sec:SLMconstant}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!!!!!!!!!!!!!!!!!!!!!Det må skrives en del mer i dette kapitelet!!!!!!!!!!!!!!!!!!!!!!\\
 
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy.jpg}
-                \caption{ The difference in energy with and without restart. }
+                \caption{Energy.}
                 \label{fig:compareEnergy}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/compareError.jpg}
-                \caption{ The difference in error with and without restart. }
+                \caption{ Error. }
                 \label{fig:compareError}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter.jpg}
-                \caption{ The number of iterations performed with and without restarting.  }
+                \caption{ Number of restarts.  }
                 \label{fig:compareIter}
         \end{subfigure}
-        \caption{ The figure shows how the different methods change the energy with and without restarting.  }
+        \caption{ The figure shows how the different methods change the energy and error with different number of restart for \texttt{semirandom}.  }
         \label{fig:compare}
 \end{figure}
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!NY tekst her!!!!!!!!!!!!!!!!!!!!!!!!\\
+
 
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/energytestrestart0.jpg}
-                \caption{ Without restart. }
-                \label{fig:energytestrestart0}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergyw.jpg}
+                \caption{ Energy. }
+                \label{fig:compareEnergyw}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/energytestrestart2.jpg}
-                \caption{ With restart, the number of iterations $= x$ }
-                \label{fig:energytestrestart2}
-        \end{subfigure}
-        ~
-		\begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/energytestrestart1.jpg}
-                \caption{ With restart, the number of iterations $= 10$ }
-                \label{fig:energytestrestart1}
-        \end{subfigure}
-        
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart0.jpg}
-                \caption{ Without restart. }
-                \label{fig:errortestrestart0}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareErrorw.jpg}
+                \caption{ Error. }
+                \label{fig:compareErrorw}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart2.jpg}
-                \caption{ With restart, the number of iterations $= x$ }
-                \label{fig:errortestrestart2}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIterw.jpg}
+                \caption{ Number of restarts.  }
+                \label{fig:compareIterw}
         \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart1.jpg}
-                \caption{ With restart, the number of iterations $= 10$ }
-                \label{fig:errortestrestart1}
-        \end{subfigure}
-        
-        
-        \caption{ The figures shows the change in energy over time.}
-        \label{fig:energytestrestart}
-\end{figure}
-The figure above shows very little change in energy with SLM, with and without several restarts. \\
-
-The figures below shows the same as figure \ref{fig:energytestrestart}, but with KPM instead of SLM. 
-
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/energyarnrestart0.jpg}
-                \caption{  Without restart. }
-                \label{fig:energyarnrestart0}
-        \end{subfigure}%
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/energyarnrestart2.jpg}
-                \caption{ With restart, the number of iterations $ = 4$ }
-                \label{fig:energyarnrestart2}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/energyarnrestart1.jpg}
-                \caption{ With restart, the number of iterations $ = 11$ }
-                \label{fig:energyarnrestart1}
-        \end{subfigure}
-        
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart0.jpg}
-                \caption{  Without restart. }
-                \label{fig:errorarnrestart0}
-        \end{subfigure}%
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart2.jpg}
-                \caption{ With restart, the number of iterations $ = 4$ }
-                \label{fig:errorarnrestart2}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart1.jpg}
-                \caption{ With restart, the number of iterations $ = 11$ }
-                \label{fig:errorarnrestart1}
-        \end{subfigure}
-        \caption{ Figures showing the change in energy over time. }
-        \label{fig:energyarnrestart}
+        \caption{ The figure shows how the different methods change the energy and error with different number of restart for \texttt{wave}.  }
+        \label{fig:comparew}
 \end{figure}
 
-When comparing figure \ref{fig:energytestrestart0} and \ref{fig:energytestrestart1} it becomes clear that SLM's does not alter the energy significantly when performing the restart. Figure \ref{fig:energyarnrestart0} and \ref{fig:energyarnrestart1} shows that this is not the case for KPM.\\
+There is a clear difference between how well the energy is estimated for \texttt{wave} and \texttt{semirandom}. For \texttt{semirandom} there is not much difference between SLM and Arnoldi, although SLM seams to give a slight better approximation than Arnoldi. With \texttt{semirandom} at $\epsilon = 10^{-10}$ Arnoldi preforms one more iteration than SLM, which makes it give a better approximation, aside from that SLM consistently preform better than Arnoldi.\\
+When comparing figure \ref{fig:compare} and figure \ref{fig:comparew} it is important to remember that the way the $er_1$ and $er_2$ is found is very differently, and that might explain the why the cases differs so much. But the difference might also be explained with \texttt{semiradom} being a much harder equation to solve.\\
+!!!!!!!!!!!!!Skriv litt mer om hvorfor bildene for semirandom og wave er så forksjelkige!!!!!!!!!!!!!!!!!!!!!\\
 
-%!!!!!!!!!!!!!!!!Burde jeg gjøre det samme for feilen?(JA)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+\subsection{Varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%!!!!!!!!!!!!!!!!!!!!!!!ER dette overbevisende nok?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-\section{Varying energy}
-!!!!!!!!!!!!!!!!!!Figurene her fungerer ikke!!!!!!!!!!!!!!!!!!!!!!!\\
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=0.45 \textwidth]{../MATLAB/fig/semirandomenergy2.jpg}
-%	\caption{!!!!!!!!!!!SKRIV NOE HER!!!!!!!!!!!!!}
-%	\label{fig:semirandomenergy1}
-%\end{figure}
-
-%\begin{table}
-%\centering
-%\begin{tabular}{l l l}
-%\texttt{restart} & Arnoldi & SLM  \\
-%0 & 0.008206143327698 & 0.004387334709463 \\
-%1 & 0.000000000058208 & 0.000000000014552 \\
-%Iterations & 7 & 6 \\
-%\end{tabular}
-%\caption{!!!!!!!!!!!!!!!!SKRIV NOE!!!!!!!!!!!!!!!!\\!!!!!!!!Formater tallene penere!!!!!!!!}
-%\label{tab:SLMVE}
-%\end{table}
 
 \begin{figure}[H]
         \centering
@@ -174,95 +235,31 @@ When comparing figure \ref{fig:energytestrestart0} and \ref{fig:energytestrestar
                 \caption{ The number of iterations performed with and without restarting.  }
                 \label{fig:compareIter2}
         \end{subfigure}
-        \caption{ The figure shows how the different methods change the energy with and without restarting.  }
+        \caption{ The figure shows how the different methods change the energy and error with different number of restart for \texttt{wave}.  }
         \label{fig:compare2}
 \end{figure}
 
-The figures above implies that restarting the SLM does indeed not change the energy. But for KPM it changes quite a bit. 
 
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/energytestrestart02.jpg}
-                \caption{ Without restart. }
-                \label{fig:energytestrestart02}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy2w.jpg}
+                \caption{ The difference in energy with and without restart. }
+                \label{fig:compareEnergy2w}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/energytestrestart22.jpg}
-                \caption{ With restart, the number of iterations $= 4$ }
-                \label{fig:energytestrestart22}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareError2w.jpg}
+                \caption{ The difference in energy with and without restart. }
+                \label{fig:compareError2w}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/energytestrestart12.jpg}
-                \caption{ With restart, the number of iterations $= 9$ }
-                \label{fig:energytestrestart12}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter2w.jpg}
+                \caption{ The number of iterations performed with and without restarting.  }
+                \label{fig:compareIter2w}
         \end{subfigure}
-        
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart02.jpg}
-                \caption{ Without restart. }
-                \label{fig:errortestrestart02}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart22.jpg}
-                \caption{ With restart, the number of iterations $= 4$ }
-                \label{fig:errortestrestart22}
-        \end{subfigure}
-        ~
-		\begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/errortestrestart12.jpg}
-                \caption{ With restart, the number of iterations $= 9$ }
-                \label{fig:errortestrestart12}
-        \end{subfigure}
-        \caption{ The figures shows the change in energy over time.}
-        \label{fig:energytestrestart2next}
+        \caption{ The figure shows how the different methods change the energy and error with different number of restart for \texttt{wave}.  }
+        \label{fig:compare2w}
 \end{figure}
-The figure above shows very little change in energy with SLM, with and without several restarts. \\
-
-The figures below shows the same as figure \ref{fig:energytestrestart2}, but with KPM instead of SLM. 
-
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/energyarnrestart02.jpg}
-                \caption{  Without restart. }
-                \label{fig:energyarnrestart02}
-        \end{subfigure}%
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/energyarnrestart22.jpg}
-                \caption{ With restart, the number of iterations $ = 4$ }
-                \label{fig:energyarnrestart22}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/energyarnrestart12.jpg}
-                \caption{ With restart, the number of iterations $ = 11$ }
-                \label{fig:energyarnrestart12}
-        \end{subfigure}
-        
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart02.jpg}
-                \caption{  Without restart. }
-                \label{fig:errorarnrestart02}
-        \end{subfigure}%
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart22.jpg}
-                \caption{ With restart, the number of iterations $ = 4$ }
-                \label{fig:errorarnrestart22}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/errorarnrestart12.jpg}
-                \caption{ With restart, the number of iterations $ = 11$ }
-                \label{fig:errorarnrestart12}
-        \end{subfigure}
-        \caption{ Figures showing the change in energy over time. }
-        \label{fig:energyarnrestart2next}
-\end{figure}
-
-When comparing figure \ref{fig:energytestrestart0} and \ref{fig:energytestrestart1} it becomes clear that SLM's does not alter the energy significantly when performing the restart. Figure \ref{fig:energyarnrestart0} and \ref{fig:energyarnrestart1} shows that this is not the case for KPM.\\
+The results here are very similar to the results found in section \ref{sec:SLMconstant}, except that the energy and error changes for the first points for both SLM and Arnoldi. SLM still gives the better approximation.

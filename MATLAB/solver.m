@@ -1,5 +1,5 @@
 
-function utdata = solver(m,n,simtime,K,k,eqn,alg,integrator,restart,prob,conv,para)
+function utdata = solver(m,n,simtime,K,k,eqn,alg,integrator,restart,prob,conv,para,figvar)
 % Solves a problem dependant on the indata
 %input
 % m: number of points in eqch spacial direction X
@@ -40,6 +40,7 @@ if nargin < 10
     eqn = 'wave';
     alg = 2;
     integrator = 3;
+    figvar = 1;
 end
 
 %%%% lage en funksjon som tar seg av dette? Og alt tilknyttet dette?
@@ -141,10 +142,10 @@ U1(vec,:) = Utemp1(1:lastrelevant,:);
 
 if alg ~= 3
     utdata(5) = max(max(abs(U-U1)));
-    figure(5);plot(T,max(abs(U-U1)), 'k:.')
+    %figure(5);plot(T,max(abs(U-U1)), 'k:.')
     
-    figure(7); plot(T,energy(A,U(vec,:)-U1(vec,:),U0),'k:.');
-    utdata(6) = max(abs(energy(A,U(vec,:)-U1(vec,:),U0)));
+    %figure(7); plot(T,energy(A,U(vec,:)-U1(vec,:)),'k:.');
+    utdata(6) = max(abs(energy(A,U(vec,:)-U1(vec,:))));
 else
     utdata(1) = 0;
     utdata(2) = Time;
@@ -155,23 +156,28 @@ end
 
 
 utdata(3) = max(max(abs(U-correctsolution)));
-figure(11); plot(T,max((U-correctsolution)),'k:.');
+if figvar
+    figure(11); plot(T,max((U-correctsolution)),'k:.');
+end
 
-
-if (prob == 1)
-    utdata(4) = abs(max(abs(energy(A,U(vec,:),U0))));
-    figure(2); plot(T,energy(A,U(vec,:),U0),'k:.');
+if prob == 1
+    utdata(4) = max(abs(energy(A,U(vec,:))));
+    if figvar
+        figure(2); plot(T,energy(A,U(vec,:)),'k:.');
+    end
 else
-    figure(2); plot(T,energy(A,U(vec,:)-correctsolution(vec,:),U0),'k:.');
-    utdata(4) = abs(max(abs(energy(A,U(vec,:)-correctsolution(vec,:),U0))));
+    if figvar
+        figure(2); plot(T,energy(A,U(vec,:)-correctsolution(vec,:)),'k:.');
+    end
+    utdata(4) = abs(max(abs(energy(A,U(vec,:)-correctsolution(vec,:)))));
 end
 
 %energy(A,U(vec,:)-correctsolution(vec,:),U0)
 %energy(A,U(vec,:),U0)
 %energy(A,correctsolution(vec,:),U0)
-
-figure(11);plot(T,max((U-correctsolution)),'k:.');
-
+if figvar
+    figure(11);plot(T,max(U-correctsolution),'k:.');
+end
 
 % Plot
 if 0
