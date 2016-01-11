@@ -1,4 +1,4 @@
-function [U,iter,energy1,energy2] = KPM(A,v,F,n,ht,conv,restart,int,~)
+function [U,iter,energy1,energy2] = SLM(A,v,F,n,ht,conv,restart,int,figvar)
 %Indata
 % A: mxm matrix
 % v: m vector
@@ -14,7 +14,7 @@ function [U,iter,energy1,energy2] = KPM(A,v,F,n,ht,conv,restart,int,~)
 % iter: number of restarts preformed
 l = size(A,1);
 k = length(F);
-if max(abs(v)) == 0 || max(max(abs(F))) == 0
+if max(abs(v)) == 0 || max(abs(F)) == 0
     U = sparse(l,k);
     iter = 0;
     energy1 = 0;
@@ -23,11 +23,14 @@ if max(abs(v)) == 0 || max(max(abs(F))) == 0
 end
 U = zeros(l,k);
 iter = 1;
-h = norm(v,2);
-%[Vn,Hn,vnext,hnext] = alg(A,v,n,conv);
-[Vn,Hn,vnext,hnext] = Arnoldi(A,v,n,conv);
+%h = norm(v,2);
+[Vn,Hn,vnext,hnext] = SymplecticLanczosMethod(A,v,n,conv);
 
-[Zn] = int(Hn,[h*F(1,:);sparse(length(Hn)-1,k)],ht);
+invJ = [sparse(n,n),-speye(n);speye(n),sparse(n,n)];
+J = [sparse(l/2,l/2),speye(l/2);-speye(l/2),sparse(l/2,l/2)];
+F = invJ*Vn'*J*v*F;
+
+[Zn] = int(Hn,F,ht);
 
 ns = Vn*Zn;
 U = U + ns;
@@ -35,16 +38,17 @@ diff = hnext;
 if restart
     while diff > conv
         h = hnext; v = vnext;
-        [Vn,Hn,vnext,hnext] = Arnoldi(A,v,n,conv);
-        [Zn] = int(Hn,[h*Zn(end,:);sparse(length(Hn)-1,k)],ht);
+        [Vn,Hn,vnext,hnext] = SymplecticLanczosMethod(A,v,n,conv);
+        %[Zn] = trapezoidal(Hn,[h*Zn(end,:);sparse(length(Hn)-1,k)],ht); %Hvordan blir restarten med SLM??
+        F = invJ*Vn'*J*h*v*Zn(end,:);
+        Zn = int(Hn,F,ht);
         ns =  Vn*Zn;
         diff = max(max(abs(ns)));
         U = U + ns;
         iter = iter+1;
     end
+else
 end
-
-
-energy1 = 0;
-energy2 = 0;
+energy1 = max(energyBIG(A,Zn,vnext,hnext,ht,figvar,int));
+energy2 = max(energySMALL(Hn,Vn,Zn,vnext,hnext,ht,figvar,int));
 end

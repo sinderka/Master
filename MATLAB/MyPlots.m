@@ -4,30 +4,33 @@ function MyPlots
 
 
 % figures under chapter Energypreservation for SLM, constant energy
-%SLMconstantenergy; display('DONE: SLMconstantenergy')
+SLMconstantenergy; display('DONE: SLMconstantenergy')
 
 % figures under chapter Energypreservation for SLM, variyng energy
-%SLMvariyngenergy; display('DONE: SLMvariyngenergy')
+SLMvariyngenergy; display('DONE: SLMvariyngenergy')
 
 % figures uunder chapter time integration methods
 % convergence plots
-%timeintegrationconvergence; display('DONE: timeintegrationconvergence')
+timeintegrationconvergence; display('DONE: timeintegrationconvergence')
 
 % figures under chapter time integration methods
 % names like energyovertimemidpoint or errorchangeretimetrapezoidal
-%timeintegration; display('DONE: timeintegration')
+timeintegration; display('DONE: timeintegration')
 
 % figures under chapter K versus k
-%Kversusk; display('DONE: Kversusk')
+Kversusk; display('DONE: Kversusk')
 
 % figures under chapter "the perfect restart variable"
-%restartvariable; display('DONE: restartvariable')
+restartvariable; display('DONE: restartvariable')
 
 % figures under chapter "integrating over loong time"
-%integratinglongtime; display('DONE: integratinglongtime')
+integratinglongtime; display('DONE: integratinglongtime')
 
 % Figures under chapter "run time comparison"
 runcomparison; display('DONE: runcomparison')
+
+% Figures with SLM and long time 
+SLMtime
 
 end
 
@@ -166,6 +169,33 @@ plottool([-1,10,20,40,80],6,1,1,20,'wave',[-2,1,2,3],1,0  ,2,1e-14, 1    , {'2'}
 plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek'},1)
 
 plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,0  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek0'},1)
+
+end
+
+function SLMtime
+
+data = zeros(4,8);
+
+data(1,:) = energyTest(20,4,20,1,'wave',0,1,1e-14);
+data(2,:) = energyTest(20,4,20,10,'wave',0,1,1e-14);
+data(3,:) = energyTest(20,4,20,100,'wave',0,1,1e-14);
+data(4,:) = energyTest(20,4,20,1000,'wave',0,1,1e-14);
+
+plot([1,10,100,1000],data(:,7));
+%legend('')
+saveit('SLMtime0','T_s','en_3')
+
+
+data = zeros(4,8);
+
+data(1,:) = energyTest(20,4,20,1,'wave',1,1,1e-14);
+data(2,:) = energyTest(20,4,20,10,'wave',1,1,1e-14);
+data(3,:) = energyTest(20,4,20,100,'wave',1,1,1e-14);
+data(4,:) = energyTest(20,4,20,1000,'wave',1,1,1e-14);
+
+plot([1,10,100,1000],data(:,7));
+%legend('')
+saveit('SLMtime1','T_s','en_3')
 
 end
 

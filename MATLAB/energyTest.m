@@ -1,4 +1,4 @@
-function utdata = energyTest(m,n,k,eqn,alg,integrator,restart,prob,conv,~)
+function utdata = energyTest(m,n,k,simtime,eqn,restart,prob,conv)
 % Solves a problem dependant on the indata
 %input
 % m: number of points in eqch spacial direction X
