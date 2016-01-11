@@ -27,10 +27,10 @@ function utdata = solver(m,n,simtime,K,k,eqn,alg,integrator,restart,prob,conv,pa
 
 
 %%% Initiell data
-if nargin < 10
+if nargin < 13
     m = 20;
-    simtime = 10;
-    K = 2;
+    simtime = 1;
+    K = 1;
     k = 20;
     n = 6;%2*(m-2)^2;
     restart = 1;
@@ -142,9 +142,10 @@ U1(vec,:) = Utemp1(1:lastrelevant,:);
 
 if alg ~= 3
     utdata(5) = max(max(abs(U-U1)));
-    %figure(5);plot(T,max(abs(U-U1)), 'k:.')
-    
-    %figure(7); plot(T,energy(A,U(vec,:)-U1(vec,:)),'k:.');
+    if figvar
+        figure(5);plot(T,max(abs(U-U1)), 'k:.')
+        figure(7); plot(T,energy(A,U(vec,:)-U1(vec,:)),'k:.');
+    end
     utdata(6) = max(abs(energy(A,U(vec,:)-U1(vec,:))));
 else
     utdata(1) = 0;
