@@ -1,14 +1,14 @@
-function utdata = energyTest(m,n,k,simtime,eqn,restart,prob,conv)
+function utdata = energyTest(m,n,simtime,k,eqn,integrator,restart,prob,conv,figvar,solveexpm,intesolve,SLMint, save)
 % Solves a problem dependant on the indata
 %input
 % m: number of points in eqch spacial direction X
 % n: restart variable (size of orthogonal space) X
 % k: number of space in time. X
-% eqn: says something about with algorithm to solve 
+% eqn: says something about with algorithm to solve
 % alg(1,2,3): declares with ortogonalisation method to use X
 % integrator(1,2,3): declares with integration method to use X
 % restart(0,1): should the method restart or not X
-% prob: says smoething about with particular problem to solve
+% prob: says something about with particular problem to solve
 % conv: convergence criterion used in arnoldi og KPM X
 % para: currently nothing
 %returns:
@@ -20,20 +20,30 @@ function utdata = energyTest(m,n,k,simtime,eqn,restart,prob,conv)
 % utdata(5): error difference
 % utdata(6): energy difference
 % Initsiell
-if nargin < 13
-    m = 25;
-    simtime = 1;
+if nargin < 9
+    m = 20;
+    simtime = 10;
     %K = 2;
-    k = 25;
-    n = 4;%2*(m-2)^2;
-    restart = 1;
+    k = 200;
+    n = 4; %2*(m-2)^2;
+    restart = 1 ;
     prob = 1;
-    conv = 10^-14;
-    %para = 4; %%%%% If need be %%%%%%
+    conv = 10^-10;
+    para = 4; %%%%% If need be %%%%%%
     eqn = 'wave';
     %alg = 2;
-    %integrator = 3;
-    figvar = 1;
+    integrator = 1;
+    figvar = 0;
+    solveexpm = 0;
+    intesolve = 0;
+    SLMint = 1;
+    save = 0;
+end
+
+if integrator == 1
+    int = @trapezoidal;
+elseif integrator == 2
+    int = @forwardeuler;
 end
 
 utdata = zeros(1,6);
@@ -49,23 +59,89 @@ V(:,1) = A*V(:,1);
 % Chose solution method and solve
 U = zeros(2*m^2,k);
 
+hamiltonian(A);
+
+energy1 = 0; energy2 = 0; iter = 0;
+tic;
 for i = 1:size(F,1)
-    [Utemp] = KPMloc(A,V(:,i),T,n/2,conv,restart,ht,figvar);
-    U(vec,:) = U(vec,:) -Utemp;
+    [Utemp,iter1,energy1t,energy2t] = KPMloc(A,V(:,i),T,n/2,conv,restart,ht,figvar,int,SLMint);
+    U(vec,:) = U(vec,:) + Utemp;
+    energy1 = energy1 + energy1t; energy2 = energy2 + energy2t; iter = max(iter1,iter);
 end
+
 U(vec,:) = U(vec,:) + U0*ones(1,k);
+utdata(2) = toc;
 
+utdata(9) = energy1; utdata(10) = energy2;
+utdata(1) = iter;
+if solveexpm
+    expmsolution = zeros(2*m^2,k);
+    expmsolution(vec,:) = expintegrate(A,U0,T) + U0*ones(1,k);
+    %     utdata(5) = max(getError(U,expmsolution));
+    %     utdata(6) = max(abs(energy(A,U(vec,:)-expmsolution(vec,:))));
+    
+    utdata(5) = max(getError(U,expmsolution));
+    utdata(6) = max(abs(energy(A,U(vec,:)-expmsolution(vec,:))));
+end
 
+if intesolve
+    intesolution = zeros(2*m^2,k);
+    intesolution(vec,:) = int(A,V(:,1)*ones(1,k),ht) + U0*ones(1,k);
+    utdata(7) = max(getError(U,intesolution));
+    utdata(8) = max(abs(energy(A,U(vec,:)-intesolution(vec,:))));
+    
+    %     utdata(7) = max(getError(intesolution,correctsolution));
+    %     utdata(8) = max(abs(energy(A,U(vec,:)-intesolution(vec,:))));
+end
 
+if figvar
+    figure(11); plot(T,getError(U,correctsolution),'k:.')
+    figure(2); plot(T,energy(A,U(vec,:)),'k:.');
+    figure(7); loglog(T,abs(energy(A,U(vec,:))),'k:.'); hold on; plot(T,T*1e-12,'k-'); hold off;
+    if solveexpm
+        figure(5); plot(T,getError(U,expmsolution),'k:.')
+        figure(7); loglog(T,abs(energy(A,expmsolution(vec,:))),'k:.'); hold on; plot(T,T.^2*1e-23,'k-'); hold off;
+    end
+    if intesolve
+        figure(8); plot(T,getError(U,intesolution),'k:.')
+        figure(9); loglog(T,abs(energy(A,intesolution(vec,:))),'k:.'); hold on; plot(T,T.^2*1e-23,'k-'); hold off;
+    end
+    
+end
+utdata(3) = max(getError(U,correctsolution));
+utdata(4) = max(abs(energy(A,U(vec,:))));
 
-if 1
+figure(31);loglog(T,abs(energy(A,U(vec,:))),'k:+'); hold on; %plot(T,T.^0*1e-13,'k-'); hold off;
+% %getLabels(1,m,n,simtime,1,k,'wave',2,integrator,restart,1,conv,para,4) ; saveit(strcat('energytest1',num2str(n),num2str(SLMint),num2str(simtime)),'T_s','en_1');
+% 
+% figure(32); loglog(T,abs(energy(A,expmsolution(vec,:))),'ko:');% hold on; plot(T,T.^0*1e-12,'k-'); hold off;
+% %getLabels(1,m,n,simtime,1,k,'wave',2,integrator,restart,1,conv,para,4) ; saveit(strcat('energytest2',num2str(n),num2str(SLMint),num2str(simtime)),'T_s','en_1');
+% 
+% figure(33);
+% loglog(T,abs(energy(A,intesolution(vec,:))),'kx:');% hold on; plot(T,T.^0*1e-13,'k-'); hold off;
+% %[~, ~,~,additionalInfo] = getLabels(1,m,n,simtime,1,k,'wave',2,integrator,restart,1,conv,1,4); legend('SLM','EXPm','intmeth'); title(additionalInfo);
+% if save
+%     saveit(strcat('energytest',num2str(n),num2str(SLMint),num2str(simtime),num2str(integrator)),'T_s','en_1');
+% end
+% hold off;
+
+if 0
     %video(U(1:m^2,:),m,0.05,eqn)
+    %video(U(1:m^2,:)-correctsolution(1:m^2,:),m,0.05,eqn)
+    
+    %video(expmsolution(1:m^2,:),m,0.05,eqn)
+    video(expmsolution(1:m^2,:)-correctsolution(1:m^2,:),m,0.05,eqn)
+    
+    %video(intesolution(1:m^2,:),m,0.05,eqn)
+    %video(intesolution(1:m^2,:)-correctsolution(1:m^2,:),m,0.05,eqn)
+    
     %video(correctsolution(1:m^2,:),m,0.05,eqn)
-    video(U(1:m^2,:)-correctsolution(1:m^2,:),m,0.05,eqn)
+    
+    %video(U(1:m^2,:)-expmsolution(1:m^2,:),m,0.05,eqn)
 end
 end
 
-function [U] = KPMloc(A,v,T,n,conv,restart,ht,figvar)
+function [U,iter,energy1,energy2] = KPMloc(A,v,T,n,conv,restart,ht,figvar,int,SLMint)
 %Indata
 % A: mxm matrix
 % v: m vector
@@ -83,20 +159,31 @@ l = size(A,1);
 k = length(T);
 if max(abs(v)) == 0
     U = sparse(l,k);
-    Zn = sparse(2*n,k);
-    vnext = sparse(l,1);
-    hnext = sparse(1,1);
-    %iter = 0;
+    iter = 0;
+    energy1 = 0;
+    energy2 = 0;
     return
 end
 U = zeros(l,k);
-%iter = 1;
-h = norm(v,2);
+iter = 1;
+v0 = v;
+
 [Vn,Hn,vnext,hnext] = SymplecticLanczosMethod(A,v,n,conv);
+hamiltonian(Hn); symplectic(Hn); eigenschaft(A,Vn,Hn,vnext,hnext);
 
-[Zn] = intloc(Hn,Vn,v,T);
-
+invJ = [sparse(n,n),-speye(n);speye(n),sparse(n,n)];
+J = [sparse(l/2,l/2),speye(l/2);-speye(l/2),sparse(l/2,l/2)];
+F = invJ*Vn'*J*v;
+if SLMint == 1
+    Zn = trapezoidal(Hn,F*ones(1,k),ht);
+elseif SLMint == 2
+    Zn = expintegrate(Hn,Hn\F,T);
+    
+elseif SLMint == 3 && n == 1
+    Zn = locexpm(Hn,Hn\F,T);
+end
 ns = Vn*Zn;
+Vn0 = Vn; Zn0 = Zn;
 U = U + ns;
 diff = hnext;
 if restart
@@ -104,74 +191,83 @@ if restart
     invJ = [sparse(n,n),-speye(n);speye(n),sparse(n,n)];
     J = [sparse(l/2,l/2),speye(l/2);-speye(l/2),sparse(l/2,l/2)];
     
-    while diff > conv 
+    while diff > conv
         h = hnext; v = vnext;
         [Vn,Hn,vnext,hnext] = SymplecticLanczosMethod(A,v,n,conv);
-        %[Zn] = trapezoidal(Hn,[h*Zn(end,:);sparse(length(Hn)-1,k)],ht); %Hvordan blir restarten med SLM??
+        hamiltonian(Hn); symplectic(Hn); eigenschaft(A,Vn,Hn,vnext,hnext);
+        
         F = invJ*Vn'*J*h*v*Zn(end,:);
-        Zn = trapezoidal(Hn,F,ht);
-        %[Zn] = intloc(Hn,Vn,v,T);
+        Zn = int(Hn,F,ht);
         ns =  Vn*Zn;
         diff = max(max(abs(ns)));
         U = U + ns;
-        %iter = iter+1;
+        iter = iter+1;
     end
-else
-energyBIG(A,Zn,vnext,hnext,ht,figvar)
-energySMALL(Hn,Vn,Zn,vnext,hnext,ht,figvar)
 end
+energy1 = max(abs(energyBIG(A,Zn,vnext,hnext,ht,figvar,int)));
+energy2 = max(abs(energySMALL(Hn,Vn,Zn,vnext,hnext,ht,figvar,int)));
 
-end
-
-function z = intloc(H,S,b,T)
-[m,n] = size(S);
-z = zeros(length(H),length(T));
-invJ = [sparse(n/2,n/2),-speye(n/2);speye(n/2),sparse(n/2,n/2)];
-J = [sparse(m/2,m/2),speye(m/2);-speye(m/2),sparse(m/2,m/2)];
-invJSJb = invJ*S'*J*b;
-for i = 1:length(T)
-    z(:,i) = (speye(n)-expm(H*T(i)))*(H\invJSJb);
-end
-a = 2;
-end
-
-function energyBIG(A,Zn,vnext,hnext,ht,figvar)
-m = length(A); [n,k] = size(Zn);
-F = hnext*vnext*Zn(end,:);
-
-
-%en = zeros(n,1); en(end) = 1;
-%hnext*vnext*en'*Zn
-
-
-epsilon = trapezoidal(A,F,ht);
-
-Jm = [sparse(m/2,m/2),speye(m/2);-speye(m/2),sparse(m/2,m/2)];
-energyBIG = zeros(1,k);
-for i = 1:k
-    energyBIG(i) = 0.5*epsilon(:,i)'*Jm*A*epsilon(:,i)+epsilon(:,i)'*Jm*hnext*vnext*Zn(end,i);
-end
-if figvar
-    figure(2); plot(0:ht:ht*(k-1),energyBIG,'k:.');
-end
-end
-
-function energySMALL(Hn,Vn,Zn,vnext,hnext,ht,figvar)
-[n,k] = size(Zn);
-l = size(Vn,1);
-
-invJ = [sparse(n/2,n/2),-speye(n/2);speye(n/2),sparse(n/2,n/2)];
-J = [sparse(l/2,l/2),speye(l/2);-speye(l/2),sparse(l/2,l/2)];
-Jn = [sparse(n/2,n/2),speye(n/2);-speye(n/2),sparse(n/2,n/2)];
 F = invJ*Vn'*J*hnext*vnext*Zn(end,:);
 
-delta = trapezoidal(Hn,F,ht);
-
-energySMALL = zeros(1,k);
-for i = 1:k
-    energySMALL(i) = 0.5*delta(:,i)'*Jn*Hn*delta(:,i) + delta(:,i)'*Vn'*J*hnext*vnext*Zn(end,i);
-end
+delta = int(Hn,F,ht);
+blah =  Vn0*Zn0 + Vn*delta ;
 if figvar
-    figure(3); plot(0:ht:ht*(k-1),energySMALL,'k:.');
+    figure(16);plot(energy(A,blah,v0),'k:.')
+end
+
+end
+
+function hamiltonian(A)
+m = length(A)/2;
+J = [sparse(m,m),speye(m); -speye(m),sparse(m,m)];
+if isequal((J*A)',J*A);
+    display('A er Hamiltonsk');
+else
+    display('A er ikke Hamiltonsk');
 end
 end
+
+function symplectic(A)
+m = length(A)/2;
+J = [sparse(m,m),speye(m); -speye(m),sparse(m,m)];
+if isequal((J*A)',J*A);
+    display('A er symplektisk');
+else
+    display('A er ikke symplektisk');
+end
+end
+
+function eigenschaft(A,Sn,Hn,vnext,hnext)
+e_n = zeros(1,length(Hn)); e_n(end) = 1;
+
+if A*Sn-Sn*Hn-hnext*vnext*e_n < 10^-10
+    display('SLM virker')
+else
+    display('SLM virker ikke')
+    
+end
+end
+
+function U = locexpm(A,b,T)
+U = zeros(length(A),length(T));
+[V,D] = eig(A);
+for i = 1:length(T)
+U(:,i) = V*diag(exp(diag(D*T(i))))/V * b - b;
+end
+end
+
+function saveit(name,xlab,ylab)
+xlabel(xlab)
+ylabel(ylab)
+h = set(findall(gcf,'-property','FontSize'), 'Fontsize',12);
+set(h,'Location','Best');
+pause(0.5)
+drawnow
+pause(0.5)
+location = strcat('/home/shomeb/s/sindreka/Master/MATLAB/fig/',char(name));
+saveas(gcf,location,'fig');
+saveas(gcf,location,'jpeg');
+
+end
+
+

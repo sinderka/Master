@@ -23,7 +23,7 @@ for j = 1:1:n
         z = z-H(i,j)*V(:,i);
     end
     hn = norm(z,2);
-    if hn < conv
+    if hn < m*conv
         v = zeros(m,1);
         V = V(:,1:j);
         hn = 0;

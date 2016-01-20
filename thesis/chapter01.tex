@@ -5,12 +5,32 @@
 The equation 
 \begin{equation} 
 \begin{aligned}
-\dot{u}(t) &= A u(t) + F(t) = g(t) \\
+\dot{u}(t) &= A u(t) + p \cdot f(t) = g(t) \\
 u(0)&= u_0
 \end{aligned}
 \label{eqn:PDE}
 \end{equation}
-often makes an appearance when solving partial differential equations with numerical methods. The author has earlier observed how the heat equation, discretized with finite difference methods to be on the form of equation \eqref{eqn:PDE} can be solved with the use of the Krylov projection method(KPM) \cite{min}, which uses Arnoldi's algorithm(Arnoldi) as orthogonalisation method. This note will continue on the same track, but with more focus on Hamiltonian discretizations of wave equations, random problems, and energy preservation. It will also feature a comparison between symplectic Lanzcos method(SLM) \cite{SLM} and Arnoldi. SLM is a projection technique that only works on Hamiltonian matrices. Due to this, SLM (claims to) preserve energy better than Arnoldi. This note will also compare time consumption and error for the different methods, but will not contain much theoretical derivation. For this I recommend reading \cite{elena}, \cite{min}, \citep{SLM}, \cite{SLMO}, and \cite{luli}. \\
+often makes an appearance when solving partial differential equations with numerical methods. The author has earlier observed how the heat equation, discretized with finite difference methods to be on the form of equation \eqref{eqn:PDE} can be solved with the use of the Krylov projection method(KPM) \cite{min}, which uses Arnoldi's algorithm(Arnoldi) as orthogonalisation method. This note will continue on the same track, but with more focus on Hamiltonian discretizations of wave equations, random problems, and energy preservation. It will also feature a comparison between symplectic Lanzcos method(SLM) \cite{SLM} and Arnoldi. SLM is a projection technique that only works on Hamiltonian matrices. Due to this, SLM (claims to) preserve energy better than Arnoldi. This note will also compare time consumption and global error for the different methods, but will not contain much theoretical derivation. For this I recommend reading \cite{elena}, \cite{min}, \cite{SLM}, \cite{SLMO}, and \cite{luli}. \\
+
+There will also be a comparison between some different integration methods, and how the projection methods change when the time domain is divided into smaller pieces and each piece is considered independently with initial conditions from previous time domain.
+
+%!!!!!!!!!!!!Skriv om "Kversusk!!!!!!!!!!!!!!!\\
+%!!!!!!!!!!!!!!!Skriv om integrasjonsmetodene!!!!!!!!!!!!!!!!\\
 
 
-
+\chapter{TTD}
+\begin{itemize}
+%\item Teorien til Arnoldi og SLM må importeres.
+\item Jeg synes at som minimum i oppgaven din burde du klare å avgjøre om SLM med restart er energibevarende eller ikke og om den gir lineæar vekst av globalfeil eller raskere vekst.
+\item Skrive bilde text, og fjerne labler fra bilder!
+\item Bevise at det er lurt å sammenligne KPM/SLM med DM?.
+\item SKrive mer generelt
+\item Er det flere figurer jeg burde ha med?
+\item Rekkefølgen må fikses
+\item Fix notasjon
+\item Skriv om error
+\item Skriv litt om antall matematiske operasjoner hver metode trenger
+\item Sett parantes rundt iterasjonsvariabler på z-er, og endre z-er til $\epsilon$ og $\delta$?
+\item Forandre slim at SLM og SLPM er noe greier!!!!!!!!!!!
+\item Forklare hva Hamiltonsk betyr og noe slikt!
+\end{itemize}

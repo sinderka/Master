@@ -39,7 +39,6 @@ if restart
     while diff > conv
         h = hnext; v = vnext;
         [Vn,Hn,vnext,hnext] = SymplecticLanczosMethod(A,v,n,conv);
-        %[Zn] = trapezoidal(Hn,[h*Zn(end,:);sparse(length(Hn)-1,k)],ht); %Hvordan blir restarten med SLM??
         F = invJ*Vn'*J*h*v*Zn(end,:);
         Zn = int(Hn,F,ht);
         ns =  Vn*Zn;

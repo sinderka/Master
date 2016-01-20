@@ -1,4 +1,5 @@
-function plottool(m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save)
+function plottool(m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save,option,EToption)
+%plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{data},'type',[help],{name},save,option)
 % a tool that helps make plotting easier.
 %input
 % m: number of points in eqch spacial direction X
@@ -21,6 +22,12 @@ function plottool(m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,type,h
 % This tool can plot several diffenet plots.
 % start a list X with -1 to make this be the differnent points on the x axis
 % Start a list with -2 to make it diffenret graphs.
+if nargin < 18
+    option = 1;
+end
+if length(help) < 3 && help(1)
+    help(3) = 1;
+end
 
 
 linetype = {'k:+','k:o','k:*','k:.','k:x','k:s','k:d','k:^','k:v','k:<','k:>','k:p','k:h'};
@@ -37,13 +44,17 @@ for i = 1:ant1
     a = max(1,a0*(a0-a)); b = max(1,b0*(b0-b)); c = max(1,c0*(c0-c)); d = max(1,d0*(d0-d)); e = max(1,e0*(e0-e)); f = max(1,f0*(f0-f)); g = max(1,g0*(g0-g)); h = max(1,h0*(h0-h)); aa = max(1,aa0*(aa0-aa)); bb = max(1,bb0*(bb0-bb)); cc = max(1,cc0*(cc0-cc));
     for j = 1:ant2
         [a,b,c,d,e,f,g,h,aa,bb,cc] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,bb,cc,-2);
-        utdata(j,i,:) = solver(m(a),n(b),simtime(bb),K(cc),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e),0);
+        if option == 1
+            utdata(j,i,:) = solver(m(a),n(b),simtime(bb),K(cc),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e),0);
+        elseif option == 2 % energyTest(m,n,k,simtime,eqn,restart,prob,conv,figvar)
+            utdata(j,i,:) = energyTest(m(a),n(b),simtime(bb),k(c),eqn,int(aa),restart(g),prob(h),conv(d),0,EToption);
+        end
         %utdata(j,i,:) = energyTest(m(a),n(b),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e));
     end
 end
 
 
-for kk = 1:length(data)    
+for kk = 1:length(data)
     close all
     pause(0.5)
     for i = 1:ant2
@@ -68,22 +79,16 @@ for kk = 1:length(data)
     
     
     [ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,str2num(char(data(kk))));
-    %Må lage kode for legende!!!! Må jeg lage noe for tittel?
-    %text(0.25,2.5,xlab,'Interpreter','latex')
     if help(1)
-        plot(p(2:end),p(2:end).^help(2),'k-')
+        plot(p(2:end),p(2:end).^help(2)*help(3),'k-')
         leg(end+1) = {'Helpline'};
     end
     ylabel(ylab);
     xlabel(xlab);
-    %set(gcf,'CurrentAxes',h)
-    %text(1,1,char(additionalInfo),'FontSize',12)
     title(char(additionalInfo))
-    %dim = [0.9 0.1 0.3 0.3];
-    %annotation('textbox',dim,'String',char(additionalInfo),'FitBoxToText','on');
     
     legend(char(leg));
-    h = set(findall(gcf,'-property','FontSize'), 'Fontsize',18);
+    h = set(findall(gcf,'-property','FontSize'), 'Fontsize',12);
     set(h,'Location','Best');
     if save
         pause(0.5)

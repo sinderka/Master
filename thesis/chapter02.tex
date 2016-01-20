@@ -1,107 +1,9 @@
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Explonation}
+\chapter{Theory}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-There will here be a short explanation of all solvers, constants, abbreviations and expressions used in this text. MATLAB notation is used where applicable.
-
-\section{Projection methods}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-As mentioned earlier, two projection methods will be used in this text: Arnoldi and SLM. The algorithm for the methods are given in Algorithm \ref{alg:arnoldi}, and Algorithm \ref{alg:symlanz} respectively, no theoretical derivation of the methods will be made in this text. The framework for both methods is given in Algorithm \ref{alg:PM}. \\
-
-\begin{algorithm} [h!]
-\begin{algorithmic} \caption{Arnoldi's algorithm\cite{arnold}} \label{alg:arnoldi}  
-\STATE Start with $A \in \mathbb{R}^{\hat{m} \times \hat{m}}$, $v \in \mathbb{R}^{\hat{m}}$, $n \in \mathbb{N}$ and $\epsilon \in \mathbb{R}$.
-\STATE $v_1 = v/\|v \|_2$
-\FOR{$j = 1,2,\cdots, n $} 
-   \STATE Compute $h_{i,j} =  v_iAv_j,v_i $ for $i = 1,2,\cdots, j$
-    \STATE Compute $w_j = A v_j - \Sigma_{i=1}^{j} h_{i,j}v_i $
-    \STATE $h_{j+1,j} = \| w_j \|_2$
-    \IF{$h_{j+1,j} < \epsilon $} 
-        \STATE\textbf{STOP}
-    \ENDIF 
-   \STATE $v_{j+1} = w_j/h_{j+1,j}$
-\ENDFOR
-\STATE Return $H$, $V$, $v_{n+1}$, $h_{n+1,n}$.
-\end{algorithmic} 
-\end{algorithm}
-
-\begin{algorithm} \caption{Symplectic Lanczos method \cite{SLM}, with reortogonalization from \cite{SLMO}. } \label{alg:symlanz}
-\begin{algorithmic}
-\STATE Start with a Hamiltonian matrix $A \in \mathbb{R}^{2\tilde{m} \times 2 \tilde{m}}$, $\tilde{v_1} \in \mathbb{R}^{2 \tilde{m}}$, $\tilde{n} \in \mathbb{N}$
-\STATE $v_0= 0 \in \mathbb{R}^{2 \tilde{m}}$
-\STATE $\xi_1 = \| \tilde{v}_1\|_2$
-\STATE $v_1= \frac{1}{\xi_1}  \tilde{v}_1$
-\FOR {$j = 1,2, \cdots, \tilde{n}$}
-	\STATE $v = A v_j$
-	\STATE $\delta_j =  v_j^\top$
-	\STATE $\tilde{w} = v-\delta_j v_j$
-	\STATE $\kappa_j = v_j^\top J_{\tilde{m}} v $
-	\STATE $w_j = \frac{1}{\kappa_j} \tilde{w_j}$
-	\STATE $w = A w^j$
-	\STATE $ \tilde{V}_{j-1} = [v_1,v_2,\cdots,v_{j-1},w_1,w_2,\cdots,w_{j-1}] $
-	\STATE $ w_j = w_j + \tilde{V}_{j-1}J_{j-1} \tilde{V}_{j-1}^\top J_{\tilde{m}} w_j $
-	\STATE $\beta = -w_j^\top J_{\tilde{m}} w$
-	\STATE $\tilde{v}_{j+1} = w - \xi_j v_{j-1} - \beta_j v_j + \delta_j v_j$
-	\STATE $ \xi_{j+1} = \|\tilde{v}_{j+1} \|_2 $
-	\STATE $ v_{j+1} = \frac{1}{\xi_{j+1}} \tilde{v}_{j+1} $
-	\STATE $ \tilde{V}_j = [v_1,v_2,\cdots,v_{j},w_1,w_2,\cdots,w_{j}] $
-	\STATE $ v_{j+1} = v_{j+1} + \tilde{V}_j J_j \tilde{V}_j^\top J_{\tilde{m}} v_{j+1} $
-\ENDFOR
-\STATE $V = [v_1,v_2,\cdots,v_{\tilde{n}},w_1,w_2,\cdots,w_{\tilde{n}}]$
-\STATE $H = \begin{bmatrix}
-\text{diag} \big( [\delta_j]^n_{j=1} \big) & \text{tridiag}\big( [\xi_j]_{j=2}^n,[\beta_j]_{j=1}^n,[\xi_j]_{j=2}^n \big) \\
-\text{diag} \big( [\kappa_j]^n_{j=1} \big) & \text{diag} \big( [-\delta_j]^n_{j=1} \big)
-\end{bmatrix} $
-\STATE Return $H$, $V$, $v_{n+1}$, $\xi_{n+1}$.
-\end{algorithmic}
-\end{algorithm}
-Note that the relation between $\hat{m}$, $\tilde{n}$, $\tilde{m}$ used in the algorithms is given by $\hat{m} = 2\tilde{m}= 2(m-2)^2$ and $ n = 2\tilde{n}$. Don't worry to much about these details, it is just a way to simplify the expressions.
-
-\begin{algorithm}[h]
-\begin{algorithmic} \caption{Framework for the orthogonalisation methods\cite{min}} \label{alg:PM} 
-\STATE Start with $A \in \mathbb{R}^{\hat{m} \times \hat{m}}$, $f(t)$, $v \in \mathbb{R}^{\hat{m}}$, $n \in \mathbb{N}$, a boolean value \texttt{restart}, an algorithm \texttt{alg}, $\epsilon \in \mathbb{R}$, and $i = 0$.
-\STATE Compute $[V_n,H_n,h_{n+1,n}^i,v_{n+1}] = \texttt{alg}(A,v,n)$
-\STATE Solve $  z_i'(t) = H_n z_i(t) + f(t) \| v \|_2 e_1  $ for $z_i(t)$
-\STATE $ u_n(t) \leftarrow  V_n z_i(t) $
-\STATE $ \delta = h_{n+1,n} $ 
-\IF { \texttt{restart} == 1 }
-	\WHILE{ $\epsilon < \delta$  } 
-    		\STATE $i \leftarrow i + 1$
-    		\STATE Compute $[V_n,H_n,h_{n+1,n}^i,v_{n+1}] = \texttt{alg}(A,v_{n+1},n)$
-    		\STATE Solve $ z_i'(t) = H_n z_i(t) + h_{n+1,n}^{i-1}e_n^\top z_{i-1}(t)  $ for $z_i(t)$
-    		\STATE $ u_n(t) \leftarrow u_n(t) + V_n z_i(t) $
-    		\STATE $\delta = \max(u_n(t) - V_n z_i(t))$
-	\ENDWHILE
-\ENDIF
-\STATE Return $u_n$.
-\end{algorithmic} 
-\end{algorithm}
-
-If the solution is obtained without the use of an orthogonalisation, it will be denoted with DM for direct method.
-
-The approximated solution, found by either SLM or Arnoldi or DM, will be denoted by $u^n$, where $n$ the same as the size as the orthogonal space used, $n$ will also be called a "restart variable". \\
-
-
-
-
-\section{Zero initial condition}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-For both KPM and SLM it is important that the initial conditions are zero. Equation \eqref{eqn:PDE} can be transformed so that it has zero initial conditions in the following way:
-Start by shifting the solution
-\begin{equation*}
-\hat{u}(t) = u(t)-u_0,
-\end{equation*}
-then rewrite the original equation as
-\begin{equation*}
-\begin{aligned}
-\dot{\hat{u}}(t) &= A \hat{u}(t) +A u_0 + F(t) \\
- \hat{u}(0)&= 0. \\
-\end{aligned}
-\end{equation*}
-The equation above solves the shifted problem, solve the original problem by shifting it back with
-\begin{equation*}
- u(t) &= \hat{u} + u_0. \\
-\end{equation*}
-
-
-All test problems with a non-zero initial condition will be transformed in this way.
+There will here be a short explanation of all solvers, constants, abbreviations and expressions used in this text. MATLAB notation is used where applicable. 
 
 \section{Discretization}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Divide each spacial direction in $m$ pieces, with step size $h_s = 1/m$. The number of steps in time is denoted by $k$, making the step size in time, $h_t = 1/k$.\\
@@ -163,6 +65,7 @@ f(t,x,y) &= 0
 for \texttt{semirandom}.\\ %This test problem is kept with the same conditions as the matrix.\\
 
 In the case with varying energy and \texttt{wave} is used the test problem is 
+!!!!!!!!!!!!!!!!!!!!!!!!Jeg bruker et annet testproblem nå!!!!!!!!!!!!!!!!!!!!!!!!!\\
 \begin{equation}
 \begin{aligned}
 u(t,x,y) &= (x-1)x(y-1)y(t^2-t+1) \\
@@ -182,10 +85,38 @@ for \texttt{semirandom}. When using one of the projection methods $f$ needs to b
 
 The test problems are discretized with $y_i = i h_s$, $x_i = i h_s$ and $t_j = j h_t$ with $i = 1,2,\cdots,m-1 $ and $ j = 1,2,\cdots,k $. The time discretized solution of $u$ will be called $U$.
 
-\section{K versus k}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!!!!!Trenger bedre nanv!!!!!!!!!!!!!!!!!\\
-!!!!!!!!!!!!!Må skrives om og slikt!!!!!!!!!!!!\\
-The goal of this section is to compare two different approaches when solving for a large time domain.
+
+\section{Zero initial condition}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+For both KPM and SLM it is important that the initial conditions are zero. Equation \eqref{eqn:PDE} can be transformed so that it has zero initial conditions in the following way:
+Start by shifting the solution
+\begin{equation*}
+\hat{u}(t) = u(t)-u_0,
+\end{equation*}
+then rewrite the original equation as
+\begin{equation*}
+\begin{aligned}
+\dot{\hat{u}}(t) &= A \hat{u}(t) +A u_0 + F(t) \\
+ \hat{u}(0)&= 0. \\
+\end{aligned}
+\end{equation*}
+The equation above solves the shifted problem, solve the original problem by shifting it back with
+\begin{equation*}
+ u(t) = \hat{u} + u_0. \\
+\end{equation*}
+
+
+All test problems with a non-zero initial condition will be transformed in this way.
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!Skriv at det er vanskelig å sammenligne med \texttt{semirandom} fordi man ikke vet den ordentlige løsningen!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+
+\section{Dividing the time domain}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%!!!!!Trenger bedre nanv!!!!!!!!!!!!!!!!!\\
+%!!!!!!!!!!!!!Må skrives om og slikt!!!!!!!!!!!!\\
+%The goal of this section is to compare two different approaches when solving for a large time domain.
+!!!!!!!!!Forklar hvorfor dette er noe vil vil gjøre(jeg forstår det ikke nå)!!!!!!!!!\\
+%One way to make computation faster may be to divide the time domain 
 
 Let $T_s$ denote simulated time, let $K$ be the number of pieces $T_s$ is divide into, and let $k$ be the number of pieces each $K$ is divided into. The procedure is to solve each of the $K$ intervals as separate problems, with the initial conditions updated. This is explained in a more precise manner in algorithm \ref{alg:Kversusk}.
 
@@ -204,12 +135,35 @@ Let $T_s$ denote simulated time, let $K$ be the number of pieces $T_s$ is divide
 \end{algorithm}
 
 \section{Energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The energy for a system on the form of equation \ref{eqn:PDE} is
+!!!!!!!!!!!!!!!!!!!!!!!SKRIV bedre her!!!!!!!!!!!!!!!!!!!!!!!!\\
+The energy for a system on the form of equation \ref{eqn:PDE} is \citep{luli}
 \begin{equation}
 %\frac{1}{2} e_r^{\top} J A e_r + e_r^\top J v_{n+1} e_{2\tilde{n}}^\top z
-E(t) = \frac{1}{2} u(t)^\top J A u(t)
+\mathcal{H} (t) = \frac{1}{2} u(t)^\top J A u(t)
 \label{eqn:energy}
 \end{equation}
+This energy is the 
+%When working with the orthogonal methods 
+
+\section{Integration methods}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The integration considered in this text are trapezoidal rule, forward euler, and midpoint rule. The definition and the iteration scheme of the different methods are given in table \ref{tab:intmet}. 
+
+\begin{table}
+\begin{tabular}{l l}
+	Trapezoidal rule \cite{trapezoidal} & $U_{i+1} = U_{i}+h_t g \Big( \frac{1}{2}(t_i+t_{i+1}),\frac{1}{2}(U_i+U_{i+1}) \Big)$
+	\\ & $U_{i+1} = (I- \frac{A h_t}{2}) ^{-1} \Big(  U_i + \frac{h_t}{2} \big( A U_i+(F_{i+1}+F_i) \big)  \Big) $\\
+\hline	
+	Forward Euler \cite{forwardeuler} & $ U_{i+1} = U_i + h_t g ( t_i, U_i ) $ \\ & $ U_{i+1} = U_i + h_t \big( A U_i + F_i \big) $ \\
+	\hline
+	Midpoint rule \cite{midpoint} & $U_{i+1} = U_i + h_t g \Big(  t_{i+\frac{1}{2}} , \frac{1}{2}(U_i + U_{i+1})    \Big) $ \\ & 
+	$U_{i+\frac{1}{2}} = U_i + \frac{h_t}{2} ( A U_i + F_{\frac{1}{2}} )$ \\ &
+    $U_{i+1} = (I-\frac{A h_t}{2}) ^{-1} (U_{i+\frac{1}{2}} + \frac{h_t}{2} F_{i+ \frac{1}{2}})$
+\end{tabular}
+
+\caption{Methods for integrating in time. Note that since the midpoint rule uses $F_{i+\frac{1}{2}}$ we need to save twice as many points for midpoint rule, as for the other methods.} 
+\label{tab:intmet}
+\end{table}
 
 \section{Abbriviations}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Table \ref{tab:labels} contains an explanation of the expressions you will see on figures later.
@@ -218,10 +172,10 @@ Table \ref{tab:labels} contains an explanation of the expressions you will see o
 \centering
 \begin{tabular}{l| l}
 $r_n$	& Number of restarts performed by Arnoldi or symplectic Lanczos method.  \\
-$T_c$	& Computation time used to solv a problem \\
-$er_1$ 	& Difference in error between analytical solution, and estimated solution. \\
-$en_1$ 	& Difference in energy between analytical solution, and estimated solution. \\
-$er_2$ 	& Difference in error between orthogonalised solution, and the\\& non-orthogonalised solution. \\
+$T_c$	& Computation time used to solve a problem \\
+$er_1$ 	& Difference between analytical solution, and orthogonalised solution. \\
+$en_1$ 	& Difference in energy between analytical solution, and orthogonalised solution. \\
+$er_2$ 	& Difference between orthogonalised solution, and the\\& non-orthogonalised solution. \\
 $en_2$ 	& Difference in energy between orthogonalised solution, and the\\& non-orthogonalised solution. \\
 $m$ 		& Number of point in each spacial direction \\
 $n$ 		& Size of orthogonal space, also called restart variable \\
@@ -235,4 +189,262 @@ $\epsilon$ & If \texttt{restart} is true, restarting will\\& commence until the 
 \end{table}
 
 \section{Implementation}
-All algorithms, methods was made in matlab R2014b on an ubuntu 14.04 LTS computer with intel i7 4770 CPU and 16 FB of RAM.
+!!!!!!!!!!!!!!!!!!!!!!!SKRIV bedre her!!!!!!!!!!!!!!!!!!!!!!!!\\
+All algorithms and methods was made in matlab R2014b on an ubuntu 14.04 LTS computer with intel i7 4770 CPU and 16 GB of RAM. Matlab's backslash operator was used to solve the linear system in trapezoidal rule, and midpoint rule. \\
+!!!!!!!!!!!!Skrive hvordan bilder er laget!!!!!!!!!!!\\
+!!!!!!!!!!!!!!Skrive hvordan funksjoner er implementert!!!!!!!!!!!!!!!!!!\\
+!!!!!!!!!!!!!!Skrive hvordan ting er sammensatt!!!!!!!!!!!!!!!!!\\
+
+\section{Solution methods}
+!!!!!!!!!!!!!!!!!!!!Forklar iterasjonsvariablen $i$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+There are two orthogonalisation methods that will be discussed in this text. Their names are symplectic Lanczos method, and Arnoldi's algorithm. This section will only contain some of the key points that makes these algorithms work.  %Each method will be discussed, and the key points of why they work.\\
+
+
+!!!!!!!!!!Skriv hva projeksjonemetoder er!!!!!!!!!!!!!!\\
+Projection methods are ways to make an approximated solution from a subset of the original problem. One great feature of these methods is that a smaller system of equations can be used to obtain solutions, the drawback is that the solutions are approximated and that the orthogonal system needs to be found, and this can be time consuming. The approximated solution can be improved by restarting, this means using the projection method again, and solve an equation for the difference between the projected solution, and the true solution repeatedly.\\
+!!!!!!!!!!!!!!!!!! forkalr restart bedre?!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+
+Assume that equations on the form
+\begin{equation}
+\begin{aligned}
+\dot{u}(t) &= Au(t) + p \cdot \tilde{f}(t) \\
+u(0) &= u_0
+\end{aligned}
+\end{equation}
+is written as 
+\begin{equation}
+\begin{aligned}
+\dot{u}(t) &= Au(t) + v \cdot f(t) \\
+u(0) &= 0
+\end{aligned}
+\label{eqn:PMform}
+\end{equation}
+when these methods are used, note that the initial values are zero. It is also important that $A$ is a Hamiltonian matrix when using SLM. \\
+
+Note that the relation between $\hat{m}$, $\tilde{n}$, $\tilde{m}$ used in the algorithms is given by $\hat{m} = 2\tilde{m}= 2(m-2)^2$ and $ n = 2\tilde{n}$. Don't worry to much about these details, it is just a way to simplify the expressions.\\
+\subsection{Arnoldi's Algorithm and the Krylov projection method}
+This section is loosely based around the derivation of the method done in \cite{!!!!!!referer!!!!!!!!!}.
+
+The Krylov subspace is the space $W_n (A,v) = \{v,Av, \cdots, A^{n-1}v\} = \{v_1,v_2,\cdots,v_n\} $, where $n \leq \hat{m}$.
+The vectors $v_i$ together with $h_{i,j} = v_i^\top Av_j$, are found by using Arnoldi's algorithm, shown in algorithm \ref{alg:arnoldi}. Let $V_n$ be the $\hat{m} \times n$ matrix consisting of column vectors $[v_1,v_2,\cdots,v_n ] $ and $H_n$ be the $n \times n$ upper Hessenberg matrix containing all elements $(h_{i,j})_{i,j=1,\cdots,n}$. Then the following holds \cite{kryprop}
+
+\begin{equation}
+\begin{aligned}
+AV_n & = V_n H_n + h_{n+1,n}v_{n+1}e^\top_n  \\
+V^{\top}_n AV_n &= H_n  \\
+V_n^{\top} V_n &= I_n. 
+\label{eqn:propA}
+\end{aligned}
+\end{equation}
+
+\begin{algorithm} [h!]
+\begin{algorithmic} \caption{Arnoldi's algorithm\cite{arnold}} \label{alg:arnoldi}  
+\STATE Start with $A \in \mathbb{R}^{\hat{m} \times \hat{m}}$, $v \in \mathbb{R}^{\hat{m}}$, $n \in \mathbb{N}$ and $\epsilon \in \mathbb{R}$.
+\STATE $v_1 = v/\|v \|_2$
+\FOR{$j = 1,2,\cdots, n $} 
+   \STATE Compute $h_{i,j} =  v_i^{\top}Av_j,v_i $ for $i = 1,2,\cdots, j$
+    \STATE Compute $w_j = A v_j - \Sigma_{i=1}^{j} h_{i,j}v_i $
+    \STATE $h_{j+1,j} = \| w_j \|_2$
+    \IF{$h_{j+1,j} < \epsilon $} 
+        \STATE\textbf{STOP}
+    \ENDIF 
+   \STATE $v_{j+1} = w_j/h_{j+1,j}$
+\ENDFOR
+\STATE Return $H$, $V$, $v_{n+1}$, $h_{n+1,n}$.
+\end{algorithmic} 
+\end{algorithm}
+
+
+
+Here, $e_n$ is the $n$th canonical vector in $\mathbb{R}^n$. $n$ is the number of iterations Arnoldi ran, also called the restart variable.\\
+
+By using the transformation $u(t) \approx V_n z_n^i(t)$, equation \eqref{eqn:PMform} can, with the help of equation \eqref{eqn:propA} be written as
+
+\begin{equation}
+\begin{aligned}
+\dot{z}_n^0(t) &= H_n z_n^0(t) = \| v\|_2 e_1 f(t)  \\
+z_n^0(0) &= 0.
+\label{eqn:KPMi}
+\end{aligned}
+\end{equation}
+The approximated solution of the original problem can be attained by the following relation
+\begin{equation}
+u(t) \approx V_n z_n^i(t).
+\end{equation}
+The derivation of the method is shown in \cite{SKRIV NOPE}.
+Here it is shown that larger $n$ gives a better approximation of the solution, but larger $n$ also gives higher computational complexity, see \cite{!!!!!!!!!!!arg!!!!!!!!} for proof of convergence. The drawback is also that there is no way of knowing in advance how well the approximation will be, but the size of $h_{n+1,n}$ does say something about how well the solution is approximated, smaller $h_{n+1,n}$ means a smaller error. If the approximation is not sufficient the solution must be recalculated with larger $n$, unless you perform a restart. \\
+
+
+
+The restart considers the difference between $V_n z_n^0(t)$ and $u(t)$, as in equation \eqref{eqn:KPMdiff}.
+\begin{equation}
+\begin{aligned}
+\big(V_{\hat{m}}z_{\hat{m}} -V_n^i z_n^i \big) '(t)=A \big( V_{\hat{m}}z_{\hat{m}} -V_n^i z_n^i \big) (t)  - r_n^i
+\end{aligned}
+\label{eqn:KPMdiff}
+\end{equation}
+where 
+\begin{equation}
+r_n^i (t) = v^{i-1} f(t) - V_n^{i-1} \dot{z_n}^{i-1}(t) + A V_n^{i-1} z_n^{i-1}(t) = h_{n+1,n}^{i-1} e_n^{\top} z_n(t)^{i-1} v_{n+1}^{i-1}
+\end{equation}
+This expression can be simplified by using equation \eqref{eqn:propA} to look like equation \eqref{eqn:KPMr}.
+\begin{equation}
+\dot{z}^{i}_n(t) = H_n z_n^i(t) + h_{n+1,n}^{i-1} e^\top_n z_n^{i-1}(t), \quad i \geq 1
+\label{eqn:KPMr}
+\end{equation}
+This equation can be repeatedly solved, and increase the accuracy of the approximated solution within an arbitrary constant of the true solution. This equation works for $i = 1,2,\cdots$, the $0$th iteration is done by equation \eqref{eqn:KPMi}. It is no longer possible to use $h_{n+1,n}$ as a measure for the error when the restart is used, so other ways of finding the error must be used.\\
+
+If you want to derive this yourself, note that the $z_n^1$ in equation \eqref{eqn:KPMr} is defined as the difference between $z_n^0(t)$ and $z_{\hat{m}}^0(t)$. The derivation of the method can be found in \cite{SKRIV NOE HER!!!!!!!}.\\
+
+The proof for the convergence of the restart can be found in \cite{???}.\\
+%!!!!!!!!!!!!!!!!!!!Forklar nøyere hvordan restarten fungerer!!!!!!!!!!!!!\\
+!!!!!!!!!!!!!!!!!!!Flytt algoritmene!!!!!!!!!!!!!!!!!!!!!!!\\
+\subsection{Symplectic Lanczos method}
+!!!!!!!!!!!Sjekk dimensjoner på alt jeg skriver om her!!!!!!!!!!!!!!!!!!!\\
+SLM and KPM are very similar, which is easy to see when comparing equation \eqref{eqn:propA} and \eqref{eqn:propS}. The main difference is that orthonormality in Arnoldi is replaced by symplecticity in SLM. This makes the derivation quite similar.\\
+
+Let $S_n = [v_1,v_2,\cdots v_{\frac{n}{2}},w_1,w_2,\cdots w_{\frac{n}{2}}]$ be a set of $J$-orthogonal vectors satisfying the following equations
+\begin{equation}
+\begin{aligned}
+AS_n &= S_n H_n + h_{n+1,n} v_{n+1} e_{\hat{m}}^\top\\
+J_{\hat{m}}^{-1} S_n^\top J_n A S_n &= H_n \\
+S_n^{\top} J_n S_n &= J_{\hat{m}}\\
+\label{eqn:propS}
+\end{aligned}
+\end{equation}
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Endre nevnene på variablene!!!!!!!!!!!!!\\
+\begin{algorithm} \caption{Symplectic Lanczos method \cite{SLM}, with reortogonalization from \cite{SLMO}. } \label{alg:symlanz}
+\begin{algorithmic}
+\STATE Start with a Hamiltonian matrix $A \in \mathbb{R}^{2\tilde{m} \times 2 \tilde{m}}$, $\tilde{v_1} \in \mathbb{R}^{2 \tilde{m}}$, $\tilde{n} \in \mathbb{N}$
+\STATE $v_0= 0 \in \mathbb{R}^{2 \tilde{m}}$
+\STATE $\zeta_1 = \| \tilde{v}_1\|_2$
+\STATE $v_1= \frac{1}{\zeta_1}  \tilde{v}_1$
+\FOR {$j = 1,2, \cdots, \tilde{n}$}
+	\STATE $v = A v_j$
+	\STATE $\delta_j =  v_j^\top v$
+	\STATE $\tilde{w} = v-\delta_j v_j$
+	\STATE $\kappa_j = v_j^\top J_{\tilde{m}} v $
+	\STATE $w_j = \frac{1}{\kappa_j} \tilde{w_j}$
+	\STATE $w = A w^j$
+	\STATE $ \tilde{V}_{j-1} = [v_1,v_2,\cdots,v_{j-1},w_1,w_2,\cdots,w_{j-1}] $
+	\STATE $ w_j = w_j + \tilde{V}_{j-1}J_{j-1} \tilde{V}_{j-1}^\top J_{\tilde{m}} w_j $
+	\STATE $\beta = -w_j^\top J_{\tilde{m}} w$
+	\STATE $\tilde{v}_{j+1} = w - \zeta_j v_{j-1} - \beta_j v_j + \delta_j v_j$
+	\STATE $ \zeta_{j+1} = \|\tilde{v}_{j+1} \|_2 $
+	\STATE $ v_{j+1} = \frac{1}{\zeta_{j+1}} \tilde{v}_{j+1} $
+	\STATE $ \tilde{V}_j = [v_1,v_2,\cdots,v_{j},w_1,w_2,\cdots,w_{j}] $
+	\STATE $ v_{j+1} = v_{j+1} + \tilde{V}_j J_j \tilde{V}_j^\top J_{\tilde{m}} v_{j+1} $
+\ENDFOR
+\STATE $V = [v_1,v_2,\cdots,v_{\tilde{n}},w_1,w_2,\cdots,w_{\tilde{n}}]$
+\STATE $H = \begin{bmatrix}
+\text{diag} \big( [\delta_j]^n_{j=1} \big) & \text{tridiag}\big( [\zeta_j]_{j=2}^n,[\beta_j]_{j=1}^n,[\zeta_j]_{j=2}^n \big) \\
+\text{diag} \big( [\kappa_j]^n_{j=1} \big) & \text{diag} \big( [-\delta_j]^n_{j=1} \big)
+\end{bmatrix} $
+\STATE Return $H$, $V$, $v_{n+1}$, $\zeta_{n+1}$.
+\end{algorithmic}
+\end{algorithm}
+
+
+Here $S_n$ is an $\hat{m} \times n $ matrix, $H_n$ is an $ n \times n $ matrix, where $\frac{n}{2}$ is the number of iterations the algorithm performed, this is because the algorithm makes two vectors per iterations, $v$ and $w$. \\
+
+The process of making the vectors and matrix is a little more involved than for Arnoldi's algorithm, so there will be no thorough explanation of how it works, except for in Algorithm \ref{alg:symlanz}.\\
+
+The reduced system, given in equation \ref{eqn:SLMi}, is found by substituting $u(t) \approx S_n z(t) $, as in Arnoldi, and use equation \eqref{eqn:propS}. 
+\begin{equation}
+\begin{aligned}
+\dot{z}^0 = H_n z_n^0 + (J_n)^{-1} S_n J_{\hat{m}} A v
+\end{aligned}
+\label{eqn:SLMi}
+\end{equation}
+
+A restart can also here be performed if the accuracy of the solution is not satisfactory. This can be derived by looking at the difference between $V_n z_n(t)$ and $u(t)$, the result is given in equation \eqref{eqn:SLMr}. 
+
+\begin{equation}
+\begin{aligned}
+\dot{z}_n^i = H_n^i z_n^i + J^{-1}_n {S_n^i}^\top J_{\hat{m}} \zeta_{n+1}^{i-1}v_{n+1}^{i-1} e_n^\top z_n^{i-1}, \quad  i \geq 1 \\
+z_n(0) = 0
+\end{aligned}
+\label{eqn:SLMr}
+\end{equation}
+For the derivation of the method see \cite{!!!!!!!!!}. As for Arnoldis algorithm, $z_n^i, i \geq 1 $ is renamed to be the difference between $V_n z_n(t)$ and $u(t)$.\\
+
+Proof of convergence and other interesting results for this method can be found in \citep{!!!!!!!!!!!}. 
+
+
+%\begin{algorithm}[h]
+%\begin{algorithmic} \caption{Framework for the orthogonalisation methods\cite{min}} \label{alg:PM} 
+%\STATE Start with $A \in \mathbb{R}^{\hat{m} \times \hat{m}}$, $f(t)$, $v \in \mathbb{R}^{\hat{m}}$, $n \in \mathbb{N}$, a boolean value \texttt{restart}, an algorithm \texttt{alg}, $\epsilon \in \mathbb{R}$, and $i = 0$.
+%\STATE Compute $[V_n,H_n,h_{n+1,n}^i,v_{n+1}] = \texttt{alg}(A,v,n)$
+%\STATE Solve $  z_i'(t) = H_n z_i(t) + f(t) \| v \|_2 e_1  $ for $z_i(t)$ SKAL endres
+%\STATE $ u_n(t) \leftarrow  V_n z_i(t) $
+%\STATE $ \delta = h_{n+1,n} $ 
+%\IF { \texttt{restart} == 1 }
+%	\WHILE{ $\epsilon < \delta$  } 
+%    		\STATE $i \leftarrow i + 1$
+%    		\STATE Compute $[V_n,H_n,h_{n+1,n}^i,v_{n+1}] = \texttt{alg}(A,v_{n+1},n)$
+%    		\STATE Solve $ z_i'(t) = H_n z_i(t) + h_{n+1,n}^{i-1}e_n^\top z_{i-1}(t)  $ for $z_i(t)$ SKAl endres
+%    		\STATE $ u_n(t) \leftarrow u_n(t) + V_n z_i(t) $
+%    		\STATE $\delta = \max(u_n(t) - V_n z_i(t))$
+%	\ENDWHILE
+%\ENDIF
+%\STATE Return $u_n$.
+%\end{algorithmic} 
+%\end{algorithm}
+
+\subsection{Direct method}
+It is important to have some method to compare with. This will be done by solving the problem without using any of the projection methods. It is easy to show that when solving a problem with any of the projection methods presented here you are trying to approximate the solution obtained without using a projection method. This is also the best any projection method can do. Thus direct method, or \texttt{DM} as it will be called in this text, is the natural comparator for these projection methods.
+
+
+\subsection{Number of operations}
+Since computation times might be uncertain due to different additional loads (web surfing, writing and so on) there will here be a short comparison between the number of operations for each method. This will also give a basis for what to expect from the different methods.\\
+
+\begin{table}
+\begin{tabular}{l l }
+Operation & Cost \\
+\hline
+Integration with forward Euler & $\mathcal{O}(k n^2)$ \\
+Integration with Trapezoidal or midpoint rule & $\mathcal{O}(k n^3)$ \\
+Arnoldi's algorithm & $ \mathcal{ O }(n^2 m)$ \\
+Symplectic Lanczos method & $ \mathcal{O}(n m^2) $\\
+Transforming from $z_n(t)$ to $u(t)$ & $ \mathcal{O}(mnk) $\\
+Matrix vector multiplication (sparse matrix) & $ \mathcal{O}(m) $ \\
+Matrix vector multiplication (dense matrix) & $ \mathcal{O}(m^2) $
+\end{tabular}
+\label{tab:cd}
+\caption{Computational cost of some mathematical operations.
+!!!!!!!!!!!!!!!!!!!Husk å cite alt!!!!!!!!!!!!!!!}
+\end{table}
+
+A table of computational cost for different operations is given in table \ref{tab:cd}. Sections \ref{KPMcc} to \ref{sec:DMcc} will contain a motivation for the results found in table \ref{tab:cc}. It is assumed that trapezoidal method is used. \\
+
+\begin{table}
+\begin{tabular}{l | l}
+Method & Number of operation \\
+\hline
+\texttt{KPM} & $ \mathcal{O}((n^2 m + k n^3 + mnk)\gamma)$ \\ 
+\texttt{SLM} & $ \mathcal{O}((n m^2 + k n^3 + mnk)\gamma) $  \\
+\texttt{DM} & $\mathcal{O}(km^3)$ \\
+\end{tabular}
+\label{tab:cc}
+\caption{Number of operations needed for the different methods. $\gamma$ is the number of restarts needed for the method to converge. 
+\\!!!!!!!!!!!!!!!!!!Sjekk disse resultatene!!!!!!!!!!!!!!\\!!!!!!!!!!!!!Husk å cite alt!!!!!!!!!!!!!!!}
+\end{table}
+!!!!!!!!!!!!!!!!!!!!Skriv mye her!!!!!!!!!!!!!!!!!!!!!\\
+
+\subsubsection{KPM} \label{sec:KPMcc}
+KPM uses Arnoldi's algorithm, an integration method, and requires an additional $mnk$ operations when transforming $V_n z_n(t)$ to $ u(t)$.
+
+\subsubsection{SLPM} \label{sec:SLPMcc}
+SLPM uses SLM, an integration method, transformation, and requires an additional $m^2$ operations to calculate $ J^{-1} S_n J \zeta v $, which is a matrix vector product, and $S_n$ is a dense matrix.
+!!!!!!!!!!!!!Forklar hvor de tallene kommer fra!!!!!!!!!!!!!!!!\\
+
+\subsubsection{DM} \label{sec:DMcc}
+DM uses just an integration method, the downside is that $n = \hat{m}$.
+
+
+
+
+
+
+
+ 

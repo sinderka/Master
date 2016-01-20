@@ -1,54 +1,67 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!!!!!!!!Hint: kommenter ut bilder, få litt oversikt, og så legg til etterhvert som du går igjennom!!!!!!\\
+\section{Convergence}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This section will show convergence of all the methods, with both Hamiltonian and non-Hamiltonian systems. 
 
-\section{Time integration methods} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%!!!!!!!!!!!!!!!!Burde det vært restart her også?!!!!!!!!!!!!!!!\\
-This section will be concerned with comparing some different methods for integration in time. How well they estimate the error and energy will be the primary concern.\\
-
-The relevant integration methods are trapezoidal rule, forward euler, and midpoint rule. The definition and the iteration scheme of the different methods are given in table \ref{tab:intmet}. 
-
-\begin{table}
-\begin{tabular}{l l}
-	Trapezoidal rule \cite{trapezoidal} & $U_{i+1} = U_{i}+h_t g \Big( \frac{1}{2}(t_i+t_{i+1}),\frac{1}{2}(U_i+U_{i+1}) \Big)$
-	\\ & $U_{i+1} = (I- \frac{A h_t}{2}) ^{-1} \Big(  U_i + \frac{h_t}{2} \big( A U_i+(F_{i+1}+F_i) \big)  \Big) $\\
-\hline	
-	Forward Euler \cite{forwardeuler} & $ U_{i+1} = U_i + h_t g ( t_i, U_i ) $ \\ & $ U_{i+1} = U_i + h_t \big( A U_i + F_i \big) $ \\
-	\hline
-	Midpoint rule \cite{midpoint} & $U_{i+1} = U_i + h_t + g \Big(  t_{i+\frac{1}{2}} , \frac{1}{2}(U_i + U_{i+1})    \Big) $ \\ & 
-	$U_{i+\frac{1}{2}} = U_i + \frac{h_t}{2} ( A U_i + F_i )$ \\ &
-    $U_{i+1} = (I-\frac{A h_t}{2}) ^{-1} (U_{i+\frac{1}{2}} + \frac{h_t}{2} F_{i+ \frac{1}{2}})$
-\end{tabular}
-
-\caption{Methods for integrating in time. Note that since the midpoint rule uses $F_{i+\frac{1}{2}}$ we need to save twice as many points for midpoint rule, as for the other methods.} 
-\label{tab:intmet}
-\end{table}
-
-
-\subsection{Constant energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Hamiltonain system}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/intconvtrap.jpg}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/intconv11.jpg}
                 \caption{ Help line decreases with $k^2$. }
                 \label{fig:intconvtrap}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/intconveul.jpg}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/intconv12.jpg}
                 \caption{ Help line decreases with $k$. }
                 \label{fig:intconveul}
         \end{subfigure}
         \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/intconvmid.jpg}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/intconv13.jpg}
                 \caption{ Help line decreases with $k^2$. }
                 \label{fig:intconvmid}
         \end{subfigure}
-        
-        
 \caption{Figure of the convergence for the different integration methods. All methods converge with the expected rate.}
 \label{fig:intconv}
 \end{figure}
+\subsection{Non-Hamiltonian system}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/intconv21.jpg}
+                %\includegraphics[width=\textwidth]{test}
+                \caption{ Help line decreases with $k^2$. }
+                \label{fig:intconvtrap2}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/intconv22.jpg}
+                %\includegraphics[width=\textwidth]{test}
+                \caption{ Help line decreases with $k$. }
+                \label{fig:intconveul2}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.30\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/intconv23.jpg}
+                %\includegraphics[width=\textwidth]{test}
+                \caption{ Help line decreases with $k^2$. }
+                \label{fig:intconvmid2}
+        \end{subfigure}
+\caption{Figure of the convergence for the different integration methods. All methods converge with the expected rate.}
+\label{fig:intconv2}
+\end{figure}
+
+
+\section{Integration method} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%!!!!!!!!!!!!!!!!Burde det vært restart her også?!!!!!!!!!!!!!!!\\
+This section will be concerned with comparing some different methods for integration in time. How well they estimate the error and energy will be the primary concern. \\
+!!!!!!!!!!!!!!!!!!!!Her trengs det nye bilder!!!!!!!!!!!!!!!!!!!!!!\\
+
+
+\subsection{Hamiltonian system}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{figure}[H]
         \centering
@@ -89,31 +102,8 @@ The relevant integration methods are trapezoidal rule, forward euler, and midpoi
         \label{fig:error}
 \end{figure}
 Both trapezoidal rule and midpoint rule to gives a very precise estimation of energy and error. Forward Euler on the other hand gives a linearly increasing energy, and with that a larger error, making it useless as an integration method in this case. The reason for the wired shapes in figure \ref{fig:errorovertimetrapezoidal} and \ref{fig:errorovertimemidpoint} is the periodicity of the test problem. 
-\subsection{Varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/intconvtrap2.jpg}
-                %\includegraphics[width=\textwidth]{test}
-                \caption{ Help line decreases with $k^2$. }
-                \label{fig:intconvtrap2}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/intconveul2.jpg}
-                %\includegraphics[width=\textwidth]{test}
-                \caption{ Help line decreases with $k$. }
-                \label{fig:intconveul2}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/intconvmid2.jpg}
-                %\includegraphics[width=\textwidth]{test}
-                \caption{ Help line decreases with $k^2$. }
-                \label{fig:intconvmid2}
-        \end{subfigure}
-\caption{Figure of the convergence for the different integration methods. All methods converge with the expected rate.}
-\label{fig:intconv2}
-\end{figure}
+\subsection{Non-Hamiltonian system}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.30\textwidth}
@@ -154,8 +144,11 @@ Both trapezoidal rule and midpoint rule to gives a very precise estimation of en
 \end{figure}
 In this case all methods gives a suitable convergence for the error and the energy. There is no longer any problems with forward Euler's increasing energy. Again the shapes on the figures is a property of the test problems, and not a flaw in the method.
 
-\section{Energy preservation for SLM }%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-It can be proved that a restart of SLM does not alter the energy \cite{luli}. This section is devoted to seeing holds with numerical approximations. \\
+\section{A closer look at SLM }%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%It can be proved that a restart of SLM does not alter the energy \cite{luli}. This section is devoted to seeing holds with numerical approximations. \\
+
+Since SLM gives a symplectic matrix, the energy should not change with time. This section will be devoted to seeing how well this works in practice. There will also be a comparison about how the restart changes the energy preservation. In addition 
+!!!!!!!!!!!Bla bla bla!!!!!!!!!!!!!!!!!!!!\\
 
 
 
@@ -263,3 +256,195 @@ When comparing figure \ref{fig:compare} and figure \ref{fig:comparew} it is impo
         \label{fig:compare2w}
 \end{figure}
 The results here are very similar to the results found in section \ref{sec:SLMconstant}, except that the energy and error changes for the first points for both SLM and Arnoldi. SLM still gives the better approximation.
+
+\section{Run time comparison}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!!!!!!!!!!!!!!!!!!!!!!!!!!Burde jeg ha med restart eller ikke på disse bildene?!!!!!!!!!!!!!!!!!\\
+!!!!!!TEXT!!!!!! \\
+
+\subsection{constant energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!!!!!!TEXT!!!!!! 
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ccomparetimem0.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:ccomparetimem0}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ccomparetimem.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:ccomparetimem}
+        \end{subfigure}
+        ~
+
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ccomparetimek0.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:ccomparetimek0}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ccomparetimek.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:ccomparetimek}
+        \end{subfigure}
+        ~
+
+        \caption{ !!!!!!TEXT!!!!!!}
+        \label{fig:ccomparetime}
+\end{figure}
+!!!!!!TEXT!!!!!! \\
+\subsection{Varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!!!!!!TEXT!!!!!! \\
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vcomparetimem0.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:vcomparetimem0}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vcomparetimem.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:vcomparetimem}
+        \end{subfigure}
+        ~
+
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vcomparetimek0.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:vcomparetimek0}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vcomparetimek.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:vcomparetimek}
+        \end{subfigure}
+        ~
+
+        \caption{ !!!!!!TEXT!!!!!!}
+        \label{fig:vcomparetime}
+\end{figure}
+!!!!!!TEXT!!!!!! \\
+
+\section{Something with slm and energy differnent times}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!!!!!!!!!!!!!!!!!Sett dette inn der det hører hjemme!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+!!!!!!!Text!!!!!!!!!!!\\
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMtimeiter.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMtimeer1}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMtimetime.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMtimeen1}
+        \end{subfigure}        
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMtimeer1.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMtimeer1}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMtimeen1.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMtimeen1}
+        \end{subfigure}
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMtimeen3.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMtimeen3}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMtimeen4.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMtimeen4}
+        \end{subfigure}
+
+
+        \caption{ !!!!!!TEXT!!!!!!}
+        \label{fig:SLMtime}
+\end{figure}
+!!!!!TEXT!!!!!!!!!!!!!!!\\
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMtimeiterf.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMtimeer1}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMtimetimef.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMtimeen1}
+        \end{subfigure}        
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMtimeer1f.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMtimeer1}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMtimeen1f.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMtimeen1}
+        \end{subfigure}
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMtimeen3f.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMtimeen3}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMtimeen4f.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMtimeen4}
+        \end{subfigure}
+
+
+        \caption{ !!!!!!TEXT!!!!!!}
+        \label{fig:SLMtime}
+\end{figure}
+
+!!!!!!!Text!!!!!!!!!!!\\
+$\mathcal{H}$
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMepsilonen3.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMepsilonen3}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMepsilonen4.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMepsilonen4}
+        \end{subfigure}
+		~
+		\begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMiter.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:SLMiter}
+        \end{subfigure}
+
+        \caption{ !!!!!!TEXT!!!!!!}
+        \label{fig:SLMeps}
+\end{figure}

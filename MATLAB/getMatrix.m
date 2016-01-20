@@ -107,6 +107,20 @@ elseif strcmp(eqn,'maxwell1D')
             A = 0.5*[sparse((m-2)^2,(m-2)^2),speye((m-2)^2);-speye((m-2)^2),sparse((m-2)^2,(m-2)^2)]*(A+A'+m^2*speye(2*(m-2)^2)); % eventuelt minus dette, men det har ikke noe å si!
             save('semirandomA.mat','A');
         end
+    elseif strcmp(eqn,'eigen')
+        try
+            load('eigenVV.mat','VV');
+        catch
+            VV= -1;
+        end
+        if size(VV,1) ~= 2*(m-2)^2
+           VV = rand(2*(m-2)^2,2*(m-2)^2);
+            save('eigenVV.mat','VV'); 
+        end
+        
+        D = -sparse(1:2*(m-2)^2,1:2*(m-2)^2,1:2*(m-2)^2);
+        
+        A = -[sparse((m-2)^2,(m-2)^2),speye((m-2)^2);-speye((m-2)^2),sparse((m-2)^2,(m-2)^2)]*VV*D*VV';
 end
 end
 

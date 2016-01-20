@@ -15,7 +15,7 @@ for i = 1:k
     energy(i) = 0.5*epsilon(:,i)'*Jm*A*epsilon(:,i)+epsilon(:,i)'*Jm*hnext*vnext*Zn(end,i);
 end
 if figvar
-    figure(2); plot(0:ht:ht*(k-1),energy,'k:.');
+    figure(4); plot(0:ht:ht*(k-1),energy,'k:.');
 end
 
 end

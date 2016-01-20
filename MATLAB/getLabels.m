@@ -11,32 +11,45 @@ elseif data == 5
     ylab = {'er_2'};
 elseif data == 6
     ylab = {'en_2'};
-else
-    a = 2;
+elseif data == 7
+    ylab = {'en_3'};
+elseif data == 8
+    ylab = {'en_4'};
 end
 if m(1) == -1
     xlab = {'m'};
-elseif n(1) == -1
+end
+if n(1) == -1
     xlab = {'n'};
-elseif simtime(1) == -1
+end
+if simtime(1) == -1
     xlab = {'T_s'};
-elseif K(1) == -1
+end
+if K(1) == -1
     xlab = {'K'};
-elseif k(1) == -1
+end
+if k(1) == -1
     xlab = {'k'};
-elseif para(1) == -1
+end
+if para(1) == -1
     xlab = {'p_n'};
-elseif conv(1) == -1
+end
+if conv(1) == -1
     xlab = {'\epsilon'};
-elseif alg(1) == -1
+end
+if alg(1) == -1
     xlab = {'solution method'};
-elseif int(1) == -1
+end
+if int(1) == -1
     xlab = {'integration method'};
-elseif restart(1) == -1
+end
+if restart(1) == -1
     xlab = {'r_n'};
-elseif prob(1) == -1
+end
+if prob(1) == -1
     xlab = {'problem'};
-else 
+end
+if  ~exist('xlab','var')
     xlab = {'T_s'};
 end
 leg = {};
@@ -123,7 +136,7 @@ if length(simtime) == 1
     additionalInfo(end+1) = {stri};
 end
 if length(K) == 1
-    stri = strcat('K=',num2str(simtime));
+    stri = strcat('K=',num2str(K));
     additionalInfo(end+1) = {stri};
 end
 if length(k) == 1

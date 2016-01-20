@@ -1,22 +1,16 @@
-function [ error ] = getError( U,u )
-%UNTITLED2 Summary of this function goes here
-%   Detailed explanation goes here
-%%% TODO 
-% Gir av og til rare svar
-
-k = size(U,2);
-Err1 = zeros(1,k);
+function [ Err ] = getError( U,correctsolution )
+%%% Estimating error
+[l,k] = size(U);
+Err = zeros(1,k);
 for i = 1:k
-    Err1(i) = norm(u(:,i)-U(:,i) ,Inf)/max(abs(u(:,i)));
+    %if min(abs(correctsolution(:,i))) < 1e-15
+    %    Err(i) = norm(correctsolution(:,i)-U(:,i) ,Inf);
+    %else
+    %Err(i) = norm(correctsolution(:,i)-U(:,i) ,Inf)/max(abs(U(:,i)));
+    Err(i) = norm(correctsolution(:,i)-U(:,i) ,Inf)/max(max(abs(correctsolution(:,:))));
+    %end
 end
-
-m = size(U,1);
-Err2 = zeros(1,m);
-for i = 1:m
-    Err2(i) = norm(u(i,:)-U(i,:) ,Inf)/max(abs(u(i,:)));
-end
-
-error = max([Err1,Err2]); % rart?
-
+%Err = max(abs(U-correctsolution));
+%err
 end
 

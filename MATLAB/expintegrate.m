@@ -11,11 +11,7 @@ function U = expintegrate(A,U0,T)
 %expA = expm(A); %Option 2
 %[V,D]= eig(A);%Option 3
 
-U = zeros(lenght(A),length(T));
+U = zeros(length(A),length(T));
 for i = 1:length(T)
-U(i) = U0*exmp(A*T(i)); % Option 1
-%U(i) = U0*expA^T(i);    % Option 2
-%U(i) = U0*V'*D^T(i)*V;    % Option 2
-end
-
+U(:,i) = expm(A*T(i))*U0-U0;
 end

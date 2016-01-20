@@ -24,7 +24,6 @@ end
 U = zeros(l,k);
 iter = 1;
 h = norm(v,2);
-%[Vn,Hn,vnext,hnext] = alg(A,v,n,conv);
 [Vn,Hn,vnext,hnext] = Arnoldi(A,v,n,conv);
 
 [Zn] = int(Hn,[h*F(1,:);sparse(length(Hn)-1,k)],ht);
@@ -43,8 +42,6 @@ if restart
         iter = iter+1;
     end
 end
-
-
 energy1 = 0;
 energy2 = 0;
 end

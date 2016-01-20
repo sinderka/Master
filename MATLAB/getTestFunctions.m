@@ -59,10 +59,18 @@ if strcmp(eqn,'heat') % Sjekk!!!
     V =  [Ustart,V]; F = [ones(1,k);F];
     correctsolution = getSolution(X,T,sol);
 elseif strcmp(eqn,'wave') % Kun problem 1 og 2 fungerer
+    a1 = 1; b1 = 1; c1 = sqrt(a1^2+b1^2);
+    a2 = 2; b2 = 3; c2 = sqrt(a2^2+b2^2);
+    a3 = -3; b3 = 4; c3 = sqrt(a3^2+b3^2);
+    
     if prob == 1
-        sol1 = @(t,x,y)  sin(pi*x)*sin(pi*y)*cos(sqrt(2)*pi*t);
-        sol2 = @(t,x,y) -sin(pi*x)*sin(pi*y)*sqrt(2)*pi*sin(sqrt(2)*pi*t);
-        u0 = @(x,y) sin(pi*x)*sin(pi*y);
+        sol1 = @(t,x,y)  sin(a1*pi*x)*sin(b1*pi*y)*cos(c1*pi*t) + sin(a2*pi*x)*sin(b2*pi*y)*cos(c2*pi*t) + sin(a3*pi*x)*sin(b3*pi*y)*cos(c3*pi*t);
+        sol2 = @(t,x,y) -sin(a1*pi*x)*sin(b1*pi*y)*c1*pi*sin(c1*pi*t) - sin(a2*pi*x)*sin(b2*pi*y)*c2*pi*sin(c2*pi*t) - sin(a3*pi*x)*sin(b3*pi*y)*c3*pi*sin(c3*pi*t);
+        u0 = @(x,y) sin(a1*pi*x)*sin(b1*pi*y) + sin(a2*pi*x)*sin(b2*pi*y) + sin(a3*pi*x)*sin(b3*pi*y);
+        
+        %         sol1 = @(t,x,y)  sin(pi*x)*sin(pi*y)*cos(sqrt(2)*pi*t);
+        %         sol2 = @(t,x,y) -sin(pi*x)*sin(pi*y)*sqrt(2)*pi*sin(sqrt(2)*pi*t);
+        %         u0 = @(x,y) sin(pi*x)*sin(pi*y);
         v0 = @(x,y) 0;
         v1 = @(x,y) 0; f1 = @(t) 0;
         v2 = @(x,y) 0; f2 = @(t) 0;
@@ -73,7 +81,7 @@ elseif strcmp(eqn,'wave') % Kun problem 1 og 2 fungerer
         sol2 = @(t,x,y) (x-1)*x*(y-1)*y*(2*t-1);
         u0 = @(x,y) (x-1)*x*(y-1)*y;
         v0 = @(x,y) -(x-1)*x*(y-1)*y;
-        v1 = @(x,y) (x-1)*x*(y-1)*y; f1 = @(t) 1;
+        v1 = @(x,y) 2*(x-1)*x*(y-1)*y; f1 = @(t) 1;
         v2 = @(x,y) 2*(y*(y-1)+x*(x-1)); f2 = @(t) -(t^2-t+1);
         V = [[sparse((m-2)^2,1);getV(v1,X)],[sparse((m-2)^2,1);getV(v2,X)]];
         F = [getTime(f1,T);getTime(f2,T)];
@@ -87,11 +95,17 @@ elseif strcmp(eqn,'wave') % Kun problem 1 og 2 fungerer
         V = [[sparse((m-2)^2,1);getV(v1,X)],[sparse((m-2)^2,1);getV(v2,X)]];
         F = [getTime(f1,T);getTime(f2,T)];
     elseif prob == 4
-        sol = @(t,x,y) sin(pi*x)*y*(y-1)*sin(t);
-        u0 = @(x,y) 0;
-        v0 = @(x,y) sin(pi*x)*y*(y-1);
-        v1 = @(x,y) sin(pi*x)*y*(y-1); f1 = @(t) -sin(t);
-        v2 = @(x,y) sin(pi*x)*(2-pi^2*y*(y-1)); f2 = @(t) -sin(t);
+        sol1 = @(t,x,y) (t-x) + 5*(t+x);
+        sol2 = @(t,x,y) 6;
+        u0 = 4*x;
+        v0 = 0;
+        v1 = 0;     f1 = @(t) 0;
+        v2 = 0;     f2 = @(t) 0;
+        %         sol = @(t,x,y) sin(pi*x)*y*(y-1)*sin(t);
+        %         u0 = @(x,y) 0;
+        %         v0 = @(x,y) sin(pi*x)*y*(y-1);
+        %         v1 = @(x,y) sin(pi*x)*y*(y-1); f1 = @(t) -sin(t);
+        %         v2 = @(x,y) sin(pi*x)*(2-pi^2*y*(y-1)); f2 = @(t) -sin(t);
         V = [[sparse((m-2)^2,1);getV(v1,X)],[sparse((m-2)^2,1);getV(v2,X)]];
         F = [getTime(f1,T);getTime(f2,T)];
     elseif prob == 5
@@ -197,12 +211,14 @@ elseif strcmp(eqn,'semirandom') % Kjenner ikke løsningen på problemet den løs
         end
         
         if size(V,1) ~= 2*(m-2)^2
-            V = [zeros(2*(m-2)^2,1),rand(2*(m-2)^2,1)];
+            %V = [zeros(2*(m-2)^2,1),rand(2*(m-2)^2,1)];
+            V = [rand(2*(m-2)^2,1),zeros(2*(m-2)^2,1)];
             save('semirandomV.mat','V');
         end
         
         Ustart = V(:,1);
         
+        %F = ones(2,k);
         F = ones(2,k);
         correctsolution = sparse(2*m^2,k);
     elseif prob == 2
@@ -230,7 +246,37 @@ elseif strcmp(eqn,'semirandom') % Kjenner ikke løsningen på problemet den løs
         
         correctsolution = sparse(2*m^2,k);
     end
+elseif strcmp(eqn,'eigen')
+    try
+        load('semirandomV.mat','V');
+    catch
+        V = -1;
+    end
     
+    if size(V,1) ~= 2*(m-2)^2
+        V = rand(2*(m-2)^2,1);
+        save('semirandomV.mat','V');
+    end
+    %Ustart = V;
+    F = ones(1,k);
+    load('eigenVV.mat','VV');
+    
+    try
+        load('eigenV.mat','V');
+    catch
+        V = -1;
+    end
+    if size(V,1) ~= 2*(m-2)^2
+                V = rand(2*(m-2)^2,1);
+        save('eigenV.mat','V');
+    end
+    
+    Ustart = V(:,1);
+    D = -sparse(1:2*(m-2)^2,1:2*(m-2)^2,1:2*(m-2)^2);
+    correctsolution = zeros(2*m^2,k);
+    for i = 1:k
+        correctsolution(vec,i) = -[sparse((m-2)^2,(m-2)^2),speye((m-2)^2);-speye((m-2)^2),sparse((m-2)^2,(m-2)^2)]*VV*exp(D*T(i))*VV'*V(:,1);
+    end
 end
 
     function correctsolution = getSolution(X,T,sol1,sol2)
