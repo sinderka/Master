@@ -5,32 +5,32 @@ function MyPlots
 % 1
 % figures uunder chapter time integration methods
 % convergence plots
-%timeintegrationconvergence; display('DONE: timeintegrationconvergence')
+timeintegrationconvergence; display('DONE: timeintegrationconvergence')
 
 % 2
 % figures under chapter time integration methods
 % names like energyovertimemidpoint or errorchangeretimetrapezoidal
-%timeintegration; display('DONE: timeintegration')
+timeintegration; display('DONE: timeintegration')
 
 % 3
 % Figures under chapter SLM energy
-%SLMenergylongtime; display('DONE: SLMenergylongtime'); 
+SLMenergylongtime; display('DONE: SLMenergylongtime'); 
 
 % 4
 % Figures under chapter SLM perserved energy
-%SLMperserveedenergy; display('DONE: SLMperservedenergy');
+SLMperserveedenergy; display('DONE: SLMperservedenergy');
 
 % 5
 % figures under chapter K versus k
-%Kversusk; display('DONE: Kversusk')
+Kversusk; display('DONE: Kversusk')
 
 % 6
 % figures under chapter Energypreservation for SLM, constant energy
-%changeeps; display('DONE: changeeps')
+changeeps; display('DONE: changeeps')
 
 % 7
 % figures under chapter "the perfect restart variable"
-%restartvariable; display('DONE: restartvariable')
+restartvariable; display('DONE: restartvariable')
 
 % 8
 % Figures under chapter "run time comparison"
@@ -38,11 +38,11 @@ runcomparison; display('DONE: runcomparison')
 
 % 9
 % Figures in idea chapter
-%ideaexpm; display('DONE: ideaexpm')
+ideaexpm; display('DONE: ideaexpm')
 
 % 10
 % Figures in matalb expm
-%matlabexpm; display('DONE: matlabexpm') 
+matlabexpm; display('DONE: matlabexpm') 
 end
 
 % Hvert kapitel/delkapitel som hører litt sammen har samme funksjon,
@@ -179,27 +179,27 @@ end
 % 8
 function runcomparison % blir brukt
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{data},'type',[help],{name},save,option)
-% plottool([-1,10,20,40,80],6,1,1,20,'wave',[-2,1,2,3],1,1  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimem'},1)
-% 
-% plottool([-1,10,20,40,80],6,1,1,20,'wave',[-2,1,2,3],1,0  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimem0'},1)
-% 
-% plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimek'},1)
-% 
-% plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,0  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimek0'},1)
-% 
-% 
-% plottool([-1,10,20,40,80],6,1,1,20,'wave',[-2,1,2,3],1,1  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimem'},1)
-% 
-% plottool([-1,10,20,40,80],6,1,1,20,'wave',[-2,1,2,3],1,0  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimem0'},1)
-% 
-% plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek'},1)
-% 
-% plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,0  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek0'},1)
+plottool([-1,10,20,40,80],6,1,1,20,'wave',[-2,1,2,3],1,1  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimem'},1)
+
+plottool([-1,10,20,40,80],6,1,1,20,'wave',[-2,1,2,3],1,0  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimem0'},1)
+
+plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimek'},1)
+
+plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,0  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimek0'},1)
+
+
+plottool([-1,10,20,40,80],6,1,1,20,'wave',[-2,1,2,3],1,1  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimem'},1)
+
+plottool([-1,10,20,40,80],6,1,1,20,'wave',[-2,1,2,3],1,0  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimem0'},1)
+
+plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek'},1)
+
+plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,0  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek0'},1)
 
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{'data'},{'type'},[help],{'name'},save,option,EToption,PMint)
-plottool([-1,12,20,40,80,120],[-1,6,10,20,40,60],1,[-1,12,20,40,80,120],1,'wave',[-2,1,2,3],1,1,1,[-1,1e-3,1e-4,1e-5,1e-6,1e-7],1,{'2'},{'loglog'},0,{'fastruntime1'},1,1,0,1)
+plottool([-1,12,20,40,80],[-1,6,10,20,40],1,[-1,12,20,40,80],1,'wave',[-2,1,2,3],1,1,1,[-1,1e-3,1e-4,1e-5,1e-6,1e-7],1,{'2'},{'loglog'},0,{'fastruntime1'},1,1,0,1)
 
-plottool([-1,12,20,40,80,120],[-1,6,10,20,40,60],1,[-1,12,20,40,80,120],1,'wave',[-2,1,2,3],1,1,3,[-1,1e-3,1e-4,1e-5,1e-6,1e-7],1,{'2'},{'loglog'},0,{'fastruntime3'},1,1,0,1)
+plottool([-1,12,20,40,80],[-1,6,10,20,40],1,[-1,12,20,40,80],1,'wave',[-2,1,2,3],1,1,3,[-1,1e-3,1e-4,1e-5,1e-6,1e-7],1,{'2'},{'loglog'},0,{'fastruntime3'},1,1,0,1)
 
 end
 

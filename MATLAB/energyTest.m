@@ -125,10 +125,10 @@ figure(31);loglog(T,abs(energy(A,U(vec,:))),'k:+'); hold on; %plot(T,T.^0*1e-13,
 % end
 % hold off;
 
-if 0
-    %video(U(1:m^2,:),m,0.05,eqn)
+if 1
+    video(U(1:m^2,:),m,0.05,eqn)
     %pause
-    video(U(1:m^2,:)-correctsolution(1:m^2,:),m,0.5,eqn)
+    %video(U(1:m^2,:)-correctsolution(1:m^2,:),m,0.05,eqn)
     
     %video(expmsolution(1:m^2,:),m,0.05,eqn)
     %video(expmsolution(1:m^2,:)-correctsolution(1:m^2,:),m,0.05,eqn)
@@ -180,7 +180,7 @@ if SLMint == 1
 elseif SLMint == 2
     Zn = expintegrate(Hn,Hn\F,T);
 elseif SLMint == 3 %&& n == 1
-    Zn = locexpm(full(Hn),full(Hn\F),T);
+    Zn = real(locexpm(full(Hn),full(Hn\F),T));
 end
 ns = Vn*Zn;
 Vn0 = Vn; Zn0 = Zn; Hn0 = Hn; v0 = v;

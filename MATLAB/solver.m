@@ -32,9 +32,9 @@ if nargin < 13
     m = 20;
     simtime = 1;
     K = 1;
-    k = 20;
-    n = 8;%2*(m-2)^2;
-    restart = 0;
+    k = 80;
+    n = 4;%2*(m-2)^2;
+    restart = 1;
     prob = 1;
     conv = 10^-15;
     para = 4; %%%%% If need be %%%%%%
