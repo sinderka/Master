@@ -1,4 +1,4 @@
-function [U,iter,energy1,energy2] = SLM(A,v,F,n,ht,conv,restart,int,figvar)
+function [U,iter,energy1,energy2] = SLM(A,v,F,n,ht,conv,restart,int,figvar,PMint)
 %Indata
 % A: mxm matrix
 % v: m vector
@@ -29,8 +29,13 @@ iter = 1;
 invJ = [sparse(n,n),-speye(n);speye(n),sparse(n,n)];
 J = [sparse(l/2,l/2),speye(l/2);-speye(l/2),sparse(l/2,l/2)];
 F = invJ*Vn'*J*v*F;
-
-[Zn] = int(Hn,F,ht);
+if PMint == 1
+    Zn = int(Hn,F,ht);
+elseif PMint == 2
+    Zn = expintegrate(Hn,Hn\F(:,1),0:ht:ht*(k-1));
+elseif PMint == 3
+    Zn = real(myexpm(full(Hn),Hn\F(:,1),0:ht:ht*(k-1)));
+end
 
 ns = Vn*Zn;
 U = U + ns;

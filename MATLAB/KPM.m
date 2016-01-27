@@ -1,4 +1,4 @@
-function [U,iter,energy1,energy2] = KPM(A,v,F,n,ht,conv,restart,int,~)
+function [U,iter,energy1,energy2] = KPM(A,v,F,n,ht,conv,restart,int,~,PMint)
 %Indata
 % A: mxm matrix
 % v: m vector
@@ -25,8 +25,14 @@ U = zeros(l,k);
 iter = 1;
 h = norm(v,2);
 [Vn,Hn,vnext,hnext] = Arnoldi(A,v,n,conv);
-
-[Zn] = int(Hn,[h*F(1,:);sparse(length(Hn)-1,k)],ht);
+if PMint == 1
+    Zn = int(Hn,[h*F(1,:);sparse(length(Hn)-1,k)],ht);
+elseif PMint == 2
+    Zn = expintegrate(Hn,Hn\[h;sparse(length(Hn)-1,1)],0:ht:ht*(k-1));
+elseif PMint == 3
+    Zn = real(myexpm(full(Hn),Hn\[h;sparse(length(Hn)-1,1)],0:ht:ht*(k-1)));
+end
+    
 
 ns = Vn*Zn;
 U = U + ns;

@@ -1,5 +1,5 @@
-function plottool(m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save,option,EToption)
-%plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{data},'type',[help],{name},save,option)
+function plottool(m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save,option,EToption,PMint)
+%plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{'data'},{'type'},[help],{'name'},save,option,EToption,PMint)
 % a tool that helps make plotting easier.
 %input
 % m: number of points in eqch spacial direction X
@@ -28,26 +28,33 @@ end
 if length(help) < 3 && help(1)
     help(3) = 1;
 end
+if help == 0
+    help = zeros(length(data),3);
+end
+if ~exist('PMint','var')
+    PMint = 1;
+end
 
 
-linetype = {'k:+','k:o','k:*','k:.','k:x','k:s','k:d','k:^','k:v','k:<','k:>','k:p','k:h'};
+
+linetype = {'k:+','k:o','k:x','k:.','k:*','k:s','k:d','k:^','k:v','k:<','k:>','k:p','k:h'};
 
 
 
 
-[p,bc] = getPandB(m,n,simtime,K,k,alg,int,restart,prob,conv,para);
+[p,bc] = getPandB(m,n,simtime,K,k,alg,int,restart,prob,conv,para,PMint);
 ant1 = length(p)-1; ant2 = length(bc)-1;
-a = 1; b = 1; c = 1; d = 1; e = 1; f = 1; g = 1; h = 1; aa = 1; bb = 1; cc = 1;
+a = 1; b = 1; c = 1; d = 1; e = 1; f = 1; g = 1; h = 1; aa = 1; bb = 1; cc = 1; dd = 1;
 utdata = zeros(ant2,ant1,8);
 for i = 1:ant1
-    [a0,b0,c0,d0,e0,f0,g0,h0,aa0,bb0,cc0] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,bb,cc,-1);
-    a = max(1,a0*(a0-a)); b = max(1,b0*(b0-b)); c = max(1,c0*(c0-c)); d = max(1,d0*(d0-d)); e = max(1,e0*(e0-e)); f = max(1,f0*(f0-f)); g = max(1,g0*(g0-g)); h = max(1,h0*(h0-h)); aa = max(1,aa0*(aa0-aa)); bb = max(1,bb0*(bb0-bb)); cc = max(1,cc0*(cc0-cc));
+    [a0,b0,c0,d0,e0,f0,g0,h0,aa0,bb0,cc0,dd0] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,PMint,a,c,b,d,e,f,g,h,aa,bb,cc,dd,-1);
+    a = max(1,a0*(a0-a)); b = max(1,b0*(b0-b)); c = max(1,c0*(c0-c)); d = max(1,d0*(d0-d)); e = max(1,e0*(e0-e)); f = max(1,f0*(f0-f)); g = max(1,g0*(g0-g)); h = max(1,h0*(h0-h)); aa = max(1,aa0*(aa0-aa)); bb = max(1,bb0*(bb0-bb)); cc = max(1,cc0*(cc0-cc)); dd = max(1,dd0*(dd0-dd));
     for j = 1:ant2
-        [a,b,c,d,e,f,g,h,aa,bb,cc] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,bb,cc,-2);
+        [a,b,c,d,e,f,g,h,aa,bb,cc,dd] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,PMint,a,c,b,d,e,f,g,h,aa,bb,cc,dd,-2);
         if option == 1
-            utdata(j,i,:) = solver(m(a),n(b),simtime(bb),K(cc),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e),0);
+            utdata(j,i,:) = solver(m(a),n(b),simtime(bb),K(cc),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e),0,PMint(dd));
         elseif option == 2 % energyTest(m,n,k,simtime,eqn,restart,prob,conv,figvar)
-            utdata(j,i,:) = energyTest(m(a),n(b),simtime(bb),k(c),eqn,int(aa),restart(g),prob(h),conv(d),0,EToption);
+            utdata(j,i,:) = energyTest(m(a),n(b),simtime(bb),k(c),eqn,int(aa),restart(g),prob(h),conv(d),0,EToption,0,0,PMint(dd));
         end
         %utdata(j,i,:) = energyTest(m(a),n(b),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e));
     end
@@ -78,9 +85,9 @@ for kk = 1:length(data)
     end
     
     
-    [ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,str2num(char(data(kk))));
-    if help(1)
-        plot(p(2:end),p(2:end).^help(2)*help(3),'k-')
+    [ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,str2num(char(data(kk))),PMint);
+    if help(kk,1)
+        plot(p(2:end),p(2:end).^help(kk,2)*help(kk,3),'k-')
         leg(end+1) = {'Helpline'};
     end
     ylabel(ylab);
@@ -103,7 +110,7 @@ for kk = 1:length(data)
 end
 end
 
-function [p,b] = getPandB(m,n,simtime,K,k,alg,int,restart,prob,conv,para)
+function [p,b] = getPandB(m,n,simtime,K,k,alg,int,restart,prob,conv,para,PMint)
 if length(m) > 1
     if m(1) == -1
         p = m;
@@ -180,6 +187,9 @@ if length(prob) > 1
         b = prob;
     end
 end
+if exist('p','var') && exist('b','var')
+    return
+end
 if length(conv) > 1
     if conv(1) == -1
         p = conv;
@@ -187,9 +197,17 @@ if length(conv) > 1
         b = conv;
     end
 end
+
+if length(PMint) > 1
+    if PMint(1) == -1
+        p = PMint;
+    elseif PMint(1) == -2
+        b = PMint;
+    end
+end
 end
 
-function [a,b,c,d,e,f,g,h,aa,bb,cc] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,a,c,b,d,e,f,g,h,aa,bb,cc,var)
+function [a,b,c,d,e,f,g,h,aa,bb,cc,dd] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,PMint,a,c,b,d,e,f,g,h,aa,bb,cc,dd,var)
 if m(1) == var
     a = a + 1;
 end
@@ -223,5 +241,10 @@ end
 if int(1) == var
     aa = aa + 1;
 end
+
+if PMint(1) == var
+    dd = dd + 1;
+end
+
 end
 

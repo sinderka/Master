@@ -259,23 +259,21 @@ elseif strcmp(eqn,'eigen')
     end
     %Ustart = V;
     F = ones(1,k);
-    load('eigenVV.mat','VV');
-    
-    try
-        load('eigenV.mat','V');
-    catch
-        V = -1;
-    end
-    if size(V,1) ~= 2*(m-2)^2
-                V = rand(2*(m-2)^2,1);
-        save('eigenV.mat','V');
-    end
-    
     Ustart = V(:,1);
-    D = -sparse(1:2*(m-2)^2,1:2*(m-2)^2,1:2*(m-2)^2);
     correctsolution = zeros(2*m^2,k);
+    
+    load('eigenQ.mat','Q');
+    eigenvals = eigenvalues(2*(m-2)^2-1);
+    D = gallery('tridiag',-eigenvals,zeros(2*(m-2)^2,1),eigenvals);
+    %[a,b] = eigs(D);
+    expmat = exponfunction(D);
+    expmat1 = expm(D);
+    
+    correctsolution1 = zeros(2*m^2,k);
     for i = 1:k
-        correctsolution(vec,i) = -[sparse((m-2)^2,(m-2)^2),speye((m-2)^2);-speye((m-2)^2),sparse((m-2)^2,(m-2)^2)]*VV*exp(D*T(i))*VV'*V(:,1);
+        %correctsolution(vec,i) = Q*expm(D*T(i))*Q'*V(:,1);
+        correctsolution(vec,i) =  Q*expmat *Q'*V(:,1);
+        correctsolution1(vec,i) = Q*expmat1*Q'*V(:,1);
     end
 end
 

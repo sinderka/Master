@@ -22,9 +22,9 @@ function utdata = energyTest(m,n,simtime,k,eqn,integrator,restart,prob,conv,figv
 % Initsiell
 if nargin < 9
     m = 20;
-    simtime = 10;
+    simtime = 1;
     %K = 2;
-    k = 200;
+    k = 80;
     n = 4; %2*(m-2)^2;
     restart = 1 ;
     prob = 1;
@@ -36,7 +36,7 @@ if nargin < 9
     figvar = 0;
     solveexpm = 0;
     intesolve = 0;
-    SLMint = 1;
+    SLMint = 3;
     save = 0;
 end
 
@@ -127,10 +127,11 @@ figure(31);loglog(T,abs(energy(A,U(vec,:))),'k:+'); hold on; %plot(T,T.^0*1e-13,
 
 if 0
     %video(U(1:m^2,:),m,0.05,eqn)
-    %video(U(1:m^2,:)-correctsolution(1:m^2,:),m,0.05,eqn)
+    %pause
+    video(U(1:m^2,:)-correctsolution(1:m^2,:),m,0.5,eqn)
     
     %video(expmsolution(1:m^2,:),m,0.05,eqn)
-    video(expmsolution(1:m^2,:)-correctsolution(1:m^2,:),m,0.05,eqn)
+    %video(expmsolution(1:m^2,:)-correctsolution(1:m^2,:),m,0.05,eqn)
     
     %video(intesolution(1:m^2,:),m,0.05,eqn)
     %video(intesolution(1:m^2,:)-correctsolution(1:m^2,:),m,0.05,eqn)
@@ -166,7 +167,7 @@ if max(abs(v)) == 0
 end
 U = zeros(l,k);
 iter = 1;
-v0 = v;
+%v0 = v;
 
 [Vn,Hn,vnext,hnext] = SymplecticLanczosMethod(A,v,n,conv);
 hamiltonian(Hn); symplectic(Hn); eigenschaft(A,Vn,Hn,vnext,hnext);
@@ -178,12 +179,11 @@ if SLMint == 1
     Zn = trapezoidal(Hn,F*ones(1,k),ht);
 elseif SLMint == 2
     Zn = expintegrate(Hn,Hn\F,T);
-    
-elseif SLMint == 3 && n == 1
-    Zn = locexpm(Hn,Hn\F,T);
+elseif SLMint == 3 %&& n == 1
+    Zn = locexpm(full(Hn),full(Hn\F),T);
 end
 ns = Vn*Zn;
-Vn0 = Vn; Zn0 = Zn;
+Vn0 = Vn; Zn0 = Zn; Hn0 = Hn; v0 = v;
 U = U + ns;
 diff = hnext;
 if restart
@@ -202,6 +202,9 @@ if restart
         diff = max(max(abs(ns)));
         U = U + ns;
         iter = iter+1;
+        if iter == 2
+            luliproof(A,v0,Vn0,Vn,Hn0,Zn0,Zn);
+        end
     end
 end
 energy1 = max(abs(energyBIG(A,Zn,vnext,hnext,ht,figvar,int)));
@@ -230,7 +233,7 @@ end
 function symplectic(A)
 m = length(A)/2;
 J = [sparse(m,m),speye(m); -speye(m),sparse(m,m)];
-if isequal((J*A)',J*A);
+if max(max(abs((A'*J*A)'-J))) < 1e-10
     display('A er symplektisk');
 else
     display('A er ikke symplektisk');
@@ -271,3 +274,28 @@ saveas(gcf,location,'jpeg');
 end
 
 
+function luliproof(A,b,Sn1,Sn2,Hn1,z,delta)
+%z, Sn1 er for å løse forste gangen
+%Sn2 og delta er fra å løse senere ganger(andre gangen)
+
+%J og A er greie!
+
+l = size(A,1); [n,k] = size(z); 
+J = [sparse(l/2,l/2),speye(l/2,l/2);-speye(l/2,l/2),sparse(l/2,l/2)];
+invJ = [sparse(n/2,n/2),-speye(n/2,n/2);speye(n/2,n/2),sparse(n/2,n/2)];
+btilde = invJ*Sn1'*J*b;
+zdot = Hn1*z+btilde*ones(1,k);
+
+Sn1ting = (Sn1*z+Sn2*delta);
+
+var1 = 1/2*Sn1ting'*J*A*Sn1ting + Sn1ting'*J*b*ones(1,k);
+var2 = (Sn2*delta)'*J*Sn1*zdot;
+
+if max(max(abs(var1-var2))) < 1e-10
+    display('!!!!!!!!!!!!!!LuLi ting fungerer!!!!!!!!!!!!!!!!')
+else
+    display('!!!!!!!!!!!!!!!!!!!!!!!!!Sjekk for feil!!!!!!!!!')
+end
+
+
+end

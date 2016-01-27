@@ -1,267 +1,363 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Results for separable $p$} \label{sec:seri}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In this whole section it is assume that $p$ is separable, and that only one processing unit is used to obtain the results. 
-Section \ref{sec:sconv} will show correctness of the methods with a convergence plot. In section \ref{sec:rrest} we will see if there is any correlation between $n$ and $\rho$.
-Computation times for the different methods will be compared to each other and their predicted computational complexity in section \ref{sec:stimem} and \ref{sec:stimek}.
-How $\gamma$ and $\epsilon$ scales with $\delta$ will be examined in section \ref{sec:div}.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Convergence} \label{sec:sconv}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{How to choose $\epsilon$} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This section will look at how the different projection methods compare to each other in relation to error, energy and time consumption. There will also be a comparison between restart variable and computation time. 
+
+%\subsection{}
+
+
+\subsection{Constant energy} \label{sec:SLMconstant}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!!!!!!!!!!!!!!!!!!!!!Det må skrives en del mer i dette kapitelet!!!!!!!!!!!!!!!!!!!!!!\\
+
 \begin{figure}[H]
         \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s1conv1}
-                \caption{function \texttt{P1}}
-                \label{fig:conv1}
-        \end{subfigure}%
-~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s2conv2}
-                \caption{function \texttt{P2}}
-                \label{fig:conv2}
+        
+		\begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergyw.jpg}
+                \caption{ Energy. }
+                \label{fig:compareEnergyw}
         \end{subfigure}
-        \caption{A convergence plot for several methods with $\rho = k$. The helpline shows quadratic convergence.}\label{fig:conv}
-\end{figure}
-As can be seen from figure \ref{fig:conv}, all method converges quadratically and overlap perfectly, this shows that all method preforms as expected regarding convergence.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Choosing restart variable } \label{sec:restvar}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s9rest1}
-                \caption{function \texttt{P1}}
-                \label{fig:rest1}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareErrorw.jpg}
+                \caption{ Error. }
+                \label{fig:compareErrorw}
         \end{subfigure}
-~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s10rest2}
-                \caption{function \texttt{P2}}
-                \label{fig:rest2}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIterw.jpg}
+                \caption{ Number of restarts.  }
+                \label{fig:compareIterw}
         \end{subfigure}
-        \caption{Computation time plotted against restart variable $n$.}\label{fig:rest}
-\end{figure}
-As can be see from figure \ref{fig:rest}, the optimal restart variable changes as a function of $\rho$ so that larger $\rho$ needs larger $n$ to preform optimally, $n = \rho$ seams to give the smallest computation time for the cases tested. One point is missing from \texttt{KPM}$(n)$, $\rho = 10$, this is because the last point plotted is the same as \texttt{KPM}.  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Comparing $\gamma$ and $n$} \label{sec:rrest}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s3antvsm1}
-                \caption{function \texttt{P1}}
-                \label{fig:ant1}
-        \end{subfigure}%
-~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s4antvsm2}
-                \caption{function \texttt{P2}}
-                \label{fig:ant2}
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy.jpg}
+                \caption{Energy.}
+                \label{fig:compareEnergy}
         \end{subfigure}
-        \caption{The number of restarts, $\gamma$ needed for \texttt{KPM}$(n)$ to converge as a function of the restart variable $n$. The helpline follows $1/n^2$.}\label{fig:ant}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareError.jpg}
+                \caption{ Error. }
+                \label{fig:compareError}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter.jpg}
+                \caption{ Number of restarts.  }
+                \label{fig:compareIter}
+        \end{subfigure}
+        \caption{ The figure shows how the different methods change the energy and error with different number of restart for \texttt{semirandom}.  }
+        \label{fig:compare}
 \end{figure}
 
-The helpline from figure \ref{fig:ant} shows that the number of restarts is proportional to $1/n^2$ for all tested cases, if we put this together with the assumption from section \ref{sec:cc} we get that $\gamma$ is proportional to  $m^2/n^2$. Using table \ref{tab:cc} we get that \texttt{KPM}$(n)$ has a complexity of $\mathcal{O}(km^2 + m^3)$ for separable $p$, and $\mathcal{O}(km^3 + m^4)$ for non-separable $p$, which is the same as for \texttt{KPM}.\\
 
-We also see that the number of restarts decrease quickest when $n < \rho $, and slower when $n > \rho$. This is the gain we observed in section \ref{sec:restvar}. On each side of $n = \rho$ we can perform better, either by performing fewer restarts with larger matrices, or more restarts with smaller matrices. \\
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Computation time with different $\rho$} \label{sec:stimem}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+There is a clear difference between how well the energy is estimated for \texttt{wave} and \texttt{semirandom}. For \texttt{semirandom} there is not much difference between SLM and Arnoldi, although SLM seams to give a slight better approximation than Arnoldi. With \texttt{semirandom} at $\epsilon = 10^{-10}$ Arnoldi preforms one more iteration than SLM, which makes it give a better approximation, aside from that SLM consistently preform better than Arnoldi.\\
+When comparing figure \ref{fig:compare} and figure \ref{fig:comparew} it is important to remember that the way the $er_1$ and $er_2$ is found is very differently, and that might explain the why the cases differs so much. But the difference might also be explained with \texttt{semiradom} being a much harder equation to solve.\\
+!!!!!!!!!!!!!Skriv litt mer om hvorfor bildene for semirandom og wave er så forksjelkige!!!!!!!!!!!!!!!!!!!!!\\
+
+\subsection{Varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{figure}[H]
+        \centering
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy2w.jpg}
+                \caption{ The difference in energy with and without restart. }
+                \label{fig:compareEnergy2w}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareError2w.jpg}
+                \caption{ The difference in energy with and without restart. }
+                \label{fig:compareError2w}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter2w.jpg}
+                \caption{ The number of iterations performed with and without restarting.  }
+                \label{fig:compareIter2w}
+        \end{subfigure}
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy2.jpg}
+                \caption{ The difference in energy with and without restart. }
+                \label{fig:compareEnergy2}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareError2.jpg}
+                \caption{ The difference in energy with and without restart. }
+                \label{fig:compareError2}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter2.jpg}
+                \caption{ The number of iterations performed with and without restarting.  }
+                \label{fig:compareIter2}
+        \end{subfigure}
+        \caption{ The figure shows how the different methods change the energy and error with different number of restart for \texttt{wave}.  }
+        \label{fig:compare2}
+\end{figure}
+
+
+The results here are very similar to the results found in section \ref{sec:SLMconstant}, except that the energy and error changes for the first points for both SLM and Arnoldi. SLM still gives the better approximation.
+
+\subsection{A rule based for $\epsilon$}
+
+\begin{figure}[H]
+        \centering
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ruleerr.jpg}
+                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!! }
+                \label{fig:ruleerr}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ruleener.jpg}
+                \caption{ !!!!!!!!!!!!!!!!!!!!!!! }
+                \label{fig:ruleener}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ruleiter.jpg}
+                \caption{ !!!!!!!!!!!!!!!!!!!!  }
+                \label{fig:ruleiter}
+        \end{subfigure}
+        
+		\begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ruleerr1.jpg}
+                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!! }
+                \label{fig:ruleerr1}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ruleener1.jpg}
+                \caption{ !!!!!!!!!!!!!!!!!!!!!!! }
+                \label{fig:ruleener1}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ruleiter1.jpg}
+                \caption{ !!!!!!!!!!!!!!!!!!!!  }
+                \label{fig:ruleiter1}
+        \end{subfigure}
+        \caption{ The figure shows how the different methods change the energy and error with different number of restart for \texttt{wave}.  }
+        \label{fig:rule}
+\end{figure}
+
+\section{How to choose $n$}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The restart variable, denoted by $n$, is the size of the orthogonal system used with one of the projection method. Performing $n$ iterations of Arnoldi's algorithm or $\frac{n}{2}$ iterations of SLM gives an orthogonal space of size $n$.
+
+\subsubsection{Constant energy}
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/n5timevsm1}
-                \caption{function \texttt{P1}}
-                \label{fig:timem1}
-        \end{subfigure}%
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restarttime.jpg}
+                \caption{  }
+                \label{fig:restarttime}
+        \end{subfigure}
         ~
         \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/n6timevsm2}
-                \caption{function \texttt{P2}}
-                \label{fig:timem2}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restartiter.jpg}
+                \caption{  }
+                \label{fig:restartiter}
         \end{subfigure}
-        \caption{A plot of computation time as a function of $\rho$. The helpline increases with $\rho^6 = m^3$.}\label{fig:timem}
-\end{figure}
-As we can see from figure \ref{fig:timem}, the computation time for \texttt{KPM} increases as expected, while \texttt{DM} and \texttt{KPM}$(n)$ increases slower, perhaps due to MATLAB's efficient inversion algorithm or less memory demand. 
-Even more interesting is it that \texttt{KPM}$(n)$ is both asymptotically better, and faster than \texttt{DM} for large $\rho$. Clearly \texttt{KPM}$(n)$ is better in some cases.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Computation time with different $k$} \label{sec:stimek}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-        \centering
         \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/n7timevsk1}
-                \caption{function \texttt{P1}}
-                \label{fig:timek1}
-        \end{subfigure}%
-~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/n8timevsk2}
-                \caption{function \texttt{P2}}
-                \label{fig:timek2}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restarterror.jpg}
+                \caption{  }
+                \label{fig:restarterror}
         \end{subfigure}
-        \caption{A plot of computation time as a function of $k$. The helpline increases with $k$.}\label{fig:timek}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restartenergy.jpg}
+                \caption{  }
+                \label{fig:restartenergy}
+        \end{subfigure}
+        \caption{ computation time, number of restarts, error and energy are all plotted here with different $m$ and $n$. }
+        \label{fig:restart}
 \end{figure}
-As we can see from figure \ref{fig:timek}, the computation time for almost all tested methods are constant. The reason is that the time needed for initializing is much greater than the time it takes to integrate. 
-The exception is \texttt{KPM}$(1)$, which increases close to linear because relatively more work is done while integrating, due to several restarts. 
-We also see that \texttt{KPM}$(n)$ is faster than \texttt{DM} for some $n$, but not asymptotically.
 
-With larger $k$ it is expected that all methods would follow the helpline.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Comparing $\delta$, $\gamma$ and $\epsilon$ } \label{sec:div}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Remember that $\delta$ is tolerance, $\gamma$ is the number of restarts, and $\epsilon$ is a measure for the error.
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s13antvstol1m}
-                \caption{function \texttt{P1}}
-                \label{fig:gammadelta1}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restarttimeSLM.jpg}
+                \caption{  }
+                \label{fig:restarttimeSLM}
         \end{subfigure}
-~
+        ~
         \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s14antvstol2m}
-                \caption{ function \texttt{P2}}
-                \label{fig:gammadelta2}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restartiterSLM.jpg}
+                \caption{  }
+                \label{fig:restartiterSLM}
         \end{subfigure}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restarterrorSLM.jpg}
+                \caption{  }
+                \label{fig:restarterrorSLM}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restartenergySLM.jpg}
+                \caption{  }
+                \label{fig:restartenergySLM}
+        \end{subfigure}
+        \caption{ computation time, number of restarts, error and energy are all plotted here with different $m$ and $n$. }
+        \label{fig:restartSLM}
+\end{figure}
+!!!!!!!!!!!!!!!Skriv noen commentarer her!!!!!!!!!!!!!!!!!!!!!!\\
+\subsubsection{Varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restarttime2.jpg}
+                \caption{  }
+                \label{fig:restarttime2}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restartiter2.jpg}
+                \caption{  }
+                \label{fig:restartiter2}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restarterror2.jpg}
+                \caption{  }
+                \label{fig:restarterror2}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restartenergy2.jpg}
+                \caption{  }
+                \label{fig:restartenergy2}
+        \end{subfigure}
+        \caption{ !!!!!!!!!!!!!!!!!SKRIV NOE HER!!!!!!!!!!!!!!!!!!  }
+        \label{fig:restart2}
+\end{figure}
+
+
+!!!!!!!!!!!!!!!Kommentar her!!!!!!!!!!!!!\\
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restarttime2SLM.jpg}
+                \caption{  }
+                \label{fig:restarttime2SLM}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restartiter2SLM.jpg}
+                \caption{  }
+                \label{fig:restartiter2SLM}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restarterror2SLM.jpg}
+                \caption{  }
+                \label{fig:restarterror2SLM}
+        \end{subfigure}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/restartenergy2SLM.jpg}
+                \caption{  }
+                \label{fig:restartenergy2SLM}
+        \end{subfigure}
+        \caption{ !!!!!!!!!!!!!!!!!SKRIV NOE HER!!!!!!!!!!!!!!!!!!  }
+        \label{fig:restart2SLM}
+\end{figure}
+!!!!!!!!!!!!KOmmentar her!!!!!!!!!!!!!!!\\
+figure \ref{fig:restart2} shows a few different important things. First figure \ref{fig:restarterror2} shows that the error and energy does not change (much) with $n$, only with $m$. The second thing is that the number of iterations needed to converge decreases when $n$ becomes larger. The finale thing is that there seams to be a restart variable smaller than the dimension of $A$, and larger than one that is optimal. 
+!!!!!!!!!!!!KOmmentar om forskjellene på Arnoldi og SLM!!!!!!!!!!!!!!!\\
+
+\section{Computation time}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!!!!!!!!!!!!!!!!!!!!!!!!!!Burde jeg ha med restart eller ikke på disse bildene?!!!!!!!!!!!!!!!!!\\
+!!!!!!!!!!!!!!!!!!!!!!!!!!!Begge deler sikkert!!!!!!!!!!!!!!!!!\\
+!!!!!!TEXT!!!!!! \\
+
+
+\subsection{Constant energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!!!!!!TEXT!!!!!! 
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ccomparetimem0.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:ccomparetimem0}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ccomparetimem.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:ccomparetimem}
+        \end{subfigure}
+        ~
+
         
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s13antvstol1m10}
-                \caption{function \texttt{P1}}
-                \label{fig:gammadelta3}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ccomparetimek0.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:ccomparetimek0}
         \end{subfigure}
-~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s14antvstol2m10}
-                \caption{ function \texttt{P2}}
-                \label{fig:gammadelta4}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ccomparetimek.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:ccomparetimek}
         \end{subfigure}
+        ~
+
+        \caption{ !!!!!!TEXT!!!!!!}
+        \label{fig:ccomparetime}
+\end{figure}
+!!!!!!TEXT!!!!!! \\
+\subsection{Varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!!!!!!TEXT!!!!!! \\
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vcomparetimem0.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:vcomparetimem0}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vcomparetimem.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:vcomparetimem}
+        \end{subfigure}
+        ~
+
         
-        \caption{A plot of $\gamma$ as a function of $\delta$, with several $\rho$ and $n$.} \label{fig:gammadelta}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vcomparetimek0.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:vcomparetimek0}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/vcomparetimek.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:vcomparetimek}
+        \end{subfigure}
+        ~
+
+        \caption{ !!!!!!TEXT!!!!!!}
+        \label{fig:vcomparetime}
 \end{figure}
-%We see from figure \ref{fig:gammadelta} that $\gamma$ changes significantly with $\rho$. The figure show a log linear dependence between $\gamma$ and $\delta$, and that $\gamma$ is proportional to $1/n^2$. 
+!!!!!!TEXT!!!!!! \\
 
-We see from figure \ref{fig:gammadelta} that $\gamma$ changes significantly with $\rho$, that there is a log linear dependence between $\gamma$ and $\delta$, and that $\gamma$ is proportional to $1/n^2$. 
-
-The constant part of the graph where $ 10^{-5}<\delta< {10^0} $ shows that \texttt{KPM}$(1)$ and \texttt{KPM}$(10)$ does too few restarts to gain any accuracy when $\delta$ is too large, this is confirmed by figure \ref{fig:epsilondelta}. 
+\subsection{Best case for SLM and KPM} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}[H]
         \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s15errvstol1m}
-                \caption{function \texttt{P1}}
-                \label{fig:epsilondelta1}
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/fastruntime1.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:fastruntime1}
         \end{subfigure}
-~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s16errvstol2m}
-                \caption{ function \texttt{P2}}
-                \label{fig:epsilondelta2}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/fastruntime3.jpg}
+                \caption{ !!!!!!TEXT!!!!!! }
+                \label{fig:fastruntime3}
         \end{subfigure}
-        
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s15errvstol1m10}
-                \caption{function \texttt{P1}}
-                \label{fig:epsilondelta3}
-        \end{subfigure}
-~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s16errvstol2m10}
-                \caption{ function \texttt{P2}}
-                \label{fig:epsilondelta4}
-        \end{subfigure}
-        
-        \caption{A plot of $\epsilon$ as a function of $\delta$, with several $\rho$ and $n$.} \label{fig:epsilondelta}
+
+        \caption{ !!!!!!TEXT!!!!!!}
+        \label{fig:fastruntime}
 \end{figure}
-Figure \ref{fig:epsilondelta} shows $\epsilon$ as a function of $\delta$. In figure \ref{fig:epsilondelta1} and \ref{fig:epsilondelta3} all graphs has obtained the threshold precision possible with $k=40$. In
-figure \ref{fig:epsilondelta2} and \ref{fig:epsilondelta4} the precision possible with the different $\rho$-s are obtained. It seams that the maximum precision is attained faster with larger $n$, this makes sense because if $n = m$, we should not need to restart in order to get threshold precision. This was also confirmed by figure \ref{fig:gammadelta}, where \texttt{KPM}$(10)$ needed fewer restarts than \texttt{KPM}$(1)$ to converge. 
-%There is no reason this was not performed with other than $n = 1$ except for laziness. \\
-%!!!!!!!!!!!!!!!!!!!!!!!!!Arg, jeg må lage nye figurer for andre $n$!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-%!!!!!!!!!!!!!!!!Her kan burde skrive noe om hvor bra KPM$(n)$ uten restart ville vært!!!!!!!!!!!!!!!!\\
-%!!!!!!!!!!!!!!!!!!!!!Fjern alle forekomster av ordet "shows" fra avsnittet!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-%!!!!!!!!!!!!!!!!!!!!!Forklare hva alle variablene er over alt!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-%!!!!!!!!!!!!!!!!!!!!!Skrive hvorfor vi ikke har med noe annet enn KPM$(1)$!!!!!!!!!!!!!!!!!!\\
-%!!!!!!!!!!!!!!!!!!!!!!!!!!!Går videre så jeg ikke trenger å lage nye figurer med en gang!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-%Figure \ref{fig:errant} and \ref{fig:errtolk} shows how $\gamma$ and $\epsilon$ scales with $\delta$. Figure \ref{fig:errtol1} has reached to threshold precision with $k = 40$. Both figures shows a loglinear dependence between $\gamma$ and $\delta$. The figures also shows the importance of choosing an appropriate $\delta$. A lot of time can be saved by choosing $\delta$ larger, but precision is lost if $\delta$ is to large.
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s20antvstol1k}
-                \caption{function \texttt{P1}}
-                \label{fig:gammadeltak1}
-        \end{subfigure}
-~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s21antvstol2k}
-                \caption{ function \texttt{P2}}
-                \label{fig:gammadeltak2}
-        \end{subfigure}
-                \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s20antvstol1k10}
-                \caption{function \texttt{P1}}
-                \label{fig:gammadeltak3}
-        \end{subfigure}
-~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s21antvstol2k10}
-                \caption{ function \texttt{P2}}
-                \label{fig:gammadeltak4}
-        \end{subfigure}
-        \caption{A plot of $\gamma$ as a function of $\delta$, with several $k$ and $n$.} \label{fig:gammadeltak}
-\end{figure}
-Figure \ref{fig:gammadeltak} shows that $\gamma$ is nearly independent of $k$. The figures also shows the log linear dependence between $\delta$ and $\gamma$. \\
-
-
-
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s22errvstol1k}
-                \caption{function \texttt{P1}}
-                \label{fig:epsilondelta1k}
-        \end{subfigure}
-~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s23errvstol2k}
-                \caption{ function \texttt{P2}}
-                \label{fig:epsilondelta2k}
-        \end{subfigure}
-                \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s22errvstol1k10}
-                \caption{function \texttt{P1}}
-                \label{fig:epsilondelta3k}
-        \end{subfigure}
-~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/s23errvstol2k10}
-                \caption{ function \texttt{P2}}
-                \label{fig:epsilondelta4k}
-        \end{subfigure}
-        \caption{A plot of $\epsilon$ as a function of $\delta$, with several $k$ and $n$.} \label{fig:epsilondeltak}
-\end{figure}
-Figure \ref{fig:epsilondeltak} shows much the same as figure \ref{fig:epsilondelta}. Maximum precision for different $k$-s are shown in figure \ref{fig:epsilondelta1k} and \ref{fig:epsilondelta3k}.
-Threshold precision for $\rho = 40$ is obtained in figure \ref{fig:epsilondelta2k} and \ref{fig:epsilondelta4k}, but not for the graph where $k = 10$, this is the precision possible with $k=10$. Again $\epsilon$ converges faster for \texttt{KPM}$(10)$ than \texttt{KPM}$(1)$. \\
-
-We see that there is no gain in precision with increasing one of either $\rho$ or $k$ or decreasing $\delta$ without changing the others appropriately. \\
-
-%Before the constant part, $\epsilon$ is decided by $\delta$ alone. 
-In all cases a lot of time can be saved by choosing $\delta$ appropriate. If $\delta$ is to large we get inaccurate answers, if $\delta$ is to small we perform to many restarts to use the algorithm efficiently. There does not seam to be a simple rule to choose $\delta$, since the results for \texttt{P1} and \texttt{P2} differs. The rule we will use is to start at $\delta=10^{-3}$ with $\rho = k = 10$, and decrease $\delta$ with one order of magnitude each time $k$ and $\rho$ is doubled. %The reason for this rule is perhaps easier to understand when looking at figure \ref{fig:conv}. %The reason that $\delta$ decreases two orders of magnitude each time $m$ and $k$ is doubled is that $A$ and trapezoidal rule are second order approximations. 
-Figure \ref{fig:siste} shows how the error converges when this is the case. It is clear that that this rule should depend on the problem. For \texttt{P1}  the initial $\delta$ should be chosen a little smaller, for \texttt{P2} $\delta$ should decrease a little quicker, perhaps with 1.1 order of magnitude. This rule gives a little loss in accuracy, but a great increase in performance. Notice that the convergence is still quadratic.
-
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/sisteplot1}
-                \caption{function \texttt{P1}}
-                \label{fig:siste1}
-        \end{subfigure}
-~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{fig/sisteplot2}
-                \caption{ function \texttt{P2}}
-                \label{fig:siste2}
-        \end{subfigure}
-        \caption{A plot of $\epsilon$ where $\delta$, $k$, $\rho$ and $n$ follows this rule: Start with $\delta=10^{-3}$, $\rho = k = n = 10$ and decrease $\delta$ with one order of magnitude each time $k$, $\rho$ and $n$ is doubled. \texttt{DM} Shows how it converged when $\delta = 10^{-15}$. The helpline shows quadratic convergence.} \label{fig:siste}
-\end{figure}
-

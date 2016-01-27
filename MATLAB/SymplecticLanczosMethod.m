@@ -17,7 +17,7 @@ beta = zeros(var,1);
 xi = zeros(var+1,1);
 nu = zeros(var,1);
 
-V = zeros(2*n,var+1);
+V = zeros(2*n,var+2);
 W = zeros(2*n,var);
 
 
@@ -33,7 +33,8 @@ for m = 1:1:var
     % Computing Wm
     wtilde = v-delta(m)*V(:,m+1);
     
-    nu(m) = V(:,m+1)'*J*v;
+    %nu(m) = V(:,m+1)'*J*v;
+    nu(m) = v'*J*V(:,m+1);
     
     W(:,m) = 1/nu(m)*wtilde;
     W(:,m) = W(:,m)+[V(:,2:m),W(:,1:m-1)]*[sparse(m-1,m-1),speye(m-1);-speye(m-1),sparse(m-1,m-1)]*[V(:,2:m),W(:,1:m-1)]'*J*W(:,m);

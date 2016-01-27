@@ -1,5 +1,5 @@
 function U = expintegrate(A,U0,T)
-%solves the problem du/dt = Au, u(0) = 0
+%solves the problem du/dt = Au + u0, u(0) = 0
 %indata
 % A: mxm matrix
 % u0: initial condition

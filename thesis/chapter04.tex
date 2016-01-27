@@ -89,208 +89,93 @@ DM solving the equation with large $K$ (and therefore smaller $k$) is faster, an
 \end{figure}
 Figure \ref{fig:Kversusk2} is very similar to figure \ref{alg:Kversusk}. But there is here a definite decrease in computation time for SLM. Notice also that for larger $K$ the energy and error diverges for both SLM and Arnoldi. 
 
-\section{The perfect restart variable}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The restart variable, denoted by $n$, is the size of the orthogonal system used with one of the projection method. Performing $n$ iterations of Arnoldi's algorithm or $\frac{n}{2}$ iterations of SLM gives an orthogonal space of size $n$.
 
-\subsection{Constant energy}
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restarttime.jpg}
-                \caption{  }
-                \label{fig:restarttime}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restartiter.jpg}
-                \caption{  }
-                \label{fig:restartiter}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restarterror.jpg}
-                \caption{  }
-                \label{fig:restarterror}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restartenergy.jpg}
-                \caption{  }
-                \label{fig:restartenergy}
-        \end{subfigure}
-        \caption{ computation time, number of restarts, error and energy are all plotted here with different $m$ and $n$. }
-        \label{fig:restart}
-\end{figure}
-
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restarttimeSLM.jpg}
-                \caption{  }
-                \label{fig:restarttimeSLM}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restartiterSLM.jpg}
-                \caption{  }
-                \label{fig:restartiterSLM}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restarterrorSLM.jpg}
-                \caption{  }
-                \label{fig:restarterrorSLM}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restartenergySLM.jpg}
-                \caption{  }
-                \label{fig:restartenergySLM}
-        \end{subfigure}
-        \caption{ computation time, number of restarts, error and energy are all plotted here with different $m$ and $n$. }
-        \label{fig:restartSLM}
-\end{figure}
-!!!!!!!!!!!!!!!Skriv noen commentarer her!!!!!!!!!!!!!!!!!!!!!!\\
-\subsection{Varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restarttime2.jpg}
-                \caption{  }
-                \label{fig:restarttime2}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restartiter2.jpg}
-                \caption{  }
-                \label{fig:restartiter2}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restarterror2.jpg}
-                \caption{  }
-                \label{fig:restarterror2}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restartenergy2.jpg}
-                \caption{  }
-                \label{fig:restartenergy2}
-        \end{subfigure}
-        \caption{ !!!!!!!!!!!!!!!!!SKRIV NOE HER!!!!!!!!!!!!!!!!!!  }
-        \label{fig:restart2}
-\end{figure}
-
-
-!!!!!!!!!!!!!!!Kommentar her!!!!!!!!!!!!!\\
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restarttime2SLM.jpg}
-                \caption{  }
-                \label{fig:restarttime2SLM}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restartiter2SLM.jpg}
-                \caption{  }
-                \label{fig:restartiter2SLM}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restarterror2SLM.jpg}
-                \caption{  }
-                \label{fig:restarterror2SLM}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/restartenergy2SLM.jpg}
-                \caption{  }
-                \label{fig:restartenergy2SLM}
-        \end{subfigure}
-        \caption{ !!!!!!!!!!!!!!!!!SKRIV NOE HER!!!!!!!!!!!!!!!!!!  }
-        \label{fig:restart2SLM}
-\end{figure}
-!!!!!!!!!!!!KOmmentar her!!!!!!!!!!!!!!!\\
-figure \ref{fig:restart2} shows a few different important things. First figure \ref{fig:restarterror2} shows that the error and energy does not change (much) with $n$, only with $m$. The second thing is that the number of iterations needed to converge decreases when $n$ becomes larger. The finale thing is that there seams to be a restart variable smaller than the dimension of $A$, and larger than one that is optimal. 
-!!!!!!!!!!!!KOmmentar om forskjellene på Arnoldi og SLM!!!!!!!!!!!!!!!\\
-\section{Integrating over looong time}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-This section will show how the energy changes when $T_s$ increases, with everything else constant.
-\subsection{Constant energy}
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime10.jpg}
-                \caption{ Trapezoidal rule without restart. Helpline increases with $T_s$ }
-                \label{fig:longtime10}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime20.jpg}
-                \caption{ Forward Euler without restart. Helpline increases with $T_s^2$ }
-                \label{fig:longtime20}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime30.jpg}
-                \caption{ Midpoint rule without restart. Helpline increases with $T_s$ }
-                \label{fig:longtime30}
-        \end{subfigure}
-        
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime11.jpg}
-                \caption{ Trapezoidal rule with restart. }
-                \label{fig:longtime11}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime21.jpg}
-                \caption{ Forward Euler with restart. }
-                \label{fig:longtime21}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime31.jpg}
-                \caption{ Midpoint rule with restart. }
-                \label{fig:longtime31}
-        \end{subfigure}
-        \caption{ The figures shows how the energy for the different methods change with the different integration methods, with and without restart. }
-        \label{fig:longtime}
-\end{figure}
-Without restart the energy for trapezoidal and midpoint rule increases linearly, while forward Euler's energy increases extremely fast.
-With restart the energy for all methods except DM increases very fast. The restart must be blamed for this, since it did not increase so fast when restart was not enabled. I would suspect that a larger increase in energy makes Arnoldi and SLM restart more, and more restarts add up to a larger energy, giving a feedback loop of diverging energy.
-\subsection{Varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime102.jpg}
-                \caption{ Trapezoidal rule without restart. Helpline increases with $T_s$ }
-                \label{fig:longtime102}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime202.jpg}
-                \caption{ Forward Euler without restart. Helpline increases with $T_s^2$ }
-                \label{fig:longtime202}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime302.jpg}
-                \caption{ Midpoint rule without restart. Helpline increases with $T_s$ }
-                \label{fig:longtime302}
-        \end{subfigure}
-        
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime112.jpg}
-                \caption{ Trapezoidal rule with restart. }
-                \label{fig:longtime112}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime212.jpg}
-                \caption{ Forward Euler with restart. }
-                \label{fig:longtime212}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime312.jpg}
-                \caption{ Midpoint rule with restart. }
-                \label{fig:longtime312}
-        \end{subfigure}
-        \caption{ The figures shows how the energy for the different methods change with the different integration methods, with and without restart.  }
-        \label{fig:longtime2}
-\end{figure}
-
-The difference between constant energy and varying energy is again not huge. The energy increases faster for trapezidal rule and midpoint rule in this case, but apart from that it seams to be the same.
+%\section{Integrating over looong time}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%!!!!!!!!!!!!!!!!!!!!!!!!Fjerne denne seksjonen??!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
+%This section will show how the energy changes when $T_s$ increases, with everything else constant.
+%\subsection{Constant energy}
+%\begin{figure}[H]
+%        \centering
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime10.jpg}
+%                \caption{ Trapezoidal rule without restart. Helpline increases with $T_s$ }
+%                \label{fig:longtime10}
+%        \end{subfigure}
+%        ~
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime20.jpg}
+%                \caption{ Forward Euler without restart. Helpline increases with $T_s^2$ }
+%                \label{fig:longtime20}
+%        \end{subfigure}
+%        ~
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime30.jpg}
+%                \caption{ Midpoint rule without restart. Helpline increases with $T_s$ }
+%                \label{fig:longtime30}
+%        \end{subfigure}
+%        
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime11.jpg}
+%                \caption{ Trapezoidal rule with restart. }
+%                \label{fig:longtime11}
+%        \end{subfigure}
+%        ~
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime21.jpg}
+%                \caption{ Forward Euler with restart. }
+%                \label{fig:longtime21}
+%        \end{subfigure}
+%        ~
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime31.jpg}
+%                \caption{ Midpoint rule with restart. }
+%                \label{fig:longtime31}
+%        \end{subfigure}
+%        \caption{ The figures shows how the energy for the different methods change with the different integration methods, with and without restart. }
+%        \label{fig:longtime}
+%\end{figure}
+%Without restart the energy for trapezoidal and midpoint rule increases linearly, while forward Euler's energy increases extremely fast.
+%With restart the energy for all methods except DM increases very fast. The restart must be blamed for this, since it did not increase so fast when restart was not enabled. I would suspect that a larger increase in energy makes Arnoldi and SLM restart more, and more restarts add up to a larger energy, giving a feedback loop of diverging energy.
+%\subsection{Varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[H]
+%        \centering
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime102.jpg}
+%                \caption{ Trapezoidal rule without restart. Helpline increases with $T_s$ }
+%                \label{fig:longtime102}
+%        \end{subfigure}
+%        ~
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime202.jpg}
+%                \caption{ Forward Euler without restart. Helpline increases with $T_s^2$ }
+%                \label{fig:longtime202}
+%        \end{subfigure}
+%        ~
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime302.jpg}
+%                \caption{ Midpoint rule without restart. Helpline increases with $T_s$ }
+%                \label{fig:longtime302}
+%        \end{subfigure}
+%        
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime112.jpg}
+%                \caption{ Trapezoidal rule with restart. }
+%                \label{fig:longtime112}
+%        \end{subfigure}
+%        ~
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime212.jpg}
+%                \caption{ Forward Euler with restart. }
+%                \label{fig:longtime212}
+%        \end{subfigure}
+%        ~
+%        \begin{subfigure}[b]{0.3\textwidth}
+%                \includegraphics[width=\textwidth]{../MATLAB/fig/longtime312.jpg}
+%                \caption{ Midpoint rule with restart. }
+%                \label{fig:longtime312}
+%        \end{subfigure}
+%        \caption{ The figures shows how the energy for the different methods change with the different integration methods, with and without restart.  }
+%        \label{fig:longtime2}
+%\end{figure}
+%
+%The difference between constant energy and varying energy is again not huge. The energy increases faster for trapezidal rule and midpoint rule in this case, but apart from that it seams to be the same.

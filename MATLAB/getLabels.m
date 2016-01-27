@@ -1,4 +1,4 @@
-function [ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data)
+function [ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,PMint)
 if data == 1
     ylab = {'r_n'};
 elseif data == 2
@@ -49,9 +49,30 @@ end
 if prob(1) == -1
     xlab = {'problem'};
 end
+if PMint(1) == -1
+    xlab{'PM integration method'};
+end
 if  ~exist('xlab','var')
     xlab = {'T_s'};
 end
+if m(1) == -1 && k(1) == -1
+    if isequal(m,k)
+        xlab = {'m=k'};
+    else
+        xlab = {'m^2 = k'};
+    end
+end
+if K(1) == -1 && k(1) == -1
+    stri = num2str(max(K.*k));
+    stri = strcat('K \cdot k = ',stri);
+    xlab = {stri};
+end
+if k(1) == -1 && simtime(1) == -1
+    stri = num2str(max(k./simtime));
+    stri = strcat(stri,'\cdot T_s', '=k');
+    xlab = {stri};
+end
+
 leg = {};
 if m(1) == -2
     for i = 1:ant2
@@ -91,9 +112,9 @@ elseif conv(1) == -2
 elseif alg(1) == -2
     for i = 1:ant2
         if alg(i+1) == 1
-            stri = 'Arnoldi';
+            stri = 'KPM';
         elseif alg(i+1) == 2
-            stri = 'SLM';
+            stri = 'SLPM';
         elseif alg(i+1) == 3
             stri = 'DM';
         end
@@ -118,6 +139,23 @@ elseif restart(1) == -2
 elseif prob(1) == -2
     for i = 1:ant2
         stri = strcat('problem=',num2str(prob(i+1)));
+        leg(i) = {stri};
+    end
+elseif PMint(1) == -2
+    for i = 1:ant2
+        if PMint(i+1) == 1
+            if int == 1
+                stri = 'trapezoidal rule';
+            elseif int == 2
+                stri = 'forward Euler';
+            elseif int == 3
+                stri = 'midpoint rule';
+            end
+        elseif PMint(i+1) == 2
+            stri = 'Matlab expm';
+        elseif PMint(i+1) == 3
+            stri = 'My expm';
+        end
         leg(i) = {stri};
     end
 end
@@ -145,9 +183,9 @@ if length(k) == 1
 end
 if length(alg) == 1
     if alg == 1
-        stri = 'Arnoldi';
+        stri = 'KPM';
     elseif alg == 2
-        stri = 'SLM';
+        stri = 'SLPM';
     elseif alg == 3
         stri = 'DM';
     end
@@ -178,6 +216,22 @@ if length(conv) == 1
 end
 if length(para) == 1
     stri = strcat('p_n=',num2str(para));
+    additionalInfo(end+1) = {stri};
+end
+if length(PMint) == 1
+    if PMint == 1
+        if int == 1
+            stri = 'trapezoidal rule';
+        elseif int == 2
+            stri = 'forward Euler';
+        elseif int == 3
+            stri = 'midpoint rule';
+        end
+    elseif PMint == 2
+        stri = 'Matlabs built in expm';
+    elseif PMint == 3
+        stri = 'eigenvalue + exp';
+    end
     additionalInfo(end+1) = {stri};
 end
 end
