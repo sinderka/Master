@@ -15,6 +15,8 @@ elseif data == 7
     ylab = {'en_3'};
 elseif data == 8
     ylab = {'en_4'};
+elseif data == 9
+    ylab = {'abs(en_3 - en_4)'};
 end
 if m(1) == -1
     xlab = {'m'};
@@ -59,17 +61,17 @@ if m(1) == -1 && k(1) == -1
     if isequal(m,k)
         xlab = {'m=k'};
     else
-        xlab = {'m^2 = k'};
+        xlab = {'k, with m^2 = k'};
     end
 end
 if K(1) == -1 && k(1) == -1
     stri = num2str(max(K.*k));
-    stri = strcat('K \cdot k = ',stri);
+    stri = strcat('k, with K \cdot k = ',stri);
     xlab = {stri};
 end
 if k(1) == -1 && simtime(1) == -1
     stri = num2str(max(k./simtime));
-    stri = strcat(stri,'\cdot T_s', '=k');
+    stri = strcat('k, with ',stri,' \cdot T_s', '=k');
     xlab = {stri};
 end
 
@@ -112,9 +114,9 @@ elseif conv(1) == -2
 elseif alg(1) == -2
     for i = 1:ant2
         if alg(i+1) == 1
-            stri = 'KPM';
+            stri = 'Arnoldi';
         elseif alg(i+1) == 2
-            stri = 'SLPM';
+            stri = 'SLM';
         elseif alg(i+1) == 3
             stri = 'DM';
         end
@@ -183,9 +185,9 @@ if length(k) == 1
 end
 if length(alg) == 1
     if alg == 1
-        stri = 'KPM';
+        stri = 'Arnoldi';
     elseif alg == 2
-        stri = 'SLPM';
+        stri = 'SLM';
     elseif alg == 3
         stri = 'DM';
     end

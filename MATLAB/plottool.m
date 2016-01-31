@@ -45,7 +45,7 @@ linetype = {'k:+','k:o','k:x','k:.','k:*','k:s','k:d','k:^','k:v','k:<','k:>','k
 [p,bc] = getPandB(m,n,simtime,K,k,alg,int,restart,prob,conv,para,PMint);
 ant1 = length(p)-1; ant2 = length(bc)-1;
 a = 1; b = 1; c = 1; d = 1; e = 1; f = 1; g = 1; h = 1; aa = 1; bb = 1; cc = 1; dd = 1;
-utdata = zeros(ant2,ant1,8);
+utdata = zeros(ant2,ant1,9);
 for i = 1:ant1
     [a0,b0,c0,d0,e0,f0,g0,h0,aa0,bb0,cc0,dd0] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,PMint,a,c,b,d,e,f,g,h,aa,bb,cc,dd,-1);
     a = max(1,a0*(a0-a)); b = max(1,b0*(b0-b)); c = max(1,c0*(c0-c)); d = max(1,d0*(d0-d)); e = max(1,e0*(e0-e)); f = max(1,f0*(f0-f)); g = max(1,g0*(g0-g)); h = max(1,h0*(h0-h)); aa = max(1,aa0*(aa0-aa)); bb = max(1,bb0*(bb0-bb)); cc = max(1,cc0*(cc0-cc)); dd = max(1,dd0*(dd0-dd));
@@ -54,6 +54,7 @@ for i = 1:ant1
         if option == 1
             utdata(j,i,:) = solver(m(a),n(b),simtime(bb),K(cc),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e),0,PMint(dd));
         elseif option == 2 % energyTest(m,n,k,simtime,eqn,restart,prob,conv,figvar)
+            return 
             utdata(j,i,:) = energyTest(m(a),n(b),simtime(bb),k(c),eqn,int(aa),restart(g),prob(h),conv(d),0,EToption,0,0,PMint(dd));
         end
         %utdata(j,i,:) = energyTest(m(a),n(b),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e));

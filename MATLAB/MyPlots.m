@@ -58,31 +58,31 @@ end
 function timeintegrationconvergence
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{'data'},{'type'},[help],{'name'},save,option,EToption,PMint)
 
-plottool([-1,10,20,40,80],4,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1,1,1e-14, 1    , {'3','4'} ,{'loglog','loglog'},[1,-2,1000;0,0,0]   ,{'intconv11','intener11'},1,1,0,1);
-plottool([-1,10,20,40,80],4,1,1,[-1,10^2,20^2,40^2,80^2],'wave',[-2,1,2,3],2,1,1,1e-14, 1    , {'3','4'} ,{'loglog','loglog'},[1,-1,1000;0,0,0]   ,{'intconv12','intener12'},1,1,0,1);
-plottool([-1,10,20,40,80],4,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],3,1,1,1e-14, 1    , {'3','4'} ,{'loglog','loglog'},[1,-2,1000;0,0,0]   ,{'intconv13','intener13'},1,1,0,1);
+plottool([-1,10,20,40,80],2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1,1,1e-14, 1    , {'3','4'} ,{'loglog','loglog'},[1,-2,1000;0,0,0]   ,{'intconv11','intener11'},1,1,0,1);
+plottool([-1,10,20,40,80],2,1,1,[-1,10^2,20^2,40^2,80^2],'wave',[-2,1,2,3],2,1,1,1e-14, 1    , {'3','4'} ,{'loglog','loglog'},[1,-1,1000;0,0,0]   ,{'intconv12','intener12'},1,1,0,1);
+plottool([-1,10,20,40,80],2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],3,1,1,1e-14, 1    , {'3','4'} ,{'loglog','loglog'},[1,-2,1000;0,0,0]   ,{'intconv13','intener13'},1,1,0,1);
 
 
-plottool([-1,10,20,40,80],4,1,1,[-1,10,20,40,80        ],'wave',[-2,1,2,3],1,1,3, 1e-14, 1    , {'3','4'} ,{'loglog','loglog'},[1,-2,1;1,-2,1]   ,{'intconv21','intener21'},1,1,0,1);
-plottool([-1,10,20,40,80],4,1,1,[-1,10^2,20^2,40^2,80^2],'wave',[-2,1,2,3],2,1,3, 1e-14, 1    , {'3','4'} ,{'loglog','loglog'},[1,-1,1;1,-1,1]   ,{'intconv22','intener22'},1,1,0,1);
-plottool([-1,10,20,40,80],4,1,1,[-1,10,20,40,80        ],'wave',[-2,1,2,3],3,1,3, 1e-14, 1    , {'3','4'} ,{'loglog','loglog'},[1,-2,1;1,-2,1]   ,{'intconv23','intener23'},1,1,0,1);
+plottool([-1,10,20,40,80],2,1,1,[-1,10,20,40,80        ],'wave',[-2,1,2,3],1,1,3, 1e-14, 1    , {'3','4'} ,{'loglog','loglog'},[1,-2,1;1,-2,1]   ,{'intconv21','intener21'},1,1,0,1);
+plottool([-1,10,20,40,80],2,1,1,[-1,10^2,20^2,40^2,80^2],'wave',[-2,1,2,3],2,1,3, 1e-14, 1    , {'3','4'} ,{'loglog','loglog'},[1,-1,1;1,-1,1]   ,{'intconv22','intener22'},1,1,0,1);
+plottool([-1,10,20,40,80],2,1,1,[-1,10,20,40,80        ],'wave',[-2,1,2,3],3,1,3, 1e-14, 1    , {'3','4'} ,{'loglog','loglog'},[1,-2,1;1,-2,1]   ,{'intconv23','intener23'},1,1,0,1);
 end
 
 % 2
 function timeintegration
 % solver(m,n,simtime,K,k,eqn,alg,integrator,restart,prob,conv,para,1)
 
-savesolver(20,4,1,1,20,'wave',2,1,1,1,1e-14,1,1,{'energyovertimetrapezoidal','errorovertimetrapezoidal'},{'2','11'},'trapezoidal rule')
+savesolver(20,2,1,1,20,'wave',2,1,1,1,1e-14,1,1,{'energyovertimetrapezoidal','errorovertimetrapezoidal'},{'2','11'},'trapezoidal rule')
 
-savesolver(20,4,1,1,20^2,'wave',2,2,1,1,1e-14,1,1,{'energyovertimeeuler','errorovertimeeuler'},{'2','11'},'forward Euler')
+savesolver(20,2,1,1,20^2,'wave',2,2,1,1,1e-14,1,1,{'energyovertimeeuler','errorovertimeeuler'},{'2','11'},'forward Euler')
 
-savesolver(20,4,1,1,20,'wave',2,3,1,1,1e-14,1,1,{'energyovertimemidpoint','errorovertimemidpoint'},{'2','11'},'midpoint rule')
+savesolver(20,2,1,1,20,'wave',2,3,1,1,1e-14,1,1,{'energyovertimemidpoint','errorovertimemidpoint'},{'2','11'},'midpoint rule')
 
-savesolver(20,4,1,1,20,'wave',2,1,1,3,1e-14,1,1,{'energychangtimetrapezoidal','errorchangtimetrapezoidal'},{'2','11'},'trapezoidal rule')
+savesolver(20,2,1,1,20,'wave',2,1,1,3,1e-14,1,1,{'energychangtimetrapezoidal','errorchangtimetrapezoidal'},{'2','11'},'trapezoidal rule')
 
-savesolver(20,4,1,1,20^2,'wave',2,2,1,3,1e-14,1,1,{'energychangtimeeuler','errorchangtimeeuler'},{'2','11'},'forward Euler')
+savesolver(20,2,1,1,20^2,'wave',2,2,1,3,1e-14,1,1,{'energychangtimeeuler','errorchangtimeeuler'},{'2','11'},'forward Euler')
 
-savesolver(20,4,1,1,20,'wave',2,3,1,3,1e-14,1,1,{'energychangtimemidpoint','errorchangtimemidpoint'},{'2','11'},'midpoint rule')
+savesolver(20,2,1,1,20,'wave',2,3,1,3,1e-14,1,1,{'energychangtimemidpoint','errorchangtimemidpoint'},{'2','11'},'midpoint rule')
 
 end
 
@@ -90,18 +90,18 @@ end
 function SLMenergylongtime
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{data},'type',[help],{name},save,option)
 
-plottool(20,4,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'wave',[-2,1,2,3],1,0,1,1e-14,1,{'3','4'},{'loglog','loglog'},0,{'SLMenergyw','SLMerrorw'},1,1)
-plottool(20,4,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'semirandom',[-2,1,2],1,0,1,1e-14,1,{'5','4'},{'loglog','loglog'},0,{'SLMenergys','SLMerrors'},1,1)
+plottool(20,2,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'wave',[-2,1,2,3],1,0,1,1e-14,1,{'4','3'},{'loglog','loglog'},0,{'SLMenergyw','SLMerrorw'},1,1)
+plottool(20,2,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'semirandom',[-2,1,2],1,0,1,1e-14,1,{'4','5'},{'loglog','loglog'},0,{'SLMenergys','SLMerrors'},1,1)
 
-plottool(20,4,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'wave',[-2,1,2,3],1,1,1,1e-14,1,{'3','4'},{'loglog','loglog'},0,{'SLMenergyw1','SLMerrorw1'},1,1)
-plottool(20,4,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'semirandom',[-2,1,2],1,1,1,1e-14,1,{'5','4'},{'loglog','loglog'},0,{'SLMenergys1','SLMerrors1'},1,1)
+plottool(20,2,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'wave',[-2,1,2,3],1,1,1,1e-14,1,{'4','3'},{'loglog','loglog'},0,{'SLMenergyw1','SLMerrorw1'},1,1)
+plottool(20,2,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'semirandom',[-2,1,2],1,1,1,1e-14,1,{'4','5'},{'loglog','loglog'},0,{'SLMenergys1','SLMerrors1'},1,1)
 
 
-plottool(20,4,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'wave',[-2,1,2,3],3,0,3,1e-14,1,{'3','4'},{'loglog','loglog'},[0,0,0;1,4,1e-7],{'SLMenergyw3','SLMerrorw3'},1,1)
-plottool(20,4,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'semirandom',[-2,1,2],3,0,2,1e-14,1,{'5','4'},{'loglog','loglog'},0,{'SLMenergys3','SLMerrors3'},1,1)
+plottool(20,2,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'wave',[-2,1,2,3],3,0,3,1e-14,1,{'4','3'},{'loglog','loglog'},[1,4,1e-7;0,0,0],{'SLMenergyw3','SLMerrorw3'},1,1)
+plottool(20,2,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'semirandom',[-2,1,2],3,0,2,1e-14,1,{'4','5'},{'loglog','loglog'},0,{'SLMenergys3','SLMerrors3'},1,1)
 
-plottool(20,4,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'wave',[-2,1,2,3],3,[-2,0,1],3,1e-14,1,{'3','4'},{'loglog','loglog'},0,{'SLMenergyw13','SLMerrorw13'},1,1)
-plottool(20,4,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'semirandom',[-2,1,2],3,1,2,1e-14,1,{'5','4'},{'loglog','loglog'},0,{'SLMenergys13','SLMerrors13'},1,1)
+plottool(20,2,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'wave',[-2,1,2,3],3,[-2,0,1],3,1e-14,1,{'4','3'},{'loglog','loglog'},0,{'SLMenergyw13','SLMerrorw13'},1,1)
+plottool(20,2,[-1,1,2,4,8,10,20,40,80,120],1,[-1,[1,2,4,8,10,20,40,80,120]*20],'semirandom',[-2,1,2],3,1,2,1e-14,1,{'4','5'},{'loglog','loglog'},0,{'SLMenergys13','SLMerrors13'},1,1)
 
 end
 
@@ -109,16 +109,20 @@ end
 function SLMperserveedenergy
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{data},'type',[help],{name},save,option)
 
-plottool(20,4,[-1,1,2,4,8,12,16,20,30,40,80,120],1,[-1,[1,2,4,8,12,16,20,30,40,80,120]*20],'wave',[-2,2,3],1,0,1,1e-6,4,{'4'},{'loglog'},0,{'SLMconstew'},1,1,1,1)
-plottool(20,4,[-1,1,2,4,8,12,16,20,30,40,80,120],1,[-1,[1,2,4,8,12,16,20,30,40,80,120]*20],'semirandom',[-2,2],1,0,1,1e-6,4,{'4'},{'loglog'},0,{'SLMconstes'},1,1,1,1)
+plottool(20,2,[-1,1,2,4,8,12,16,20,30,40,80,120],1,[-1,[1,2,4,8,12,16,20,30,40,80,120]*20],'wave',[-2,1,2,3],1,0,1,1e-6,4,{'4'},{'loglog'},0,{'SLMconstew'},1,1,1,3)
+plottool(20,2,[-1,1,2,4,8,12,16,20,30,40,80,120],1,[-1,[1,2,4,8,12,16,20,30,40,80,120]*20],'wave',[-2,1,2,3],1,0,1,1e-6,4,{'4'},{'loglog'},0,{'SLMconstewtrap'},1,1,1,1)
 
-plottool(20,4,[-1,1,2,4,8,12,16,20,30,40,80,120],1,[-1,[1,2,4,8,12,16,20,30,40,80,120]*20],'wave',[-2,2,3],1,1,1,1e-14,4,{'4'},{'loglog'},0,{'SLMconstewr'},1,1,1,1)
-plottool(20,4,[-1,1,2,4,8,12,16,20,30,40,80,120],1,[-1,[1,2,4,8,12,16,20,30,40,80,120]*20],'semirandom',[-2,2],1,1,1,1e-14,4,{'4'},{'loglog'},0,{'SLMconstesr'},1,1,1,1)
+plottool(20,2,[-1,1,2,4,8,12,16,20,30,40,80,120],1,[-1,[1,2,4,8,12,16,20,30,40,80,120]*20],'wave',[-2,1,2,3],1,1,1,1e-14,4,{'4'},{'loglog'},0,{'SLMconstewr'},1,1,1,3)
+plottool(20,2,[-1,1,2,4,8,12,16,20,30,40,80,120],1,[-1,[1,2,4,8,12,16,20,30,40,80,120]*20],'wave',[-2,1,2,3],1,1,1,1e-14,4,{'4'},{'loglog'},0,{'SLMconstewrtrap'},1,1,1,1)
 
-plottool(20,4,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',2,1,[-2,0,1],1,1e-14,4,{'7','8'},{'loglog','loglog'},0,{'SLMpew3','SLMpew4'},1,1,2,3)
-plottool(20,4,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'semirandom',2,1,[-2,0,1],1,1e-14,4,{'7','8'},{'loglog','loglog'},0,{'SLMpes3','SLMpes4'},1,1,2,3)
+plottool(20,2,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',2,1,[-2,0,1],1,1e-14,4,{'7','8'},{'loglog','loglog'},0,{'SLMpew3','SLMpew4'},1,1,2,3)
+plottool(20,2,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'semirandom',2,1,[-2,0,1],1,1e-14,4,{'7','8'},{'loglog','loglog'},0,{'SLMpes3','SLMpes4'},1,1,2,3)
 
 
+%plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{'data'},{'type'},[help],{'name'},save,option,EToption,PMint)
+plottool(20,2,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',2,1,[-2,0,1],1,1e-14,1,{'9'},{'loglog'},0,{'SLMdiff1'},1,1,0,3)
+
+plottool(20,2,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',2,1,[-2,0,1],1,1e-14,1,{'9'},{'loglog'},0,{'SLMdiff2'},1,1,0,1)
 
 end
 
@@ -126,16 +130,16 @@ end
 function Kversusk
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{data},'type',[help],{name},save,option)
 
-plottool(20,6,5,[-1,100,50,20,10,5,2,1],[-1,1,2,5,10,20,50,100],'wave',[-2,1,2,3],1,0,1,1e-14,1,{'2','3','4'},{'loglog','loglog','loglog'},0,...
+plottool(20,2,10,[-1,200,100,40,20,10,4,2,1],[-1,1,2,4,10,20,40,100,200],'wave',[-2,1,2,3],1,0,1,1e-14,1,{'2','3','4'},{'loglog','loglog','loglog'},0,...
     {'Kversusktime0','Kversuskerror0','Kversuskenergy0'},1)
 
-plottool(20,6,5,[-1,100,50,20,10,5,2,1],[-1,1,2,5,10,20,50,100],'wave',[-2,1,2,3],1,1,1,1e-14,1,{'2','3','4'},{'loglog','loglog','loglog'},0,...
+plottool(20,2,10,[-1,200,100,40,20,10,4,2,1],[-1,1,2,4,10,20,40,100,200],'wave',[-2,1,2,3],1,1,1,1e-14,1,{'2','3','4'},{'loglog','loglog','loglog'},0,...
     {'Kversusktime','Kversuskerror','Kversuskenergy'},1)
 
-plottool(20,6,5,[-1,100,50,20,10,5,2,1],[-1,1,2,5,10,20,50,100],'wave',[-2,1,2,3],1,0,3,1e-14,1,{'2','3','4'},{'loglog','loglog','loglog'},0,...
+plottool(20,2,10,[-1,200,100,40,20,10,4,2,1],[-1,1,2,4,10,20,40,100,200],'wave',[-2,1,2,3],1,0,3,1e-14,1,{'2','3','4'},{'loglog','loglog','loglog'},0,...
     {'Kversusktime20','Kversuskerror20','Kversuskenergy20'},1)
 
-plottool(20,6,5,[-1,100,50,20,10,5,2,1],[-1,1,2,5,10,20,50,100],'wave',[-2,1,2,3],1,1,3,1e-14,1,{'2','3','4'},{'loglog','loglog','loglog'},0,...
+plottool(20,2,10,[-1,200,100,40,20,10,4,2,1],[-1,1,2,4,10,20,40,100,200],'wave',[-2,1,2,3],1,1,3,1e-14,1,{'2','3','4'},{'loglog','loglog','loglog'},0,...
     {'Kversusktime2','Kversuskerror2','Kversuskenergy2'},1)
 end
 
@@ -143,24 +147,24 @@ end
 function changeeps
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{data},'type',[help],{name},save,option)
 
-plottool(20,4,1,1,20,'semirandom',[-2,1,2],1,1,1,[-1,1e-14,1e-10,1e-6,1e-2,1e4], 1    , {'6','5','1'} ,{'loglog','loglog','semilogx'},0   ,...
+plottool(20,2,1,1,20,'semirandom',[-2,1,2],1,1,1,[-1,1e-14,1e-10,1e-6,1e-2,1e4], 1    , {'6','5','1'} ,{'loglog','loglog','semilogx'},0   ,...
     {'compareEnergy','compareError','compareIter'},1)
 
-plottool(20,4,1,1,20,'wave',[-2,1,2],1,1,1,[-1,1e-14,1e-10,1e-6,1e-2,1e4], 1    , {'4','3','1'} ,{'loglog','loglog','semilogx'},0   ,...
+plottool(20,2,1,1,20,'wave',[-2,1,2],1,1,1,[-1,1e-14,1e-10,1e-6,1e-2,1e4], 1    , {'4','3','1'} ,{'loglog','loglog','semilogx'},0   ,...
     {'compareEnergyw','compareErrorw','compareIterw'},1)
 
-plottool(20,4,1,1,20,'semirandom',[-2,1,2],3,1  ,2, [-1,1e-14,1e-10,1e-6,1e-2,1e4], 1    , {'6','5','1'} ,{'loglog','loglog','semilogx'},0   ,...
+plottool(20,2,1,1,20,'semirandom',[-2,1,2],3,1  ,2, [-1,1e-14,1e-10,1e-6,1e-2,1e4], 1    , {'6','5','1'} ,{'loglog','loglog','semilogx'},0   ,...
     {'compareEnergy2','compareError2','compareIter2'},1)
 
-plottool(20,4,1,1,20,'wave',[-2,1,2],3,1  ,3, [-1,1e-14,1e-10,1e-6,1e-2,1e4], 1    , {'4','3','1'} ,{'loglog','loglog','semilogx'},0   ,...
+plottool(20,2,1,1,20,'wave',[-2,1,2],3,1  ,3, [-1,1e-14,1e-10,1e-6,1e-2,1e4], 1    , {'4','3','1'} ,{'loglog','loglog','semilogx'},0   ,...
     {'compareEnergy2w','compareError2w','compareIter2w'},1)
 
-plottool([-1,10,20,40,80],4,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1,1,[-1,1e-3,1e-4,1e-5,1e-6],1,{'3','4','1'},{'loglog','loglog','loglog'},[1,-2,1000;0,0,0;0,0,0],{'ruleerr','ruleener','ruleiter'},1,1,0,1)
-plottool([-1,10,20,40,80],4,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],3,1,3,[-1,1e-3,1e-4,1e-5,1e-6],1,{'3','4','1'},{'loglog','loglog','loglog'},[1,-2,1;0,0,0;0,0,0],{'ruleerr1','ruleener1','ruleiter1'},1,1,0,1)
+plottool([-1,10,20,40,80],2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1,1,[-1,1e-3,1e-4,1e-5,1e-6],1,{'3','4','1'},{'loglog','loglog','loglog'},[1,-2,1000;0,0,0;0,0,0],{'ruleerr','ruleener','ruleiter'},1,1,0,1)
+plottool([-1,10,20,40,80],2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],3,1,3,[-1,1e-3,1e-4,1e-5,1e-6],1,{'3','4','1'},{'loglog','loglog','loglog'},[1,-2,1;0,0,0;0,0,0],{'ruleerr1','ruleener1','ruleiter1'},1,1,0,1)
 end
 
 % 7
-function restartvariable % blir brukt
+function restartvariable
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{data},'type',[help],{name},save,option)
 
 plottool([-2,20,40,60,80],[-1,4,6,10,20,40,80,100,120],1,1,20,'wave',1,1,1,1,1e-14,4,{'2','1','3','4'},{'loglog','loglog','semilogy','semilogy'},0,...
@@ -177,24 +181,24 @@ plottool([-2,20,40,60,80],[-1,4,6,10,20,40,80,100,120],1,1,20,'wave',2,1,1,3,1e-
 end
 
 % 8
-function runcomparison % blir brukt
+function runcomparison 
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{data},'type',[help],{name},save,option)
-plottool([-1,10,20,40,80],6,1,1,20,'wave',[-2,1,2,3],1,1  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimem'},1)
+plottool([-1,10,20,40,80],2,1,1,20,'wave',[-2,1,2,3],1,1  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimem'},1)
 
-plottool([-1,10,20,40,80],6,1,1,20,'wave',[-2,1,2,3],1,0  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimem0'},1)
+plottool([-1,10,20,40,80],2,1,1,20,'wave',[-2,1,2,3],1,0  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimem0'},1)
 
-plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimek'},1)
+plottool(20,2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimek'},1)
 
-plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,0  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimek0'},1)
+plottool(20,2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,0  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimek0'},1)
 
 
-plottool([-1,10,20,40,80],6,1,1,20,'wave',[-2,1,2,3],1,1  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimem'},1)
+plottool([-1,10,20,40,80],2,1,1,20,'wave',[-2,1,2,3],1,1  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimem'},1)
 
-plottool([-1,10,20,40,80],6,1,1,20,'wave',[-2,1,2,3],1,0  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimem0'},1)
+plottool([-1,10,20,40,80],2,1,1,20,'wave',[-2,1,2,3],1,0  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimem0'},1)
 
-plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek'},1)
+plottool(20,2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek'},1)
 
-plottool(20,6,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,0  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek0'},1)
+plottool(20,2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,0  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek0'},1)
 
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{'data'},{'type'},[help],{'name'},save,option,EToption,PMint)
 plottool([-1,12,20,40,80],[-1,6,10,20,40],1,[-1,12,20,40,80],1,'wave',[-2,1,2,3],1,1,1,[-1,1e-3,1e-4,1e-5,1e-6,1e-7],1,{'2'},{'loglog'},0,{'fastruntime1'},1,1,0,1)
@@ -204,23 +208,23 @@ plottool([-1,12,20,40,80],[-1,6,10,20,40],1,[-1,12,20,40,80],1,'wave',[-2,1,2,3]
 end
 
 % 9
-function ideaexpm % Blir brukt
+function ideaexpm 
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{'data'},{'type'},[help],{'name'},save,option,EToption,PMint)
 
-plottool(20,4,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',[-2,1,2,3],1,0,1,1e-14,1,{'3','4','2'},{'loglog','loglog','loglog'},0,{'ideaerr20','ideaener20','ideatime20'},1,1,0,3)
-plottool(20,8,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',[-2,1,2,3],1,0,1,1e-14,1,{'3','4','2'},{'loglog','loglog','loglog'},0,{'ideaerr40','ideaener40','ideatime40'},1,1,0,3)
+plottool(20,2,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',[-2,1,2,3],1,0,1,1e-14,1,{'3','4','2'},{'loglog','loglog','loglog'},0,{'ideaerr20','ideaener20','ideatime20'},1,1,0,3)
+plottool(20,4,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',[-2,1,2,3],1,0,1,1e-14,1,{'3','4','2'},{'loglog','loglog','loglog'},0,{'ideaerr40','ideaener40','ideatime40'},1,1,0,3)
 
-plottool(20,4,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',[-2,1,2,3],1,1,1,1e-14,1,{'3','4','2'},{'loglog','loglog','loglog'},0,{'ideaerr201','ideaener201','ideatime201'},1,1,0,3)
-plottool(20,8,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',[-2,1,2,3],1,1,1,1e-14,1,{'3','4','2'},{'loglog','loglog','loglog'},0,{'ideaerr401','ideaener401','ideatime401'},1,1,0,3)
+plottool(20,2,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',[-2,1,2,3],1,1,1,1e-14,1,{'3','4','2'},{'loglog','loglog','loglog'},0,{'ideaerr201','ideaener201','ideatime201'},1,1,0,3)
+plottool(20,4,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',[-2,1,2,3],1,1,1,1e-14,1,{'3','4','2'},{'loglog','loglog','loglog'},0,{'ideaerr401','ideaener401','ideatime401'},1,1,0,3)
 end
 
 % 10
-function matlabexpm % Blir brukt
+function matlabexpm
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{'data'},{'type'},[help],{'name'},save,option,EToption,PMint)
 
-plottool(20,4,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',1,1,0,1,0,1,{'3','4'},{'loglog','loglog','loglog'},0,{'expmAerr','expmAener','expmAtime'},1,1,0,[-2,1,2,3])
+plottool(20,2,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',1,1,0,1,0,1,{'3','4'},{'loglog','loglog','loglog'},0,{'expmAerr','expmAener','expmAtime'},1,1,0,[-2,1,2,3])
 
-plottool(20,4,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',2,1,0,1,0,1,{'3','4'},{'loglog','loglog','loglog'},0,{'expmSerr','expmSener','expmStime'},1,1,0,[-2,1,2,3])
+plottool(20,2,[-1,1,2,4,8,12,16,20,30,40,80,100],1,[-1,[1,2,4,8,12,16,20,30,40,80,100]*20],'wave',2,1,0,1,0,1,{'3','4'},{'loglog','loglog','loglog'},0,{'expmSerr','expmSener','expmStime'},1,1,0,[-2,1,2,3])
 
 end
 

@@ -59,24 +59,21 @@ if strcmp(eqn,'heat') % Sjekk!!!
     V =  [Ustart,V]; F = [ones(1,k);F];
     correctsolution = getSolution(X,T,sol);
 elseif strcmp(eqn,'wave') % Kun problem 1 og 2 fungerer
-    a1 = 1; b1 = 1; c1 = sqrt(a1^2+b1^2);
-    a2 = 2; b2 = 3; c2 = sqrt(a2^2+b2^2);
-    a3 = -3; b3 = 4; c3 = sqrt(a3^2+b3^2);
+    
     
     if prob == 1
-        sol1 = @(t,x,y)  sin(a1*pi*x)*sin(b1*pi*y)*cos(c1*pi*t) + sin(a2*pi*x)*sin(b2*pi*y)*cos(c2*pi*t) + sin(a3*pi*x)*sin(b3*pi*y)*cos(c3*pi*t);
-        sol2 = @(t,x,y) -sin(a1*pi*x)*sin(b1*pi*y)*c1*pi*sin(c1*pi*t) - sin(a2*pi*x)*sin(b2*pi*y)*c2*pi*sin(c2*pi*t) - sin(a3*pi*x)*sin(b3*pi*y)*c3*pi*sin(c3*pi*t);
-        u0 = @(x,y) sin(a1*pi*x)*sin(b1*pi*y) + sin(a2*pi*x)*sin(b2*pi*y) + sin(a3*pi*x)*sin(b3*pi*y);
+        a1 = 1; b1 = 2; c1 = sqrt(a1^2+b1^2);
+        sol1 = @(t,x,y)  sin(a1*pi*x)*sin(b1*pi*y)*cos(c1*pi*t);
+        sol2 = @(t,x,y) -sin(a1*pi*x)*sin(b1*pi*y)*c1*pi*sin(c1*pi*t);
+        u0 = @(x,y) sin(a1*pi*x)*sin(b1*pi*y);
         
-        %         sol1 = @(t,x,y)  sin(pi*x)*sin(pi*y)*cos(sqrt(2)*pi*t);
-        %         sol2 = @(t,x,y) -sin(pi*x)*sin(pi*y)*sqrt(2)*pi*sin(sqrt(2)*pi*t);
-        %         u0 = @(x,y) sin(pi*x)*sin(pi*y);
         v0 = @(x,y) 0;
         v1 = @(x,y) 0; f1 = @(t) 0;
         v2 = @(x,y) 0; f2 = @(t) 0;
         V = [[sparse((m-2)^2,1);getV(v1,X)],[sparse((m-2)^2,1);getV(v2,X)]];
         F = [getTime(f1,T);getTime(f2,T)];
     elseif prob == 2
+        return
         sol1 = @(t,x,y) (x-1)*x*(y-1)*y*(t^2-t+1);
         sol2 = @(t,x,y) (x-1)*x*(y-1)*y*(2*t-1);
         u0 = @(x,y) (x-1)*x*(y-1)*y;

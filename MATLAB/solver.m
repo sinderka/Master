@@ -14,7 +14,7 @@ function utdata = solver(m,n,simtime,K,k,eqn,alg,integrator,restart,prob,conv,pa
 % para: currently nothing
 %returns:
 % utdata:
-% utdata(1): number of ioeration performed
+% utdata(1): number of iterations performed
 % utdata(2): computation time
 % utdata(3): error
 % utdata(4): energy
@@ -24,25 +24,26 @@ function utdata = solver(m,n,simtime,K,k,eqn,alg,integrator,restart,prob,conv,pa
 %%%% ISSUES %%%%%
 % Burde alle bildene numeres slik at det er lettere for de forskjellige
 % fuksjonene å finne fram det relevante bildet? Ja det burde de, men det er
-% litt snet nå!
+% litt sent nå!
 
 
 %%% Initiell data
 if nargin < 13
     m = 20;
-    simtime = 1;
+    simtime = 100;
     K = 1;
-    k = 80;
+    k = 2000;
     n = 4;%2*(m-2)^2;
-    restart = 1;
+    restart = 0;
     prob = 1;
-    conv = 10^-15;
+    conv = 10^-14;
     para = 4; %%%%% If need be %%%%%%
     eqn = 'wave';
     alg = 1;
     integrator = 1;
     figvar = 1;
     PMint = 3;
+    %PMalg = 2;
 end
 
 %%%% lage en funksjon som tar seg av dette? Og alt tilknyttet dette?
@@ -60,7 +61,7 @@ elseif integrator == 3
 end
 
 %%% Initsiell data
-utdata = zeros(1,8);
+utdata = zeros(1,9);
 X = linspace(0,1,m);hs =X(2)-X(1);
 T = linspace(0,simtime,K*k); ht = T(2)-T(1);
 [vec,height,lastrelevant] = helpvector(m,eqn);
@@ -73,27 +74,28 @@ T = linspace(0,simtime,K*k); ht = T(2)-T(1);
 % Chose solution method and solve
 if alg == 1 || alg == 2
     if alg == 1
-        algo = @KPM;
+       PMalg = @Arnoldi;
     elseif alg == 2
-        algo = @SLM;
+        PMalg = @SLM;
         n = n/2;
     end
     
     
     tic;
     % Denne algoritmen er noe ROOOT!!!! FIX it!
-    iter = 0; energy1 = 0; energy2 = 0;
+    iter = 0; energy1 = 0; energy2 = 0; energy3 = 0;
     Utemp = zeros(size(V,1),size(F,2));
     U0temp = U0;
     for j = 1:K
         d = timestep*ceil((K-j)/K); timeinterval = 1+(j-1)*k:j*k+d;
         V(:,1) =  A*U0temp;
         for i = 1:size(F,1)
-            [Utemptemp,iter1,energy11,energy21] = algo(A,V(:,i),F(i,timeinterval),n,ht,conv,restart,int,figvar,PMint);
+            [Utemptemp,iter1,energy11,energy21,energy31] = PM(A,V(:,i),F(i,timeinterval),n,ht,conv,restart,int,figvar,PMint,PMalg);
             Utemp(:,timeinterval) = Utemp(:,timeinterval) + Utemptemp;
             iter = max(iter1,iter);
             energy1 = energy1 + energy11;
             energy2 = energy2 + energy21;
+            energy3 = max(energy3,energy31);
         end
         utdata(1) = max(iter,utdata(1));
         Utemp(:,timeinterval) = U0temp*ones(1,k+d) + Utemp(:,timeinterval);
@@ -105,6 +107,7 @@ if alg == 1 || alg == 2
     
     utdata(7) = energy1;
     utdata(8) = energy2;
+    utdata(9) = energy3;
     
     
     % Det som står under her vil jeg fjerne!!!!!!!!!!%%%%%
@@ -154,9 +157,12 @@ if alg ~= 3
     if figvar
         %figure(5);plot(T,max(abs(U-U1)), 'k:.')
         figure(5);plot(T,getError(U,U1), 'k:.')
-        figure(7); plot(T,energy(A,U(vec,:)-U1(vec,:)),'k:.');
+        figure(7); plot(T,getEnergy(A,U(vec,:)-U1(vec,:)),'k:.');
+        figure(8); plot(T,getEnergy(A,U1(vec,:)),'k:.');
+        figure(9); plot(T,getError(U1(vec,:),correctsolution(vec,:)),'k:.');
     end
-    utdata(6) = max(abs(energy(A,U(vec,:)-U1(vec,:))));
+    %utdata(6) = max(abs(getEnergy(A,U(vec,:)-U1(vec,:))));
+    utdata(6) = max(abs(getEnergy(A,U(vec,:))-getEnergy(A,U1(vec,:))));
 else
     utdata(1) = 0;
     utdata(2) = Time;
@@ -164,6 +170,7 @@ else
     utdata(6) = -1;
     utdata(7) = -1;
     utdata(8) = -1;
+    utdata(9) = -1;
     U = U1;
 end
 
@@ -176,15 +183,15 @@ if figvar
 end
 
 if prob == 1
-    utdata(4) = max(abs(energy(A,U(vec,:))));
+    utdata(4) = max(abs(getEnergy(A,U(vec,:))));
     if figvar
-        figure(2); plot(T,energy(A,U(vec,:)),'k:.');
+        figure(2); plot(T,getEnergy(A,U(vec,:)),'k:.');
     end
 else
     if figvar
-        figure(2); plot(T,energy(A,U(vec,:)-correctsolution(vec,:)),'k:.');
+        figure(2); plot(T,getEnergy(A,U(vec,:)-correctsolution(vec,:)),'k:.');
     end
-    utdata(4) = max(abs(energy(A,U(vec,:)-correctsolution(vec,:))));
+    utdata(4) = max(abs(getEnergy(A,U(vec,:)-correctsolution(vec,:))));
 end
 
 
@@ -199,13 +206,13 @@ end
 %end
 
 % Plot
-if 0
+if figvar && 0
     %video(correctsolution(m^2+1:end,:),m,0.05,eqn)
     %video(U(m^2+1:end,:),m,0.05,eqn)
     %video(correctsolution(m^2+1:end,:),m,0.05,eqn)
-    video(correctsolution(m^2+1:end,:)-U(m^2+1:end,:),m,0.05,eqn)
-
-    %video(U(1:m^2,:),m,0.05,eqn)
+    %video(correctsolution(m^2+1:end,:)-U(m^2+1:end,:),m,0.05,eqn)
+    %video(correctsolution(m^2+1:end,:) - U1(m^2+1:end,:),m,0.05,eqn)
+    video(U(1:m^2,:),m,0.05,eqn)
     %video(correctsolution(1:m^2,:),m,0.05,eqn)
     %video(correctsolution(1:m^2,:)-U(1:m^2,:),m,0.05,eqn)
     

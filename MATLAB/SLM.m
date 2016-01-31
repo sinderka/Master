@@ -1,58 +1,68 @@
-function [U,iter,energy1,energy2] = SLM(A,v,F,n,ht,conv,restart,int,figvar,PMint)
-%Indata
-% A: mxm matrix
-% v: m vector
-% F: k row of timedependant function
-% n: real number 0<n<=m
-% ht: stepsize in time
-% conv: convergence criterion
-% restart: A boolean value
-% alg: an ortogonalisation algorithm (Arnoldi or SLM)
-% int: an integration method (trapezoidal rule)
-%outdata
-% U: Solution to problem du/dt = Au+v*F
-% iter: number of restarts preformed
-l = size(A,1);
-k = length(F);
-if max(abs(v)) == 0 || max(abs(F)) == 0
-    U = sparse(l,k);
-    iter = 0;
-    energy1 = 0;
-    energy2 = 0;
-    return
-end
-U = zeros(l,k);
-iter = 1;
-%h = norm(v,2);
-[Vn,Hn,vnext,hnext] = SymplecticLanczosMethod(A,v,n,conv);
+function [S,Htilde,Vend,xiend] = SLM(H,v,var,~)
+% Ortohonalisation method
+%Input
+% H: a hamiltonian matrix mxm matrix
+% v: a m vector
+% var: half the size of the resulting orthogonal system
+%Returns
+% S: a 2*var x m system of orthogonal vectors
+% Htilde: a 2*var x 2*var matrix
+% Vend: residual vector
+% xiend: size of residual vector
 
-invJ = [sparse(n,n),-speye(n);speye(n),sparse(n,n)];
-J = [sparse(l/2,l/2),speye(l/2);-speye(l/2),sparse(l/2,l/2)];
-F = invJ*Vn'*J*v*F;
-if PMint == 1
-    Zn = int(Hn,F,ht);
-elseif PMint == 2
-    Zn = expintegrate(Hn,Hn\F(:,1),0:ht:ht*(k-1));
-elseif PMint == 3
-    Zn = real(myexpm(full(Hn),Hn\F(:,1),0:ht:ht*(k-1)));
+n = length(H)/2;
+J = [sparse(n,n),speye(n);-speye(n),sparse(n,n)];
+delta = zeros(var,1);
+beta = zeros(var,1);
+xi = zeros(var+2,1);
+nu = zeros(var,1);
+
+V = zeros(2*n,var+2);
+W = zeros(2*n,var);
+
+
+xi(2) = norm(v,2);
+
+V(:,2) = 1/xi(2)*v;
+
+for m = 1:1:var
+    % Computing v
+    v = H*V(:,m+1);
+    % Computing delta
+    delta(m) = V(:,m+1)'*v;
+    % Computing Wm
+    wtilde = v-delta(m)*V(:,m+1);
+    
+    nu(m) = V(:,m+1)'*J*v;
+    %nu(m) = v'*J*V(:,m+1);
+    
+    W(:,m) = 1/nu(m)*wtilde;
+    W(:,m) = W(:,m)+[V(:,2:m),W(:,1:m-1)]*[sparse(m-1,m-1),speye(m-1);-speye(m-1),sparse(m-1,m-1)]*[V(:,2:m),W(:,1:m-1)]'*J*W(:,m);
+    % Computing w
+    w = H*W(:,m);
+    
+    % Computing beta
+    beta(m) = -W(:,m)'*J*w;
+    %Computing Wm+1
+    vmtilde = w-xi(m+1)*V(:,m)-beta(m)*V(:,m+1)+delta(m)*W(:,m);
+    xi(m+2) = norm(vmtilde,2);
+    V(:,m+2) = 1/xi(m+2)*vmtilde;
+    V(:,m+2) = V(:,m+2)+[V(:,2:m+1),W(:,1:m)]*[sparse(m,m),speye(m);-speye(m),sparse(m,m)]*[V(:,2:m+1),W(:,1:m)]'*J*V(:,m+2);
 end
 
-ns = Vn*Zn;
-U = U + ns;
-diff = hnext;
-if restart
-    while diff > conv
-        h = hnext; v = vnext;
-        [Vn,Hn,vnext,hnext] = SymplecticLanczosMethod(A,v,n,conv);
-        F = invJ*Vn'*J*h*v*Zn(end,:);
-        Zn = int(Hn,F,ht);
-        ns =  Vn*Zn;
-        diff = max(max(abs(ns)));
-        U = U + ns;
-        iter = iter+1;
-    end
+S = [V(:,2:end-1),W];
+
+% If var==1 tridiag does not work, therefore it needs to be split in two
+% cases
+if var > 1
+    Htilde = [sparse(1:var,1:var,delta,var,var),gallery('tridiag',xi(3:end-1),beta,xi(3:end-1));
+        sparse(1:var,1:var,nu,var,var), sparse(1:var,1:var,-delta,var,var)];
 else
+    Htilde = [delta,beta;
+               nu, -delta];
 end
-energy1 = max(energyBIG(A,Zn,vnext,hnext,ht,figvar,int));
-energy2 = max(energySMALL(Hn,Vn,Zn,vnext,hnext,ht,figvar,int));
+
+
+Vend = V(:,end); xiend = xi(end);
 end
+
