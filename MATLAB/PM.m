@@ -34,13 +34,43 @@ elseif PMint == 2
 elseif PMint == 3
     Zn = real(myexpm(full(Hn),Hn\[h;sparse(length(Hn)-1,1)],0:ht:ht*(k-1)));
 end
-    
+
+if isequal(PMalg, @Arnoldi)
+    energy1 = 0;
+    energy2 = 0;
+    energy3 = 0;
+else
+    energy1 = max(energyBIG(A,Zn,v,h,ht,figvar,int));
+    energy2 = max(energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int));
+    energy3 = max(abs(energyBIG(A,Zn,v,h,ht,0,int)-energySMALL(Hn,Vn,Zn,v,h,ht,0,int)));
+end
+
 
 ns = Vn*Zn;
 U = U + ns;
 %U1 = int(A,v*F,ht);
 diff = hnext;
-if restart
+if restart && diff > conv
+    
+    
+    h = hnext; v = vnext;
+    [Vn,Hn,vnext,hnext] = PMalg(A,v,n,conv);
+    [Zn] = int(Hn,[h*Zn(end,:);sparse(length(Hn)-1,k)],ht);
+    ns =  Vn*Zn;
+    diff = max(max(abs(ns)));
+    U = U + ns;
+    iter = iter+1;
+    
+    if isequal(PMalg, @Arnoldi)
+        energy1 = 0;
+        energy2 = 0;
+        energy3 = 0;
+    else
+        energy1 = max(energyBIG(A,Zn,v,h,ht,figvar,int));
+        energy2 = max(energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int));
+        energy3 = max(abs(energyBIG(A,Zn,v,h,ht,0,int)-energySMALL(Hn,Vn,Zn,v,h,ht,0,int)));
+    end
+    
     while diff > conv
         h = hnext; v = vnext;
         [Vn,Hn,vnext,hnext] = PMalg(A,v,n,conv);
@@ -51,13 +81,5 @@ if restart
         iter = iter+1;
     end
 end
-if isequal(PMalg, @Arnoldi)
-    energy1 = 0;
-    energy2 = 0;
-    energy3 = 0;
-else
-    energy1 = max(energyBIG(A,Zn,v,h,ht,figvar,int));
-    energy2 = max(energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int));
-    energy3 = max(abs(energyBIG(A,Zn,v,h,ht,0,int)-energySMALL(Hn,Vn,Zn,v,h,ht,0,int)));
-end
+
 end

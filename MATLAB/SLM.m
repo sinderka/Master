@@ -1,4 +1,4 @@
-function [S,Htilde,Vend,xiend] = SLM(H,v,var,~)
+function [S,Htilde,Vend,xiend] = SLM(H,v,var,conv)
 % Ortohonalisation method
 %Input
 % H: a hamiltonian matrix mxm matrix
@@ -8,9 +8,12 @@ function [S,Htilde,Vend,xiend] = SLM(H,v,var,~)
 % S: a 2*var x m system of orthogonal vectors
 % Htilde: a 2*var x 2*var matrix
 % Vend: residual vector
-% xiend: size of residual vector
+% xiend: norm of residual vector
 
 n = length(H)/2;
+if 2*n < var
+    var = 2*n;
+end
 J = [sparse(n,n),speye(n);-speye(n),sparse(n,n)];
 delta = zeros(var,1);
 beta = zeros(var,1);
@@ -37,7 +40,7 @@ for m = 1:1:var
     %nu(m) = v'*J*V(:,m+1);
     
     W(:,m) = 1/nu(m)*wtilde;
-    W(:,m) = W(:,m)+[V(:,2:m),W(:,1:m-1)]*[sparse(m-1,m-1),speye(m-1);-speye(m-1),sparse(m-1,m-1)]*[V(:,2:m),W(:,1:m-1)]'*J*W(:,m);
+    W(:,m) = W(:,m)+([V(:,2:m),W(:,1:m-1)]*([sparse(m-1,m-1),speye(m-1);-speye(m-1),sparse(m-1,m-1)]*([V(:,2:m),W(:,1:m-1)]'*(J*W(:,m)))));
     % Computing w
     w = H*W(:,m);
     
@@ -47,15 +50,18 @@ for m = 1:1:var
     vmtilde = w-xi(m+1)*V(:,m)-beta(m)*V(:,m+1)+delta(m)*W(:,m);
     xi(m+2) = norm(vmtilde,2);
     V(:,m+2) = 1/xi(m+2)*vmtilde;
-    V(:,m+2) = V(:,m+2)+[V(:,2:m+1),W(:,1:m)]*[sparse(m,m),speye(m);-speye(m),sparse(m,m)]*[V(:,2:m+1),W(:,1:m)]'*J*V(:,m+2);
+    V(:,m+2) = V(:,m+2)+([V(:,2:m+1),W(:,1:m)]*([sparse(m,m),speye(m);-speye(m),sparse(m,m)]*([V(:,2:m+1),W(:,1:m)]'*(J*V(:,m+2)))));
+    if xi(m+2) < conv
+        var = m+2;
+    end
 end
 
-S = [V(:,2:end-1),W];
+S = [V(:,2:var-1),W];
 
 % If var==1 tridiag does not work, therefore it needs to be split in two
 % cases
 if var > 1
-    Htilde = [sparse(1:var,1:var,delta,var,var),gallery('tridiag',xi(3:end-1),beta,xi(3:end-1));
+    Htilde = [sparse(1:var,1:var,delta,var,var),gallery('tridiag',xi(3:var-1),beta,xi(3:var-1));
         sparse(1:var,1:var,nu,var,var), sparse(1:var,1:var,-delta,var,var)];
 else
     Htilde = [delta,beta;
@@ -63,6 +69,6 @@ else
 end
 
 
-Vend = V(:,end); xiend = xi(end);
+Vend = V(:,var); xiend = xi(var);
 end
 

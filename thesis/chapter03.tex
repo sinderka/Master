@@ -114,9 +114,9 @@ If you compare these figures to figure \ref{fig:intconv}, you will see that the 
 %!!!!!!!!!!!!!!!!Burde det vært restart her også?!!!!!!!!!!!!!!!\\
 This section will be concerned with comparing some different methods for integration in time. How well they estimate the error and energy will be the primary concern. \\
 !!!!!!!!!!!!med eller uten restart?!!!!!!!!!!!!!!!!!!!!\\
-\subsection{Constant energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Constant energy with wave}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+!!!!!!!!!!!!!!Skrive litt om hva denne konvergensen er!!!!!!!!!!!!!!!\\
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.30\textwidth}
@@ -162,7 +162,7 @@ Forward Euler gives a good approximation of the error, but since the energy is l
 Trapezoidal rule and midpoint rule behaves very similar, with midpoint rule having a small advantage again because of the restart.
 
 !!!!!!!!!!!!!!!Skrive at disse bildene er laget på en annen måte enn de andre!!!!!!!!!!!!\\
-\subsection{Varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Varying energy with waves}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}[H]
         \centering
@@ -206,7 +206,154 @@ In this case all methods gives a suitable convergence for the error and the ener
 
 Again midpoint rule performs better. From here on, forward Euler will no longer be used due to its poor energy preserving properties. Trapezoidal rule will be used when the energy is constant, though midpoint gives a better approximation. The reason for this is that there is no huge difference between trapezoidal rule and midpoint rule when the energy is constant, trapezoidal rule is also a bit faster. When the energy is not constant midpoint rule will be used. 
 
+\section{How to choose $\epsilon$} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This section will look at how the different projection methods compare to each other in relation to error, energy and time consumption. There will also be a comparison between restart variable and computation time. 
 
+%\subsection{}
+
+
+\subsection{Constant energy} \label{sec:SLMconstant}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+!!!!!!!!!!!!!!!!!!!!!Det må skrives en del mer i dette kapitelet!!!!!!!!!!!!!!!!!!!!!!\\
+
+\begin{figure}[H]
+        \centering
+        
+		\begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergyw.jpg}
+                \caption{ Energy. }
+                \label{fig:compareEnergyw}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareErrorw.jpg}
+                \caption{ Error. }
+                \label{fig:compareErrorw}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIterw.jpg}
+                \caption{ Number of restarts.  }
+                \label{fig:compareIterw}
+        \end{subfigure}
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy.jpg}
+                \caption{Energy.}
+                \label{fig:compareEnergy}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareError.jpg}
+                \caption{ Error. }
+                \label{fig:compareError}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter.jpg}
+                \caption{ Number of restarts.  }
+                \label{fig:compareIter}
+        \end{subfigure}
+        \caption{ The figure shows how the different methods change the energy and error with different number of restart for \texttt{semirandom}.  }
+        \label{fig:compare}
+\end{figure}
+
+
+
+There is a clear difference between how well the energy is estimated for \texttt{wave} and \texttt{semirandom}. For \texttt{semirandom} there is not much difference between SLM and Arnoldi, although SLM seams to give a slight better approximation than Arnoldi. With \texttt{semirandom} at $\epsilon = 10^{-10}$ Arnoldi preforms one more iteration than SLM, which makes it give a better approximation, aside from that SLM consistently preform better than Arnoldi.\\
+When comparing figure \ref{fig:compare} and figure \ref{fig:comparew} it is important to remember that the way the $er_1$ and $er_2$ is found is very differently, and that might explain the why the cases differs so much. But the difference might also be explained with \texttt{semiradom} being a much harder equation to solve.\\
+!!!!!!!!!!!!!Skriv litt mer om hvorfor bildene for semirandom og wave er så forksjelkige!!!!!!!!!!!!!!!!!!!!!\\
+
+\subsection{Varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{figure}[H]
+        \centering
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy2w.jpg}
+                \caption{ The difference in energy with and without restart. }
+                \label{fig:compareEnergy2w}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareError2w.jpg}
+                \caption{ The difference in energy with and without restart. }
+                \label{fig:compareError2w}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter2w.jpg}
+                \caption{ The number of iterations performed with and without restarting.  }
+                \label{fig:compareIter2w}
+        \end{subfigure}
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareEnergy2.jpg}
+                \caption{ The difference in energy with and without restart. }
+                \label{fig:compareEnergy2}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareError2.jpg}
+                \caption{ The difference in energy with and without restart. }
+                \label{fig:compareError2}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/compareIter2.jpg}
+                \caption{ The number of iterations performed with and without restarting.  }
+                \label{fig:compareIter2}
+        \end{subfigure}
+        \caption{ The figure shows how the different methods change the energy and error with different number of restart for \texttt{wave}.  }
+        \label{fig:compare2}
+\end{figure}
+
+
+The results here are very similar to the results found in section \ref{sec:SLMconstant}, except that the energy and error changes for the first points for both SLM and Arnoldi. SLM still gives the better approximation.
+
+\subsection{A rule based for $\epsilon$}
+
+\begin{figure}[H]
+        \centering
+        
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ruleerr.jpg}
+                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!! }
+                \label{fig:ruleerr}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ruleener.jpg}
+                \caption{ !!!!!!!!!!!!!!!!!!!!!!! }
+                \label{fig:ruleener}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ruleiter.jpg}
+                \caption{ !!!!!!!!!!!!!!!!!!!!  }
+                \label{fig:ruleiter}
+        \end{subfigure}
+        
+		\begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ruleerr1.jpg}
+                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!! }
+                \label{fig:ruleerr1}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ruleener1.jpg}
+                \caption{ !!!!!!!!!!!!!!!!!!!!!!! }
+                \label{fig:ruleener1}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.3\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ruleiter1.jpg}
+                \caption{ !!!!!!!!!!!!!!!!!!!!  }
+                \label{fig:ruleiter1}
+        \end{subfigure}
+        \caption{ The figure shows how the different methods change the energy and error with different number of restart for \texttt{wave}.  }
+        \label{fig:rule}
+\end{figure}
 
 \section{Energy and error }%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %It can be proved that a restart of SLM does not alter the energy \cite{luli}. This section is devoted to seeing holds with numerical approximations. \\
@@ -313,6 +460,8 @@ The focus has till now been to look at how the methods work when the energy is c
         \caption{!!!!!!!!!!!!!!!!Skriv noe her!!!!!!!!!!!!!!! og på alle subcaptioner!!!!!!!!}
         \label{fig:SLMenergyerror1}
 \end{figure}
+In this case there is no difference between the projection methods. DM performs marginally better than the other methods, but not asymptotically better, there seams to be a constant difference between the two methods, probably depending on $n$, where a larger $n$ would give a smaller difference.
+!!!!!!!!!!!!!!!!!!!!Skriv noe!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
 \subsubsection{Energy and error with restart}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}[H]
@@ -320,39 +469,34 @@ The focus has till now been to look at how the methods work when the energy is c
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/SLMenergyw13.jpg}
                 \caption{Global error for \texttt{wave} without restart.}
-                \label{fig:SLMenergyw1}
+                \label{fig:SLMenergyw13}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/SLMerrorw13.jpg}
                 \caption{Global energy for \texttt{wave} without restart.}
-                \label{fig:SLMerrorw1}
+                \label{fig:SLMerrorw13}
         \end{subfigure}
         
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/SLMenergys13.jpg}
                 \caption{Global error for \texttt{wave} with restart.}
-                \label{fig:SLMenergys1}
+                \label{fig:SLMenergys13}
         \end{subfigure}
 		~
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/SLMerrors13.jpg}
                 \caption{Global energy for \texttt{wave} with restart.}
-                \label{fig:SLMerrors1}
+                \label{fig:SLMerrors13}
         \end{subfigure}
         \caption{!!!!!!!!!!!!!!!!Skriv noe her!!!!!!!!!!!!!!! og på alle subcaptioner!!!!!!!!}
-        \label{fig:SLMenergyerror1}
+        \label{fig:SLMenergyerror13}
 \end{figure}
 
-Both SLPM and KPM does an equally poor job at 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!Fortsett her!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\\
-
-!!!!!!!!!!!!!!!!!!!!!!!Skriv noe her!!!!!!!!!!!!!!!!!!!!!!\\
+Both SLPM and KPM does an equally poor job at approximating the solution when restart is enabled. An interesting event is the step happening in figure \ref{fig:SLMerrorw13}, this is the point where the energy starts to diverge. Another interesting thing about that is that KPM never seams to increase with the same rate as SLPM. So for longer times it seams that SLPM does not always have an advantage over KPM. But if you look closely you will see that the energy for SLPM is initially much smaller for KPM.
 
 \subsection{Constant energies with SLM} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!!!!!!!!!!!!!!!!!!!!!!!!!Skriv mer her!!!!!!!!!!!!!!!!!!!!!!!!!\\
-!!!!!!!!!!!!!!!!!!!!!!!!!!Alle energier som LUli tror er konstante skal omtales her!!!!!!!!!!!!!!!!\\
-
+Some theoretical results was presented for me by Lu Li. The theory can be found in \cite{!!!!!!!!!!!!}. In short she predicted that the global energy of SLPM should be constant when restart is not enabled, in addition to energy $\mathcal{H}_3 $ and $\mathcal{H}_4$ being constant. An other important result would be to see if the global energy is constant when restart is enabled. These question will be answered in this section. 
 
 \subsubsection{Energy of SLM without restart}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -360,20 +504,22 @@ Both SLPM and KPM does an equally poor job at
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/SLMconstew.jpg}
-                \caption{Global error for \texttt{wave} without restart.}
+                \caption{Global energy for \texttt{wave} without restart.}
                 \label{fig:SLMconstew}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMconstes.jpg}
-                \caption{Global energy for \texttt{wave} without restart.}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMconstewtrap.jpg}
+                \caption{Global energy for \texttt{semirandom} without restart.}
                 \label{fig:SLMconstes}
         \end{subfigure}
 
-        \caption{ !!!!!!!!!!!!!!!!Skriv noe her!!!!!!!!!!!!!!! og på alle subcaptioner!!!!!!!!}
+        \caption{The change in energy for functions that should have constant energy. $m = 20$, $n = 4$, trapezoidal rule}
         \label{fig:SLMconste}
 \end{figure}
+When I look at the figure I would say that it is clear that the energy is not constant for either SLPM or DM. But DM is a symplectic method! It uses a Hamiltonian matrix, and a symplectic integrator, So why does it increase? My guess would be small round off errors that when summed up enough becomes considerable large. So this explains why DM has a small increase. But what about SLPM, my guess is that the increase in energy not is actually that much bigger, it changes more, both up and down, but if you look at the first and last point it is actually about the same increase as DM has. The increase in energy is in any case much smaller than the linear increase a non-symplecitc method would have. It seams close enough for me, and I conclude that SLPM is energy preserving, with a symplectic integrator.
 
+%!!!!!!!!!!!!!!!!!!!!!!!!Bilde til høyre er ubrukelig!!!!!!!!!!!!!!!!\\
 \subsubsection{Energy og SLM with restart} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
         \centering
@@ -384,32 +530,34 @@ Both SLPM and KPM does an equally poor job at
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMconstesr.jpg}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMconstewrtrap.jpg}
                 \caption{Global energy for \texttt{wave} without restart.}
                 \label{fig:SLMconstesr}
         \end{subfigure}
         \caption{ !!!!!!!!!!!!!!!!Skriv noe her!!!!!!!!!!!!!!! og på alle subcaptioner!!!!!!!!}
         \label{fig:SLMconster}
 \end{figure}
-
+I have pointed it out before, but the restart is not energy preserving. The picture shows an incredible increase in energy. Once again it is apparent that you should not let the time intervals become to big when restart is enabled. 
 \subsubsection{Noe med energy3}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/SLMpew3.jpg}
-                \caption{Global error for \texttt{wave} without restart.}
+                \caption{Energy $\mathcal{H}_3$ for \texttt{wave}.}
                 \label{fig:SLMpew3}
         \end{subfigure}
 		~
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/SLMpes3.jpg}
-                \caption{Global error for \texttt{semirandom} with restart.}
+                \caption{Energy $\mathcal{H}_3$ for \texttt{semirandom}.}
                 \label{fig:SLMpes3}
         \end{subfigure}
 		
-        \caption{ !!!!!!!!!!!!!!!!Skriv noe her!!!!!!!!!!!!!!! og på alle subcaptioner!!!!!!!!}
+        \caption{A plot of $\mathcal{H}_3$, discussed in section \ref{sec:energy}. $m = 20$, $n= 4$, trapezoidal rule, $\epsilon = 1e-14$, problem 1.}
         \label{fig:SLMpe3}
 \end{figure}
+This seams to be quite straight forward, the energy is constant. It is much more constant than anything discussed so far, restarting does, for once, not ruin this property. 
+
 \subsubsection{Noe med energy4}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}[H]
@@ -427,4 +575,25 @@ Both SLPM and KPM does an equally poor job at
         \end{subfigure}
         \caption{ !!!!!!!!!!!!!!!!Skriv noe her!!!!!!!!!!!!!!! og på alle subcaptioner!!!!!!!!}
         \label{fig:SLMpe4x}
+\end{figure}
+This also seams to be quite forward. On the plots there seams to miss a lot of points. The missing points are in fact values calculated to be true zeros. This is clearly either zero or constant.
+!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!Skal det jeg beviser være null eller constant? SJEKK!!!!!!!!!!!!!!!\\
+\subsubsection{Difference between energy3 and energy4}
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMdiff1.jpg}
+                \caption{Global energy for \texttt{wave} without restart.}
+                \label{fig:SLMdiff1}
+        \end{subfigure}
+		~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/SLMdiff2.jpg}
+                \caption{Global energy for \texttt{semirandom} with restart.}
+                \label{fig:SLMdiff2}
+        \end{subfigure}
+        \caption{ !!!!!!!!!!!!!!!!Skriv noe her!!!!!!!!!!!!!!! og på alle subcaptioner!!!!!!!!}
+        \label{fig:SLMdiff}
 \end{figure}

@@ -33,13 +33,13 @@ if nargin < 13
     simtime = 100;
     K = 1;
     k = 2000;
-    n = 4;%2*(m-2)^2;
+    n = 64;%2*(m-2)^2;
     restart = 0;
     prob = 1;
     conv = 10^-14;
     para = 4; %%%%% If need be %%%%%%
     eqn = 'wave';
-    alg = 1;
+    alg = 2;
     integrator = 1;
     figvar = 1;
     PMint = 3;
@@ -189,9 +189,9 @@ if prob == 1
     end
 else
     if figvar
-        figure(2); plot(T,getEnergy(A,U(vec,:)-correctsolution(vec,:)),'k:.');
+        figure(2); plot(T,getEnergy(A,U(vec,:))-getEnergy(A,correctsolution(vec,:) ),'k:.');
     end
-    utdata(4) = max(abs(getEnergy(A,U(vec,:)-correctsolution(vec,:))));
+    utdata(4) = max(abs(getEnergy(A,U(vec,:))-getEnergy(A,correctsolution(vec,:) )));
 end
 
 

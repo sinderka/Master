@@ -37,7 +37,7 @@ if para(1) == -1
     xlab = {'p_n'};
 end
 if conv(1) == -1
-    xlab = {'\epsilon'};
+    xlab = {'\iota'};
 end
 if alg(1) == -1
     xlab = {'solution method'};
@@ -108,7 +108,7 @@ elseif para(1) == -2
     end
 elseif conv(1) == -2
     for i = 1:ant2
-        stri = strcat('\epsilon=',num2str(conv(i+1)));
+        stri = strcat('\iota=',num2str(conv(i+1)));
         leg(i) = {stri};
     end
 elseif alg(1) == -2
@@ -213,7 +213,7 @@ if length(prob) == 1
     additionalInfo(end+1) = {stri};
 end
 if length(conv) == 1
-    stri = strcat('\epsilon=1e',num2str(log10(conv)));
+    stri = strcat('\iota=1e',num2str(log10(conv)));
     additionalInfo(end+1) = {stri};
 end
 if length(para) == 1

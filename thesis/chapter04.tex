@@ -1,7 +1,6 @@
-\section{$K$ versus $k$}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Divide the time domain}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-This method will now be tested, the goal is to see if the computation time can decrease without loosing precision in error or energy.
+One of the major problems with the orthogonalisation methods is that when dealing with large time intervals it might not converge, and the restarts does not help at all. So lets try something different. In this section the time domain is divided in smaller pieces so that the restart can be used without the energy and error diverging, as described in section \ref{sec:timedomain}. Since using the orthogonalisation algorithms might be time consuming that will also be something to look at. 
 
 \subsection{Constant energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
@@ -44,7 +43,7 @@ This method will now be tested, the goal is to see if the computation time can d
         \caption{Figure showing how the different methods perform with different distribution of $K$ and $k$. Notice that the product $Kk$ is constant. }
         \label{fig:Kversusk}
 \end{figure}
-DM solving the equation with large $K$ (and therefore smaller $k$) is faster, and gives no noticeable lack of precision in either energy and error. For Arnoldi and SLM there is not much to be gained computation time wise, notice also that when $K$ is too large precision in energy and error is lost.
+DM is not affected much by this change, with energy, error and time comsuption nearly constant. But for SLPM and KPM 
 
 \subsection{Varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]

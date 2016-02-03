@@ -183,6 +183,7 @@ end
 % 8
 function runcomparison 
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{data},'type',[help],{name},save,option)
+
 plottool([-1,10,20,40,80],2,1,1,20,'wave',[-2,1,2,3],1,1  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimem'},1)
 
 plottool([-1,10,20,40,80],2,1,1,20,'wave',[-2,1,2,3],1,0  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimem0'},1)
@@ -192,13 +193,13 @@ plottool(20,2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1  ,1,1e-14, 1    , {'2'}
 plottool(20,2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,0  ,1,1e-14, 1    , {'2'} ,{'loglog'},0,{'ccomparetimek0'},1)
 
 
-plottool([-1,10,20,40,80],2,1,1,20,'wave',[-2,1,2,3],1,1  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimem'},1)
+plottool([-1,10,20,40,80],2,1,1,20,'wave',[-2,1,2,3],1,1  ,3,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimem'},1)
 
-plottool([-1,10,20,40,80],2,1,1,20,'wave',[-2,1,2,3],1,0  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimem0'},1)
+plottool([-1,10,20,40,80],2,1,1,20,'wave',[-2,1,2,3],1,0  ,3,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimem0'},1)
 
-plottool(20,2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek'},1)
+plottool(20,2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,1  ,3,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek'},1)
 
-plottool(20,2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,0  ,2,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek0'},1)
+plottool(20,2,1,1,[-1,10,20,40,80],'wave',[-2,1,2,3],1,0  ,3,1e-14, 1    , {'2'} ,{'loglog'},0,{'vcomparetimek0'},1)
 
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{'data'},{'type'},[help],{'name'},save,option,EToption,PMint)
 plottool([-1,12,20,40,80],[-1,6,10,20,40],1,[-1,12,20,40,80],1,'wave',[-2,1,2,3],1,1,1,[-1,1e-3,1e-4,1e-5,1e-6,1e-7],1,{'2'},{'loglog'},0,{'fastruntime1'},1,1,0,1)
@@ -274,8 +275,6 @@ saveas(gcf,location,'fig');
 saveas(gcf,location,'jpeg');
 
 end
-
-
 
 function notUsed 
 %function SLMtime

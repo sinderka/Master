@@ -23,11 +23,11 @@ function utdata = energyTest(m,n,simtime,k,eqn,integrator,restart,prob,conv,figv
 %close all
 if nargin < 9
     m = 20;
-    simtime = 10;
+    simtime = 100;
     %K = 2;
-    k = 200;
-    n = 4; %2*(m-2)^2;
-    restart = 0 ;
+    k = 2000;
+    n = 64; %2*(m-2)^2;
+    restart = 1 ;
     prob = 1;
     conv = 10^-14;
     para = 4; %%%%% If need be %%%%%%
@@ -114,10 +114,10 @@ utdata(4) = max(getEnergy(A,U(vec,:)));
 
 %figure(31);loglog(T,getEnergy(A,U(vec,:)),'k:+'); hold on; %plot(T,T.^0*1e-13,'k-'); hold off;
 % %getLabels(1,m,n,simtime,1,k,'wave',2,integrator,restart,1,conv,para,4) ; saveit(strcat('energytest1',num2str(n),num2str(SLMint),num2str(simtime)),'T_s','en_1');
-% 
+%
 % figure(32); loglog(T,abs(energy(A,expmsolution(vec,:))),'ko:');% hold on; plot(T,T.^0*1e-12,'k-'); hold off;
 % %getLabels(1,m,n,simtime,1,k,'wave',2,integrator,restart,1,conv,para,4) ; saveit(strcat('energytest2',num2str(n),num2str(SLMint),num2str(simtime)),'T_s','en_1');
-% 
+%
 % figure(33);
 % loglog(T,abs(energy(A,intesolution(vec,:))),'kx:');% hold on; plot(T,T.^0*1e-13,'k-'); hold off;
 % %[~, ~,~,additionalInfo] = getLabels(1,m,n,simtime,1,k,'wave',2,integrator,restart,1,conv,1,4); legend('SLM','EXPm','intmeth'); title(additionalInfo);
@@ -194,13 +194,15 @@ end
 
 ns = Vn*Zn;
 
+assumtion(A,v,Zn,correctsolution)
+
 Vn0 = Vn; Zn0 = Zn; Hn0 = Hn; v0 = v;
 U = U + ns;
 epsilon = correctsolution-U;
 something = zeros(1,k);
 btilde = [norm(v0,2)*ones(1,k);sparse(length(Hn)-1,k)];
 for kk = 1:k
-something(:,kk) = epsilon(:,kk)'*J*Vn*(Hn*Zn(:,kk) +btilde(:,kk) );
+    something(:,kk) = epsilon(:,kk)'*J*Vn*(Hn*Zn(:,kk) +btilde(:,kk) );
 end
 plot(something)
 
@@ -223,12 +225,15 @@ if restart
         iter = iter+1;
         if iter == 2
             luliproof(A,v0,h*v,Vn0,Vn,Hn0,Hn,Zn0,Zn);
+            energy1 = max(abs(energyBIG(A,Zn,v,h,ht,figvar,int)));
+            energy2 = max(abs(energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int)));
+            stuff = energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int); things = energyBIG(A,Zn,v,h,ht,figvar,int);
+            figure(21983);plot(stuff- things);
             %energy2 = max(abs(energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int)));
         end
     end
 end
-energy1 = max(abs(energyBIG(A,Zn,v,h,ht,figvar,int)));
-energy2 = max(abs(energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int)));
+
 stuff = energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int); things = energyBIG(A,Zn,v,h,ht,figvar,int);
 figure(21983);plot(stuff- things);
 
@@ -278,7 +283,7 @@ function U = locexpm(A,b,T)
 U = zeros(length(A),length(T));
 [V,D] = eig(A);
 for i = 1:length(T)
-U(:,i) = V*diag(exp(diag(D*T(i))))/V * b - b;
+    U(:,i) = V*diag(exp(diag(D*T(i))))/V * b - b;
 end
 end
 
@@ -303,7 +308,7 @@ function luliproof(A,b,b2,Sn1,Sn2,Hn1,Hn2,z,delta)
 
 %J og A er greie!
 
-l = size(A,1); [n,k] = size(z); 
+l = size(A,1); [n,k] = size(z);
 J = [sparse(l/2,l/2),speye(l/2,l/2);-speye(l/2,l/2),sparse(l/2,l/2)];
 invJ = [sparse(n/2,n/2),-speye(n/2,n/2);speye(n/2,n/2),sparse(n/2,n/2)];
 Jn = [sparse(n/2,n/2),speye(n/2,n/2);-speye(n/2,n/2),sparse(n/2,n/2)];
@@ -327,6 +332,25 @@ if max(max(abs(var1-var2))) < 1e-10
 else
     display('!!!!!!!!!!!!!!!!!!!!!!!!!Sjekk for feil!!!!!!!!!')
 end
+
+
+end
+
+function assumtion(A,v,Zn,correctsolution)
+
+[Vn,Hn,vnext,hnext] = SLM(A,v,size(A,2)/2,1);
+
+Z = Vn'*correctsolution;
+
+for i = 1:size(Zn,1)
+    if max(abs(Zn(i,:) - Z(i,:))) < 1e-10
+        fprintf('Det gikk bra for i = %d \n',i)
+    else
+        fprintf('Forskjellen for i = %d er: %d\n',i,max(abs(Zn(i,:) - Z(i,:))))
+    end
+end
+
+
 
 
 end
