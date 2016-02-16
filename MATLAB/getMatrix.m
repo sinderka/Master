@@ -103,8 +103,10 @@ elseif strcmp(eqn,'semirandom')
         A = -1;
     end
     if size(A,1) ~= 2*(m-2)^2
-        A = rand(2*(m-2)^2);
-        A = 0.5*[sparse((m-2)^2,(m-2)^2),speye((m-2)^2);-speye((m-2)^2),sparse((m-2)^2,(m-2)^2)]*(A+A'+m^2*speye(2*(m-2)^2)); % eventuelt minus dette, men det har ikke noe å si!
+        D = abs(rand(2*(m-2)^2,1)) + 5*ones(2*(m-2)^2,1);
+        D1 = rand(2*(m-2)^2-1,1);%rand(2*(m-2)^2-1,1);
+        Atilde = gallery('tridiag',D1,D,D1);
+        A = [sparse((m-2)^2,(m-2)^2),speye((m-2)^2);-speye((m-2)^2),sparse((m-2)^2,(m-2)^2)]*Atilde;
         save('semirandomA.mat','A');
     end
 elseif strcmp(eqn,'eigen')

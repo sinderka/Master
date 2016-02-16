@@ -1,114 +1,168 @@
-\section{A different idea} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-!!!!!!!!!!!!Skrive om å bruke arnoldi og SLM med expm og veldig få restarter!!!!!!!!!!\\
-
-
-\subsection{Without restart} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Results for test problems with varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:varyener} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This chapter will look at many of the same elements that was discussed in section \ref{sec:constres}. Some results are similar, in this case results may not be shown here. This chapter will also try to find out if there is any reason to use SLM instead of KPM on non Hamiltonian systems. \\
+The exact solvers does not work when the energy is varying, thus there will be no discussion about that.
+\section{Convergence} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
         \centering
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ideaerr20.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:ideaerr20}
-        \end{subfigure}%
-        ~
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ideaener20.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:ideaener20}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ideatime20.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:ideatime20}
-        \end{subfigure}
         
-		\begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ideaerr40.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:ideaerr40}
+		
+		\begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/varconv11r.jpg}
+                \caption{ Convergence for \texttt{wave} with trapezoidal rule without restart. }
+                \label{fig:varconv11r}
         \end{subfigure}%
         ~
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ideaener40.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:ideaener40}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/varconv13r.jpg}
+                \caption{ Convergence for \texttt{wave} with midpoint rule without restart. }
+                \label{fig:varconv13r}
         \end{subfigure}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/varconv11.jpg}
+                \caption{ Convergence for \texttt{wave} with trapezoidal rule with restart. }
+                \label{fig:varconv11}
+        \end{subfigure}%
         ~
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ideatime40.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:ideaener40}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/varconv13.jpg}
+                \caption{ Convergence for \texttt{wave} with midpoint rule rule with restart. }
+                \label{fig:varconv13}
         \end{subfigure}
-        \caption{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
-        \label{fig:idea0}
+
+        \caption{ Convergence plot with different integrators, and with and without restart simulated over 1 second. }
+        \label{fig:varconv}
 \end{figure}
 
+Again midpoint rule performs better than trapezoidal rule. It is interesting to see that without restart the methods does not converge with $n = 20$, while they converged with $n = 2$ when the energy was constant, clearly convergence is a lot harder to achieve in this case. \\
+Only midpoint rule will be used in this chapter.\\
 
-\subsection{With restart} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Without restart}
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ideaerr201.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:ideaerr201}
-        \end{subfigure}%
-        ~
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ideaener201.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:ideaener201}
-        \end{subfigure}
-        ~
-        
-		\begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ideaerr401.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:ideaerr401}
-        \end{subfigure}%
-        ~
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ideaener401.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:ideaener401}
-        \end{subfigure}
-        
-        \caption{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
-        \label{fig:idea1}
-\end{figure}
-
-\section{Matlabs \texttt{expm} function} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-!!!!!!!!Vis at matlabs exponen er dårligere enn trapezoidal, og at det ikke er lurt å bruke!!!!!!!!!!!!\\
-
+\section{Convergence with $\iota$} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}[H]
         \centering
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/expmAerr.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:expmAerr}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/varyEnergy.jpg}
+                \caption{ Energy for \texttt{wave}. }
+                \label{fig:varyEnergy}
         \end{subfigure}%
         ~
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/expmAener.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:expmAener}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/varyEnergyw.jpg}
+                \caption{ Energy for \texttt{semirandom}. }
+                \label{fig:varyEnergyw}
         \end{subfigure}
 		
-		\begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/expmSerr.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:expmSerr}
+		\begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/varyError.jpg}
+                \caption{ Error for \texttt{wave}. }
+                \label{fig:varyError}
         \end{subfigure}%
         ~
-        \begin{subfigure}[b]{0.30\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/expmSener.jpg}
-                \caption{ !!!!!!!!!!!!!!!!!!!!!!!!!!!!! }
-                \label{fig:expmSener}
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/varyErrorw.jpg}
+                \caption{ Error for \texttt{semirandom}. }
+                \label{fig:varyErrorw}
         \end{subfigure}
-        \caption{!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!}
-        \label{fig:}
+        
+        		\begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/varyIter.jpg}
+                \caption{ Number of restarts with \texttt{semirandom} }
+                \label{fig:varyIter}
+        \end{subfigure}%
+        ~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/varyIterw.jpg}
+                \caption{ Number of restarts for \texttt{wave}. }
+                \label{fig:varyIterw}
+        \end{subfigure}
+        \caption{ These figures show how choosing the correct $\iota$ can improve the solution, but also make the program run slower due to excessive restarts. The pictures on the left is for \texttt{wave} and one the right for \texttt{semirandom}. This plot considers 100 seconds, with  $n=m=20$, $k = 2000$, $m = 20$ and midpoint rule. }
+        \label{fig:variota}
 \end{figure}
+This look very similar to the one in section \ref{fig:lcompare}, one important difference is that the energy for SLM no longer starts at $1e-15$. The difference between SLM and KPM is definitely smaller in this case.
+
+\section{How to chose $n$}
+The pictures in this section look a lot like the pictures in section \ref{sec:resultat}, except for the case where restart is used.
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/lreserrA.jpg}
+                \caption{ Error for KPM. }
+                \label{fig:lreserrS}
+        \end{subfigure}
+		~
+		\begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/lreserrS.jpg}
+                \caption{ Error for SLM. }
+                \label{fig:lreseneA}
+        \end{subfigure}
+        \caption{ The pictures shows which $n$ gives convergence for different $m$ when restart is enabled. This plot is made with midpoint rule with $k = 200$ over 10 seconds. }
+        \label{fig:tres}
+
+\end{figure}
+There is a clear dependance between $m$ and $n$ for KPM. The rule seams to be $n = m$, so that $n$ scales with the square root the size of the matrix, $\hat{m} = 2(m-2)^2$. \\ 
+The rule found for KPM seams to work for SLM when $m$ is large enough, even though the difference is not so significant as it is for KPM, larger $m$ tend to need larger $n$ to converge.
+
+\section{Long time}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The pictures that would have been in this section are very similar to the pictures in section \ref{sec:resultconsterergy}, except for windowing.
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/lversuskerror0.jpg}
+                \caption{ Error with restart. }
+                \label{fig:lversuskerror0}
+        \end{subfigure}
+		~
+		\begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/lversuskenergy0.jpg}
+                \caption{ Energy with restart. }
+                \label{fig:lversuskenergy0}
+        \end{subfigure}
+                \caption{ Windowing. The restart does not change the result. $m = 20$, $k= 20$.}
+        \label{fig:lversuskenergy}
+\end{figure}
+Clearly windowing does not work with varying energy, thus the most promising solution strategy from the previous chapter has a very limiting factor.\\
+
+
+\section{Computation time} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The run time for varying energy is a little bit different than for the case with constant energy. One of the differences that could be explored is the larger $n$ is needed for larger $m$, when restart is enabled. This will however not be examined. Instead the computation time under the same assumptions as in \ref{sec:cruntime} will be shown as the results are quite different. 
+\subsection{Without restart}
+%
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ltimem.jpg}
+                \caption{ Computation time scaling with $m$. }
+                \label{fig:ltimem}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ltimek.jpg}
+                \caption{ Computation time scaling with $k$. }
+                \label{fig:ltimek}
+        \end{subfigure}
+        \caption{ A figure of the computation times without restart, $n = 200$, $T_s = 100$, $k = 2000$, and $m = 20$. }
+        \label{fig:ltime0}
+\end{figure}
+The difference between DM and the projection methods are a lot smaller in this case. At the last point DM and KPM are intersecting. KPM becomes faster after this, but SLM does not overtake DM. SLM could be faster than DM if $k$ was large enough.
+\subsection{With restart}
+
+\begin{figure}[H]
+        \centering
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ltimemr.jpg}
+                \caption{ Computation time scaling with $m$. }
+                \label{fig:ltimemr}
+        \end{subfigure}
+        ~
+        \begin{subfigure}[b]{0.45\textwidth}
+                \includegraphics[width=\textwidth]{../MATLAB/fig/ltimekr.jpg}
+                \caption{ Computation time scaling with $k$. }
+                \label{fig:ltimekr}
+        \end{subfigure}
+        \caption{ A figure of the computation times with restart, $n = 20$, $T_s = 100$, $k = 2000$, and $m = 20$. }
+        \label{fig:ltime1}
+\end{figure}
+Figure \ref{fig:ltime1} shows that it can be a good idea to use KPM when $m$ is large and $k$ is small. The faster increase with $k$ for KPM comes from extra number of restarts that KPM needs to ensure convergence. \\
+It is never wise to use SLM in this case.

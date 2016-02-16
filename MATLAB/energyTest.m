@@ -23,21 +23,21 @@ function utdata = energyTest(m,n,simtime,k,eqn,integrator,restart,prob,conv,figv
 %close all
 if nargin < 9
     m = 20;
-    simtime = 100;
+    simtime = 1;
     %K = 2;
-    k = 2000;
-    n = 64; %2*(m-2)^2;
-    restart = 1 ;
-    prob = 1;
-    conv = 10^-14;
+    k = 20;
+    n = 20;%2*(m-2)^2;
+    restart = 0 ;
+    prob = 2;
+    conv = 10^-6;
     para = 4; %%%%% If need be %%%%%%
-    eqn = 'wave';
+    eqn = 'semirandom';
     %alg = 2;
     integrator = 1;
     figvar = 1;
     solveexpm = 0;
-    intesolve = 0;
-    SLMint = 3;
+    intesolve = 1;
+    SLMint = 1;
     save = 0;
 end
 
@@ -82,36 +82,37 @@ if solveexpm
     %     utdata(6) = max(abs(energy(A,U(vec,:)-expmsolution(vec,:))));
     
     utdata(5) = max(getError(U,expmsolution));
-    utdata(6) = max(abs(getEnergy(A,U(vec,:)-expmsolution(vec,:))));
+    utdata(6) = max(abs(getEnergy(A,U(vec,:))-getEnergy(A,expmsolution(vec,:))));
 end
 
 if intesolve
     intesolution = zeros(2*m^2,k);
-    intesolution(vec,:) = int(A,V(:,1)*ones(1,k),ht) + U0*ones(1,k);
+    intesolution(vec,:) = int(A,V(:,1)*ones(1,k),ht);% + U0*ones(1,k);
     utdata(7) = max(getError(U,intesolution));
-    utdata(8) = max(abs(energy(A,U(vec,:)-intesolution(vec,:))));
+    utdata(8) = max(abs(getEnergy(A,U(vec,:))-getEnergy(A,intesolution(vec,:))));
     
     %     utdata(7) = max(getError(intesolution,correctsolution));
     %     utdata(8) = max(abs(energy(A,U(vec,:)-intesolution(vec,:))));
 end
 
 if figvar
-    figure(111); plot(T,getError(U,correctsolution),'k:.')
+    figure(111); plot(T,getError(U(vec,:),correctsolution(vec,:)),'k:.')
     %figure(13); plot(T,getEnergy(A,U(vec,:)),'k:.');
-    figure(12); plot(T,getEnergy(A,U(vec,:)),'k:.'); %hold on; plot(T,T*1e-12,'k-'); hold off;
+    figure(12); plot(T,getEnergy(A,U(vec,:),V(:,1)),'k:.'); %hold on; plot(T,T*1e-12,'k-'); hold off;
     if solveexpm
         figure(15); plot(T,getError(U,expmsolution),'k:.')
-        figure(17); loglog(T,getEnergy(A,expmsolution(vec,:)),'k:.'); hold on; plot(T,T.^2*1e-23,'k-'); hold off;
+        figure(17); loglog(T,getEnergy(A,expmsolution(vec,:)),'k:.'); %hold on; plot(T,T.^2*1e-23,'k-'); hold off;
     end
     if intesolve
         figure(18); plot(T,getError(U,intesolution),'k:.')
-        figure(19); loglog(T,getEnergy(A,intesolution(vec,:)),'k:.'); hold on; plot(T,T.^2*1e-23,'k-'); hold off;
+        figure(19); plot(T,getEnergy(A,intesolution(vec,:),V(:,1)),'k:.'); %hold on; plot(T,T.^2*1e-23,'k-'); hold off;
+        figure(20); plot(T,getError(intesolution(vec,:),correctsolution(vec,:)),'k:.')
     end
     
 end
 utdata(3) = max(getError(U,correctsolution));
 utdata(4) = max(getEnergy(A,U(vec,:)));
-
+a = 2;
 %figure(31);loglog(T,getEnergy(A,U(vec,:)),'k:+'); hold on; %plot(T,T.^0*1e-13,'k-'); hold off;
 % %getLabels(1,m,n,simtime,1,k,'wave',2,integrator,restart,1,conv,para,4) ; saveit(strcat('energytest1',num2str(n),num2str(SLMint),num2str(simtime)),'T_s','en_1');
 %
@@ -127,15 +128,15 @@ utdata(4) = max(getEnergy(A,U(vec,:)));
 % hold off;
 
 if 0
-    video(U(1:m^2,:),m,0.05,eqn)
+    %video(U(1:m^2,:),m,0.05,eqn)
     %pause
-    %video(U(1:m^2,:)-correctsolution(1:m^2,:),m,0.05,eqn)
+    video(U(1:m^2,:)-correctsolution(1:m^2,:),m,0.5,eqn)
     
     %video(expmsolution(1:m^2,:),m,0.05,eqn)
     %video(expmsolution(1:m^2,:)-correctsolution(1:m^2,:),m,0.05,eqn)
     
     %video(intesolution(1:m^2,:),m,0.05,eqn)
-    %video(intesolution(1:m^2,:)-correctsolution(1:m^2,:),m,0.05,eqn)
+    video(intesolution(1:m^2,:)-correctsolution(1:m^2,:),m,0.5,eqn)
     
     %video(correctsolution(1:m^2,:),m,0.05,eqn)
     
@@ -174,16 +175,6 @@ h = norm(v,2);
 [Vn,Hn,vnext,hnext] = SLM(A,v,n,conv);
 hamiltonian(Hn); symplectic(Vn); eigenschaft(A,Vn,Hn,vnext,hnext);
 
-invJ = [sparse(n,n),-speye(n);speye(n),sparse(n,n)];
-J = [sparse(l/2,l/2),speye(l/2);-speye(l/2),sparse(l/2,l/2)];
-F = invJ*Vn'*J*v;
-% if SLMint == 1
-%     Zn = trapezoidal(Hn,F*ones(1,k),ht);
-% elseif SLMint == 2
-%     Zn = expintegrate(Hn,Hn\F,T);
-% elseif SLMint == 3 %&& n == 1
-%     Zn = real(locexpm(full(Hn),full(Hn\F),T));
-% end
 if SLMint == 1
     Zn = int(Hn,[h*ones(1,k);sparse(length(Hn)-1,k)],ht);
 elseif SLMint == 2
@@ -192,33 +183,45 @@ elseif SLMint == 3
     Zn = real(myexpm(full(Hn),Hn\[h;sparse(length(Hn)-1,1)],0:ht:ht*(k-1)));
 end
 
+
+figure(231);loglog(0:ht:ht*(k-1),getEnergy(Hn,Zn,[h;sparse(length(Hn)-1,1)]),'k:.')
+%figure(234);loglog(0:ht:ht*(k-1),getEnergy(Hn,Zn),'k:.')
+
+%ns = int(A,v*ones(1,k),ht); figure(232);loglog(0:ht:ht*(k-1),getEnergy(A,ns,v),'k:.')
+
 ns = Vn*Zn;
 
 assumtion(A,v,Zn,correctsolution)
 
 Vn0 = Vn; Zn0 = Zn; Hn0 = Hn; v0 = v;
 U = U + ns;
-epsilon = correctsolution-U;
-something = zeros(1,k);
-btilde = [norm(v0,2)*ones(1,k);sparse(length(Hn)-1,k)];
-for kk = 1:k
-    something(:,kk) = epsilon(:,kk)'*J*Vn*(Hn*Zn(:,kk) +btilde(:,kk) );
-end
-plot(something)
+
+figure(232);loglog(0:ht:ht*(k-1),getEnergy(A,U,v),'k:.')
+% epsilon = correctsolution-U;
+% something = zeros(1,k);
+% btilde = [norm(v0,2)*ones(1,k);sparse(length(Hn)-1,k)];
+% J = [sparse(l/2,l/2),speye(l/2);-speye(l/2),sparse(l/2,l/2)];
+% for kk = 1:k
+%     something(:,kk) = epsilon(:,kk)'*J*Vn*(Hn*Zn(:,kk) +btilde(:,kk) );
+% end
+% figure(312); plot(something)
+
+            %energy1 = max(abs(energyBIG(A,Zn,v,h,ht,figvar,int)));
+            %energy2 = max(abs(energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int)));
 
 diff = hnext;
 if restart
     
-    invJ = [sparse(n,n),-speye(n);speye(n),sparse(n,n)];
-    J = [sparse(l/2,l/2),speye(l/2);-speye(l/2),sparse(l/2,l/2)];
+    %invJ = [sparse(n,n),-speye(n);speye(n),sparse(n,n)];
+    %J = [sparse(l/2,l/2),speye(l/2);-speye(l/2),sparse(l/2,l/2)];
     
     while diff > conv
         h = hnext; v = vnext;
         [Vn,Hn,vnext,hnext] = SLM(A,v,n,conv);
         hamiltonian(Hn); symplectic(Vn); eigenschaft(A,Vn,Hn,vnext,hnext);
         
-        F = invJ*Vn'*J*h*v*Zn(end,:);
-        Zn = int(Hn,F,ht);
+        Zn = int(Hn,[h*ones(1,k);sparse(length(Hn)-1,k)],ht);
+        %Zn = int(Hn,F,ht);
         ns =  Vn*Zn;
         diff = max(max(abs(ns)));
         U = U + ns;
@@ -228,22 +231,27 @@ if restart
             energy1 = max(abs(energyBIG(A,Zn,v,h,ht,figvar,int)));
             energy2 = max(abs(energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int)));
             stuff = energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int); things = energyBIG(A,Zn,v,h,ht,figvar,int);
-            figure(21983);plot(stuff- things);
+            figure(21983);plot(stuff- things,'k:.');
             %energy2 = max(abs(energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int)));
         end
     end
+
+end
+if ~exist('energy1','var')
+    energy1 = -1;
+    energy2 = -1;
 end
 
-stuff = energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int); things = energyBIG(A,Zn,v,h,ht,figvar,int);
-figure(21983);plot(stuff- things);
+%stuff = energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int); things = energyBIG(A,Zn,v,h,ht,figvar,int);
+%figure(21983);plot(stuff- things);
 
-F = invJ*Vn'*J*hnext*vnext*Zn(end,:);
-
-delta = int(Hn,F,ht);
-blah =  Vn0*Zn0 + Vn*delta ;
-if figvar
-    figure(16);plot(getEnergy(A,blah,v0),'k:.')
-end
+% F = invJ*Vn'*J*hnext*vnext*Zn(end,:);
+% 
+% delta = int(Hn,F,ht);
+% blah =  Vn0*Zn0 + Vn*delta ;
+% if figvar
+%     figure(16);plot(getEnergy(A,blah,v0),'k:.')
+% end
 
 end
 
@@ -261,15 +269,17 @@ function symplectic(A)
 [m,n] = size(A);
 Jm = [sparse(m/2,m/2),speye(m/2); -speye(m/2),sparse(m/2,m/2)];
 Jn = [sparse(n/2,n/2),speye(n/2); -speye(n/2),sparse(n/2,n/2)];
-if max(max(abs((A'*Jm*A)'+Jn))) < 1e-10
-    display('A er symplektisk');
-else
-    display('A er ikke symplektisk');
+if isequal((A'*Jm*A)',Jn)%max(max(abs((A'*Jm*A)'+Jn))) < 1e-15
+    display('S_n er symplektisk');
+else%if max(max(abs((A'*Jm*A)'+Jn))) < 1e-15
+    num = max(max(abs((A'*Jm*A)'+Jn)));
+    fprintf('Den maksimale forskjellen mellom (S^T*Jm*S)^T og Jn er %d\n',num);
 end
 end
 
 function eigenschaft(A,Sn,Hn,vnext,hnext)
 e_n = zeros(1,length(Hn)); e_n(end) = 1;
+%e_1 = zeros(1,length(Hn)); e_n(end) = 1;
 
 if A*Sn-Sn*Hn-hnext*vnext*e_n < 10^-10
     display('SLM virker')

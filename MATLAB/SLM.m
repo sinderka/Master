@@ -51,17 +51,17 @@ for m = 1:1:var
     xi(m+2) = norm(vmtilde,2);
     V(:,m+2) = 1/xi(m+2)*vmtilde;
     V(:,m+2) = V(:,m+2)+([V(:,2:m+1),W(:,1:m)]*([sparse(m,m),speye(m);-speye(m),sparse(m,m)]*([V(:,2:m+1),W(:,1:m)]'*(J*V(:,m+2)))));
-    if xi(m+2) < conv
-        var = m+2;
-    end
+%     if xi(m+2) < conv
+%         break
+%     end
 end
 
-S = [V(:,2:var-1),W];
+S = [V(:,2:end-1),W];
 
 % If var==1 tridiag does not work, therefore it needs to be split in two
 % cases
 if var > 1
-    Htilde = [sparse(1:var,1:var,delta,var,var),gallery('tridiag',xi(3:var-1),beta,xi(3:var-1));
+    Htilde = [sparse(1:var,1:var,delta,var,var),gallery('tridiag',xi(3:end-1),beta,xi(3:end-1));
         sparse(1:var,1:var,nu,var,var), sparse(1:var,1:var,-delta,var,var)];
 else
     Htilde = [delta,beta;
@@ -69,6 +69,6 @@ else
 end
 
 
-Vend = V(:,var); xiend = xi(var);
+Vend = V(:,end); xiend = xi(end);
 end
 

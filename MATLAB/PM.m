@@ -1,4 +1,4 @@
-function [U,iter,energy1,energy2,energy3] = PM(A,v,F,n,ht,conv,restart,int,figvar,PMint,PMalg)
+function [U,iter,energy1,energy2,energy3,res0,res1,res2] = PM(A,v,F,n,ht,conv,restart,int,figvar,PMint,PMalg)
 %Indata
 % A: mxm matrix
 % v: m vector
@@ -20,6 +20,9 @@ if max(abs(v)) == 0 || max(max(abs(F))) == 0
     energy1 = 0;
     energy2 = 0;
     energy3 = 0;
+    res0 = 0;
+    res1 = 0;
+    res2 = 0;
     return
 end
 U = zeros(l,k);
@@ -35,22 +38,28 @@ elseif PMint == 3
     Zn = real(myexpm(full(Hn),Hn\[h;sparse(length(Hn)-1,1)],0:ht:ht*(k-1)));
 end
 
-if isequal(PMalg, @Arnoldi)
-    energy1 = 0;
-    energy2 = 0;
-    energy3 = 0;
-else
-    energy1 = max(energyBIG(A,Zn,v,h,ht,figvar,int));
-    energy2 = max(energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int));
-    energy3 = max(abs(energyBIG(A,Zn,v,h,ht,0,int)-energySMALL(Hn,Vn,Zn,v,h,ht,0,int)));
-end
+res0 = max(abs(getEnergy(Hn,Zn,[h*F(1,1);sparse(length(Hn)-1,1)])));
+
+
+
+% if isequal(PMalg, @Arnoldi)
+%     energy1 = 0;
+%     energy2 = 0;
+%     energy3 = 0;
+% else
+%     energy1 = max(energyBIG(A,Zn,v,h,ht,figvar,int));
+%     energy2 = max(energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int));
+%     energy3 = max(abs(energyBIG(A,Zn,v,h,ht,0,int)-energySMALL(Hn,Vn,Zn,v,h,ht,0,int)));
+% end
 
 
 ns = Vn*Zn;
 U = U + ns;
+res1 = max(abs(getEnergy(A,U,v)));
+
 %U1 = int(A,v*F,ht);
 diff = hnext;
-if restart && diff > conv
+if (restart && diff > conv) %|| (restart && conv >= 1.1)
     
     
     h = hnext; v = vnext;
@@ -70,8 +79,7 @@ if restart && diff > conv
         energy2 = max(energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int));
         energy3 = max(abs(energyBIG(A,Zn,v,h,ht,0,int)-energySMALL(Hn,Vn,Zn,v,h,ht,0,int)));
     end
-    
-    while diff > conv
+    while diff > conv %(conv < 1 && diff > conv) % || (conv > 1 && conv > iter)
         h = hnext; v = vnext;
         [Vn,Hn,vnext,hnext] = PMalg(A,v,n,conv);
         [Zn] = int(Hn,[h*Zn(end,:);sparse(length(Hn)-1,k)],ht);
@@ -80,6 +88,14 @@ if restart && diff > conv
         U = U + ns;
         iter = iter+1;
     end
+    res2 = max(abs(getEnergy(Hn,Zn,[h*F(1,1);sparse(length(Hn)-1,1)])));
+else
+    energy1 = 0;
+    energy2 = 0;
+    energy3 = 0;
+    res2 = 0;
 end
+
+
 
 end

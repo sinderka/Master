@@ -13,6 +13,7 @@ energy = zeros(1,k);
 for i = 1:k
     energy(i) = 0.5*delta(:,i)'*Jn*Hn*delta(:,i) + delta(:,i)'*Vn'*J*hnext*vnext*Zn(end,i);
 end
+energy = abs(energy);
 if figvar
     figure(3); plot(0:ht:ht*(k-1),energy,'k:.');
 end

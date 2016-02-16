@@ -208,8 +208,8 @@ elseif strcmp(eqn,'semirandom') % Kjenner ikke løsningen på problemet den løs
         end
         
         if size(V,1) ~= 2*(m-2)^2
-            %V = [zeros(2*(m-2)^2,1),rand(2*(m-2)^2,1)];
             V = [rand(2*(m-2)^2,1),zeros(2*(m-2)^2,1)];
+            %V = [rand(2*(m-2)^2,1)];
             save('semirandomV.mat','V');
         end
         
@@ -218,30 +218,32 @@ elseif strcmp(eqn,'semirandom') % Kjenner ikke løsningen på problemet den løs
         %F = ones(2,k);
         F = ones(2,k);
         correctsolution = sparse(2*m^2,k);
+        correctsolution(1,:) = ones(1,k);
     elseif prob == 2
         try
-            load('semirandomV.mat','V');
+            load('semirandomV2.mat','V');
         catch
             V = -1;
         end
         
         if size(V,1) ~= 2*(m-2)^2
             V = [zeros(2*(m-2)^2,1),rand(2*(m-2)^2,1)];
-            save('semirandomV.mat','V');
+            save('semirandomV2.mat','V');
         end
         
         try
-            load('semirandomF.mat','F')
+            load('semirandomF2.mat','F')
         catch
             F = -1;
         end
         Ustart = V(:,1);
         if size(F,2) ~= k
-            F = [zeros(1,k);rand(1,k);];
+            F = [zeros(1,k);rand(1,k)];
             save('semirandomF.mat','F');
         end
         
         correctsolution = sparse(2*m^2,k);
+        correctsolution(1,:) = ones(1,k);
     end
 elseif strcmp(eqn,'eigen')
     try

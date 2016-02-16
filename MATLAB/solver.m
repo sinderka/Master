@@ -30,20 +30,19 @@ function utdata = solver(m,n,simtime,K,k,eqn,alg,integrator,restart,prob,conv,pa
 %%% Initiell data
 if nargin < 13
     m = 20;
-    simtime = 100;
-    K = 1;
-    k = 2000;
-    n = 64;%2*(m-2)^2;
-    restart = 0;
-    prob = 1;
-    conv = 10^-14;
+    simtime = 10;
+    K = 200;
+    k = 1;
+    n = 80;%2*(m-2)^2;
+    restart = 1;
+    prob = 2;
+    conv = 1e-10;
     para = 4; %%%%% If need be %%%%%%
-    eqn = 'wave';
-    alg = 2;
+    eqn = 'semirandom';
+    alg = 1;
     integrator = 1;
     figvar = 1;
-    PMint = 3;
-    %PMalg = 2;
+    PMint = 1;
 end
 
 %%%% lage en funksjon som tar seg av dette? Og alt tilknyttet dette?
@@ -61,7 +60,7 @@ elseif integrator == 3
 end
 
 %%% Initsiell data
-utdata = zeros(1,9);
+utdata = zeros(1,13);
 X = linspace(0,1,m);hs =X(2)-X(1);
 T = linspace(0,simtime,K*k); ht = T(2)-T(1);
 [vec,height,lastrelevant] = helpvector(m,eqn);
@@ -90,9 +89,12 @@ if alg == 1 || alg == 2
         d = timestep*ceil((K-j)/K); timeinterval = 1+(j-1)*k:j*k+d;
         V(:,1) =  A*U0temp;
         for i = 1:size(F,1)
-            [Utemptemp,iter1,energy11,energy21,energy31] = PM(A,V(:,i),F(i,timeinterval),n,ht,conv,restart,int,figvar,PMint,PMalg);
+            [Utemptemp,iter1,energy11,energy21,energy31,res0,res1,res2] = PM(A,V(:,i),F(i,timeinterval),n,ht,conv,restart,int,figvar,PMint,PMalg);
             Utemp(:,timeinterval) = Utemp(:,timeinterval) + Utemptemp;
             iter = max(iter1,iter);
+            utdata(10) = max(utdata(10),res0);
+            utdata(11) = max(utdata(11),res1);
+            utdata(12) = max(utdata(12),res2);
             energy1 = energy1 + energy11;
             energy2 = energy2 + energy21;
             energy3 = max(energy3,energy31);
@@ -193,7 +195,7 @@ else
     end
     utdata(4) = max(abs(getEnergy(A,U(vec,:))-getEnergy(A,correctsolution(vec,:) )));
 end
-
+utdata(13) = max(abs(getEnergy(A,U1(vec,:))));
 
 %figure(31);loglog(T,abs(energy(A,U(vec,:))),'k:o'); hold on;
 
@@ -212,7 +214,7 @@ if figvar && 0
     %video(correctsolution(m^2+1:end,:),m,0.05,eqn)
     %video(correctsolution(m^2+1:end,:)-U(m^2+1:end,:),m,0.05,eqn)
     %video(correctsolution(m^2+1:end,:) - U1(m^2+1:end,:),m,0.05,eqn)
-    video(U(1:m^2,:),m,0.05,eqn)
+    video(U(1:m^2,:),m,0.5,eqn)
     %video(correctsolution(1:m^2,:),m,0.05,eqn)
     %video(correctsolution(1:m^2,:)-U(1:m^2,:),m,0.05,eqn)
     

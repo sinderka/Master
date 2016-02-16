@@ -1,43 +1,54 @@
-function [ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,PMint)
-if data == 1
-    ylab = {'r_n'};
-elseif data == 2
-    ylab = {'T_c'};
-elseif data == 3
-    ylab = {'er_1'};
-elseif data == 4
-    ylab = {'en_1'};
-elseif data == 5
-    ylab = {'er_2'};
-elseif data == 6
-    ylab = {'en_2'};
-elseif data == 7
-    ylab = {'en_3'};
-elseif data == 8
-    ylab = {'en_4'};
-elseif data == 9
-    ylab = {'abs(en_3 - en_4)'};
+function [ylab,xlab,leg,additionalInfo,helpinfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,PMint,iter)
+helpinfo = -1;
+if data(1) == 1
+    ylab = {'\it i_r'};
+elseif data(1) == 2
+    ylab = {'\it T_c'};
+elseif data(1) == 3
+    ylab = {'\it error'};
+elseif data(1) == 4
+    ylab = {'energy \it H_1'};
+elseif data(1) == 5
+    ylab = {'\it error^{\rm comp}'};
+elseif data(1) == 6
+    ylab = {'energy \it H_1^{\rm comp}'};
+elseif data(1) == 7
+    ylab = {'energy \it H_3'};
+elseif data(1) == 8
+    ylab = {'energy \it H_4'};
+elseif data(1) == 9
+    ylab = {'abs(\it H_3-H_4\rm)'};
+else
+    ylab = {'energy \it H_1'};
 end
 if m(1) == -1
-    xlab = {'m'};
+    xlab = {'\it m'};
+    helpinfo = '\it m';
 end
 if n(1) == -1
-    xlab = {'n'};
+    xlab = {'\it n'};
+    helpinfo = '\it n';
 end
 if simtime(1) == -1
-    xlab = {'T_s'};
+    xlab = {'\it T_s'};
 end
 if K(1) == -1
-    xlab = {'K'};
+    xlab = {'\it K'};
+    helpinfo = '\it K';
 end
 if k(1) == -1
-    xlab = {'k'};
+    xlab = {'\it k'};
+    helpinfo = '\it k';
 end
 if para(1) == -1
     xlab = {'p_n'};
 end
 if conv(1) == -1
-    xlab = {'\iota'};
+    if ~(min(conv(2:end)) > 1)
+        xlab = {'\iota'};
+    else
+        xlab = {'i_r'};
+    end
 end
 if alg(1) == -1
     xlab = {'solution method'};
@@ -46,7 +57,7 @@ if int(1) == -1
     xlab = {'integration method'};
 end
 if restart(1) == -1
-    xlab = {'r_n'};
+    xlab = {'\it i_n'};
 end
 if prob(1) == -1
     xlab = {'problem'};
@@ -55,40 +66,98 @@ if PMint(1) == -1
     xlab{'PM integration method'};
 end
 if  ~exist('xlab','var')
-    xlab = {'T_s'};
+    xlab = {'\it T_s'};
 end
 if m(1) == -1 && k(1) == -1
     if isequal(m,k)
-        xlab = {'m=k'};
+        xlab = {'\it k, with m = k'};
     else
-        xlab = {'k, with m^2 = k'};
+        xlab = {'\it k\rm , with \it m^2 = k'};
     end
 end
 if K(1) == -1 && k(1) == -1
     stri = num2str(max(K.*k));
-    stri = strcat('k, with K \cdot k = ',stri);
+    stri = ['\it k \rm, with \it K \cdot k = ',stri];
     xlab = {stri};
 end
 if k(1) == -1 && simtime(1) == -1
     stri = num2str(max(k./simtime));
-    stri = strcat('k, with ',stri,' \cdot T_s', '=k');
+    stri = ['\it T_s \rm, with \it k = ',stri,' \cdot T_s'];
     xlab = {stri};
 end
+if K(1) == -1 && simtime(1) == -1
+    if (max(K./simtime)) == 1
+        stri = '\it T_s \rm, with \it K = T_s';
+    else
+    stri = num2str(max(K./simtime));
+    stri = ['\it T_s \rm, with \it K = ',stri,' \cdot T_s'];
+    end
+    
+    xlab = {stri};
+end
+
 
 leg = {};
 if m(1) == -2
     for i = 1:ant2
-        stri = strcat('m=',num2str(m(i+1)));
+        if length(n) == 1
+            nstr = num2str(n);
+        elseif isequal(m,n)
+            nstr = 'm';
+        else
+            nstr = 'n';
+        end
+        if alg == 1
+            tstr = ['KPM(',nstr,')'];
+        elseif alg == 2
+            tstr = ['SLM(',nstr,')'];
+        elseif alg == 3 %&& ~( data == 1 || data == 5 || data == 6 )
+            tstr = ['DM'];
+        end
+        
+        stri = [tstr,', m=',num2str(m(i+1))];
         leg(i) = {stri};
     end
+elseif data(1) == -3
+        if length(n) == 1
+            nstr = num2str(n);
+        else
+            nstr = 'n';
+        end
+    for i = 2:length(data)
+        if data(i) == 13
+            stri = 'DM';
+        elseif data(i) == 10
+            stri = ['z_{',nstr,'}(t)'];
+        elseif data(i) == 11
+            stri = ['u_{',nstr,'}(t)'];
+        %elseif data(i) == 12
+        %    stri = ['z_',nstr,'^{(' ,iter, ')}(t)'];
+        elseif data(i) == 4
+            stri = ['u_{',nstr,'}^{(' ,iter, ')}(t)'];
+        elseif data(i) == 7
+            stri = 'energy \it H_3';
+        elseif data(i) == 8
+            stri = 'energy \it H_4';
+        elseif data(i) == 9
+            stri = 'abs(\it H_3-H_4\rm)';
+            ylab = {'energy'};
+        end
+        leg(i-1) = {stri};
+    end
 elseif n(1) == -2
+    if alg == 1
+        tstr = 'KPM(';
+    elseif alg == 2
+        tstr = 'SLM(';
+    end
     for i = 1:ant2
-        stri = strcat('n=',num2str(n(i+1)));
+        stri = [tstr,num2str(n(i+1)),')'];
         leg(i) = {stri};
     end
 elseif simtime(1) == -2
     for i = 1:ant2
-        stri = strcat('T_s: ',num2str(simtime(i+1)));
+        stri = ['T_s = ',num2str(simtime(i+1))];
         leg(i) = {stri};
     end
 elseif K(1) == -2
@@ -113,14 +182,23 @@ elseif conv(1) == -2
     end
 elseif alg(1) == -2
     for i = 1:ant2
-        if alg(i+1) == 1
-            stri = 'Arnoldi';
-        elseif alg(i+1) == 2
-            stri = 'SLM';
-        elseif alg(i+1) == 3
-            stri = 'DM';
+        if length(n) == 1;
+            tstr = num2str(n);
+        else
+            tstr = 'n';
         end
-        leg(i) = {stri};
+        
+        if alg(i+1) == 1
+            stri = strcat('KPM(',tstr,')');
+            leg(i) = {stri};
+        elseif alg(i+1) == 2
+            stri = strcat('SLM(',tstr,')');
+            leg(i) = {stri};
+        elseif alg(i+1) == 3 && ~( data == 1 || data == 5 || data == 6 )
+            stri = 'DM';
+            leg(i) = {stri};
+        end
+        
     end
 elseif int(1) == -2
     for i = 1:ant2
@@ -135,7 +213,7 @@ elseif int(1) == -2
     end
 elseif restart(1) == -2
     for i = 1:ant2
-        stri = strcat('r_n=',num2str(restart(i+1)));
+        stri = strcat('\it i_n=',num2str(restart(i+1)));
         leg(i) = {stri};
     end
 elseif prob(1) == -2
@@ -154,9 +232,9 @@ elseif PMint(1) == -2
                 stri = 'midpoint rule';
             end
         elseif PMint(i+1) == 2
-            stri = 'Matlab expm';
+            stri = 'Matlabs expm function';
         elseif PMint(i+1) == 3
-            stri = 'My expm';
+            stri = 'Eigenvalue and diagonalization';
         end
         leg(i) = {stri};
     end
@@ -183,12 +261,17 @@ if length(k) == 1
     stri = strcat('k=',num2str(k));
     additionalInfo(end+1) = {stri};
 end
-if length(alg) == 1
-    if alg == 1
-        stri = 'Arnoldi';
-    elseif alg == 2
-        stri = 'SLM';
-    elseif alg == 3
+if length(alg) == 1 || length(alg) == 2
+    if length(n) == 1;
+        tstr = num2str(n);
+    else
+        tstr = 'n';
+    end
+    if alg(end) == 1
+        stri = strcat('KPM(',tstr,')');
+    elseif alg(end) == 2
+        stri = strcat('SLM(',tstr,')');
+    elseif alg(end) == 3
         stri = 'DM';
     end
     additionalInfo(end+1) = {stri};
@@ -230,9 +313,9 @@ if length(PMint) == 1
             stri = 'midpoint rule';
         end
     elseif PMint == 2
-        stri = 'Matlabs built in expm';
+        stri = 'Matlabs expm function';
     elseif PMint == 3
-        stri = 'eigenvalue + exp';
+        stri = 'Eigenvalue and diagonalization';
     end
     additionalInfo(end+1) = {stri};
 end

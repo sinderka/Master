@@ -1,5 +1,5 @@
 function plottool(m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save,option,EToption,PMint)
-%plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,{'data'},{'type'},[help],{'name'},save,option,EToption,PMint)
+%plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,[data],{'type'},[help],{'name'},save,option,EToption,PMint)
 % a tool that helps make plotting easier.
 %input
 % m: number of points in eqch spacial direction X
@@ -37,6 +37,7 @@ end
 
 
 
+
 linetype = {'k:+','k:o','k:x','k:.','k:*','k:s','k:d','k:^','k:v','k:<','k:>','k:p','k:h'};
 
 
@@ -45,51 +46,113 @@ linetype = {'k:+','k:o','k:x','k:.','k:*','k:s','k:d','k:^','k:v','k:<','k:>','k
 [p,bc] = getPandB(m,n,simtime,K,k,alg,int,restart,prob,conv,para,PMint);
 ant1 = length(p)-1; ant2 = length(bc)-1;
 a = 1; b = 1; c = 1; d = 1; e = 1; f = 1; g = 1; h = 1; aa = 1; bb = 1; cc = 1; dd = 1;
-utdata = zeros(ant2,ant1,9);
+utdata = zeros(ant2,ant1,13);
 for i = 1:ant1
     [a0,b0,c0,d0,e0,f0,g0,h0,aa0,bb0,cc0,dd0] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,PMint,a,c,b,d,e,f,g,h,aa,bb,cc,dd,-1);
     a = max(1,a0*(a0-a)); b = max(1,b0*(b0-b)); c = max(1,c0*(c0-c)); d = max(1,d0*(d0-d)); e = max(1,e0*(e0-e)); f = max(1,f0*(f0-f)); g = max(1,g0*(g0-g)); h = max(1,h0*(h0-h)); aa = max(1,aa0*(aa0-aa)); bb = max(1,bb0*(bb0-bb)); cc = max(1,cc0*(cc0-cc)); dd = max(1,dd0*(dd0-dd));
     for j = 1:ant2
         [a,b,c,d,e,f,g,h,aa,bb,cc,dd] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,PMint,a,c,b,d,e,f,g,h,aa,bb,cc,dd,-2);
-        if option == 1
+        %if option == 1
             utdata(j,i,:) = solver(m(a),n(b),simtime(bb),K(cc),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e),0,PMint(dd));
-        elseif option == 2 % energyTest(m,n,k,simtime,eqn,restart,prob,conv,figvar)
-            return 
-            utdata(j,i,:) = energyTest(m(a),n(b),simtime(bb),k(c),eqn,int(aa),restart(g),prob(h),conv(d),0,EToption,0,0,PMint(dd));
-        end
+        %elseif option == 2 % energyTest(m,n,k,simtime,eqn,restart,prob,conv,figvar)
+        %    return 
+        %    utdata(j,i,:) = energyTest(m(a),n(b),simtime(bb),k(c),eqn,int(aa),restart(g),prob(h),conv(d),0,EToption,0,0,PMint(dd));
+        %end
         %utdata(j,i,:) = energyTest(m(a),n(b),k(c),eqn,alg(f),int(aa),restart(g),prob(h),conv(d),para(e));
     end
 end
+if data(1) == -3
+        close all
+    pause(0.5)
+    j = 1;
+    for i = data(2:end)
+        if strcmp(type,'plot')
+            plot(p(2:end),utdata(1,:,i),char(linetype(j)))
+        elseif strcmp(type,'loglog')
+            loglog(p(2:end),utdata(1,:,i),char(linetype(j)))
+        elseif strcmp(type,'semilogx')
+            semilogx(p(2:end),utdata(1,:,i),char(linetype(j)))
+        elseif strcmp(type,'semilogy')
+            semilogy(p(2:end),utdata(1,:,i),char(linetype(j)))
+        elseif strcmp(type, 'table')
+            format long
+            format shortEng
+            format compact
+            outdata = ([bc',[p(2:end);utdata(:,:,i)]])'
+            format short
+            break
+        end
+        j = j + 1;
+        hold on
+    end
+    iter = num2str(max(max(utdata(:,:,1))));
+    [ylab,xlab,leg,additionalInfo,helpinfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,PMint,iter);
+    if help(1)
+        plot(p(2:end),p(2:end).^help(i,2)*help(i,3),'k-')
+        number = num2str(help(kk,2));
+        if number == '1'
+            stri = ['\propto', helpinfo];    
+        else
+            stri = ['\propto', helpinfo , '^{',number,'}'];
+        end
+        leg(end+1) = {stri};
+    end
+    ylabel(ylab);
+    xlabel(xlab);
+    title(char(additionalInfo))
+    
+    legend(char(leg));
+    h = set(findall(gcf,'-property','FontSize'), 'Fontsize',12);
+    set(h,'Location','Best');
+    if save
+        pause(0.5)
+        drawnow
+        pause(0.5)
+        location = strcat('/home/shomeb/s/sindreka/Master/MATLAB/fig/',char(name));
+        saveas(gcf,location,'fig');
+        saveas(gcf,location,'jpeg');
+    end
 
-
+    %close all
+else
 for kk = 1:length(data)
     close all
     pause(0.5)
     for i = 1:ant2
-        if strcmp(type(kk),'plot')
-            plot(p(2:end),utdata(i,:,str2num(char(data(kk)))),char(linetype(i)))
+        if (data(kk) == 1 || data(kk) == 5 || data(kk) == 6) && alg(kk) == 3
+            continue
+        elseif strcmp(type(kk),'plot')
+            plot(p(2:end),utdata(i,:,data(kk)),char(linetype(i)))
         elseif strcmp(type(kk),'loglog')
-            loglog(p(2:end),utdata(i,:,str2num(char(data(kk)))),char(linetype(i)))
+            loglog(p(2:end),utdata(i,:,data(kk)),char(linetype(i)))
         elseif strcmp(type(kk),'semilogx')
-            semilogx(p(2:end),utdata(i,:,str2num(char(data(kk)))),char(linetype(i)))
+            semilogx(p(2:end),utdata(i,:,data(kk)),char(linetype(i)))
         elseif strcmp(type(kk),'semilogy')
-            semilogy(p(2:end),utdata(i,:,str2num(char(data(kk)))),char(linetype(i)))
+            semilogy(p(2:end),utdata(i,:,data(kk)),char(linetype(i)))
         elseif strcmp(type(kk), 'table')
             format long
             format shortEng
             format compact
-            outdata = ([bc',[p(2:end);utdata(:,:,str2num(char(data(kk))))]])'
+            outdata = ([bc',[p(2:end);utdata(:,:,data(kk))]])'
             format short
-            return
+            break
         end
         hold on
     end
-    
-    
-    [ylab,xlab,leg,additionalInfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,str2num(char(data(kk))),PMint);
+    if strcmp(type(kk), 'table')
+        continue
+    end
+    %iter = max(max(utdata(1,:,:)));
+    [ylab,xlab,leg,additionalInfo,helpinfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data(kk),PMint);
     if help(kk,1)
         plot(p(2:end),p(2:end).^help(kk,2)*help(kk,3),'k-')
-        leg(end+1) = {'Helpline'};
+        number = num2str(help(kk,2));
+        if number == '1'
+            stri = ['\propto', helpinfo];    
+        else
+            stri = ['\propto', helpinfo , '^{',number,'}'];
+        end
+        leg(end+1) = {stri};
     end
     ylabel(ylab);
     xlabel(xlab);
@@ -106,8 +169,9 @@ for kk = 1:length(data)
         saveas(gcf,location,'fig');
         saveas(gcf,location,'jpeg');
     end
-    hold off
+
     %close all
+end
 end
 end
 
@@ -128,13 +192,6 @@ if length(n) > 1
     end
 end
 
-if length(simtime) > 1
-    if simtime(1) == -1
-        p = simtime;
-    elseif simtime(1) == -2
-        b = simtime;
-    end
-end
 
 if length(K) > 1
     if K(1) == -1
@@ -188,6 +245,15 @@ if length(prob) > 1
         b = prob;
     end
 end
+
+if length(simtime) > 1
+    if simtime(1) == -1
+        p = simtime;
+    elseif simtime(1) == -2
+        b = simtime;
+    end
+end
+
 if exist('p','var') && exist('b','var')
     return
 end
@@ -206,6 +272,7 @@ if length(PMint) > 1
         b = PMint;
     end
 end
+
 end
 
 function [a,b,c,d,e,f,g,h,aa,bb,cc,dd] = addOne(m,n,simtime,K,k,alg,int,restart,prob,conv,para,PMint,a,c,b,d,e,f,g,h,aa,bb,cc,dd,var)

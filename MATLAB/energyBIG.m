@@ -18,5 +18,5 @@ end
 if figvar
     figure(4); plot(0:ht:ht*(k-1),energy,'k:.');
 end
-
+energy = abs(energy);
 end
