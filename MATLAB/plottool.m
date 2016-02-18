@@ -99,10 +99,10 @@ if data(1) == -3
     end
     ylabel(ylab);
     xlabel(xlab);
-    title(char(additionalInfo))
+    %title(char(additionalInfo))
     
     legend(char(leg));
-    h = set(findall(gcf,'-property','FontSize'), 'Fontsize',12);
+    h = set(findall(gcf,'-property','FontSize'), 'Fontsize',18);
     set(h,'Location','Best');
     if save
         pause(0.5)
@@ -156,10 +156,10 @@ for kk = 1:length(data)
     end
     ylabel(ylab);
     xlabel(xlab);
-    title(char(additionalInfo))
+    %title(char(additionalInfo))
     
     legend(char(leg));
-    h = set(findall(gcf,'-property','FontSize'), 'Fontsize',12);
+    h = set(findall(gcf,'-property','FontSize'), 'Fontsize',18);
     set(h,'Location','Best');
     if save
         pause(0.5)

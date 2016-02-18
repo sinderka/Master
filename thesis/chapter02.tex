@@ -5,7 +5,7 @@ This chapter will contain the theoretical aspects of the projection methods, suc
  
 \section{Zero initial condition}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:inittransf}
-For both KPM and SLM it is important that the initial conditions are zero. The reason for this is explained in section \ref{sec:solmet}. Equation \eqref{eqn:PDE} can be transformed so that it has zero initial conditions in the following way \cite{zerotransf}: \\
+For both \texttt{KPM} and \texttt{SLM} it is important that the initial conditions are zero. The reason for this is explained in section \ref{sec:solmet}. Equation \eqref{eqn:PDE} can be transformed so that it has zero initial conditions in the following way \cite{zerotransf}: \\
 Start by shifting the solution
 \begin{equation*}
 \hat{u}(t) = u(t)-u_0,
@@ -13,7 +13,7 @@ Start by shifting the solution
 then rewrite the original equation as
 \begin{equation*}
 \begin{aligned}
-\dot{\hat{u}}(t) &= A \hat{u}(t) +A u_0 + p f(t) \\
+\dot{\hat{u}}(t) &= A \hat{u}(t) +A u_0\\
  \hat{u}(0)&= 0. \\
 \end{aligned}
 \end{equation*}
@@ -27,31 +27,31 @@ All test problems with a non-zero initial condition will be transformed in this 
 
 \section{Energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 It is well known that the energy of a system on the form of equation \eqref{eqn:PDE} can be expressed as \cite{energy}
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
-\mathcal{H}_1(u) = \frac{1}{2} u^\top (t) J A u(t) + u^\top(t) J p f(t)
+\mathcal{H}_1(u) = \frac{1}{2} u^\top (t) J A u(t)
 \end{aligned}
-\end{equation}
+\end{equation*}
 If the transformation in section \ref{sec:inittransf} is used, the energy is 
 \begin{equation}
-\mathcal{H}_2 (u) = \frac{1}{2} \hat{u}^\top (t)  J A \hat{u}(t) + \hat{u}^\top (t)  J (b + p f(t)).
+\mathcal{H}_2 (\hat{u}) = \frac{1}{2} \hat{u}^\top (t)  J A \hat{u}(t) + \hat{u}^\top (t)  J b.
 \label{eqn:energy2}
 \end{equation}
 For most theoretical derivation $\mathcal{H}_2$ will be used, as the shifted problem is the one actually solved. But in figures $\mathcal{H}_1$ is used since the unshifted problem is what is sought. \\
 
-There will be a discussion about different types of test problem. The ones marked "constant energy" will be problems without a time dependent source term, meaning $f(t)= 0$. The other type is problems marked "varying energy", in this case $f(t)$ will be a non zero time dependent function. Test problems will be presented in section \ref{sec:testprob}.
+There will be a discussion about different types of test problem. The ones marked "constant energy" will be problems without a time dependent source term, meaning. The other type is problems marked "varying energy", in this case there will be a non zero time dependent scalar function $f(t)$, multiplied with a constant vector $p$ in equation \eqref{eqn:PDE}. Test problems will be presented in section \ref{sec:testprob}.
 
 \section{Integration methods}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The time domain $[0,T_s]$ will be divided in $k$ pieces, so that the step size is constant $h_t = 1/k$. The time discretized solution of $u(t_j)$ will be called $U_j$, with $t_j = j h_t$ where $ j = 1,2,\cdots,k $, $j = 0$ is disregarded since the initial value is known to be zero. Let the discretization of $f(t_j)$ be called $F_j$. The integration methods considered in this text are trapezoidal rule, forward Euler, and midpoint rule. The definition and the iteration scheme of the different methods are given in table \ref{tab:intmet}. \\
+The time domain $[0,T_s]$ will be divided in $k$ pieces, so that the step size is constant $h_t = T_s/k$. The time discretized solution of $u(t_j)$ will be called $U_j$, with $t_j = j h_t$ where $ j = 1,2,\cdots,k $, $j = 0$ is disregarded since the initial value is known to be zero. Let the discretization of $f(t_j)$ be called $F_j$. The integration methods considered in this text are trapezoidal rule, forward Euler, and midpoint rule. The definition and the iteration scheme of the different methods are given in table \ref{tab:intmet}. \\
 
 \begin{table}
 \begin{tabular}{l l}
-	Trapezoidal rule \cite{trapezoidal} & $U_{i+1} = U_{i}+h_t g \Big( \frac{1}{2}(t_i+t_{i+1}),\frac{1}{2}(U_i+U_{i+1}) \Big)$
+	Trapezoidal rule (\texttt{trap}) \cite{trapezoidal} & $U_{i+1} = U_{i}+h_t g \Big( \frac{1}{2}(t_i+t_{i+1}),\frac{1}{2}(U_i+U_{i+1}) \Big)$
 	\\ & $U_{i+1} = (I- \frac{A h_t}{2}) ^{-1} \Big(  U_i + \frac{h_t}{2} \big( A U_i+(F_{i+1}+F_i) \big)  \Big) $\\
 \hline	
-	Forward Euler \cite{forwardeuler} & $ U_{i+1} = U_i + h_t g ( t_i, U_i ) $ \\ & $ U_{i+1} = U_i + h_t \big( A U_i + F_i \big) $ \\
+	Forward Euler (\texttt{Euler}) \cite{forwardeuler} & $ U_{i+1} = U_i + h_t g ( t_i, U_i ) $ \\ & $ U_{i+1} = U_i + h_t \big( A U_i + F_i \big) $ \\
 	\hline
-	Midpoint rule \cite{midpoint} & $U_{i+1} = U_i + h_t g \Big(  t_{i+\frac{1}{2}} , \frac{1}{2}(U_i + U_{i+1})    \Big) $ \\ & 
+	Midpoint rule (\texttt{mid}) \cite{midpoint} & $U_{i+1} = U_i + h_t g \Big(  t_{i+\frac{1}{2}} , \frac{1}{2}(U_i + U_{i+1})    \Big) $ \\ & 
 	$U_{i+\frac{1}{2}} = U_i + \frac{h_t}{2} ( A U_i + F_{\frac{1}{2}} )$ \\ &
     $U_{i+1} = (I-\frac{A h_t}{2}) ^{-1} (U_{i+\frac{1}{2}} + \frac{h_t}{2} F_{i+ \frac{1}{2}})$
     
@@ -61,16 +61,16 @@ The time domain $[0,T_s]$ will be divided in $k$ pieces, so that the step size i
 \caption{Methods for integrating in time. Note that since the midpoint rule uses the midpoint $F_{i+\frac{1}{2}}$, twice as many points needs to be saved for midpoint rule as for the other methods. Trapezoidal and midpoint rule have quadratic convergence rates, while forward Euler has linear convergence. To compare the methods it is therefore necessary to use the squared number of points for forward Euler as for the other methods.} 
 \label{tab:intmet}
 \end{table}
-Trapezoidal rule and midpoint rule is the same method if the energy is constant. When $F_j$  is not constant, midpoint rule should have an advantage because it is symplectic \cite{!!!!}. \\
+Trapezoidal rule and midpoint rule is the same method if the energy is constant. When $F_j$  is not constant, midpoint rule should have an advantage because it is symplectic \cite{symplecticintegrator}. \\
 
 Forward Euler has no energy preserving properties, and is used to show the difference between a naive integration method, and energy preserving integration methods. \\
 
 In addition to the iteration schemes in table \ref{tab:intmet} some exact solvers are used, they are presented in table \ref{tab:intcorrect}.
 \begin{table}
 \begin{tabular}{l l}
-Eigenvalue and diagonalization & $[V,D] = \texttt{eig}(A)$ \\
+Eigenvalue and diagonalization (\texttt{diag}) & $[V,D] = \texttt{eig}(A)$ \\
  & $U_i = V \cdot \texttt{diag} \Big( \texttt{exp} \big( \texttt{diag}(D \cdot t_i)\big)\Big)/V \cdot b - b$ \\
-Matlab's \texttt{expm} function & $U_i = \texttt{expm}(A \cdot t_i) \cdot b - b$ \\
+Matlab's \texttt{expm} function (\texttt{expm}) & $U_i = \texttt{expm}(A \cdot t_i) \cdot b - b$ \\
 
 \end{tabular}
 \caption{Methods for exact integration in time. Since they are very computationally demanding they will only be used on small projected matrices. They also need the test problem to have constant energy. The expected convergence will be depending on the approximation of $A$, since this method is only exact in time. These function as explained in matlabs docmentation: \cite{expm}. }
@@ -130,7 +130,7 @@ So trapezoidal rule conserves the energy for functions with constant energy. Sin
 \section{Windowing}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 As you will see, the projected methods has a tendency to stop working when the time domain is too large. A fix to this might be to divide the time domain in smaller pieces, and solve each piece individually. How this is done is described in the next paragraph.\\ 
 
-Let $T_s$ denote simulated time, let $K$ be the number of pieces $T_s$ is divide into, and let $k$ be the number of pieces each $K$ is divided into. Each of the $K$ sub intervals is then solved as separate problems, with the initial conditions updated. This is explained in a more precise manner in algorithm \ref{alg:Kversusk}. This method will be called "windowing", as this was the name my supervisor Elena Celledoni \cite{elenaperson} used to describe the method.
+Let $T_s$ denote simulated time, let $K$ be the number of pieces $T_s$ is divide into, and let $k$ be the number of pieces each $K$ is divided into. Each of the $K$ sub intervals is then solved as separate problems, with the initial conditions updated. This is explained in a more precise manner in algorithm \ref{alg:Kversusk}. This method will be called "windowing", as this is the name my supervisor Elena Celledoni \cite{elenaperson} used to describe the method.
 
 \begin{algorithm} [h!]
 \begin{algorithmic} \caption{ Windowing } \label{alg:Kversusk}  
@@ -147,7 +147,7 @@ Let $T_s$ denote simulated time, let $K$ be the number of pieces $T_s$ is divide
 \end{algorithm}
 
 \section{Solution methods} \label{sec:solmet} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-There are two orthogonalisation methods that will be discussed in this text. Their names are symplectic Lanczos method(SLM), and Arnoldi's algorithm(KPM, as it is implemented as the Krylov projection method). The derivation of the methods, together with a proof of energy perseverance for SLM is presented in this section. \\
+There are two orthogonalisation methods that will be discussed in this text. Their names are symplectic Lanczos method(\texttt{SLM}), and Arnoldi's algorithm(\texttt{KPM}, as it is implemented as the Krylov projection method). The derivation of the methods, together with a proof of energy perseverance for \texttt{SLM} is presented in this section. \\
 
 
 Projection methods are ways to make approximated solutions from a subset of the original problem by projecting a problem of several dimensions onto a smaller dimensional problem. One great feature of these methods is that a smaller system of equations can be used to obtain solutions, making further computations less demanding, but finding this projected system can be time consuming. An other drawback is that the projected solutions are approximations. The approximated solution can be improved by something called restarting, this means using the projection method again, to solve an equation for the difference between the projected solution, and the unprojected solution. This can be done repeatedly to obtain the desired accuracy. \\
@@ -160,12 +160,12 @@ u(0) &= 0
 \end{aligned}
 \label{eqn:PMform}
 \end{equation}
-when these methods are used. Note that the initial values are zero as the restarts considers the difference between the projected solution and the unprojected solution, since it is difficult to know how well the initial value was approximated. It is also important that $A$ is a Hamiltonian matrix when using SLM. \\
+when these methods are used. Note that the initial values are zero as the restarts considers the difference between the projected solution and the unprojected solution, since it is difficult to know how well the initial value is approximated. It is also important that $A$ is a Hamiltonian matrix when using \texttt{SLM}. \\
 
 Note that the relation between $\hat{m}$, $\tilde{n}$, $\tilde{m}$ used in the algorithms is given by $\hat{m} = 2\tilde{m}= 2(m-2)^2$ and $ n = 2\tilde{n}$, where $\hat{m}$ is the dimension of the system, and $n$ is the size of the orthogonal system. $n$ is sometimes called the restart variable. Don't worry to much about these details, it is just a way to simplify the expressions, the reason to simplify them this way will be described in section \ref{sec:testprob}. \\
 
-When talking about the true solution it is the meant as the unprojected solution(the same problem, solved exactly the same way, except without any projection method), and will later be referred to as the direct method(DM).
-\subsection{Arnoldi's Algorithm and the Krylov projection method}
+When talking about the true solution it is the meant as the unprojected solution(the same problem, solved exactly the same way, except without any projection method), and will later be referred to as the direct method(\texttt{DM}).
+\subsection{Arnoldi's Algorithm and the Krylov projection method} %%%%%%%%%%%%%%%%%
 This section is loosely based around the derivation of the method done in \cite{elena} and \cite{min}. \\
 
 The Krylov subspace is the space $W_n (A,b) = \{b,Ab, \cdots, A^{n-1}b\} = \{v_1,v_2,\cdots,v_n\} $, where $n \leq \hat{m}$.
@@ -241,9 +241,9 @@ A restart considers the difference $\epsilon_n^{(i)}(t) = u(t)-u_n^{(i)}$, as in
 \label{eqn:KPMdiff}
 \end{equation}
 Where 
-\begin{equation}
+\begin{equation*}
 r_n^{(i)} = h_{n+1,n}^{(i-1)} v_{n+1}^{(i-1)} e_n^{\top} \epsilon_n^{(i-1)} (t),
-\end{equation}
+\end{equation*}
 which is exactly the same as in equation \eqref{eqn:Aresidual}, except that $z_n(t)$ is replaced with $\epsilon_n(t)$, and the counter $i$ is present. 
 Equation \eqref{eqn:KPMdiff} can be simplified by using equation \eqref{eqn:propA}, and writing $ \epsilon^{(i)}_n(t)  = V_n \delta_n^{(i)}(t) $, to obtain equation \eqref{eqn:KPMr}.
 \begin{equation}
@@ -255,7 +255,7 @@ Repeatedly solving this equation can increase the accuracy of the approximated s
 
 The proof for the convergence of the restart can be found in \cite{elenaconv}.\\
 \subsection{Symplectic Lanczos method}
-SLM and KPM are very similar, which is easy to see when comparing equation \eqref{eqn:propA} and \eqref{eqn:propS}. The main difference is that orthonormality in Arnoldi is replaced by symplecticity in SLM. This makes the derivation quite similar.\\
+\texttt{SLM} and \texttt{KPM} are very similar, which is easy to see when comparing equation \eqref{eqn:propA} and \eqref{eqn:propS}. The main difference is that orthonormality in Arnoldi is replaced by symplecticity in \texttt{SLM}. This makes the derivation quite similar.\\
 
 Let $S_n = [v_1,v_2,\cdots v_{\frac{n}{2}},w_1,w_2,\cdots w_{\frac{n}{2}}]$ be a set of $J$-orthogonal vectors satisfying the following equations \cite{SLMprop}
 \begin{equation}
@@ -317,26 +317,26 @@ This can be further simplified when writing $ b = S_n e_1 \| b \|_2 $ and using 
 \end{equation}
 Equation \eqref{eqn:SLMi} and \eqref{eqn:KPMi} are identical, except for the orthogonalization method used. \\
 
-Since $ S_{\hat{m}}^\top J_{\hat{m}} \zeta_{n+1} v_{n+1} = 0 $ by construction \cite{SLMconv}, the proof of convergence will be very similar to the proof for KPM.\\
+Since $ S_{\hat{m}}^\top J_{\hat{m}} \zeta_{n+1} v_{n+1} = 0 $ by construction \cite{SLMconv}, the proof of convergence will be very similar to the proof for \texttt{KPM}.\\
 The residual of the method can be written as
-\begin{equation}
+\begin{equation*}
 r_n(t) = v f(t) - \dot{u}_n(t) A u_n(t).
-\end{equation}
+\end{equation*}
 This can rewritten with $u_n = S_n z_n(t)$.
-\begin{equation}
+\begin{equation*}
 r_n(t) = v f(t) -S_n \dot{z}_n(t) + A S_n z_n(t).
-\end{equation}
+\end{equation*}
 By equation \eqref{eqn:propS} it becomes
-\begin{equation}
+\begin{equation*}
 r_n(t) =  \zeta_{n+1} v_{n+1} e_{\hat{m}}^\top z(t).
-\end{equation}
+\end{equation*}
 Since $\zeta_{n+1}$ will approach zero as $n$ grows, $r_n$ will approach zero, and the method will converge. \\
 
 A restart can also here be performed if the accuracy of the solution is not satisfactory. This can be derived by looking at the difference $ \epsilon_n = u(t) - S_n z_n(t)$: %The result is given in equation \eqref{eqn:SLMr}. 
-\begin{equation}
+\begin{equation*}
 \dot{\epsilon}_n^{(i)}(t) = A \epsilon_n^{(i)}(t) + r_n^{(i)}(t),
 \label{eqn:resenerg}
-\end{equation}
+\end{equation*}
 where
 \begin{equation*}
 r_n^{(i)}(t) = \zeta_{n+1}^{(i-1)} v_{n+1}^{(i-1)} e_{\hat{m}}^\top \epsilon_n^{(i-1)}(t).
@@ -350,17 +350,17 @@ Write $ \epsilon^{(i)}_n(t)  = V_n \delta_n^{(i)}(t) $ to obtain
 \end{equation*}
 
 This can be further simplified to
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 \dot{\delta}_n^{(i)} = H_n^{(i)} \delta_n^{(i)} + e_1 \zeta_{n+1}^{(i-1)} e_n^\top \delta_n^{(i-1)}, \quad i \geq 1.
 \label{eqn:SLMr}
 \end{aligned}
-\end{equation}
+\end{equation*}
 The solution is found by $ u_n^{(i)}(t) = \sum \limits_{j = 0} ^i S_n^{(j)} \delta_n^{(j)} (t) $, where $\delta_n^{(0)} (t) = z_n(t)$ and found by equation \eqref{eqn:SLMi}. $H_n$, $v_{n+1}$, $\zeta_{n+1}$ and $S_n$ without counting variables will also be referring to equation \eqref{eqn:SLMi} \\
 
 Proof of convergence and other interesting results for this method can be found in \cite{SLMinteresting}. 
 
-\subsubsection{Proof that SLM without restart is energy preserving} %%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Proof that \texttt{SLM} without restart is energy preserving} %%%%%%%%%%%%%%%%%%%%%%
 If equation \eqref{eqn:SLMi} is solved by an energy preserving method, eg. trapezoidal rule, the energy will be preserved \cite{SLMpreserve}. The energy of this equation is
 \begin{equation*}
 \mathcal{H}(z_n) = \frac{1}{2}z_n(t)^\top J_n H_n z_n(t) + z_n(t)^\top J_n e_1 \|b \|_2
@@ -382,8 +382,8 @@ And we see that
 \begin{equation*}
 \mathcal{H}(z_n) - \mathcal{H}(u_n) = 0
 \end{equation*}
-So the transformation does not change the energy, thus SLM is energy preserving. This will not hold for KPM for a couple of reasons. First $H_n$ is not a Hamiltonian matrix, so the method it self is not energy preserving. The other reason is that the transformation $V_n$ is not symplectic.\\ 
-SLM with restart is also not energy preserving since the error equation is depending on time, which ruins the energy preserving properties. But this property can be somewhat regain by restarting several times.
+So the transformation does not change the energy, thus \texttt{SLM} is energy preserving. This will not hold for \texttt{KPM} for a couple of reasons. First $H_n$ is not a Hamiltonian matrix, so the method it self is not energy preserving. The other reason is that the transformation $V_n$ is not symplectic.\\ 
+\texttt{SLM} with restart is also not energy preserving since the error equation is depending on time, which ruins the energy preserving properties. But this property can be somewhat regain by restarting several times.
 \subsubsection{Residual energy}
 Equation \eqref{eqn:energy3} and \eqref{eqn:energy4} are solemnly used to describe the residual energy of the methods. $\mathcal{H}_3$ describes the residual energy of the projected method, in $u_n$ space, that is, after transforming back from $z_n$ space. $\mathcal{H}_4$ is the residual energy in $z_n$ space. In theory these energies should be equal and zero. Section \ref{sec:residualenergy} shows how this holds up in practice. 
 They are presented in the equation below, and can easily be derived from \eqref{eqn:resenerg} and \eqref{eqn:SLMr}. \\
@@ -399,16 +399,16 @@ They are presented in the equation below, and can easily be derived from \eqref{
 The iteration variables are present since it considers the residual with one restart.
 
 \subsection{A comment on the orhogonalisation methods} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The  derivation of the methods above shows the vast similarities between SLM and KPM. The only practical difference between the two methods are the orthogonalisation methods. This makes implementation of the methods very similar.  \\
+The  derivation of the methods above shows the vast similarities between \texttt{SLM} and \texttt{KPM}. The only practical difference between the two methods are the orthogonalisation methods. This makes implementation of the methods very similar.  \\
 
 How to obtain the correct number of restarts to get a good estimate of the solution will be discussed in section \ref{sec:praktisk} and \ref{sec:resultat}.
 
 \subsection{Direct method} \label{sec:DM}
 It is important to have some method to compare with these projection methods with. This will be done by solving the problem exactly the same way, but without using any projection method, this will be called direct method, or \texttt{DM}. \\
 
-The energy of DM will be constant if an energy preserving method is used, while the error will increase linearly \cite{!!!!!!!!}. A goal of this text is to see how KPM and SLM's error and energy behaves compared to this. 
+The energy of \texttt{DM} will be constant if an energy preserving method is used, while the error will increase linearly \cite{linearerrorgrowth}. A goal of this text is to see how \texttt{KPM} and \texttt{SLM}'s error and energy behaves compared to this. 
 
-The proof that DM is the natural method to compare with will be shown here with trapezoidal rule for KPM. The proof is very similar for SLM. \\
+The proof that \texttt{DM} is the natural method to compare with will be shown here with trapezoidal rule for \texttt{KPM}. The proof is very similar for \texttt{SLM}. \\
 
 We start by stating the desired equation discretized with the trapezoidal rule:
 \begin{equation*}
@@ -437,17 +437,17 @@ When using the trapezoidal rule directly on \eqref{eqn:KPMi}, the result is
 If we now let $n$ grow, $h_{n+1,n}$ will become zero and the projected method will converge towards the unprojected method. 
 \subsection{Linearity of the methods} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The projection methods require a vector that can be used to generate the orthogonal space. In the general problem,
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 \dot{u}(t) &= Au(t) + b,
 \end{aligned}
-\end{equation} 
+\end{equation*} 
 $b$ is used to create the orthogonal space. But what if instead of just $b$, there where some time dependance, eg. $b + F(t)$, or (more illustrative)
-\begin{equation}
+\begin{equation*}
 \begin{aligned}
 \dot{u}(t) &= Au(t) + b + F(t)
 \end{aligned}
-\end{equation} 
+\end{equation*} 
 In this case the projection method needs to be used two times, one time to solve $ \dot{u}(t) = Au + b $ and another to solve $ \dot{u}(t) = Au + F(t) $. The solutions can then be added together to solve the original problem. \\
 The reason for this is the need for a vector that can generate the orthogonal space. In this case there is no common vector $\tilde{b}$ so that $\tilde{b} \tilde{F}(t) = b + F(t)$. \\
 
@@ -455,10 +455,10 @@ The reason for this is the need for a vector that can generate the orthogonal sp
 An even bigger problem arises when a differential equation has a source term that is not separable in time and space, read more about the reason for this in \cite{elena} and \citep{min}. An equation that is separable in time and space can be written as $p(t,x,y) = g(x,y) \cdot F(t)$. If $p(t,x,y)$ is not separable, this is impossible. As an example, consider the wave equation
 \begin{equation*}
 \begin{aligned}
-\frac{\partial^2 q(t,x,y)}{\partial t^2} = \frac{\partial^2 q(t,x,y)}{\partial x^2 } \frac{\partial^2 q(t,x,y)}{\partial y^2 } + F(t,x,y) \quad \text{ where } g(t,x,y) \neq p(x,y) F(t) \\
+\frac{\partial^2 q(t,x,y)}{\partial t^2} = \frac{\partial^2 q(t,x,y)}{\partial x^2 } \frac{\partial^2 q(t,x,y)}{\partial y^2 } + g(t,x,y) \quad \text{ where } g(t,x,y) \neq p(x,y) F(t) \\
 \end{aligned}
 \end{equation*}
-This equation cannot be discretized with a single vector $b$. If this was discretized to be on the form of \eqref{eqn:PDE} and solved with a projection method, it would look like:
+This equation cannot be discretized with a single vector $b$. If this is discretized to be on the form of \eqref{eqn:PDE} and solved with a projection method, it would look like:
 \begin{equation*} \label{eqn:terrible}
 \dot{u}(t) = A u(t) + \sum \limits_{i = 1}^{\hat{m}} e_i F_i(t),
 \end{equation*}
@@ -489,7 +489,7 @@ Matrix vector multiplication ($\hat{m}\times n$) (dense matrix) & $ \mathcal{O}(
 \end{table}
 
 A table of computational cost for different operations is given in table \ref{tab:cd}. \\
-Surprisingly the asymptotic cost for KPM and SLM is the same. A lot of small additional costs for SLM is hidden here meaning that KPM probably has a smaller computation time, but the computation times are increasing similarly. The windowing is also a wild card a since lot of costly operations are hidden. The difference between the projection methods and DM strongly depends on $n$ and $r_n$, this makes it impossible to conclude anything without actually doing it, except that all methods are linear with $k$. \\
+Surprisingly the asymptotic cost for \texttt{KPM} and \texttt{SLM} is the same. A lot of small additional costs for \texttt{SLM} is hidden here meaning that \texttt{KPM} probably has a smaller computation time, but the computation times are increasing similarly. The windowing is also a wild card a since lot of costly operations are hidden. The difference between the projection methods and \texttt{DM} strongly depends on $n$ and $r_n$, this makes it impossible to conclude anything without actually doing it, except that all methods are linear with $k$. \\
 
 \begin{table}
 \begin{tabular}{l | l}
@@ -507,46 +507,21 @@ Windowing  & \texttt{SLM} or \texttt{KPM} needs to be run $K$ times. \\ (\texttt
 \caption{ Number of operations needed for the different methods with trapezoidal rule. $i_r$ is the number of restarts needed for the method to converge. For windowing $K\cdot k$ is equal to $k$ for the other methods. Windowing for \texttt{DM} is not interesting since it has exactly the same run time, and is exactly the same method. }
 \end{table}
 
-\section{SLM and its eigenvalue solving properties} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\texttt{SLM} and its eigenvalue solving properties} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 If you do a quick internet search of "symplectic Lanczos method" most articles you find are in relation to symplectic Lanczos method's ability to approximate eigenvalues of Hamiltonian matrices. This section I will try to explain what makes this algorithm so attractive for these types of problems. (This section is based on reading \cite{SLM1},\cite{SLM2}, \cite{SLM3}, and \cite{SLM4}.) \\
 
 The eigenvalue problem is found in many different areas, eg. control theory, model reduction, system analysis. No other algorithm that exploits the Hamiltonian structure and the sparsity of the matrices occurring in these areas. \\
 
-SLM is a relatively fast algorithm for transforming big sparse Hamiltonian matrix to smaller sparse Hamiltonian matrix with similar properties. Eigenvalues of Hamiltonian matrices comes in pares, $\{ \pm \lambda \} $, or in quadruples, $\{ \pm \lambda $, $\pm \bar{\lambda} \} $. Since the small matrix is Hamiltonian, it is easier to find these pairs or quadruples. An other important property is that the biggest, and therefore often most important eigenvalue, are found first.\\
+\texttt{SLM} is a relatively fast algorithm for transforming big sparse Hamiltonian matrix to smaller sparse Hamiltonian matrix with similar properties. Eigenvalues of Hamiltonian matrices comes in pares, $\{ \pm \lambda \} $, or in quadruples, $\{ \pm \lambda $, $\pm \bar{\lambda} \} $. Since the small matrix is Hamiltonian, it is easier to find these pairs or quadruples. An other important property is that the biggest, and therefore often most important eigenvalue, are found first.\\
 
 The method is not without is flaws. Frequent breakdown due to ill conditioned matrices occur. But due to its large potential much work has been make to overcome the difficulties. The most promising improvements are the different types of restarts. This way the numerical estimations can be improved without loosing the Hamiltonian properties, and without a to high cost.
 Unfortunately not all are very efficient. Though fear not, there is still much ongoing research on the topic. \\
 
-An other method based on SLM is the \texttt{SR} - algorithm which has similarities with the \texttt{QR} - algorithm. \texttt{SR} applies symplectic operations to a Hamiltonian matrix instead of applying orthogonal operations as in \texttt{QR}. \\
+An other method based on \texttt{SLM} is the \texttt{SR} - algorithm which has similarities with the \texttt{QR} - algorithm. \texttt{SR} applies symplectic operations to a Hamiltonian matrix instead of applying orthogonal operations as in \texttt{QR}. \\
 
 Not all the papers are interested in improving the method, \cite{SLM4} shows under which assumptions the method converges. \\
 
-Interestingly many of these papers also compare SLM to KPM.
-
-%. If this algorithm was perfect this would have been the end of it. But because of its large potential, structure preserving properties, and frequent breakdowns this remains the center for solving such problems. \\
-%
-%Many of the papers, eg \cite{!!!!!!!!!!}, suggest some sort of restart to avoiding these breakdowns. 
-%
-%De sier at SLM er en av (de første algoritmene) få algoritmer som kan brukes på å finne eigenverdier på store glisne matriser.
-%Må utnytte den hamiltonske glisne strukturen \\
-%ligner på qr (sr) algoritmen\\
-%Den initsielle vektoren er viktig\\
-%Transformere symmertiske metrise til hamiltonske matriser\\
-%SLM bevarer den hamiltonske strukturen2 \\
-%Finner de største (og viktigste) egenverdiene2\\
-%Egenverdiene oppstår i par eller kvadrupler 1 og 2\\
-%Egenverdiene er i par, og disse parene er lettere å finne om man bevarer strukturen\\
-%3 == schur
-%Skriv noe om at disse problemene dukker opp i svært mange applikasjoner.
-%Skriv at mange av tekstene sammenligner med Arnoldi, slik som her!! Shuur
-%
-%
-%!!!!!!!!!!!!!!!!!!!!!!Skriv noe om hvordan dette kan hjelpe med dette!!!!!!!!!!!!!!!!\\
-%!!!!!!!!!!!!!!!!!!!!!Gjør et googlesøk og les abstracter (og annet relevant)!!!!!!!!!!!!!!!!!!!!!!!\\
-%!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Woop, literaturstudie!!!!!!!!!!!!!!!!!!\\
-%!!!!!!!!!!alt er intro om ikke annet er skrevet!!!!!!!!!!!!!\\
-
-
+Interestingly many of these papers also compare \texttt{SLM} to \texttt{KPM}.
 
 
  

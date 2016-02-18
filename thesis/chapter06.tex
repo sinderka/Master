@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Results for test problems with varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:varyener} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-This chapter will look at many of the same elements that was discussed in section \ref{sec:constres}. Some results are similar, in this case results may not be shown here. This chapter will also try to find out if there is any reason to use SLM instead of KPM on non Hamiltonian systems. \\
+This chapter will look at many of the same elements that was discussed in section \ref{sec:constres}. Some results are similar, in this case results may not be shown here. This chapter will try to find out if there is any reason to use \texttt{SLM} instead of \texttt{KPM} on non Hamiltonian systems. \\
 The exact solvers does not work when the energy is varying, thus there will be no discussion about that.
 \section{Convergence} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
@@ -35,8 +35,8 @@ The exact solvers does not work when the energy is varying, thus there will be n
         \label{fig:varconv}
 \end{figure}
 
-Again midpoint rule performs better than trapezoidal rule. It is interesting to see that without restart the methods does not converge with $n = 20$, while they converged with $n = 2$ when the energy was constant, clearly convergence is a lot harder to achieve in this case. \\
-Only midpoint rule will be used in this chapter.\\
+Midpoint rule performs better than trapezoidal rule. It is interesting to see that without restart the methods does not converge with $n = 20$, while they converged with $n = 2$ when the energy was constant, clearly convergence is a lot harder to achieve in this case. \\
+Only midpoint rule will be used further in this chapter.\\
 
 \section{Convergence with $\iota$} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -77,35 +77,37 @@ Only midpoint rule will be used in this chapter.\\
                 \caption{ Number of restarts for \texttt{wave}. }
                 \label{fig:varyIterw}
         \end{subfigure}
-        \caption{ These figures show how choosing the correct $\iota$ can improve the solution, but also make the program run slower due to excessive restarts. The pictures on the left is for \texttt{wave} and one the right for \texttt{semirandom}. This plot considers 100 seconds, with  $n=m=20$, $k = 2000$, $m = 20$ and midpoint rule. }
+        \caption{ These figures show how restarting can improve the solution. The pictures on the left is for \texttt{wave} and one the right for \texttt{semirandom}. This plot considers 100 seconds, with  $n=m=20$, $k = 2000$, $m = 20$, and midpoint rule. }
         \label{fig:variota}
 \end{figure}
-This look very similar to the one in section \ref{fig:lcompare}, one important difference is that the energy for SLM no longer starts at $1e-15$. The difference between SLM and KPM is definitely smaller in this case.
+These figures look very similar to the figures in section \ref{fig:lcompare}, one important difference is that the energy for \texttt{SLM} no longer starts at $1e-15$. The difference between \texttt{SLM} and \texttt{KPM} is definitely smaller in this case.
 
 \section{How to chose $n$}
-The pictures in this section look a lot like the pictures in section \ref{sec:resultat}, except for the case where restart is used.
+The pictures in this section look very similar the pictures in section \ref{sec:resultat}, except for the case where restart is used.
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/lreserrA.jpg}
-                \caption{ Error for KPM. }
+                \caption{ Error for \texttt{KPM}. }
                 \label{fig:lreserrS}
         \end{subfigure}
 		~
 		\begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/lreserrS.jpg}
-                \caption{ Error for SLM. }
+                \caption{ Error for \texttt{SLM}. }
                 \label{fig:lreseneA}
         \end{subfigure}
         \caption{ The pictures shows which $n$ gives convergence for different $m$ when restart is enabled. This plot is made with midpoint rule with $k = 200$ over 10 seconds. }
         \label{fig:tres}
 
 \end{figure}
-There is a clear dependance between $m$ and $n$ for KPM. The rule seams to be $n = m$, so that $n$ scales with the square root the size of the matrix, $\hat{m} = 2(m-2)^2$. \\ 
-The rule found for KPM seams to work for SLM when $m$ is large enough, even though the difference is not so significant as it is for KPM, larger $m$ tend to need larger $n$ to converge.
+There is a clear dependance between $m$ and $n$ for \texttt{KPM}. The rule seams to be $n = m$, so that $n$ scales with the square root the size of the matrix, $\hat{m} = 2(m-2)^2$. \\ 
+The rule found for \texttt{KPM} seams to work for \texttt{SLM} when $m$ is large enough, even though the difference is not so significant as it is for \texttt{KPM}.% larger $m$ tend to need larger $n$ to converge.
 
-\section{Long time}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The pictures that would have been in this section are very similar to the pictures in section \ref{sec:resultconsterergy}, except for windowing.
+\section{Windowing}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Windowing behaves very different in this section than it did in section \ref{sec:constres}.
+
+%The pictures that would have been in this section are very similar to the pictures in section \ref{sec:resultconsterergy}, except for windowing.
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
@@ -122,47 +124,48 @@ The pictures that would have been in this section are very similar to the pictur
                 \caption{ Windowing. The restart does not change the result. $m = 20$, $k= 20$.}
         \label{fig:lversuskenergy}
 \end{figure}
-Clearly windowing does not work with varying energy, thus the most promising solution strategy from the previous chapter has a very limiting factor.\\
+Figure \ref{fig:lversuskenergy} shows that windowing does not work with varying energy, thus the most promising solution strategy from the previous chapter has a very limiting factor.\\
 
 
 \section{Computation time} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The run time for varying energy is a little bit different than for the case with constant energy. One of the differences that could be explored is the larger $n$ is needed for larger $m$, when restart is enabled. This will however not be examined. Instead the computation time under the same assumptions as in \ref{sec:cruntime} will be shown as the results are quite different. 
+The run time for varying energy is a little bit different than for the case with constant energy. One of the differences that could be explored is the larger $n$ is needed for larger $m$, when restart is enabled. This will however not be examined since it is discussed in \cite{min}. Instead the computation time under the same assumptions as in \ref{sec:cruntime} will be shown as the results are quite different.
 \subsection{Without restart}
 %
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/ltimem.jpg}
-                \caption{ Computation time scaling with $m$. }
+                \caption{ Computation time as a function of $m$. }
                 \label{fig:ltimem}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/ltimek.jpg}
-                \caption{ Computation time scaling with $k$. }
+                \caption{ Computation time as a function of $k$. }
                 \label{fig:ltimek}
         \end{subfigure}
-        \caption{ A figure of the computation times without restart, $n = 200$, $T_s = 100$, $k = 2000$, and $m = 20$. }
+        \caption{ A figure of the computation times without restart. $n = 200$, $T_s = 100$, $k = 2000$, and $m = 20$. }
         \label{fig:ltime0}
 \end{figure}
-The difference between DM and the projection methods are a lot smaller in this case. At the last point DM and KPM are intersecting. KPM becomes faster after this, but SLM does not overtake DM. SLM could be faster than DM if $k$ was large enough.
+The difference between \texttt{DM} and the projection methods are a lot smaller in this case. At the last point \texttt{DM} and \texttt{KPM} are intersecting. \texttt{KPM} becomes faster than \texttt{DM} after this, but \texttt{SLM} does not overtake \texttt{DM} unless $k$ is large enough. \\
+
 \subsection{With restart}
 
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/ltimemr.jpg}
-                \caption{ Computation time scaling with $m$. }
+                \caption{ Computation time as a function of $m$. }
                 \label{fig:ltimemr}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.45\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/ltimekr.jpg}
-                \caption{ Computation time scaling with $k$. }
+                \caption{ Computation time as a function of $k$. }
                 \label{fig:ltimekr}
         \end{subfigure}
-        \caption{ A figure of the computation times with restart, $n = 20$, $T_s = 100$, $k = 2000$, and $m = 20$. }
+        \caption{ A figure of the computation times with restart. $n = 20$, $T_s = 100$, $k = 2000$, and $m = 20$. }
         \label{fig:ltime1}
 \end{figure}
-Figure \ref{fig:ltime1} shows that it can be a good idea to use KPM when $m$ is large and $k$ is small. The faster increase with $k$ for KPM comes from extra number of restarts that KPM needs to ensure convergence. \\
-It is never wise to use SLM in this case.
+Figure \ref{fig:ltime1} shows that it can be a good idea to use \texttt{KPM} when $m$ is large and $k$ is small. The faster increase with $k$ for \texttt{KPM} comes from extra number of restarts that \texttt{KPM} needs to ensure convergence. \\
+It is never wise to use \texttt{SLM} in this case.

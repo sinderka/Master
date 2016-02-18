@@ -1,68 +1,44 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-The equation 
-\begin{equation} 
-\begin{aligned}
-\dot{u}(t) &= A u(t) + p \cdot f(t) = g(t) \\
-u(0)&= u_0
-\end{aligned}
-\label{eqn:PDE}
+A matrix $A$ is said to be Hamiltonian if  \cite{Hamiltonian}
+\begin{equation}
+(JA)^{\top} = J A. 
 \end{equation}
-often makes an appearance when solving partial differential equations with numerical methods. The author has earlier observed how the heat equation, discretized with finite difference methods to be on the form of equation \eqref{eqn:PDE} can be solved with the use of the Krylov projection method(KPM) \cite{min}, which uses Arnoldi's algorithm(Arnoldi) as orthogonalisation method. This note will continue on the same track, but with more focus on Hamiltonian discretizations of wave equations, random problems, and energy preservation. It will also feature a comparison between symplectic Lanzcos method(SLM) \cite{SLM} and Arnoldi. SLM is a projection technique that preserves the structure of Hamiltonian matrices. Due to this, SLM (claims to) preserve energy better than Arnoldi. This note will also compare time consumption and global error for the different methods.% but will not contain much theoretical derivation. For this I recommend reading \cite{elena}, \cite{min}, \cite{SLM}, \cite{SLMO}, and \cite{luli}. \\
-
-There will also be a comparison between some different integration methods, and how the projection methods change when the time domain is divided into smaller pieces and each piece is considered independently with initial conditions from previous time domain.
-
-Let the matrix $I_j$ be the identity matrix with dimension $j$, and let 
+where
 \begin{equation}
 J_j = 
 \begin{bmatrix}
 0&I_j\\-I_j&0
 \end{bmatrix}.
 \end{equation}
-A matrix $A$ is said to be Hamiltonian if  \cite{Hamiltonian}
-\begin{equation}
-(JA)^{\top} = J A. 
+and $I_j$ is the $j \times j$ identity matrix.
+Hamiltonian systems on the form of equation \eqref{eqn:PDE} is found in several branches of physics and mathematics, eg. planetary movement, particle physics and control theory.
+\begin{equation} 
+\begin{aligned}
+\dot{u}(t) &= A u(t)\\
+u(0)&= u_0.
+\end{aligned}
+\label{eqn:PDE}
 \end{equation}
-and symplectic if \cite{symplectic}
-\begin{equation}
-A^\top J A = J
-\end{equation}
-!!!!!!!!!!!!!!!Skrive litt mer her om hva som skal skje!!!!!!!!!!!!!!!!!!!!!\\
-%!!!!!!!!!!!!Skriv om "Kversusk!!!!!!!!!!!!!!!\\
-%!!!!!!!!!!!!!!!Skriv om integrasjonsmetodene!!!!!!!!!!!!!!!!\\
-
-
-\chapter{TTD}
-\begin{itemize}
-%\item Jeg synes at som minimum i oppgaven din burde du klare å avgjøre om SLM med restart er energibevarende eller ikke og om den gir lineæar vekst av globalfeil eller raskere vekst.
-\item Skrive bilde text, og fjerne labler fra bilder!
-\item Legg til hjelpelinjer på de plittene som trenger det, og kanskje ikke logloge alle plottene som er det
-\item Skriv mer i introduksjonskap
-\item Det må overalt stå om ting er vektor eller skalar funksjon! (intro kap)
-%\item Flytte definisjonen av symplectisk of hamiltosnk
-%\item Skrive at iota er brukt som convergence sak fordi det bedkriver en veldig liten mengde.
-%\item Skriv at GPU kan være lur å bruke på dette i noen tilfeller!
-%\item Si noe om at steglengden i tid må være konstant !!!!!!!!!!!!!!
-\item send en 3 bilder til hAne
-\item Skal DM, KPM og SLM være texttt et??
-%\item $\gamma$ må endres til $i_r$
-%\item bruke $b$ isteden for $v$
-\item Løsningen på ligning 1 må skrives et sted (introduksjon)
-%\item Skriv at det som ødelegger ting egentlig er stor $k$ ikke stor $T_s$.
-\item Skrive om applikasjoner i introduksjonen
-%\item cite alt!
-%\item jeg er ikke førnøyd med iterasjonsvariablene til $H_n$ og slikt overalt!!!!!!!\\
-%\item skriv ut og merke alle stedene hvor tellevariabler og $b$-er er feil!
-\item skrive at vi sammenligner med DM, som kanskje sluttet å fungere for lenge siden.
-%\item Windowing må telle antall operatsjoner!!!!!!
-\item Sjekk rekkefølgen på bildene!
-%\item Bildetekt skal være forklaring på hvorfor bildene er med. Ellers tekst kan referre til bildene og trekke konklusjoner.
-%\item jeg må prediktere at erroren skal stige lineært, og at energen skl være konstant.
-%\item SKriv at siden matrisen ertridiag så er det en mulig grunn til at $n$ og $m$ ikke påvirker hverandre.
-\item Skriv noe om grunnen til at jeg ikke sammneligner semirandom med expm løsning
-\item er SLM uten restart energi bevarende
-\item er SLM med restart energi bevarende
-\item Hvor raskt øker feilen for SLM med og uten restart.
-\end{itemize}
+The matrix $A$ is in theses cases large sparse and Hamiltonian. Acquiring good approximations can be computationally costly. A projection method that exploits these properties is the symplectic Lanczos method (\texttt{SLM}). \texttt{SLM} projects a large matrix $A$ onto a smaller dimensional Hamiltonian problem, making further calculations less computationally demanding. \texttt{SLM} has in \citep{SLM1}, \citep{SLM2} and \citep{SLM3} been used to find eigenvalues of large Hamiltonian matrices. \texttt{SLM} preserves the Hamiltonian structure of the matrix, which allows the energy of the system to be preserved.\\
+Arnoldi's algorithm, together with the Krylov projection method (KPM) is another much used projection method. \texttt{KPM} has no structure preserving properties, which makes it faster at the cost of energy preservation. \\
+This text will look at how these two projection methods compare to alternatives without projecting, in error approximation, energy preservation, and computation time. \\
+Equation \eqref{eqn:PDE} has the well known analytical solution 
+\begin{equation*}
+u(t) = \text{exp}(At)u_0.
+\end{equation*}
+Taking the matrix exponential is a very costly operation, but can be a great way to exploit the smaller matrices produced by the projection methods. This will also be looked at closely.\\
+In addition to the case with Hamiltonian systems and constant energy, the projection methods will be tested against each other when the energy is non constant.
+Matlab notation will be used where applicable.\\
+%\begin{itemize}
+%\item Løsningen på ligning 1 må skrives et sted (introduksjon)
+%\item er SLM uten restart energi bevarende
+%\item er SLM med restart energi bevarende
+%\item Hvor raskt øker feilen for SLM med og uten restart.
+%\item Skriv mer i introduksjonskap
+%\item Skrive om applikasjoner i introduksjonen
+%\item Det må overalt stå om ting er vektor eller skalar funksjon! (intro kap)
+%\item restarting må nevnes
+%\item 
+%\end{itemize}

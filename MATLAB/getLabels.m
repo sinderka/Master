@@ -44,7 +44,7 @@ if para(1) == -1
     xlab = {'p_n'};
 end
 if conv(1) == -1
-    if ~(min(conv(2:end)) > 1)
+    if ~(min(conv(2:end)) > 0.99)
         xlab = {'\iota'};
     else
         xlab = {'i_r'};
@@ -89,8 +89,8 @@ if K(1) == -1 && simtime(1) == -1
     if (max(K./simtime)) == 1
         stri = '\it T_s \rm, with \it K = T_s';
     else
-    stri = num2str(max(K./simtime));
-    stri = ['\it T_s \rm, with \it K = ',stri,' \cdot T_s'];
+        stri = num2str(max(K./simtime));
+        stri = ['\it T_s \rm, with \it K = ',stri,' \cdot T_s'];
     end
     
     xlab = {stri};
@@ -119,11 +119,11 @@ if m(1) == -2
         leg(i) = {stri};
     end
 elseif data(1) == -3
-        if length(n) == 1
-            nstr = num2str(n);
-        else
-            nstr = 'n';
-        end
+    if length(n) == 1
+        nstr = num2str(n);
+    else
+        nstr = 'n';
+    end
     for i = 2:length(data)
         if data(i) == 13
             stri = 'DM';
@@ -131,8 +131,8 @@ elseif data(1) == -3
             stri = ['z_{',nstr,'}(t)'];
         elseif data(i) == 11
             stri = ['u_{',nstr,'}(t)'];
-        %elseif data(i) == 12
-        %    stri = ['z_',nstr,'^{(' ,iter, ')}(t)'];
+            %elseif data(i) == 12
+            %    stri = ['z_',nstr,'^{(' ,iter, ')}(t)'];
         elseif data(i) == 4
             stri = ['u_{',nstr,'}^{(' ,iter, ')}(t)'];
         elseif data(i) == 7
@@ -146,14 +146,26 @@ elseif data(1) == -3
         leg(i-1) = {stri};
     end
 elseif n(1) == -2
-    if alg == 1
-        tstr = 'KPM(';
-    elseif alg == 2
-        tstr = 'SLM(';
-    end
-    for i = 1:ant2
-        stri = [tstr,num2str(n(i+1)),')'];
-        leg(i) = {stri};
+    if length(alg) == 1
+        if alg == 1
+            tstr = 'KPM(';
+        elseif alg == 2
+            tstr = 'SLM(';
+        end
+        for i = 1:ant2
+            stri = [tstr,num2str(n(i+1)),')'];
+            leg(i) = {stri};
+        end
+    else
+        for i = 1:ant2
+            if alg(i+1) == 1
+                tstr = 'KPM(';
+            elseif alg(i+1) == 2
+                tstr = 'SLM(';
+            end
+            stri = [tstr,num2str(n(i+1)),')'];
+            leg(i) = {stri};
+        end
     end
 elseif simtime(1) == -2
     for i = 1:ant2
@@ -189,10 +201,28 @@ elseif alg(1) == -2
         end
         
         if alg(i+1) == 1
-            stri = strcat('KPM(',tstr,')');
+            if PMint(1) == -2
+                if PMint(i+1) == 1
+                    str = ' trap';
+                elseif PMint(i+1) == 3
+                    str = ' diag';
+                end
+            else
+                str = '';
+            end
+            stri = ['KPM(',tstr,')' , str];
             leg(i) = {stri};
         elseif alg(i+1) == 2
-            stri = strcat('SLM(',tstr,')');
+            if PMint(1) == -2
+                if PMint(i+1) == 1
+                    str = ' trap';
+                elseif PMint(i+1) == 3
+                    str = ' diag';
+                end
+            else
+                str = '';
+            end
+            stri = ['SLM(',tstr,')',str];
             leg(i) = {stri};
         elseif alg(i+1) == 3 && ~( data == 1 || data == 5 || data == 6 )
             stri = 'DM';
@@ -203,11 +233,11 @@ elseif alg(1) == -2
 elseif int(1) == -2
     for i = 1:ant2
         if int(i+1) == 1
-            stri = 'trapezoidal rule';
+            stri = 'trap';
         elseif int(i+1) == 2
-            stri = 'forward Euler';
+            stri = 'Euler';
         elseif int(i+1) == 3
-            stri = 'midpoint rule';
+            stri = 'mid';
         end
         leg(i) = {stri};
     end
@@ -225,16 +255,16 @@ elseif PMint(1) == -2
     for i = 1:ant2
         if PMint(i+1) == 1
             if int == 1
-                stri = 'trapezoidal rule';
+                stri = 'trap';
             elseif int == 2
-                stri = 'forward Euler';
+                stri = 'Euler';
             elseif int == 3
-                stri = 'midpoint rule';
+                stri = 'mid';
             end
         elseif PMint(i+1) == 2
-            stri = 'Matlabs expm function';
+            stri = 'expm';
         elseif PMint(i+1) == 3
-            stri = 'Eigenvalue and diagonalization';
+            stri = ' diag';
         end
         leg(i) = {stri};
     end

@@ -3,11 +3,53 @@
 All code used to create results in the text can be found on github: \\
 \url{https://github.com/sindreka/Master}
 \section{Further work}
-The implemented test problems has some limitations. It could be interesting to see how the error and energy behaved with a random Hamiltonian matrix, with a known analytical solution. \\
+The implemented test problems has some limitations. It could be interesting to see how the error and energy behaved with a random Hamiltonian matrix, with a known analytical solution, specifically \texttt{expm} with restart and windowing, and the relation between $n$ and $m$. \\
 
-Graphics cards are designed to solve $4 \times 4$ matrices in parallel \cite{!!!!!!!}. When the energy is constant windowing can be used to ensure convergence with this $n$. This could then be used to solve non linear Hamiltonian problems in parallel under optimized conditions. \\
+Graphics cards are designed to solve small matrices in parallel \cite{graphics}. When the energy is constant windowing can be used to ensure convergence with this $n$. This could then be used to solve non linear Hamiltonian problems in parallel under optimized conditions. \\
 
 
 
 \section{Conclusion}
-Use windowing with expm, and not restart!
+%\begin{itemize}
+%\item Linear error stigning
+%\item Constant energy
+%\item Skriv det som står her inn i resultatene også??
+%\item Skroll gjennom resultatene, og så skriv paralletl med det.
+%\item er SLM uten restart energi bevarende
+%\item er SLM med restart energi bevarende
+%\item Hvor raskt øker feilen for SLM med og uten restart.
+%\item rekkefølge:
+%\item Convergence
+%\item convergence with $\iota$
+%\item convergence with $i_r$
+%
+%\end{itemize}
+Since the results are divided in two cases it feels natural to divide the conclusion in two case.
+\subsection{Constant energy} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The error for both \texttt{KPM} and \texttt{SLM} is found to increase linearly within a reasonable time domain with suitable $n$. With large time domains or small $n$ it was found a sudden increase in error. If restart is enabled the growth is unbounded and exponential, while it is bounded when restart is not enabled.\\
+The sudden increase in error could be solved completely with windowing. \\
+The energy for both projection methods is increasing very slowly, and about the same as for \texttt{DM}. This suggests that the increase is actually a result of rounding errors, and not a fault in the method. The energy for \texttt{SLM} is preserved if restart is not enabled, even on long time domains. \\
+
+Because of \texttt{SLM}'s energy preserving properties it was predicted that it would massively outperform \texttt{KPM}. This has proven to only be partially true, as the error will be equally big for both projection methods. If energy preservation is important \texttt{SLM} can achieve this with a fairly small matrix. If a small error is necessary there are two ways this can be done, either with restart, or with a larger $n$. If restart is used \texttt{SLM} looses its energy preserving property, and behaves very similar to \texttt{KPM}. If $n$ is chosen larger, \texttt{SLM}'s error will decrease, but so will \texttt{KPM}'s energy, and the two methods will again perform similarly. Thus in practice \texttt{SLM} has no advantage over \texttt{KPM}.\\
+
+$n$ is found to be independent of the size of the matrix, and increase linearly with the length of the time domain.\\
+
+\texttt{SLM} is near its fastest performance if restart is not enabled. In this case it performed about equal to \texttt{KPM}, under the same conditions, but \texttt{KPM} can definitely be faster if $n$ is chosen optimal. \\
+
+If an exact solver is used it is possible to achieve better accuracy with smaller computation time with the projection methods than with trapezoidal rule. The energy for \texttt{SLM} increased linearly in this case, while being constant for \texttt{KPM}. It was suggested that windowing could be used with this to avoid divergence on long time domain, but not done due to the limitation of the test problems. \\
+
+I conclude that \texttt{SLM} is better when error is no concern. If the error should be small, \texttt{KPM}'s error and energy is just as small as \texttt{SLM}'s, while being faster. The divergence problem happening with large time domains can be solved with windowing, which also makes computations faster. Using an exact solver can also increase the accuracy, without any downsides.
+\subsection{Varying energy} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In this case \texttt{SLM}'s energy preserving properties does not work, making the difference between \texttt{SLM} and \texttt{KPM} even smaller. Windowing is also not working, along with the exact solvers, thus several of the important reasons to use projection method is removed. Even with this, both \texttt{SLM} and \texttt{KPM} manages to get error and energy close to \texttt{DM} on small time domains. The restriction on small time domains might not be to big since the linearly increasing error of \texttt{DM} will make any approximation useless on time domains over a certain size.\\
+
+$n$ is found to be depending linearly with both the size of the matrix, and the length of the time domain.\\
+
+Convergence is a lot harder for the projection methods, this means a larger $n$ is necessary, or more restarts. This results in longer computation times,
+making \texttt{SLM} consistently worse than \texttt{DM}, thus there is no reason to use \texttt{SLM} in the first place. \texttt{KPM} is barely faster in some cases. Since \texttt{KPM} has a comparable error and energy it may be more desirable than \texttt{DM}.
+
+%
+%Constant energy:
+%Use windowing with expm, and not restart!
+%
+%Varying energy:
+%kan bruke KPM, aldri bruk SLM.
