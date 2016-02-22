@@ -29,20 +29,20 @@ function utdata = solver(m,n,simtime,K,k,eqn,alg,integrator,restart,prob,conv,pa
 
 %%% Initiell data
 if nargin < 13
-    m = 20;
-    simtime = 10;
-    K = 200;
-    k = 1;
-    n = 80;%2*(m-2)^2;
-    restart = 1;
-    prob = 2;
+    m = 4;
+    simtime = 1;
+    K = 1;
+    k = 20;
+    n = 2*(m-2)^2+2;
+    restart = 0;
+    prob = 1;
     conv = 1e-10;
     para = 4; %%%%% If need be %%%%%%
     eqn = 'semirandom';
-    alg = 1;
+    alg = 2;
     integrator = 1;
     figvar = 1;
-    PMint = 1;
+    PMint = 2;
 end
 
 %%%% lage en funksjon som tar seg av dette? Og alt tilknyttet dette?

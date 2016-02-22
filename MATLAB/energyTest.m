@@ -22,23 +22,21 @@ function utdata = energyTest(m,n,simtime,k,eqn,integrator,restart,prob,conv,figv
 % Initsiell
 %close all
 if nargin < 9
-    m = 20;
-    simtime = 1;
+    m = 30;
+    simtime = 10;
     %K = 2;
-    k = 20;
-    n = 20;%2*(m-2)^2;
+    k = 500;
+    n = 4;%2*(m-2)^2;
     restart = 0 ;
     prob = 2;
     conv = 10^-6;
     para = 4; %%%%% If need be %%%%%%
-    eqn = 'semirandom';
-    %alg = 2;
+    eqn = 'random';
     integrator = 1;
     figvar = 1;
     solveexpm = 0;
     intesolve = 1;
-    SLMint = 1;
-    save = 0;
+    PMint = 3;
 end
 
 if integrator == 1
@@ -50,52 +48,76 @@ end
 utdata = zeros(1,6);
 X = linspace(0,1,m);hs =X(2)-X(1);
 T = linspace(0,simtime,k); ht = T(2)-T(1);
-[vec,height,lastrelevant] = helpvector(m,eqn);
+%[vec,height,lastrelevant] = helpvector(m,eqn);
 
 % Get problem information
 [A] = getMatrix( m , hs, eqn );
 [U0,V,F,correctsolution] = getTestFunctions( prob,X,T,eqn );
-V(:,1) = A*V(:,1);
+V = A*U0;
 
 % Chose solution method and solve
-U = zeros(2*m^2,k);
+%U = zeros(2*m^2,k);
 
 hamiltonian(A);
 
-energy1 = 0; energy2 = 0; iter = 0;
+%energy1 = 0; energy2 = 0; iter = 0;
 tic;
-for i = 1:size(F,1)
-    [Utemp,iter1,energy1t,energy2t] = KPMloc(A,V(:,i),T,n/2,conv,restart,ht,figvar,int,SLMint,correctsolution(vec,:)-U0*ones(1,k));
-    U(vec,:) = U(vec,:) + Utemp;
-    energy1 = energy1 + energy1t; energy2 = energy2 + energy2t; iter = max(iter1,iter);
-end
+%for i = 1:size(F,1)
+[Ukpm,~,~,~,~,~,~,~] = PM(A,V,ones(1,k),n,ht,conv,restart,int,0,PMint,@Arnoldi);
+[Uslm,~,~,~,~,~,~,~] = PM(A,V,ones(1,k),2*n,ht,conv,restart,int,0,PMint,@SLM);
+ %   [Utemp,iter1,energy1t,energy2t] = PM(A,V,T,n/2,conv,restart,ht,figvar,int,SLMint,correctsolution(vec,:)-U0*ones(1,k));
+ %   [Utemp,iter1,energy1t,energy2t] = PM(A,V,T,n/2,conv,restart,ht,figvar,int,SLMint,correctsolution(vec,:)-U0*ones(1,k));
+ %   U(vec,:) = U(vec,:) + Utemp;
+ %   energy1 = energy1 + energy1t; energy2 = energy2 + energy2t; iter = max(iter1,iter);
+%end
 
-U(vec,:) = U(vec,:) + U0*ones(1,k);
+Ukpm = Ukpm + U0*ones(1,k);
+Uslm = Uslm + U0*ones(1,k);
 utdata(2) = toc;
 
-utdata(9) = energy1; utdata(10) = energy2;
-utdata(1) = iter;
-if solveexpm
-    expmsolution = zeros(2*m^2,k);
-    expmsolution(vec,:) = expintegrate(A,U0,T) + U0*ones(1,k);
-    %     utdata(5) = max(getError(U,expmsolution));
-    %     utdata(6) = max(abs(energy(A,U(vec,:)-expmsolution(vec,:))));
-    
-    utdata(5) = max(getError(U,expmsolution));
-    utdata(6) = max(abs(getEnergy(A,U(vec,:))-getEnergy(A,expmsolution(vec,:))));
-end
+%utdata(9) = energy1; utdata(10) = energy2;
+%utdata(1) = iter;
 
-if intesolve
+    %expmsolution = zeros(2*m^2,k);
+    expmsolution = expintegrate(A,U0,T) + U0*ones(1,k);
+    %utdata(5) = max(getError(U,expmsolution));
+    %utdata(6) = max(abs(getEnergy(A,U(vec,:))-getEnergy(A,expmsolution(vec,:))));
+
+
+if intesolve && 0
     intesolution = zeros(2*m^2,k);
     intesolution(vec,:) = int(A,V(:,1)*ones(1,k),ht);% + U0*ones(1,k);
     utdata(7) = max(getError(U,intesolution));
     utdata(8) = max(abs(getEnergy(A,U(vec,:))-getEnergy(A,intesolution(vec,:))));
-    
-    %     utdata(7) = max(getError(intesolution,correctsolution));
-    %     utdata(8) = max(abs(energy(A,U(vec,:)-intesolution(vec,:))));
 end
+for i = 1:k
+    errslm(i) = norm(expmsolution(:,i)-Uslm(:,i))/norm(expmsolution(:,i));
+    errkpm(i) = norm(expmsolution(:,i)-Ukpm(:,i))/norm(expmsolution(:,i));
+end
+figure(1)
+plot(errslm)
+hold on
+plot(errkpm)
+legend('SLM','KPM')
 
-if figvar
+hold off
+for i = 1:k
+    
+    eneslm(i) = 1/2*(Uslm(:,i)'*A*Uslm(:,i));
+    enekpm(i) = 1/2*(Ukpm(:,i)'*A*Ukpm(:,i));
+    
+    %eneslm(i) = 1/2*(expmsolution(:,i)'*A*expmsolution(:,i)-Uslm(:,i)'*A*Uslm(:,i));
+    %enekpm(i) = 1/2*(expmsolution(:,i)'*A*expmsolution(:,i)-Ukpm(:,i)'*A*Ukpm(:,i));
+end
+figure(2)
+plot(eneslm)
+hold on
+plot(enekpm)
+legend('SLM','KPM')
+
+
+
+if figvar&&0
     figure(111); plot(T,getError(U(vec,:),correctsolution(vec,:)),'k:.')
     %figure(13); plot(T,getEnergy(A,U(vec,:)),'k:.');
     figure(12); plot(T,getEnergy(A,U(vec,:),V(:,1)),'k:.'); %hold on; plot(T,T*1e-12,'k-'); hold off;

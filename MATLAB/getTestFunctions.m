@@ -195,10 +195,13 @@ elseif strcmp(eqn,'maxwell3D') % uferdig
     %fyll inn!
     
 elseif strcmp(eqn,'random') % ubrukelig
-    Ustart = rand(2*(m-2)^2,1);
-    V = Ustart;
-    F = ones(1,k);
-    correctsolution = sparse(2*m^2,k);
+    Ustart = ones(2*m,1);
+    Ustart=Ustart/norm(Ustart);
+    V = 0; F = 0; correctsolution = 0;
+    %Ustart = rand(2*(m-2)^2,1);
+    %V = Ustart;
+    %F = ones(1,k);
+    %correctsolution = sparse(2*m^2,k);
 elseif strcmp(eqn,'semirandom') % Kjenner ikke løsningen på problemet den løser
     if prob == 1
         try

@@ -11,8 +11,8 @@ function [S,Htilde,Vend,xiend] = SLM(H,v,var,conv)
 % xiend: norm of residual vector
 
 n = length(H)/2;
-if 2*n < var
-    var = 2*n;
+if n < var
+    var = n;
 end
 J = [sparse(n,n),speye(n);-speye(n),sparse(n,n)];
 delta = zeros(var,1);

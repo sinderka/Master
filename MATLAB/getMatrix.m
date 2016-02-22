@@ -94,8 +94,13 @@ elseif strcmp(eqn,'maxwell3D') % DEnne MÅ testes!!!!!!!!!!
     
     A = [sparse(3*m^3,3*m^3), 1/my*T;1/epsilon*T,sigma];
 elseif strcmp(eqn,'random')
-    A = rand(2*(m-2)^2);
-    A = 0.5*[sparse((m-2)^2,(m-2)^2),speye((m-2)^2);-speye((m-2)^2),sparse((m-2)^2,(m-2)^2)]*(A+A'+m^2*speye(2*(m-2)^2)); % eventuelt minus dette, men det har ikke noe å si!
+    H=rand(m);
+    H=H+H';
+    HH=[H zeros(m); zeros(m) H];
+    J=[zeros(m) eye(m); -eye(m) zeros(m)];
+    A=J*HH;
+    %A = rand(2*(m-2)^2);
+    %A = 0.5*[sparse((m-2)^2,(m-2)^2),speye((m-2)^2);-speye((m-2)^2),sparse((m-2)^2,(m-2)^2)]*(A+A'+m^2*speye(2*(m-2)^2)); % eventuelt minus dette, men det har ikke noe å si!
 elseif strcmp(eqn,'semirandom')
     try
         load('semirandomA.mat','A');

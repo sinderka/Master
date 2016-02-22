@@ -204,6 +204,8 @@ elseif alg(1) == -2
             if PMint(1) == -2
                 if PMint(i+1) == 1
                     str = ' trap';
+                elseif PMint(i+1) == 2
+                    str = ' expm';
                 elseif PMint(i+1) == 3
                     str = ' diag';
                 end
@@ -216,6 +218,8 @@ elseif alg(1) == -2
             if PMint(1) == -2
                 if PMint(i+1) == 1
                     str = ' trap';
+                elseif PMint(i+1) == 2
+                    str = ' expm';
                 elseif PMint(i+1) == 3
                     str = ' diag';
                 end

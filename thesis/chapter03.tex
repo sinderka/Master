@@ -6,17 +6,17 @@ This section will be concerned with programming choices, implementation, and how
 \section{Outdata} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 This section will explain how different interesting values are calculated in the program. \\
 
-All errors are obtained with the same function. At each time step, this function finds the maximum absolute difference between the approximated solution and the correct solution. The resulting vector of absolute errors is then divided by the correct solution, so that the error is relative to the correct solution. This will be marked with "error" on the plots. In the case where there is no correct solution, as in \texttt{semirandom}, the error is measured as the difference between the projected solution and the solution without the projection method. This case is marked with $\text{error}^{\text{comp}}$. In some results this error will also be used with \texttt{wave}.  \\
+\noindent All errors are obtained with the same function. At each time step, this function finds the maximum absolute difference between the approximated solution and the correct solution. The resulting vector of absolute errors is then divided by the correct solution, so that the error is relative to the correct solution. This will be marked with "error" on the plots. In the case where there is no correct solution, as in \texttt{semirandom}, the error is measured as the difference between the projected solution and \texttt{DM}. This case is marked with $\text{error}^{\text{comp}}$. In some results $\text{error}^{\text{comp}}$ will also be used with \texttt{wave}.  \\
 
-The energy is found with one dedicated energy function. The exceptions are $\mathcal{H}_3$ and $\mathcal{H}_4$ which are calculated by a different function. The energy is calculated for each time step, and initial energy is subtracted. In the case where the energy is supposedly constant the energy is calculated without comparing it to anything. This is because the correct solution would sometimes have more energy than the approximation, making it difficult to draw any conclusions. This is done for all energies in section \ref{sec:constres}. When comparing approximated energy with analytical energy, the energies are calculated independently, and then subtracted from each other. This is done for all energies in section \ref{sec:varyener}. If the energies are compared to the analytical solution they are marked "energy", and $\text{energy}^{\text{comp}}$ if \texttt{DM} and a projection method is compared. \\
+\noindent The energy is found with one dedicated energy function. The exceptions are $\mathcal{H}_3$ and $\mathcal{H}_4$ which are calculated by different functions. The energy is calculated for each time step, and initial energy is subtracted. In the case where the energy is supposedly constant the energy is calculated without comparing it to anything. This is because the correct solution would sometimes have more energy than the approximation, making it difficult to draw any conclusions. This is done for all energies in section \ref{sec:constres}. When comparing approximated energy with analytical energy, the energies are calculated independently, and then subtracted from each other. This is done for all energies in section \ref{sec:varyener}. If the energies are compared to the analytical solution they are marked "energy", and $\text{energy}^{\text{comp}}$ if \texttt{DM} and a projection method is compared. \\
 
-Other interesting results are the number of restarts performed and computation time. \\
-Number of restarts are $0$ if the projection method is not used, and $1$ if the projection method is used without restart. Any restart is then counted and added to this. The reason for this is that when plotting the number of restarts on a logarithmic scale Matlab removes all negative numbers and zeros from the plot. The symbol for the number of restarts will be $i_r$.\\
-Computation times are measured as the time  it takes to calculate the solution of the test problem. Initial computations or plots are not counted, as these are common for both the projection methods and the direct method.
+\noindent Other interesting results are the number of restarts performed and computation time. \\
+Number of restarts are $0$ if the projection method is not used, and $1$ if the projection method is used without restart. Any restart is then counted and added to this. The reason for this is that when plotting the number of restarts on a logarithmic scale matlab removes all negative numbers and zeros from the plot. The symbol for the number of restarts will be $i_r$.\\
+Computation times are measured as the time  it takes to calculate the solution of the test problem. Initial computations or plots are not counted, as these are common for both the projection methods and \texttt{DM}.
 The symbol for computation time is $T_c$.  \\
 
 \section{Pictures}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-All pictures are plotted with a dedicated plot tool. This makes it easier to change plots, or uncover programming faults. The greatest absolute values of energy or error are the points used in the plots. This is done by running the solving program once for each point. This removes noisy data from the figures, and also makes it possible to make the points look equally spaced on logarithmic plots. In figure \ref{fig:pic} the difference between the two is shown. \\
+All pictures are plotted with a dedicated plot tool. This makes it easier to change plots, or uncover programming faults. The greatest absolute values of energy or error are the points used in the plots. This is done by running the solving program once for each point. This removes noisy data from the figures, and makes it possible to make the points look equally spaced on logarithmic plots. In figure \ref{fig:pic} the difference between the two is shown. \\
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.45\textwidth}
@@ -34,18 +34,16 @@ All pictures are plotted with a dedicated plot tool. This makes it easier to cha
         \label{fig:pic}
 \end{figure}
 
-\texttt{SLM} and \texttt{KPM} will on pictures be called \texttt{KPM}(n) and \texttt{SLM}(n) where $n$ is the restart variable.
+\noindent \texttt{SLM} and \texttt{KPM} will on pictures be called \texttt{KPM}($n$) and \texttt{SLM}($n$) where $n$ is the restart variable.
 
 
 \section{Test problems} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \label{sec:testprob}
-
 Equation \eqref{eqn:PDE} can be the result of several discretized equations. Since \texttt{SLM} needs a Hamiltonian matrix this will be the main focus. Two different matrices are implemented. These matrices also have two test problems each. All test problems satisfies the condition $$u(t,0,y) = u(t,1,y) = u(t,x,0) = u(t,x,1) = 0.$$ 
 
-The discretization is done by dividing each spacial direction, $[0,1]$ in $m$ pieces, with step size $h_s = 1/m$, so that $y_i = i h_s$, $x_i = i h_s$ with $i = 1,2,\dots,m-1 $. 
+\noindent The discretization is done by dividing each spacial direction, $[0,1]$ in $m$ pieces, with step size $h_s = 1/m$, so that $y_i = i h_s$, $x_i = i h_s$ with $i = 1,2,\dots,m-1 $. 
 
 \subsection{The wave equation} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 The first test problem is the 2 dimensional wave equation, 
 \begin{equation}
 \begin{aligned}
@@ -54,14 +52,14 @@ The first test problem is the 2 dimensional wave equation,
 \label{eqn:wave}
 \end{equation}
 
-To obtain the matrix, approximate $\frac{\partial^2 \xi}{\partial x^2}+ \frac{\partial^2 \xi}{\partial y^2}$ with $\tilde{A}$, where $\tilde{A}$ is the five point stencil\cite{fivepoint}. Then write it as a system of first order (in time) differential equations
+\noindent To obtain the matrix, approximate $\frac{\partial^2 \xi}{\partial x^2}+ \frac{\partial^2 \xi}{\partial y^2}$ with $\tilde{A}$, where $\tilde{A}$ is the five point stencil\cite{fivepoint}, and approximate $p(x_i,y_j)$ with $\tilde{b}_{i+(m-1)(j-1)}$, where $i,j = 1,\dots,m-1$. Then write it as a system of first order (in time) differential equations
 \begin{equation*}
 \begin{aligned}
 \dot{q}(t) &= I w(t) \\
-\dot{w}(t) & = -\tilde{A} q(t) + \tilde{b} \tilde{F}(t). \\
+\dot{w}(t) & = -\tilde{A} q(t) + \tilde{b} f(t). \\
 \end{aligned}
 \end{equation*}
-Now, let $u(t) = [q(t);w(t)]$, $ b F(t) =[0; \tilde{b} \tilde{F}(t)] $, and
+Now, let $u(t) = [q(t);w(t)]$, $ b =[0; \tilde{b}] $, and
 \begin{equation*}
 \begin{aligned}
 \tilde{A} &= \frac{2}{h_s^2} \text{ gallery}('\text{poisson}', m-2) \\
@@ -71,11 +69,11 @@ A &=
 \end{bmatrix}
 \end{aligned},
 \end{equation*}
-where A is a Hamiltonian matrix. This matrix will be referred to as \texttt{wave}, and is a second order approximation of the wave equation. Equation \eqref{eqn:wave} can now be written as equation \eqref{eqn:PDE}. \\
+where A is a Hamiltonian matrix. This matrix will be referred to as \texttt{wave}, and is a second order approximation of the wave equation. Equation \eqref{eqn:wave} can now be written as equation \eqref{eqn:PDE1}. \\
 
-Two test problems will be used to check the integrity of the solving program. One with constant energy, and one with varying energy. \\
+\noindent Two test problems is used to check the integrity of the solving program. One with constant energy, and one with varying energy. \\
 
-In the case when the energy is constant the test problem is 
+\noindent In the case when the energy is constant the test problem is 
 \begin{equation*}
 \begin{aligned}
 q(t,x,y) &= \sin(\pi x) \sin( 2 \pi y) \cos(\sqrt{5} \pi t) \\
@@ -96,7 +94,7 @@ f(t,x,y) & = 2  \sin(\pi x) y (y-1) -(t^2+1) \sin(\pi x) (2-\pi^2 y (y-1)).
 \end{aligned}
 \end{equation*}
 
-Both $q$ and $w$ are used when measuring the error. \\
+\noindent Both $q$ and $w$ are used when measuring the error. \\
 
 \subsection{A random test problem} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The second implemented Hamiltonian matrix is random, and given by
@@ -107,7 +105,7 @@ D1 & = \text{rand}(\hat{m}-1,1) \\
 A &= J_{\hat{m}} \text{ gallery}(\text{'tridiag'},D1,D,D1)
 \end{aligned}
 \end{equation*}
-Since we are interested in comparing the different projection methods to each other, the matrix will be saved and reused. This matrix will be referred to as \texttt{semirandom}. The part $5 I_{\hat{m}} $ is added to make $J_{\hat{m}}A$ diagonally dominant, since a fully random problem will not converge in general. The matrix is simulated as a 2 dimensional system. Since the projection methods are only usable with sparse matrices, it is tridiagonal.\\
+Since we are interested in comparing the different projection methods to each other, the matrix is saved and reused. This matrix is referred to as \texttt{semirandom}. The part $5 I_{\hat{m}} $ is added to make $J_{\hat{m}}A$ diagonally dominant, since a fully random problem will not converge in general. The matrix is simulated as a 2 dimensional system. Since the projection methods are only usable with sparse matrices, it is tridiagonal.\\
 The test problem is given by
 \begin{equation*}
 \begin{aligned}
@@ -126,9 +124,9 @@ f(t,x,y) &= \text{rand} (2 (m-2)^2,1) \cdot \text{rand}(1,k), \\
 \end{equation*}
 when the energy is varying.\\
 
-Since the solutions to the test problems are unknown, it is impossible to show convergence in the traditional sense. A larger $m$ does not give a better approximation of some equation, it gives a new matrix, with no relation to any matrix with different $m$. This test problem might therefore seam uninteresting, but there are some reasons to use it. It gives a tridiagonal Hamiltonian matrix with much randomness, making it difficult for the projection methods to find an approximated solution, while \texttt{wave} always has the same matrix. This case will also show more correctly how the restart can be used to improve the solution than \texttt{wave} will.  \\
+\noindent Since the solutions to the test problems are unknown, it is impossible to show convergence in the traditional sense. A larger $m$ does not give a better approximation of some equation, it gives a new matrix, with no relation to any matrix with different $m$. This test problem might therefore seam uninteresting, but there are some reasons to use it. It gives a tridiagonal Hamiltonian matrix with much randomness, making it difficult for the projection methods to find an approximated solution. With \texttt{wave} the matrix is always the same. This case will also show more correctly how restarting can be used to improve the solution than \texttt{wave} will.  \\
 
-The error will in this case be measured as the difference between the projection method and \texttt{DM}, it will be marked $\text{error}^{\text{comp}}$. This will make the error seam a lot smaller than it really is, but as shown in section \ref{sec:DM}, it is correct to compare the solutions in this manner. When the energy is constant there is no need to do anything different, but varying energy will be compared with its non-projected equivalent, and be marked with $\text{energy}^{\text{comp}}$.
+\noindent The error will in this case be measured as the difference between the projection method and \texttt{DM}, it will be marked $\text{error}^{\text{comp}}$. This will make the error seam a lot smaller than it really is, but as shown in section \ref{sec:DM}, it is correct to compare the solutions in this manner. When the energy is constant there is no need to do anything different, but varying energy will be compared with its non-projected equivalent, and be marked with $\text{energy}^{\text{comp}}$.
 
 \section{Implementation} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:praktisk}
@@ -136,6 +134,6 @@ All algorithms and methods are implemented in matlab R2014b on an ubuntu 14.04 L
 The program was divided into several small functions that were tested individually. Functions are reused as much as possible.
 Matlab's backslash operator is used to solve the linear systems in trapezoidal rule and midpoint rule. \\
 
-There are two ways to implement the number of restarts the projection methods should perform. One way is to choose a number of iterations and hope it converges. The other method is to iterate until the change in the solution is below a certain threshold tolerance. Both of these methods are implemented, but mostly the last will be used since this gives more information about how well the solution is approximated. The tolerance will be called $\iota$ (iota) since it is used to describe something small\cite{iota}, and both $\epsilon$ and $\delta$ were unavailable.
+\noindent There are two ways to implement the number of restarts the projection methods should perform. One way is to choose a number of iterations and hope it converges. The other method is to iterate until the change in the solution is below a certain threshold tolerance. Both of these methods are implemented, but mostly the last will be used since this gives more information about how well the solution is approximated. The tolerance will be called $\iota$ (iota) since it is used to describe something small\cite{iota}, and both $\epsilon$ and $\delta$ were unavailable.
 
 
