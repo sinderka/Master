@@ -3,34 +3,36 @@
 All code used to create results in the text can be found on github: \\
 \url{https://github.com/sindreka/Master}
 \section{Further work}
-The implemented test problems has some limitations. It could be interesting to see how the error and energy behaved with a random Hamiltonian matrix, with a known analytical solution, specifically \texttt{expm} with restart, and the relation between $n$ and $m$. \\
+It could be interesting to see how the error and energy behave with a random Hamiltonian matrix, with a known analytical solution. Specifically \texttt{expm} with restart, and the relation between $n$ and $m$. \\
 
-\noindent Graphics cards are designed to solve small matrices in parallel \cite{graphics}. When the energy is constant windowing can be used to ensure convergence with this $n$. This could then be used to solve non linear Hamiltonian problems in parallel under optimized conditions. \\
+\noindent Graphics cards are designed to be used on small matrices in parallel \cite{graphics}. When the energy is constant, windowing can be used to ensure convergence. This could then be used to solve non linear Hamiltonian problems in parallel under optimized conditions. \\
 
 \section{Conclusion}
-
-Since the results are divided in two cases it feels natural to divide the conclusion in the same two case.
+The conclusion is divided in the same two cases that the results were divided into.
+%The two different cases discussed in the result sections have behaved quit different. 
+%Since the results are divided in two cases it feels natural to divide the conclusion in the same two case.
 \subsection{Constant energy} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The error for both \texttt{KPM} and \texttt{SLM} is found to increase linearly within a reasonable time domain with suitable $n$. With large time domains or small $n$ it was found a sudden increase in error. If restart is enabled the sudden increase is unbounded and exponential, while it is bounded when restart is not enabled.\\
+The error for both \texttt{KPM} and \texttt{SLM} is found to increase linearly, when a suitable $n$ is used. On large time domains or with small $n$ it was found a sudden increase in error. If restart is enabled the sudden increase is unbounded and exponential, while it is bounded when restart is not enabled.
 The sudden increase vanishes when windowing is used. \\
 
-\noindent The energy for both projection methods is increasing very slowly, and about as fast as for \texttt{DM}. This suggests that the increase is actually a result of rounding errors, and not a fault in the method. The energy for \texttt{SLM} is always preserved if restart is not enabled. \\
+\noindent The energy for both projection methods is increasing very slowly with the length of the time domain, and about as fast as for \texttt{DM}. This suggests that the increase is actually a result of rounding errors, and not a fault in the method. The energy for \texttt{SLM} is always preserved if restart is not enabled.
 
 \noindent Because of \texttt{SLM}'s energy preserving properties it was predicted that it would massively outperform \texttt{KPM}. This has proven to only be partially true, as the error will be equally big for both projection methods. 
 %If the energy is the only concern, \texttt{SLM} can achieve this under any case tested in this text. 
-If a small error is necessary there are two ways this can be done, either with restart, or with a larger $n$. If restart is used \texttt{SLM} looses its energy preserving property, and behaves very similar to \texttt{KPM}. If $n$ is chosen larger, \texttt{SLM}'s error will decrease, but so will \texttt{KPM}'s error and energy. The two methods will again perform similarly. Thus in practice \texttt{SLM} has only a small advantage over \texttt{KPM}.\\
+If a small error is necessary there are two ways this can be done: Either by restarting or with a larger $n$. If restarting is used \texttt{SLM} looses its energy preserving property, and behaves very similarly to \texttt{KPM}. If $n$ is chosen larger, \texttt{SLM}'s error will decrease, but so will \texttt{KPM}'s error and energy. The two methods will again perform similarly. Thus, in practice \texttt{SLM} has only a small advantage over \texttt{KPM}.\\
 
-\noindent Suitable $n$ is found to be independent of the size of the matrix, and increase linearly with the length of the time domain. If restart is used $n$ can be about a tenth of the $n$ used without restart.\\
+\noindent Suitable $n$ is found to be independent of the size of the matrix, and increase linearly with the length of the time domain. If restart is used, $n$ can be about a tenth of the $n$ used without restart.\\
 
-\noindent \texttt{SLM} is near its fastest performance if restart is not enabled. In this case it performed about equal to \texttt{KPM} under the same conditions. \texttt{KPM} can definitely be faster than this if $n$ is chosen optimal. \\
+\noindent \texttt{SLM} is near its fastest performance if restart is not enabled. In this case it performed about equal to \texttt{KPM} under the same conditions. \texttt{KPM} can definitely be faster than this if $n$ is chosen optimal, and restarting is used. \\
 
-\noindent If an exact solver is used it is possible to achieve better accuracy with smaller computation time with the projection methods than with trapezoidal rule. The energy for \texttt{SLM} increases linearly in this case, and is constant for \texttt{KPM}.
+\noindent If an exact solver is used it is possible to achieve better accuracy with smaller computation time with the projection methods than with trapezoidal rule. The energy for \texttt{SLM} increases linearly in this case, and is constant for \texttt{KPM}.  \\
 
-\noindent I conclude that \texttt{SLM} is better when error is no concern. If the error should be small, \texttt{KPM}'s error and energy is just as small as \texttt{SLM}'s, while being faster. The divergence problem happening with large time domains can be solved with windowing, which also makes computations faster. Using an exact solver can also increase the accuracy, without any downsides.
+\noindent I conclude that \texttt{SLM} is better when error is no concern. If the error should be small, \texttt{KPM}'s error and energy is just as small as \texttt{SLM}'s, while being faster. The divergence problem happening on large time domains can be solved with windowing, which also makes computations faster. %Using an exact solver can also increase the accuracy, without any downsides.
 \subsection{Varying energy} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In this case \texttt{SLM}'s energy preserving properties does not work, making the difference between \texttt{SLM} and \texttt{KPM} even smaller. Windowing is also not working, along with the exact solvers, thus several of the important reasons to use the projection methods are removed. Even with this, both \texttt{SLM} and \texttt{KPM} manages to get error and energy close to \texttt{DM} on small time domains. The restriction on small time domains might not be to big since the linearly increasing error of \texttt{DM} will make any approximation useless on time domains over a certain size.\\
+\texttt{SLM} still has an advantage over \texttt{KPM} regarding energy estimation, but only when restart is not enabled. 
+Windowing and the exact solvers does not work. Thus, some of the important reasons to use the projection methods are removed. Even with this, both \texttt{SLM} and \texttt{KPM} manages to get error and energy close to \texttt{DM} on small time domains. On large time domains a sudden increase was found. The increase is bounded if restart is not enabled, and unbounded if restart is enabled. This makes the projection methods useless on time domains over a certain size. This restriction might not be too big since the linearly increasing error of \texttt{DM} will make any approximation useless when time domains are above a certain size.\\
 
-\noindent Suitable $n$ is found to be depending linearly with the length of the time domain.\\
+\noindent Suitable $n$ is found to be depending linearly on the length of the time domain.\\
 
-\noindent Convergence is a lot harder for the projection methods. This means that either a larger $n$, or more restarts are necessary to achieve convergence. This results in longer computation times,
-making \texttt{SLM} consistently worse than \texttt{DM}. This eliminates the reason to use \texttt{SLM} in the first place. \texttt{KPM} is barely faster in some cases. Since \texttt{KPM} has a comparable error and energy it may, under some assumptions be more desirable than \texttt{DM}.
+\noindent Convergence is more difficult for the projection methods in this case than when the energy was constant. This means that either a larger $n$, or more restarts are necessary to achieve convergence. This results in longer computation times,
+making \texttt{SLM} consistently run slower than \texttt{DM}. This eliminates the reason to use \texttt{SLM} in the first place. \texttt{KPM} is barely faster in some cases. Since \texttt{KPM} has a comparable error and energy it may, under some assumptions, be more desirable than \texttt{DM}.

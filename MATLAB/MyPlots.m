@@ -39,7 +39,7 @@ function MyPlots
 
 % varyingenergy
 % 8
-varyingenergy; display('DONE: varyingenergy')
+%varyingenergy; display('DONE: varyingenergy')
 
 end
 

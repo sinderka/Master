@@ -105,7 +105,7 @@ D1 & = \text{rand}(\hat{m}-1,1) \\
 A &= J_{\hat{m}} \text{ gallery}(\text{'tridiag'},D1,D,D1)
 \end{aligned}
 \end{equation*}
-Since we are interested in comparing the different projection methods to each other, the matrix is saved and reused. This matrix is referred to as \texttt{semirandom}. The part $5 I_{\hat{m}} $ is added to make $J_{\hat{m}}A$ diagonally dominant, since a fully random problem will not converge in general. The matrix is simulated as a 2 dimensional system. Since the projection methods are only usable with sparse matrices, it is tridiagonal.\\
+Since we are interested in comparing the different projection methods to each other, the matrix is saved and reused. This matrix is referred to as \texttt{semirandom}. The part $5 I_{\hat{m}} $ is added to make $J_{\hat{m}}A$ diagonally dominant, since a fully random problem will not converge in general. The matrix is simulated as a 2 dimensional system. Since the projection methods are only usable with sparse matrices, it is $J$ tridiagonal.\\
 The test problem is given by
 \begin{equation*}
 \begin{aligned}

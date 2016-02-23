@@ -43,11 +43,11 @@ It is well known that the energy of a system on the form of equation \eqref{eqn:
 \noindent There will be a discussion about different types of test problems. The ones marked "constant energy" will be problems on the form of equation \eqref{eqn:PDE}. The other type is problems marked "varying energy", which is on the form of equation \eqref{eqn:PDE1}. Test problems will be presented in section \ref{sec:testprob}.
 
 \section{Integration methods}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\noindent The time domain $[0,T_s]$ will be divided in $k$ pieces, so that the step size is $h_t = T_s/k$. The time discretized solution of $u(t_j)$ will be called $U_j$, with $t_j = j h_t$ where $ j = 1,2,\dots,k $. Since the initial value is known to be zero, $j = 0$ is disregarded. Let the discretization of $f(t_j)$ be called $F_j$. The integration methods considered in this text are trapezoidal rule, forward Euler, and midpoint rule. The definition and the iteration scheme of the different methods are given in table \ref{tab:intmet}. \\
+\noindent The time domain $[0,T_s]$ will be divided in $k$ pieces, so that the step size is $h_t = T_s/k$. The time discretized solution of $u(t_j)$ will be called $U_j$, with $t_j = j h_t$ where $ j = 1,2,\dots,k $. Since the initial value is known to be zero, $j = 0$ is disregarded. Let the discretization of $f(t_j)$ be called $F_j$. The integration methods considered in this text are trapezoidal rule, forward Euler, and midpoint rule. The definition and the iteration scheme of the different methods are given in Table \ref{tab:intmet}. \\
 
 \begin{table}
 
-\caption{Methods for integrating in time. Note that since the midpoint rule uses the midpoint $F_{i+\frac{1}{2}}$, twice as many points needs to be saved for midpoint rule as for the other methods. Trapezoidal and midpoint rule have quadratic convergence rates, while forward Euler has linear convergence. To compare the methods it is therefore necessary to use the squared number of points for forward Euler as for the other methods. $g$ is the right hand side of equation \eqref{eqn:PDE} or \eqref{eqn:PDE1}.}
+\caption{Methods for integrating in time. Note that since the midpoint rule uses the midpoint $F_{i+\frac{1}{2}}$, twice as many points needs to be saved for midpoint rule as for the other methods. Trapezoidal and midpoint rule have quadratic convergence rates, while forward Euler has linear convergence. To compare the methods it is therefore necessary to use the squared number of points for forward Euler as for the other methods. $g(t,u)$ is the right hand side of equation \eqref{eqn:PDE} or \eqref{eqn:PDE1}.}
 \centering
 \begin{tabular}{l l}
 	Trapezoidal rule (\texttt{trap}) \cite{trapezoidal} & $ \frac{U_{i+1} - U_{i}}{h_t} = g \Big( \frac{1}{2}(t_i+t_{i+1}),\frac{1}{2}(U_i+U_{i+1}) \Big)$
@@ -69,7 +69,7 @@ It is well known that the energy of a system on the form of equation \eqref{eqn:
 
 \noindent Forward Euler has no energy preserving properties, and is used to show the difference between a naive integration method, and energy preserving integration methods. \\
 
-\noindent In addition to the iteration schemes in table \ref{tab:intmet}, some exact solvers are used. They are presented in table \ref{tab:intcorrect}.
+\noindent In addition to the iteration schemes in Table \ref{tab:intmet}, some exact solvers are used. They are presented in Table \ref{tab:intcorrect}.
 \begin{table}
 
 \caption{Methods for exact integration in time. Since they are very computationally demanding they will only be used on small projected matrices. They also need the test problem to have constant energy. The expected convergence will be depending on the approximation of $A$, since this method is only exact in time. These function are explained in matlab's docmentation: \cite{expm}. }
@@ -110,7 +110,7 @@ The gradient of $\mathcal{H}_1(u)$ is
 \noindent Substituting $\frac{U_{j+1}  + U_j}{2} $ for $u$ gives the gradient of the energy for this function:
 \begin{equation*}
 \begin{aligned}
-\nabla \mathcal{H}_1 Big(\frac{U_{j+1}  + U_j}{2}\Big) = JA \frac{U_{j+1}  + U_j}{2} + J b.
+\nabla \mathcal{H}_1 \Big(\frac{U_{j+1}  + U_j}{2}\Big) = JA \frac{U_{j+1}  + U_j}{2} + J b.
 \end{aligned}
 \end{equation*}
 \noindent Since
@@ -127,10 +127,15 @@ $\nabla \mathcal{H}_1(\frac{U_{j+1}  + U_j}{2})^\top J^{-1} \nabla \mathcal{H}_1
 \nabla \mathcal{H}_1 (\frac{U_{j+1}  + U_j}{2}) ^\top \frac{U_{j+1} - U_j}{ h_t } = 0.
 \end{aligned}
 \end{equation*}
-\noindent Substituting $ J (A\frac{U_{j+1}  + U_j}{2}  + b) $ for $\nabla \mathcal{H}_1 (\frac{U_{j+1}  + U_j}{2})$ and rewriting gives
+\noindent Substituting $ J (A\frac{U_{j+1}  + U_j}{2}  + b) $ for $\nabla \mathcal{H}_1 (\frac{U_{j+1}  + U_j}{2})$ gives
+\begin{equation*}
+\frac{1}{2 h_t} U_{j+1}^\top JAU_{j+1} %- \frac{1}{2 h_t}U_{j+1}^\top JAU_{j} +\frac{1}{2 h_t} U_{j}^\top JAU_{j+1} 
+- \frac{1}{2 h_t} U_{j}^\top JAU_{j} + \frac{1}{h_t} Jb^\top U_{j+1} -\frac{1}{h_t} Jb^\top U_{j} = 0.
+\end{equation*}
+This can be rewritten as
 \begin{equation*}
 \begin{aligned}
-\mathcal{H}_1(U_{j+1}) - \mathcal{H}_1(U_{j}) = 0.
+\mathcal{H}_2(U_{j+1}) - \mathcal{H}_2(U_{j}) = 0.
 \end{aligned}
 \end{equation*}
 \noindent Hence trapezoidal rule conserves the energy for functions with constant energy. Since the initial conditions are satisfied the energy will have the correct value at all times.
@@ -155,6 +160,7 @@ $\nabla \mathcal{H}_1(\frac{U_{j+1}  + U_j}{2})^\top J^{-1} \nabla \mathcal{H}_1
 \end{algorithm}
 
 \section{Solution methods} \label{sec:solmet} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:KPM}
 \noindent There are two orthogonalisation methods that will be discussed in this text. Their names are symplectic Lanczos method (\texttt{SLM}), and Arnoldi's algorithm (\texttt{KPM}, as it is implemented as the Krylov projection method). The derivation of the methods, together with a proof of energy perseverance for \texttt{SLM}, is presented in this section. \\
 
 
@@ -170,7 +176,7 @@ u(0) &= 0
 \end{equation}
 \noindent when these methods are used. Note that the initial values are zero otherwise it is difficult to know how well the initial value is approximated. It is also important that $A$ is a Hamiltonian matrix when using \texttt{SLM}. \\
 
-\noindent Note that the relation between $\hat{m}$, $\tilde{m}$ and $m$ used in the algorithms is given by $\hat{m} = 2\tilde{m}= 2(m-2)^2$ and that $ n = 2\tilde{n}$. $\hat{m}$ is the dimension of the original system and $n$ is the size of the orthogonal system. $n$ is called the restart variable. Don't worry to much about these details, it is just a way to simplify the expressions. The reason to simplify them this way will be described in section \ref{sec:testprob}. \\
+\noindent Note that the relation between $\hat{m}$, $\tilde{m}$ and $m$ used in the algorithms is given by $\hat{m} = 2\tilde{m}= 2(m-2)^2$ and that $ n = 2\tilde{n}$. $\hat{m}$ is the dimension of the original system and $n$ is the size of the orthogonal system. $n$ is called the restart variable. Don't worry too much about these details, it is just a way to simplify the expressions. The reason to simplify them this way will be described in section \ref{sec:testprob}. \\
 
 \noindent When talking about the true solution, it is the meant as the unprojected solution (the same problem, solved exactly the same way, except without any projection method), and will later be referred to as the direct method(\texttt{DM}).
 \subsection{Arnoldi's Algorithm and the Krylov projection method} %%%%%%%%%%%%%%%%%
@@ -192,7 +198,7 @@ V_n^{\top} V_n &= I_n.
 \begin{algorithmic} \caption{Arnoldi's algorithm\cite{arnold}} \label{alg:arnoldi}  
 \STATE Start with $A \in \mathbb{R}^{\hat{m} \times \hat{m}}$, $b \in \mathbb{R}^{\hat{m}}$, $n \in \mathbb{N}$ and a tolerance $\iota \in \mathbb{R}$.
 \STATE $v_1 = b/\|b \|_2$
-\FOR{$j = 1,2,\cdots, n $} 
+\FOR{$j = 1,2,\dots, n $} 
    \STATE Compute $h_{i,j} =  v_i^{\top}Av_j,v_i $ for $i = 1,2,\dots, j$
     \STATE Compute $w_j = A v_j - \Sigma_{i=1}^{j} h_{i,j}v_i $
     \STATE $h_{j+1,j} = \| w_j \|_2$
@@ -376,22 +382,22 @@ If equation \eqref{eqn:SLMi} is solved by an energy preserving method, eg. trape
 
 \noindent While the energy of the original problem is 
 \begin{equation*}
-\mathcal{H}(u_n) = \frac{1}{2}u_n(t)^\top J A u_n(t) + u_n(t)^\top J b.
+\mathcal{H}_2(u_n) = \frac{1}{2}u_n(t)^\top J A u_n(t) + u_n(t)^\top J b.
 \end{equation*}
 Perform the substitution $ u_n(t) = S_n z_n(t) $ to get
 \begin{equation*}
-\mathcal{H}(u_n) = \frac{1}{2}z_n(t)^\top S_n^\top J A S_n z_n(t) + z_n(t)^\top S_n^\top J b.
+\mathcal{H}_2(u_n) = \frac{1}{2}z_n(t)^\top S_n^\top J A S_n z_n(t) + z_n(t)^\top S_n^\top J b.
 \end{equation*}
 Use that $ b = S_n e_1 \| b \|_2 $, and simplify with equation \eqref{eqn:propS}:
 \begin{equation*}
-\mathcal{H}(u_n) = \frac{1}{2}z_n(t)^\top J_n H_n z_n(t) + z_n(t)^\top J_n e_1 \|b \|_2.
+\mathcal{H}_2(u_n) = \frac{1}{2}z_n(t)^\top J_n H_n z_n(t) + z_n(t)^\top J_n e_1 \|b \|_2.
 \end{equation*}
 This results in: 
 \begin{equation*}
-\mathcal{H}(z_n) - \mathcal{H}(u_n) = 0.
+\mathcal{H}_2(z_n) - \mathcal{H}(u_n) = 0.
 \end{equation*}
 Since the transformation does not change the energy, \texttt{SLM} is energy preserving. This will not hold for \texttt{KPM} for a couple of reasons. First, $H_n$ is not a Hamiltonian matrix, so the method itself is not energy preserving. The other reason is that the transformation $V_n$ is not symplectic.\\ 
-\texttt{SLM} with restart is also not energy preserving since the error equation is depending on time, which ruins the energy preserving properties. %But this property can be somewhat regain by restarting several times.
+It is not known to me if \texttt{SLM} with restart is energy preserving. The error equation is depending on time, which may ruin the energy preserving property. 
 \subsubsection{Residual energy}
 Equation \eqref{eqn:energy3} and \eqref{eqn:energy4} are solely used to describe the residual energy of \texttt{SLM}. $\mathcal{H}_3$ describes the residual energy of the projected method in $u_n$ space, that is, after transforming back from $z_n$ space. $\mathcal{H}_4$ is the residual energy in $z_n$ space. In theory these energies should be equal and zero. Section \ref{sec:residualenergy} shows how this holds up in practice. 
 They are presented in the equation below, and can easily be derived from \eqref{eqn:resenerg} and \eqref{eqn:SLMr}. \\
@@ -416,33 +422,29 @@ It is important to have some method to compare these projection methods with. Th
 
 \noindent The energy of \texttt{DM} will be constant if an energy preserving method is used, while the error will increase linearly with $T_s$ \cite{linearerrorgrowth}. A goal of this text is to see how \texttt{KPM} and \texttt{SLM}'s error and energy behaves compared to this. 
 
-\noindent The proof that \texttt{DM} is the natural method to compare with will be shown here with trapezoidal rule for \texttt{KPM}. The proof is very similar for \texttt{SLM}. \\
+\noindent The proof that \texttt{DM} is the natural method to compare with will be shown here with trapezoidal rule for \texttt{KPM} on equation \eqref{eqn:PDE}. The proof is very similar for \texttt{SLM} or on equation \eqref{eqn:PDE1}. \\
 
-\noindent We start by stating the desired equation discretized with the trapezoidal rule:
+\noindent We start by discretizing equation \eqref{eqn:KPMi} with the trapezoidal rule:
 \begin{equation*}
 \begin{aligned}
-\Big(I-\frac{Ah_t}{2} \Big) U_{i+1} = \Big( U_i + \frac{h_t}{2} \big( A U_i + F_{i+1} +F_{i} \big) \Big.
+\Big(I-\frac{H_n h_t}{2}\Big) Z_{i+1} = Z_i + \frac{h_t}{2} \big( H_n Z_i + \| b \|_2 e_1 \big) .
 \end{aligned}
 \end{equation*}
-Applying the transformation $ U_i = V_n Z_i(t) $ gives
+Here $Z_i$ is the time discretized version of $z_n(t_i)$.
+By using equation \eqref{eqn:propA} and the transformation $\tilde{U}_i = V_n Z_i$, this can be written as
 \begin{equation*}
 \begin{aligned}
-\Big(V_n-\frac{A V_n h_t}{2}\Big) Z_{i+1} = \Big( V_n Z_i + \frac{h_t}{2} \big( A V_n Z_i + F_{i+1} +F_{i} \big) \Big).
+\Big(I-\frac{Ah_t}{2} \Big) \tilde{U}_{i+1} =  \tilde{U}_i + \frac{h_t}{2} \big( A \tilde{U}_i +b \big) .
 \end{aligned}
 \end{equation*}
-Using equation \eqref{eqn:propA} gives
+Equation \eqref{eqn:PDE} discretized with trapezoidal rule is given by
 \begin{equation*}
 \begin{aligned}
-\Big(V_n-h_t\frac{V_n H_n + h_{n+1,n}v_{n+1} e_n^\top }{2}\Big) Z_{i+1} = \Big( V_n Z_i + \frac{h_t}{2} \big( (V_n H_n + h_{n+1,n}v_{n+1} e_n^\top) Z_i + F_{i+1} +F_{i} \big) \Big).
+\Big(I-\frac{Ah_t}{2} \Big) U_{i+1} =  U_i + \frac{h_t}{2} \big( A U_i +b \big) .
 \end{aligned}
 \end{equation*}
-When using the trapezoidal rule directly on \eqref{eqn:KPMi}, the result is
-\begin{equation*}
-\begin{aligned}
-\Big(V_n-h_t\frac{V_n H_n}{2}\Big) Z_{i+1} = \Big( V_n Z_i + \frac{h_t}{2} \big( V_n H_n Z_i + F_{i+1} +F_{i} \big) \Big).
-\end{aligned}
-\end{equation*}
-If we now let $n$ grow, $h_{n+1,n}$ will become zero and the projected method will converge towards the unprojected method. 
+It is shown in section \ref{sec:KPM} that $u_n(t)$ will converge towards $u(t)$ when $n$ increases, This also holds for $\tilde{U}_i$ and $ U_i $. This means that \texttt{KPM} will converge towards \texttt{DM}.
+
 \subsection{Linearity of the methods} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The projection methods require a vector that can be used to generate the orthogonal space. In the general problem,
 \begin{equation*}

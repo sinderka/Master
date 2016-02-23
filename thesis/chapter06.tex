@@ -35,8 +35,7 @@ The exact solvers does not work when the energy is varying, thus there will be n
         \label{fig:varconv}
 \end{figure}
 
-Midpoint rule performs better than trapezoidal rule. It is interesting to see that without restart the methods does not converge with $n = 20$, while they converged with $n = 2$ when the energy was constant. Clearly convergence is a lot harder to achieve in this case. \\
-Only midpoint rule will be used further in this chapter.\\
+Midpoint rule performs better than trapezoidal rule. It is interesting to see that without restart the methods does not converge with $n = 20$, while they converged with $n = 2$ when the energy was constant. Clearly convergence is a lot harder to achieve in this case. Only midpoint rule will be used further in this chapter.\\
 
 \section{Convergence with $\iota$} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -84,7 +83,7 @@ These figures look very similar to the figures in section \ref{fig:lcompare}, on
 
 
 \section{Energy and error} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The dependance between $n$ is the same as in section \ref{sec:resultat}, thus $n$ will be kept at the same value it was. The results in this section is very similar to the results in section \ref{sec:resultconsterergy}. Results not shown are to similar to show.
+The dependance between $n$ is the same as in section \ref{sec:resultat}, thus $n$ will be kept at the same value as in section \ref{sec:resultconsterergy}.
 \subsection{Without restart} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
         \centering
@@ -102,7 +101,7 @@ The dependance between $n$ is the same as in section \ref{sec:resultat}, thus $n
         \caption{ The change in error and energy as a function of time. $m = 20$, restart is not enabled. }
         \label{fig:vSLMenergyerror0}
 \end{figure}
-\noindent Figure \ref{fig:vSLMenergyerror0} is very similar to Figure \ref{fig:SLMenergyerror0}. The only difference is the more powerful divergence occurring at the last points. \texttt{SLM} manages to maintain a good approximation of the energy throughout the entire time domain. This shows that \texttt{SLM} may still be useful in this setting.
+\noindent Figure \ref{fig:vSLMenergyerror0} is very similar to Figure \ref{fig:SLMenergyerror0}. The only difference is the more powerful divergence occurring at the last points. \texttt{SLM} manages to maintain a good approximation of the energy throughout the entire time domain. %This shows that \texttt{SLM}'s energy preserving property still m.
 \subsection{With restart} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
         \centering
@@ -124,10 +123,10 @@ The dependance between $n$ is the same as in section \ref{sec:resultat}, thus $n
                 \caption{ Number of restarts. }
                 \label{fig:vlongtime2rene}
         \end{subfigure}
-        \caption{ The top pictures shows error and energy, while the bottom picture shows the number of iterations. $m = 20$, restart is enabled with $\iota = 1e-6$. }
+        \caption{ The top pictures shows error and energy, while the bottom picture shows the number of restarts. $m = 20$, restart is enabled with $\iota = 1e-6$. }
         \label{fig:vSLMenergyerror1}
 \end{figure}
-The restart makes \texttt{SLM} and \texttt{KPM} behave very similar. No divergence occurs on this small time interval. Restarting is a better idea when the energy is varying than when the energy is constant. These figures are very comparable to Figure \ref{fig:SLMenergyerror1}. Even thoug it is not shown here the methods diverges on time domains 
+The restart makes \texttt{SLM} and \texttt{KPM} behave very similar. No divergence occurs on this small time interval. Restarting is a better idea when the energy is varying than when the energy is constant. These figures are very comparable to Figure \ref{fig:SLMenergyerror1}. Even though it is not shown here, the methods diverges on long time domains.
 \subsection{Windowing}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
         \centering
@@ -167,8 +166,8 @@ Computation times are fairly different due to extra difficulties with convergenc
         \caption{ A figure of the computation times without restart. $n = 200$, $T_s = 100$, $k = 2000$, and $m = 20$ unless stated. }
         \label{fig:ltime0}
 \end{figure}
-The difference between \texttt{DM} and the projection methods are a lot smaller in this case. At the last point on figure \ref{fig:ltime0}, \texttt{DM} and \texttt{KPM} are intersecting. \texttt{KPM} becomes faster than \texttt{DM} after this, but \texttt{SLM} does not overtake \texttt{DM}. \\
-These results are a little surprising since the numbers are the same as in section \ref{sec:cruntime}, and there is no restarting. 
+The difference between \texttt{DM} and the projection methods are a lot smaller in Figure \ref{fig:ltime0}.With small $m$, \texttt{DM} is faster than both \texttt{KPM} and \texttt{SLM}. \texttt{KPM} does overtake \texttt{DM} after the last point, but \texttt{SLM} never does. Computation times for all methods increase linearly with $k$.
+%These results are a little surprising since the numbers are the same as in section \ref{sec:cruntime}, and there is no restarting. 
 
 \subsection{With restart}
 
@@ -194,5 +193,4 @@ These results are a little surprising since the numbers are the same as in secti
         \caption{ A figure of the computation times with restart. $n = 20$, $T_s = 100$, $k = 2000$, and $m = 20$ unless stated. }
         \label{fig:ltime1}
 \end{figure}
-Figure \ref{fig:ltime1} shows that it can be a good idea to use \texttt{KPM} when $m$ is large and $k$ is small. The faster increase with $k$ for \texttt{KPM} comes from extra number of restarts that \texttt{KPM} needs to ensure convergence. The relation between $n$ and computation time shows that \texttt{KPM} has the possibility if being alot \cite{alot} faster than \texttt{DM}, \texttt{SLM} does not have this possibility. This makes \texttt{SLM} consistently slower than \texttt{DM}. \\
-%It is never wise to use \texttt{SLM} in this case.
+Figure \ref{fig:ltime1} shows that it can be a good idea to use \texttt{KPM} when $m$ is large and $k$ is small. The faster increase with $k$ for \texttt{KPM} comes from extra number of restarts that \texttt{KPM} needs to ensure convergence. The relation between $n$ and computation time shows that \texttt{KPM} has the possibility if being alot \cite{alot} faster than \texttt{DM}. \texttt{SLM} does not have this possibility, this makes \texttt{SLM} consistently slower than \texttt{DM}. \\

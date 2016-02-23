@@ -7,7 +7,7 @@ This chapter will show how error, energy and computation time changes with $i_r$
 \noindent For all sections except the first assume that $m=20$, and $k = 20$ per second. 
 \section{Convergence}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 This section will show convergence with the wave equation with all the integration methods presented in table \ref{tab:intmet} and \ref{tab:intcorrect}. The reason for only using the wave equation is that the analytical solution is unknown for \texttt{semirandom}. $T_s = 1$ second for all plots in this section.
-\subsection{Numerical integration}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Numerical integration (Table \ref{tab:intmet})}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.30\textwidth}
@@ -71,7 +71,7 @@ This section will show convergence with the wave equation with all the integrati
 \label{fig:forwardenergy}
 \end{figure}
 
-\subsection{Exact solvers} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Exact solvers (Table \ref{tab:intcorrect})} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:exactconv}
 \begin{figure}[H]
         \centering
@@ -420,11 +420,12 @@ This section will show how the energy changes when transforming from $z_n(t)$ to
 \end{figure}
 $\mathcal{H}_3$ and $\mathcal{H}_4$ are very similar, as is predicted in the theory section. The difference between the two is machine accuracy until $T_s$ gets to big (around 10 seconds). \\
 \section{A different idea} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:diag}
 This section will see how using an exact solver can improve error and energy, compared to trapezoidal rule.\\
 Unfortunately the test problems has some severe limitations. \texttt{wave} does not require a restart to be well approximated, and the analytical solution is unknown for \texttt{semirandom}. \\
 If \texttt{semirandom} is used there will be no way of knowing if \texttt{DM} or the projection method gives the best approximation.
 If \texttt{wave} is used the question about whether to use restart or not with exact solvers will remain unanswered. \\
-Since the latter limitation is smaller
+Since the latter limitation is smaller,
 \texttt{wave} will be used. Restart will not be used since it is already known that the method will not restart.
 
 \begin{figure}[H]
@@ -443,9 +444,9 @@ Since the latter limitation is smaller
         \caption{ A figure showing how the error and energy changes when an exact solver (\texttt{diag}) is used. $n = 20$, $m = 20$, restart is not enabled. \texttt{DM} uses trapezoidal rule. }
         \label{fig:idea0}
 \end{figure}
-\noindent The error for the projection methods with an exact solver is smaller than the error for \texttt{DM} with trapezoidal rule. \\
-The energy for \texttt{SLM} with \texttt{diag} increases linearly, why this happens is unknown, but a reasonable explanation is rounding errors. For both \texttt{KPM} and \texttt{DM} the energy is constant. It seams that \texttt{KPM} is better than \texttt{SLM} on long time domains in this setting. \\
-The pictures also show that all errors are increasing linearly. \\
+\noindent The error for the projection methods with an exact solver is smaller than the error for the methods that uses trapezoidal rule, but all errors are increasing identically and linearly. \\
+The energy for \texttt{SLM} with \texttt{diag} increases linearly, why this happens is unknown, but a reasonable explanation is rounding errors. For both \texttt{KPM} and \texttt{DM} the energy is constant. %It seams that \texttt{KPM} is better than \texttt{SLM} on long time domains in this setting. \\
+%The pictures also show that all errors are increasing linearly. \\
 %Windowing is not necessary, since the exact solvers does not rely on iterating.
 
 \subsection{Matlabs \texttt{expm} function} \label{sec:resultexpm} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -466,8 +467,8 @@ This section will explain the reason for using \texttt{diag} instead of \texttt{
         \caption{A figure showing the difference in error and energy for the different exact integration methods. Restart is not enabled, $m = 20$. }
         \label{fig:expm}
 \end{figure}
-\noindent The error for the two exact solver are equal, but there is a big difference between in energy. \texttt{diag} has a constant energy for \texttt{KPM}, while with \texttt{expm} the increases is linear.\\
-It seams that the energy preserving property of \texttt{SLM} is lost when using it with an exact solver, because of its linear increase, but \texttt{diag} has a better initial approximation than \texttt{expm}. \\
+\noindent The error for the two exact solver are identical, but there is a big difference between in energy. \texttt{diag} has a constant energy for \texttt{KPM}, while the increases with \texttt{expm} is linear.\\
+It seams that the energy preserving property of \texttt{SLM} is lost when using it with an exact solver, because of the linear increase. \texttt{diag} should still be used since it has a better initial approximation than \texttt{expm}. \\
 \section{Computation time}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:cruntime}
 This section will compare computation time for the different methods discussed. 
@@ -491,7 +492,7 @@ This section will compare computation time for the different methods discussed.
         \label{fig:time0}
 \end{figure}
 \noindent All computation times scales linearly with $k$, but \texttt{SLM} and \texttt{KPM} require much less computation time than \texttt{DM}. \\
-The scaling with $m$ is a little more difficult, but \texttt{DM} seams to be increasing quadratically, while \texttt{SLM} and \texttt{KPM} increases closer to linear. Though the last points of the projection methods are suggesting a faster increase. \texttt{SLM} and \texttt{KPM} has very similar computation times.
+The scaling with $m$ is a little more difficult, but \texttt{DM} seams to be increasing quadratically, while \texttt{SLM} and \texttt{KPM} increases closer to linear. \texttt{SLM} and \texttt{KPM} has very similar computation times.
 \subsection{With restart}
 Since $n$ can be chosen freely above a certain threshold, but smaller $n$ might give higher $i_r$, it is interesting to see how computation time changes as a function of $n$. When restart is not enabled it is quite obvious that smaller $n$ gives smaller computation times.\\
 \begin{figure}[H]
@@ -518,7 +519,8 @@ Since $n$ can be chosen freely above a certain threshold, but smaller $n$ might 
         \label{fig:time1}
 \end{figure}
 
-\noindent \texttt{SLM} and \texttt{DM} is now increasing equally fast with $m$, while \texttt{KPM} increases about the same as without restart. In this case \texttt{DM} would be a better choice than \texttt{SLM}, while \texttt{KPM} at least gives a smaller computation time. \\
+\noindent \texttt{SLM} and \texttt{DM} is now increasing equally fast with $m$, while \texttt{KPM} increases about the same as without restart. In this case \texttt{DM} would be a better choice than \texttt{SLM}.\\%, while \texttt{KPM} at least gives a smaller computation time. \\
+
 Computation time as a function of $k$ increases faster for \texttt{KPM} than for the other methods. This is because \texttt{KPM} needs more restarts on larger time domains, and makes \texttt{KPM} useful when $m$ is large and $k$ is small. For \texttt{SLM} this effect is not visible. \\
 Figure \ref{fig:timekr1} shows that computation times are depending on $n$. For \texttt{KPM} this effect is very important. \\
 
@@ -539,7 +541,8 @@ Figure \ref{fig:timekr1} shows that computation times are depending on $n$. For 
         \caption{ A figure of the computation times with restart. $n = 20$, $T_s = 100$, $k = 20$ per second, and $m = 20$ unless stated. }
         \label{fig:time2}
 \end{figure}
-Windowing gives the best performance for \texttt{SLM} and \texttt{KPM} till now. It is interesting that this method gives the best estimates for error and error, and the fastest computation time. The reason for the faster computation time is probably the small $n$ without the need to restart. 
+Windowing gives the best computation times for \texttt{SLM} and \texttt{KPM} till now. %It is interesting that this method gives the best estimates for error and error, and the fastest computation time. 
+The reason for the faster computation time is probably the small $n$ without the need to restart. 
 \subsection{With \texttt{diag}}
 \begin{figure}[H]
         \centering
@@ -557,4 +560,4 @@ Windowing gives the best performance for \texttt{SLM} and \texttt{KPM} till now.
         \caption{ A figure of the computation times with \texttt{diag}. $n = 20$, $T_s = 100$, $k = 2000$, $m = 20$ unless stated. }
         \label{fig:time3}
 \end{figure}
-Figure \ref{fig:time3} shows that the exact solver without restart is even faster than windowing. This might be due to a artificially small $n$, due to the unconditional convergence with \texttt{wave}.
+Figure \ref{fig:time3} shows that the exact solver without restart is even faster than windowing. This result is not showing the entire truth as it is done with $n = 20$ and without restart. The reason for the small $n$ is that this is what is used in section \ref{sec:diag}. 
