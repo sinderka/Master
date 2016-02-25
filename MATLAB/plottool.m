@@ -1,4 +1,4 @@
-function plottool(m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save,option,EToption,PMint)
+function plottool(m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data,type,help,name,save,option,placement,PMint)
 %plottool(m,n,simtime,K,k,'eqn',alg,int,restart,prob,conv,para,[data],{'type'},[help],{'name'},save,option,EToption,PMint)
 % a tool that helps make plotting easier.
 %input
@@ -33,6 +33,9 @@ if help == 0
 end
 if ~exist('PMint','var')
     PMint = 1;
+end
+if placement == 0
+    plavcement = 'Best';
 end
 
 
@@ -101,9 +104,9 @@ if data(1) == -3
     xlabel(xlab);
     %title(char(additionalInfo))
     
-    legend(char(leg));
-    h = set(findall(gcf,'-property','FontSize'), 'Fontsize',18);
-    set(h,'Location','Best');
+    legend(char(leg),'location',placement);
+    h = set(findall(gcf,'-property','FontSize'), 'Fontsize',24);
+    %set(h,'Location','NE');
     if save
         pause(0.5)
         drawnow
@@ -158,9 +161,9 @@ for kk = 1:length(data)
     xlabel(xlab);
     %title(char(additionalInfo))
     
-    legend(char(leg));
-    h = set(findall(gcf,'-property','FontSize'), 'Fontsize',18);
-    set(h,'Location','Best');
+    legend(char(leg), 'location', placement);
+    h = set(findall(gcf,'-property','FontSize'), 'Fontsize',24);
+    %set(h,'Location','NE');
     if save
         pause(0.5)
         drawnow

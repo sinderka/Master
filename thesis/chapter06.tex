@@ -1,196 +1,37 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Results for test problems with varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\label{sec:varyener} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-This chapter will look at many of the same elements that was discussed in section \ref{sec:constres}. Some results are similar, in this case results may not be shown here. This chapter will try to find out if there is any reason to use \texttt{SLM} instead of \texttt{KPM} on non autonomous Hamiltonian systems. \\
-The exact solvers does not work when the energy is varying, thus there will be no discussion about that in this chapter.
-\section{Convergence} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-        \centering
-        
-		
-		\begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/varconv11r.jpg}
-                \caption{ Convergence for \texttt{wave} with trapezoidal rule without restart. }
-                \label{fig:varconv11r}
-        \end{subfigure}%
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/varconv13r.jpg}
-                \caption{ Convergence for \texttt{wave} with midpoint rule without restart. }
-                \label{fig:varconv13r}
-        \end{subfigure}
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/varconv11.jpg}
-                \caption{ Convergence for \texttt{wave} with trapezoidal rule with restart. }
-                \label{fig:varconv11}
-        \end{subfigure}%
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/varconv13.jpg}
-                \caption{ Convergence for \texttt{wave} with midpoint rule rule with restart. }
-                \label{fig:varconv13}
-        \end{subfigure}
+\chapter{  }
+\section{Code}
+All code used to create results in the text can be found on github: \\
+\url{https://github.com/sindreka/Master}
+\section{Further work}
+It could be interesting to see how the error and energy behave with a random Hamiltonian matrix, with a known analytical solution. Specifically with an exact solver for the initial problem, and trapezoidal rule for the restarts. The relation between $n$ and $m$ could also be explored more thoroughly. \\
 
-        \caption{ Convergence plot with different integrators, simulated over 1 second. }
-        \label{fig:varconv}
-\end{figure}
+\noindent Graphics cards are designed to be used on small matrices in parallel \cite{graphics}. When the energy is constant, windowing can be used to ensure convergence. This could then be used to solve non linear Hamiltonian problems in parallel under optimized conditions. \\
 
-Midpoint rule performs better than trapezoidal rule. It is interesting to see that without restart the methods does not converge with $n = 20$, while they converged with $n = 2$ when the energy was constant. Clearly convergence is a lot harder to achieve in this case. Only midpoint rule will be used further in this chapter.\\
+\section{Conclusion}
+The conclusion is, for simplicity, divided in the same two cases that the results were divided into.
+%The two different cases discussed in the result sections have behaved quit different. 
+%Since the results are divided in two cases it feels natural to divide the conclusion in the same two case.
+\subsection{Constant energy} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The error for both \texttt{KPM} and \texttt{SLM} is found to increase linearly, when a suitable $n$ is used. On large time domains or with small $n$ it was found a sudden increase in error. If restart is enabled the sudden increase is unbounded and exponential, while it is bounded when restart is not enabled.
+The sudden increase vanishes when windowing is used. \\
 
-\section{Convergence with $\iota$} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\noindent The energy for both projection methods is increasing very slowly with the length of the time domain, and about as fast as for \texttt{DM}. This suggests that the increase is actually a result of rounding errors, and not a fault in the methods. The energy for \texttt{SLM} is always preserved if restart is not enabled.\\
 
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/varyEnergy.jpg}
-                \caption{ Energy for \texttt{wave}. }
-                \label{fig:varyEnergy}
-        \end{subfigure}%
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/varyEnergyw.jpg}
-                \caption{ Energy for \texttt{semirandom}. }
-                \label{fig:varyEnergyw}
-        \end{subfigure}
-		
-		\begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/varyError.jpg}
-                \caption{ Error for \texttt{wave}. }
-                \label{fig:varyError}
-        \end{subfigure}%
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/varyErrorw.jpg}
-                \caption{ Error for \texttt{semirandom}. }
-                \label{fig:varyErrorw}
-        \end{subfigure}
-        
-        		\begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/varyIter.jpg}
-                \caption{ Number of restarts for \texttt{wave} }
-                \label{fig:varyIter}
-        \end{subfigure}%
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/varyIterw.jpg}
-                \caption{ Number of restarts for \texttt{semirandom}. }
-                \label{fig:varyIterw}
-        \end{subfigure}
-        \caption{ These figures show how restarting can improve the solution. The pictures on the left is for \texttt{wave} and one the right is for \texttt{semirandom}. This plot considers 100 seconds, with  $n=m=20$, $k = 2000$, $m = 20$, and midpoint rule. }
-        \label{fig:variota}
-\end{figure}
-These figures look very similar to the figures in section \ref{fig:lcompare}, one important difference is that the energy for \texttt{SLM} no longer starts at $1e-15$. The difference between \texttt{SLM} and \texttt{KPM} is definitely smaller in this case.
+\noindent Because of \texttt{SLM}'s energy preserving properties it was predicted that it would massively outperform \texttt{KPM}. This has proven to only be partially true, as the error will be equally big for both projection methods.
+If a small error is necessary there are two ways this can be done: Either by restarting or with a larger $n$. If restarting is used, \texttt{SLM} looses its energy preserving property, and behaves very similarly to \texttt{KPM}. If $n$ is chosen larger, \texttt{SLM}'s error will decrease, but so will \texttt{KPM}'s error and energy. The two methods will again perform similarly. Thus, in practice \texttt{SLM} has only a small advantage over \texttt{KPM}.\\
 
+\noindent Suitable $n$ is found to be independent of the size of the matrix, and increase linearly with the length of the time domain. If restart is used, $n$ can be about a tenth of the $n$ used without restart.\\
 
-\section{Energy and error} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The dependance between $n$ is the same as in section \ref{sec:resultat}, thus $n$ will be kept at the same value as in section \ref{sec:resultconsterergy}.
-\subsection{Without restart} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/vlongtime2err.jpg}
-                \caption{ Error. }
-                \label{fig:vlongtime2err}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/vlongtime2ene.jpg}
-                \caption{ Energy. }
-                \label{fig:vlongtime8err}
-        \end{subfigure}
-        \caption{ The change in error and energy as a function of time. $m = 20$, restart is not enabled. }
-        \label{fig:vSLMenergyerror0}
-\end{figure}
-\noindent Figure \ref{fig:vSLMenergyerror0} is very similar to Figure \ref{fig:SLMenergyerror0}. The only difference is the more powerful divergence occurring at the last points. \texttt{SLM} manages to maintain a good approximation of the energy throughout the entire time domain. %This shows that \texttt{SLM}'s energy preserving property still m.
-\subsection{With restart} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/vlongtime2rerr.jpg}
-                \caption{ Error. }
-                \label{fig:vlongtime2rerr}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/vlongtime2rene.jpg}
-                \caption{ Energy. }
-                \label{fig:vlongtime8rerr}
-        \end{subfigure}
-     
-        
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/vlongtime2rite.jpg}
-                \caption{ Number of restarts. }
-                \label{fig:vlongtime2rene}
-        \end{subfigure}
-        \caption{ The top pictures shows error and energy, while the bottom picture shows the number of restarts. $m = 20$, restart is enabled with $\iota = 1e-6$. }
-        \label{fig:vSLMenergyerror1}
-\end{figure}
-The restart makes \texttt{SLM} and \texttt{KPM} behave very similar. No divergence occurs on this small time interval. Restarting is a better idea when the energy is varying than when the energy is constant. These figures are very comparable to Figure \ref{fig:SLMenergyerror1}. Even though it is not shown here, the methods diverges on long time domains.
-\subsection{Windowing}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/lversuskerror0.jpg}
-                \caption{ Error with restart. }
-                \label{fig:lversuskerror0}
-        \end{subfigure}
-		~
-		\begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/lversuskenergy0.jpg}
-                \caption{ Energy with restart. }
-                \label{fig:lversuskenergy0}
-        \end{subfigure}
-                \caption{ Windowing with $m = 20$, $k= 20$. The restart does not change the result.}
-        \label{fig:lversuskenergy}
-\end{figure}
-\noindent Figure \ref{fig:lversuskenergy} shows that windowing does not work with varying energy, thus a very promising solution strategy from the previous chapter has a limiting factor.\\
+\noindent \texttt{SLM} is near its fastest performance if restart is not enabled. In this case it performed about equal to \texttt{KPM} under the same conditions. \texttt{KPM} is equally fast if $n$ is chosen optimal, and restarting is used. Both projection methods can be faster than \texttt{DM}. \\
 
+\noindent If an exact solver is used it is possible to achieve better accuracy with small computation time. The energy for \texttt{SLM} increases linearly in this case, and is constant for \texttt{KPM}. This case is unfortunately not directly comparable to the case where the numerical integrators are used because of the limitations of the test problems. \\
 
-\section{Computation time} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Computation times are fairly different due to extra difficulties with convergence.
-\subsection{Without restart}
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ltimem.jpg}
-                \caption{ Computation time as a function of $m$. }
-                \label{fig:ltimem}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ltimek.jpg}
-                \caption{ Computation time as a function of $k$. }
-                \label{fig:ltimek}
-        \end{subfigure}
-        \caption{ A figure of the computation times without restart. $n = 200$, $T_s = 100$, $k = 2000$, and $m = 20$ unless stated. }
-        \label{fig:ltime0}
-\end{figure}
-The difference between \texttt{DM} and the projection methods are a lot smaller in Figure \ref{fig:ltime0}.With small $m$, \texttt{DM} is faster than both \texttt{KPM} and \texttt{SLM}. \texttt{KPM} does overtake \texttt{DM} after the last point, but \texttt{SLM} never does. Computation times for all methods increase linearly with $k$.
-%These results are a little surprising since the numbers are the same as in section \ref{sec:cruntime}, and there is no restarting. 
+\noindent I conclude that \texttt{SLM} is better when error is no concern. If the error should be small, \texttt{KPM}'s error and energy is just as small as \texttt{SLM}'s, while being faster. The divergence problem happening on large time domains can be solved with windowing, without hurting computation time. %Using an exact solver can also increase the accuracy, without any downsides.
+\subsection{Varying energy} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\texttt{SLM} has a slight advantage over \texttt{KPM} regarding energy estimation, but only when restart is not enabled. 
+Windowing and the exact solvers does not work. Thus, some of the important reasons to use the projection methods are removed. Both \texttt{SLM} and \texttt{KPM} manages to get error and energy close to \texttt{DM} on small time domains. On large time domains a sudden increase happens, much the same as with constant energy. Since windowing is not possible, this makes the projection methods useless on time domains over a certain size. This restriction might not be too big since the linearly increasing error of \texttt{DM} will make any approximation useless when time domains are above a certain size.\\
 
-\subsection{With restart}
+\noindent Suitable $n$ is found to be depending linearly on the length of the time domain, and on $m$.\\
 
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ltimemr.jpg}
-                \caption{ Computation time as a function of $m$. }
-                \label{fig:ltimemr}
-        \end{subfigure}
-        ~
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ltimekr.jpg}
-                \caption{ Computation time as a function of $k$. }
-                \label{fig:ltimekr}
-        \end{subfigure}
-        
-        \begin{subfigure}[b]{0.45\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/ltimekr1.jpg}
-                \caption{ Computation time as a function of $n$. }
-                \label{fig:ltimekr1}
-        \end{subfigure}
-        \caption{ A figure of the computation times with restart. $n = 20$, $T_s = 100$, $k = 2000$, and $m = 20$ unless stated. }
-        \label{fig:ltime1}
-\end{figure}
-Figure \ref{fig:ltime1} shows that it can be a good idea to use \texttt{KPM} when $m$ is large and $k$ is small. The faster increase with $k$ for \texttt{KPM} comes from extra number of restarts that \texttt{KPM} needs to ensure convergence. The relation between $n$ and computation time shows that \texttt{KPM} has the possibility if being alot \cite{alot} faster than \texttt{DM}. \texttt{SLM} does not have this possibility, this makes \texttt{SLM} consistently slower than \texttt{DM}. \\
+\noindent Convergence is more difficult for the projection methods in this case than when the energy was constant. This means that either a larger $n$, or more restarts are necessary to achieve convergence. This results in longer computation times,
+making \texttt{SLM} consistently run slower than \texttt{DM}. This eliminates the reason to use \texttt{SLM} in the first place. \texttt{KPM} is barely faster in some cases. Since \texttt{KPM} has a comparable error and energy it may, under some assumptions, be more desirable than \texttt{DM}.

@@ -1,0 +1,350 @@
+@comment{x-kbibtex-personnameformatting=<%l><, %f>}
+
+% This file was created with JabRef 2.10b2.
+% Encoding: UTF-8
+
+@article{trap,
+	author = "D., CRUZ-URIBE and C.J., NEUGEBAUER",
+	journal = "Journal of Inequalities in Pure and Applied Mathematics,",
+	owner = "sindreka",
+	timestamp = "2015.09.09",
+	title = "{SHARP ERROR BOUNDS FOR THE TRAPEZOIDAL RULE AND SIMPSON{\rq}S RULE}",
+	volume = "Volume 3, Issue 4, Article 49",
+	year = "2002"
+}
+
+@article{elena,
+	author = "E., Celledoni and I., Moret",
+	journal = "Applied Numerical Mathematics 23 (1997) 365-378",
+	owner = "sindreka",
+	timestamp = "2015.09.03",
+	title = "{A Krylov projection method for system of ODEs}",
+	url = "http://www.sciencedirect.com/science/article/pii/S0168927497000330",
+	year = "1997"
+}
+
+@article{elenaconv,
+	author = "E., Celledoni and I., Moret",
+	journal = "Applied Numerical Mathematics 23 (1997) 365-378",
+	owner = "sindreka",
+	pages = "372",
+	timestamp = "2015.09.03",
+	title = "{A Krylov projection method for system of ODEs}",
+	url = "http://www.sciencedirect.com/science/article/pii/S0168927497000330",
+	year = "1997"
+}
+
+@article{heat,
+	author = "Einstein, A.",
+	journal = "Annalen der Physik, vol. 322, Issue 8, pp.549-560",
+	owner = "sindreka",
+	timestamp = "2015.09.14",
+	title = "{{\"U}ber die von der molekularkinetischen Theorie der W{\"a}rme geforderte Bewegung von in ruhenden Fl{\"u}ssigkeiten suspendierten Teilchen}",
+	year = "1905"
+}
+
+@unpublished{min,
+	author = "Eskeland, Sindre",
+	owner = "sindreka",
+	timestamp = "2015.12.06",
+	title = "{A Krylov projection Method for the heat equation}",
+	url = "https://github.com/sindreka/Master/tree/master/Resurser"
+}
+
+@article{complex,
+	author = "Henry, Cohn and Robert, Kleinberg and {Bal azs}, Szegedy and Christopher, Umans",
+	journal = "Proceedings of the 46th Annual Symposium on Foundations of Computer Science, 23-25 October 2005, Pittsburgh, PA, IEEE Computer Society, pp. 379-388",
+	owner = "sindreka",
+	timestamp = "2015.09.03",
+	title = "{Group-theoretic Algorithms for Matrix Multiplication}",
+	year = "2005"
+}
+
+@article{fivepoint,
+	author = "Milton, Abramowitz and {Irene A.}, Stegun",
+	month = "December",
+	note = "with corrections",
+	owner = "sindreka",
+	timestamp = "2015.09.09",
+	title = "{Handbook of Mathematical Functions}",
+	volume = "Tenth Printing",
+	year = "1972"
+}
+
+@article{SLMO,
+	author = "{Peter Benner}, Heike Fa{\ss}bender",
+	chapter = "6. NUMERICAL PROPERTIES OF THE IMPLICITLY RESTARTED SYMPLECTIC LANCZOS METHOD",
+	journal = "LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111",
+	owner = "sindreka",
+	publisher = "cambridge university press",
+	school = "University of Oxford",
+	timestamp = "2015.12.06",
+	title = "{An Implicitly Restarted SymplecUc Lanczos Method for the Hamlltonlan Eigenvalue Problem}",
+	year = "1997"
+}
+
+@article{SLM,
+	author = "{Peter Benner}, Heike Fa{\ss}bender Martin Stoll",
+	journal = "Linear Algebra and its Applications",
+	number = "435",
+	owner = "sindreka",
+	pages = "578--600",
+	timestamp = "2015.12.06",
+	title = "{A Hamiltonian Krylov--Schur-type method based on the symplectic Lanczos process}",
+	year = "2011"
+}
+
+@inbook{forwardeuler,
+	author = "S{\"u}li, Endre and Mayers, David F.",
+	chapter = "12.2 One-step methods",
+	pages = "317",
+	publisher = "cambridge university press",
+	school = "University of Oxford",
+	title = "{An Introduction to Numerical Analysis}",
+	year = "2003"
+}
+
+@inbook{midpoint,
+	author = "S{\"u}li, Endre and Mayers, David F.",
+	chapter = "Definition 10.1",
+	pages = "286",
+	publisher = "cambridge university press",
+	school = "University of Oxford",
+	title = "{An Introduction to Numerical Analysis}",
+	year = "2003"
+}
+
+@inbook{trapezoidal,
+	author = "S{\"u}li, Endre and Mayers, David F.",
+	chapter = "7.2 Newton--Cotes formulae",
+	pages = "202--203",
+	publisher = "cambridge university press",
+	school = "University of Oxford",
+	title = "{An Introduction to Numerical Analysis}",
+	year = "2003"
+}
+
+@inbook{arnold,
+	author = "Yousef, Saad",
+	chapter = "6.3.1",
+	note = "Algorithm 6.1",
+	owner = "sindreka",
+	pages = "154",
+	publisher = "Siam",
+	timestamp = "2015.09.13",
+	title = "{Iterative Methods for Sparse Linear Systems}",
+	volume = "SECOND EDITION",
+	year = "2003"
+}
+
+@inbook{krycomplex,
+	author = "Yousef, Saad",
+	chapter = "6.4.1",
+	owner = "sindreka",
+	pages = "160--161",
+	publisher = "Siam",
+	timestamp = "2015.09.13",
+	title = "{Iterative Methods for Sparse Linear Systems}",
+	volume = "SECOND EDITION",
+	year = "2003"
+}
+
+@inbook{kryprop,
+	author = "Yousef, Saad",
+	chapter = "6.3.1",
+	note = "Proposition 6.5",
+	owner = "sindreka",
+	pages = "154--155",
+	publisher = "Siam",
+	timestamp = "2015.09.13",
+	title = "{Iterative Methods for Sparse Linear Systems}",
+	volume = "SECOND EDITION",
+	year = "2003"
+}
+
+@book{saad,
+	author = "Yousef, Saad",
+	publisher = "Siam",
+	title = "{Iterative Methods for Sparse Linear Systems}",
+	volume = "SECOND EDITION",
+	year = "2003"
+}
+
+@electronic{parfor,
+	key = "parfor",
+	month = "September",
+	organization = "MATLAB",
+	owner = "sindreka",
+	timestamp = "2015.09.03",
+	title = "{http://se.mathworks.com/help/matlab/ref/parfor.html}",
+	url = "http://se.mathworks.com/help/matlab/ref/parfor.html",
+	year = "2015"
+}
+
+@electronic{parpool,
+	key = "parpool",
+	month = "September",
+	organization = "MATLAB",
+	owner = "sindreka",
+	timestamp = "2015.09.03",
+	title = "{http://se.mathworks.com/help/distcomp/parpool.html}",
+	url = "http://se.mathworks.com/help/distcomp/parpool.html",
+	year = "2015"
+}
+
+@unpublished{luli,
+	author = "Li, Lu",
+	title = "{SYMPLECTIC LANCOZS METHOD FOR SOLVING HAMILTONIAN SYSTEMS}",
+	url = "https://github.com/sindreka/Master/tree/master/Resurser"
+}
+
+@article{Hamiltonian,
+	author = "{Peter Benner a}, ∗ Heike Fa{\ss}bender b Martin Stoll c",
+	chapter = "Equation 3",
+	journal = "Linear Algebra and its Applications 435 (2011) 578--600",
+	pages = "579",
+	title = "{A Hamiltonian Krylov--Schur-type method based on the symplectic Lanczos process}"
+}
+
+@article{symplectic,
+	author = "FASSBENDER, HEIKE",
+	chapter = "2",
+	organization = "Technische Universit ̈ at M ̈ unchen",
+	pages = "472",
+	title = "{ERROR ANALYSIS OF THE SYMPLECTIC LANCZOS METHOD FOR THE SYMPLECTIC EIGENVALUE PROBLEM}"
+}
+
+@article{zerotransf,
+	author = "Botchev, M. A.",
+	chapter = "12.2 One-step methods",
+	journal = "Numer. Linear Algebra Appl. 2013; 20:557--574",
+	organization = "Department of Applied Mathematics and MESA+ Institute for Nanotechnology, University of Twente",
+	pages = "557",
+	title = "{A block Krylov subspace time-exact solution method for linear ordinary differential equation systems}"
+}
+
+@article{energy,
+	author = "{E. Celledoni a}, V. Grimm b R.I. McLachlan c ⇑ D.I. McLaren d D. O{\rq}Neale d e B. Owren a G.R.W. Quispel",
+	chapter = "Lemma 1",
+	journal = "Journal of Computational Physics 231 (2012) 6770--6789",
+	pages = "6772",
+	title = "{Preserving energy resp. dissipation in numerical PDEs using the {\lq}{\lq}Average Vector Field{\rq}{\rq} method}"
+}
+
+@misc{expm,
+	howpublished = "http://se.mathworks.com/help/matlab/ref/expm.html",
+	organization = "MATLAB"
+}
+
+@article{convtrap,
+	author = "{Arup Kumar Nandy}, C. S. Jog",
+	journal = "FRITA Lab,Department of Mechanical Engineering, Indian Institu te of Science, Bangalore, India-560012",
+	month = "januar",
+	title = "{Conservation properties of the trapezoidal rule in linear time domain analysis of acoustics and structures}",
+	year = "2014"
+}
+
+@misc{elenaperson,
+	howpublished = "https://www.ntnu.no/ansatte/elena.celledoni",
+	month = "february",
+	title = "{Elena Celledoni}",
+	year = "2016"
+}
+
+@article{SLMprop,
+	author = "FASSBENDER, HEIKE",
+	chapter = "2. Matrix exponential residual in Krylov subspace methods",
+	journal = "SIAM J. S CI. C OMPUT . Vol. 35, No. 3, pp. A1376--A1397",
+	title = "{ERROR ANALYSIS OF THE SYMPLECTIC LANCZOS METHOD FOR THE SYMPLECTIC EIGENVALUE PROBLEM}"
+}
+
+@article{SLMconv,
+	author = "{Peter Benner a}, ∗ Heike Fa{\ss}bender b Martin Stoll",
+	chapter = "2. The symplectic Lanczos method",
+	journal = "Linear Algebra and its Applications 435 (2011) 578--600",
+	pages = "581",
+	title = "{A Hamiltonian Krylov--Schur-type method based on the symplectic Lanczos process side 581}"
+}
+
+@article{SLM1,
+	author = "Benner, Peter and FaBbender, Heike",
+	journal = "LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111 (1997)",
+	title = "{An Implicitly Restarted SymplecUc Lanczos Method for the Hamlltonlan Eigenvalue Problem}"
+}
+
+@article{SLM2,
+	author = "Watkins, David S.",
+	journal = "Department of Mathematics, Washington State University, Pullman, WA 99164-3113, USA",
+	title = "{On Hamiltonian and symplectic Lanczos processes}"
+}
+
+@article{SLM3,
+	author = "Benner, Peter and FaBbender, Heike",
+	journal = "LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111 (1997)",
+	title = "{An Implicitly Restarted SymplecUc Lanczos Method for the Hamlltonlan Eigenvalue Problem}"
+}
+
+@article{SLM4,
+	author = "FASSBENDER, HEIKE",
+	journal = "BIT 2000, Vol. 40, No. 3, pp. 471--496",
+	title = "{ERROR ANALYSIS OF THE SYMPLECTIC LANCZOS METHOD FOR THE SYMPLECTIC EIGENVALUE PROBLEM}"
+}
+
+@book{iota,
+	author = "Bancroft, Archbishop Richard",
+	chapter = "New Testament (Matthew 5:18)",
+	publisher = "King's Printer Robert Barker",
+	title = "{King James Bible}",
+	year = "1604"
+}
+
+@article{SLMpreserve,
+	author = "{E. Celledoni a}, V. Grimm b R.I. McLachlan c ⇑ D.I. McLaren d D. O{\rq}Neale d e B. Owren a G.R.W. Quispel",
+	chapter = "Example 4",
+	journal = "Journal of Computational Physics 231 (2012) 6770--6789",
+	pages = "6778",
+	title = "{Preserving energy resp. dissipation in numerical PDEs using the {\lq}{\lq}Average Vector Field{\rq}{\rq} method}"
+}
+
+@article{SLMinteresting,
+	author = "{Peter Benner a}, ∗ Heike Fa{\ss}bender b Martin Stoll",
+	chapter = "4. Krylov--Schur-like restarted symplectic Lanczos method",
+	journal = "Linear Algebra and its Applications 435 (2011) 578--600",
+	title = "{A Hamiltonian Krylov--Schur-type method based on the symplectic Lanczos process side 581}"
+}
+
+@inbook{symplecticintegrator,
+	author = "Mayers, {Endre S ̈ uli and David F.}",
+	chapter = "12.5 Runge--Kutta methods",
+	pages = "328",
+	publisher = "cambridge university press",
+	school = "University of Oxford",
+	title = "{An Introduction to Numerical Analysis}",
+	year = "2003"
+}
+
+@inbook{linearerrorgrowth,
+	author = "Wanner, Ernst Hairer Christian Lubich Gerhard",
+	chapter = "X.3 Linear Error Growth and Near-Preservation of First Integrals",
+	edition = "second edition",
+	pages = "413",
+	publisher = "Springer",
+	title = "{Geometric Numerical Integration}",
+	year = "2006"
+}
+
+@article{graphics,
+	author = "{K. Fatahalian}, J. Sugerman and {. Hanrahan}, P",
+	edition = "T . Ak enine-M{\"o}ller , M. McCool",
+	journal = "Graphics Hardware",
+	school = "Stanford University",
+	title = "{Understanding the Efciency of GPU Algorithms f or Matrix-Matrix Multiplication}",
+	year = "2005"
+}
+
+@article{waveequ,
+	author = "Feldman, Joel",
+	title = "{Derivation of the Wave Equation}",
+	year = "2000"
+}
+

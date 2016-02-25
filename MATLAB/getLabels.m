@@ -115,7 +115,7 @@ if m(1) == -2
             tstr = ['DM'];
         end
         
-        stri = [tstr,', m=',num2str(m(i+1))];
+        stri = ['m=',num2str(m(i+1))];
         leg(i) = {stri};
     end
 elseif data(1) == -3

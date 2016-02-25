@@ -1,17 +1,140 @@
 \begin{thebibliography}{10}
 
+\bibitem{expm}
+http://se.mathworks.com/help/matlab/ref/expm.html.
+
+\bibitem{elenaperson}
+{Elena Celledoni}.
+\newblock https://www.ntnu.no/ansatte/elena.celledoni, february 2016.
+
+\bibitem{SLMinteresting}
+Peter~Benner a, Heike Fa{\ss}bender, and Martin Stoll.
+\newblock {A Hamiltonian Krylov--Schur-type method based on the symplectic
+  Lanczos process side 581}.
+\newblock {\em Linear Algebra and its Applications 435 (2011) 578--600}.
+
+\bibitem{iota}
+Archbishop~Richard Bancroft.
+\newblock {\em {King James Bible. New Testament (Matthew 5:18)}}.
+\newblock King's Printer Robert Barker, 1604.
+
+\bibitem{SLM1}
+Peter Benner and Heike FaBbender.
+\newblock {An Implicitly Restarted SymplecUc Lanczos Method for the Hamlltonlan
+  Eigenvalue Problem}.
+\newblock {\em LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111 (1997)}.
+
+\bibitem{SLM3}
+Peter Benner and Heike FaBbender.
+\newblock {An Implicitly Restarted SymplecUc Lanczos Method for the Hamlltonlan
+  Eigenvalue Problem}.
+\newblock {\em LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111 (1997)}.
+
+\bibitem{SLMO}
+Peter Benner and Heike Fa{\ss}bender.
+\newblock {An Implicitly Restarted SymplecUc Lanczos Method for the Hamlltonlan
+  Eigenvalue Problem}.
+\newblock {\em LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111}, 1997.
+
+\bibitem{Hamiltonian}
+Peter Benner, Heike Fa{\ss}bender, and Martin Stoll.
+\newblock {A Hamiltonian Krylov--Schur-type method based on the symplectic
+  Lanczos process}.
+\newblock {\em Linear Algebra and its Applications 435 (2011) 578--600}, page
+  579.
+
+\bibitem{SLMconv}
+Peter Benner, Heike Fa{\ss}bender, and Martin Stoll.
+\newblock {A Hamiltonian Krylov--Schur-type method based on the symplectic
+  Lanczos process side 581}.
+\newblock {\em Linear Algebra and its Applications 435 (2011) 578--600}, page
+  581.
+
+\bibitem{SLM}
+Peter Benner, Heike Fa{\ss}bender, and Martin Stoll.
+\newblock {A Hamiltonian Krylov--Schur-type method based on the symplectic
+  Lanczos process}.
+\newblock {\em Linear Algebra and its Applications}, (435):578--600, 2011.
+
+\bibitem{zerotransf}
+M.~A. Botchev.
+\newblock {A block Krylov subspace time-exact solution method for linear
+  ordinary differential equation systems}.
+\newblock {\em Numer. Linear Algebra Appl. 2013; 20:557--574}, page 557.
+
+\bibitem{alot}
+Allie Brosh.
+\newblock {The Alot is Better Than You at Everything}.
+\newblock
+  http://hyperboleandahalf.blogspot.no/2010/04/alot-is-better-than-you-at-everything.html,
+  April 2010.
+
+\bibitem{energy}
+E.~Celledoni, V.~Grimm, R.I. McLachlan, D.I. McLaren, D.~O{\rq}Neale, B.~Owren,
+  and G.R.W. Quispel.
+\newblock {Preserving energy resp. dissipation in numerical PDEs using the
+  {\lq}{\lq}Average Vector Field{\rq}{\rq} method}.
+\newblock {\em Journal of Computational Physics 231 (2012) 6770--6789}, page
+  6772.
+
+\bibitem{SLMpreserve}
+E.~Celledoni, V.~Grimm, R.I. McLachlan, D.I. McLaren, D.~O{\rq}Neale, B.~Owren,
+  and G.R.W. Quispel.
+\newblock {Preserving energy resp. dissipation in numerical PDEs using the
+  {\lq}{\lq}Average Vector Field{\rq}{\rq} method}.
+\newblock {\em Journal of Computational Physics 231 (2012) 6770--6789}, page
+  6778.
+
 \bibitem{elena}
 Celledoni E. and Moret I.
 \newblock {A Krylov projection method for system of ODEs}.
 \newblock {\em Applied Numerical Mathematics 23 (1997) 365-378}, 1997.
 
+\bibitem{elenaconv}
+Celledoni E. and Moret I.
+\newblock {A Krylov projection method for system of ODEs}.
+\newblock {\em Applied Numerical Mathematics 23 (1997) 365-378}, page 372,
+  1997.
+
 \bibitem{min}
 Sindre Eskeland.
 \newblock {A Krylov projection Method for the heat equation}.
 
-\bibitem{luli}
-Lu~Li.
-\newblock {SYMPLECTIC LANCOZS METHOD FOR SOLVING HAMILTONIAN SYSTEMS}.
+\bibitem{SLMprop}
+HEIKE FASSBENDER.
+\newblock {ERROR ANALYSIS OF THE SYMPLECTIC LANCZOS METHOD FOR THE SYMPLECTIC
+  EIGENVALUE PROBLEM}.
+\newblock {\em SIAM J. S CI. C OMPUT . Vol. 35, No. 3, pp. A1376--A1397}.
+
+\bibitem{SLM4}
+HEIKE FASSBENDER.
+\newblock {ERROR ANALYSIS OF THE SYMPLECTIC LANCZOS METHOD FOR THE SYMPLECTIC
+  EIGENVALUE PROBLEM}.
+\newblock {\em BIT 2000, Vol. 40, No. 3, pp. 471--496}.
+
+\bibitem{graphics}
+K.~Fatahalian, P.~Hanrahan, and J.~Sugerman.
+\newblock {Understanding the Efficiency of GPU Algorithms for Matrix-Matrix
+  Multiplication}.
+\newblock {\em Graphics Hardware}, 2005.
+
+\bibitem{waveequ}
+Joel Feldman.
+\newblock {Derivation of the Wave Equation}.
+\newblock 2000.
+
+\bibitem{linearerrorgrowth}
+Ernst Hairer, Gerhard Wanner, and Christian Lubich.
+\newblock {\em {Geometric Numerical Integration}}, chapter X.3 Linear Error
+  Growth and Near-Preservation of First Integrals, page 413.
+\newblock Springer, second edition edition, 2006.
+
+\bibitem{complex}
+Cohn Henry, Kleinberg Robert, Szegedy {Bal azs}, and Umans Christopher.
+\newblock {Group-theoretic Algorithms for Matrix Multiplication}.
+\newblock {\em Proceedings of the 46th Annual Symposium on Foundations of
+  Computer Science, 23-25 October 2005, Pittsburgh, PA, IEEE Computer Society,
+  pp. 379-388}, 2005.
 
 \bibitem{fivepoint}
 Abramowitz Milton and Stegun {Irene A.}
@@ -19,17 +142,12 @@ Abramowitz Milton and Stegun {Irene A.}
 \newblock Tenth Printing, December 1972.
 \newblock with corrections.
 
-\bibitem{SLMO}
-Heike~Fa{\ss}bender {Peter Benner}.
-\newblock {An Implicitly Restarted SymplecUc Lanczos Method for the Hamlltonlan
-  Eigenvalue Problem}.
-\newblock {\em LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111}, 1997.
-
-\bibitem{SLM}
-Heike Fa{\ss}bender Martin~Stoll {Peter Benner}.
-\newblock {A Hamiltonian Krylov--Schur-type method based on the symplectic
-  Lanczos process}.
-\newblock {\em Linear Algebra and its Applications}, (435):578--600, 2011.
+\bibitem{convtrap}
+Arup~Kumar Nandy and C.~S. Jog.
+\newblock {Conservation properties of the trapezoidal rule in linear time
+  domain analysis of acoustics and structures}.
+\newblock {\em FRITA Lab,Department of Mechanical Engineering, Indian Institu
+  te of Science, Bangalore, India-560012}, januar 2014.
 
 \bibitem{trapezoidal}
 Endre S{\"u}li and David~F. Mayers.
@@ -48,6 +166,25 @@ Endre S{\"u}li and David~F. Mayers.
 \newblock {\em {An Introduction to Numerical Analysis}}, chapter Definition
   10.1, page 286.
 \newblock cambridge university press, 2003.
+
+\bibitem{symplecticintegrator}
+Endre S{\"u}li and David~F. Mayers.
+\newblock {\em {An Introduction to Numerical Analysis}}, chapter 12.5
+  Runge--Kutta methods, page 328.
+\newblock cambridge university press, 2003.
+
+\bibitem{SLM2}
+David~S. Watkins.
+\newblock {On Hamiltonian and symplectic Lanczos processes}.
+\newblock {\em Department of Mathematics, Washington State University, Pullman,
+  WA 99164-3113, USA}.
+
+\bibitem{kryprop}
+Saad Yousef.
+\newblock {\em {Iterative Methods for Sparse Linear Systems}}, volume SECOND
+  EDITION, chapter 6.3.1, pages 154--155.
+\newblock Siam, 2003.
+\newblock Proposition 6.5.
 
 \bibitem{arnold}
 Saad Yousef.
