@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  25 FEB 2016 20:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.6.17)  28 FEB 2016 15:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -916,8 +916,20 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_below_shortintertext_sep=\dimen154
 ) (./thesis.aux
 (./front.aux) (./preface.aux) (./acknowledgment.aux) (./summary.aux)
-(./chapter01.aux) (./chapter02.aux) (./chapter03.aux) (./chapter04.aux)
-(./chapter05.aux) (./chapter06.aux))
+(./chapter01.aux) (./chapter02.aux) (./chapter03.aux) (./chapter04.aux
+
+LaTeX Warning: Label `fig:vlongerrrK' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:vlongerrrK' multiply defined.
+
+
+LaTeX Warning: Label `fig:vlongenerK' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:vlongenerK' multiply defined.
+
+) (./chapter05.aux) (./chapter06.aux))
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
@@ -1064,7 +1076,7 @@ Package caption Info: End \AtBeginDocument code.
 \openout2 = `front.aux'.
 
  (./front.tex
-<fig/rams.pdf, id=253, 382.32837pt x 73.073pt>
+<fig/rams.pdf, id=245, 382.32837pt x 73.073pt>
 File: fig/rams.pdf Graphic file (type pdf)
  <use fig/rams.pdf>
 Package pdftex.def Info: fig/rams.pdf used on input line 8.
@@ -1101,12 +1113,7 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 8.
 
 (/usr/lib/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-Underfull \hbox (badness 10000) in paragraph at lines 7--10
-
- []
-
-) [3
+)) [3
 
 
 ]
@@ -1115,7 +1122,8 @@ LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <24.88> not available
  (./thesis.toc
 LaTeX Font Info:    Try loading font information for FML+futmi on input line 1.
 
- (/usr/lib/texlive/texmf-dist/tex/latex/fourier/fmlfutmi.fd
+
+(/usr/lib/texlive/texmf-dist/tex/latex/fourier/fmlfutmi.fd
 File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
 )
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
@@ -1131,6 +1139,7 @@ LaTeX Font Info:    Font shape `U/futm/m/n' will be
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
 (Font)              scaled to size 6.43999pt on input line 1.
 LaTeX Font Info:    Try loading font information for U+wasy on input line 1.
+
 (/usr/lib/texlive/texmf-dist/tex/latex/wasysym/uwasy.fd
 File: uwasy.fd 2003/10/30 v2.0 Wasy-2 symbol font definitions
 )
@@ -1163,11 +1172,26 @@ l.48 \include{chapter01}
 
  (./chapter01.tex
 Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--31
+
+ []
+
 [2
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 39--42
+Underfull \hbox (badness 10000) in paragraph at lines 35--37
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--48
 
  []
 
@@ -1176,261 +1200,254 @@ Underfull \hbox (badness 10000) in paragraph at lines 39--42
 
  (./chapter02.tex
 Chapter 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
+
+ []
+
 [4
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 40--42
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--47
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 68--69
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--71
+Underfull \hbox (badness 10000) in paragraph at lines 77--79
 
  []
 
 [5]
+Underfull \hbox (badness 10000) in paragraph at lines 80--81
+
+ []
+
 LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/futs/b/n' tried instead on input line 88.
- [6]
-Underfull \hbox (badness 10000) in paragraph at lines 145--146
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 98.
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
 
  []
 
 [7]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 150.
+put line 160.
 
-Underfull \hbox (badness 10000) in paragraph at lines 165--166
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 168--169
+Underfull \hbox (badness 10000) in paragraph at lines 175--176
 
  []
 
-[8]
+
 Underfull \hbox (badness 10000) in paragraph at lines 177--179
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 188--192
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 184--185
+Underfull \hbox (badness 10000) in paragraph at lines 200--201
+
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 233--234
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 217--218
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 231--233
+Underfull \hbox (badness 10000) in paragraph at lines 259--261
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 246--248
+Underfull \hbox (badness 10000) in paragraph at lines 281--283
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 249--250
+Overfull \hbox (4.60812pt too wide) in paragraph at lines 284--285
+\T1/futs/m/n/12 Repeatedly solv-ing equa-tion [] can in-crease the ac-cu-racy o
+f the ap-prox-i-mated so-lu-tion within
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 284--285
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 267--269
+Underfull \hbox (badness 10000) in paragraph at lines 286--287
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 270--271
+Underfull \hbox (badness 10000) in paragraph at lines 288--289
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 272--273
+Underfull \hbox (badness 10000) in paragraph at lines 331--332
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 274--275
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 317--318
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 353--356
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 319--320
-
- []
-
-[12] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 333--335
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 377--379
 
  []
 
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 382.
 
-Underfull \hbox (badness 10000) in paragraph at lines 347--349
+Underfull \hbox (badness 10000) in paragraph at lines 383--384
 
  []
 
 [14]
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 378.
- [15]
-Underfull \hbox (badness 10000) in paragraph at lines 403--405
+Underfull \hbox (badness 10000) in paragraph at lines 404--406
 
  []
 
 
-Overfull \hbox (3.0522pt too wide) in paragraph at lines 417--418
-\T1/futs/m/n/12 only prac-ti-cal dif-fer-ence be-tween the two meth-ods is the 
-or-thog-o-nal-i-sa-tion meth-ods. This makes
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 417--418
+Underfull \hbox (badness 10000) in paragraph at lines 435--438
 
  []
 
+[15]
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
 
-Underfull \hbox (badness 10000) in paragraph at lines 422--423
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 462--463
 
  []
 
 [16]
-Underfull \hbox (badness 10000) in paragraph at lines 461--464
+Underfull \hbox (badness 10000) in paragraph at lines 465--466
 
  []
 
-[17] [18]
+
+Underfull \hbox (badness 10000) in paragraph at lines 467--468
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 491--492
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 512--513
+
+ []
+
+[17]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 525.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 534.
 
-Underfull \hbox (badness 10000) in paragraph at lines 526--527
+Underfull \hbox (badness 10000) in paragraph at lines 535--536
+
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 537--539
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 528--530
+Underfull \hbox (badness 10000) in paragraph at lines 540--541
 
  []
 
-[19]
-Underfull \hbox (badness 10000) in paragraph at lines 531--533
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 534--535
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 536--537
-
- []
-
-) [20]
+) [19]
 \openout2 = `chapter03.aux'.
 
  (./chapter03.tex
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--8
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 9--10
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 11--12
-
- []
-
-[21
+[20
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 13--17
-
- []
-
-<../MATLAB/fig/butterfly.jpg, id=652, 562.1pt x 421.575pt>
-File: ../MATLAB/fig/butterfly.jpg Graphic file (type jpg)
-
-<use ../MATLAB/fig/butterfly.jpg>
-Package pdftex.def Info: ../MATLAB/fig/butterfly.jpg used on input line 23.
-(pdftex.def)             Requested size: 141.61081pt x 106.20401pt.
-
-<../MATLAB/fig/nice.jpg, id=653, 562.1pt x 421.575pt>
-File: ../MATLAB/fig/nice.jpg Graphic file (type jpg)
-
-<use ../MATLAB/fig/nice.jpg>
-Package pdftex.def Info: ../MATLAB/fig/nice.jpg used on input line 29.
-(pdftex.def)             Requested size: 141.61081pt x 106.20401pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 19--35
-
- []
-
-[22] [23 <../MATLAB/fig/butterfly.jpg> <../MATLAB/fig/nice.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 71--73
+Underfull \hbox (badness 10000) in paragraph at lines 39--41
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 74--75
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
+
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 74--76
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--94
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 95--97
+
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
+
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 108--112
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--115
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--128
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 97--98
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
 
  []
 
-[25]
-Underfull \hbox (badness 10000) in paragraph at lines 124--126
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 127--128
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--136
-
- []
-
-[26]) [27]
+) [25]
 \openout2 = `chapter04.aux'.
 
  (./chapter04.tex
@@ -1440,21 +1457,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--6
 
  []
 
-<../MATLAB/fig/intconv11r.jpg, id=693, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intconv11r.jpg, id=674, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intconv11r.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intconv11r.jpg>
 Package pdftex.def Info: ../MATLAB/fig/intconv11r.jpg used on input line 14.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/intconv12r.jpg, id=694, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intconv12r.jpg, id=675, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intconv12r.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intconv12r.jpg>
 Package pdftex.def Info: ../MATLAB/fig/intconv12r.jpg used on input line 20.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/intconv13r.jpg, id=695, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intconv13r.jpg, id=676, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intconv13r.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intconv13r.jpg>
@@ -1465,21 +1482,21 @@ Underfull \hbox (badness 2096) in paragraph at lines 26--26
 []\T1/futs/m/n/10.95 (c) |Con-ver-gence of mid-point
  []
 
-<../MATLAB/fig/intconv11.jpg, id=696, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intconv11.jpg, id=677, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intconv11.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intconv11.jpg>
 Package pdftex.def Info: ../MATLAB/fig/intconv11.jpg used on input line 31.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/intconv12.jpg, id=697, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intconv12.jpg, id=678, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intconv12.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intconv12.jpg>
 Package pdftex.def Info: ../MATLAB/fig/intconv12.jpg used on input line 37.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/intconv13.jpg, id=698, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intconv13.jpg, id=679, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intconv13.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intconv13.jpg>
@@ -1490,7 +1507,7 @@ Underfull \hbox (badness 2564) in paragraph at lines 43--43
 []\T1/futs/m/n/10.95 (f) |Con-ver-gence of mid-point
  []
 
-[28
+[26
 
 
 
@@ -1504,23 +1521,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 53--54
 
  []
 
-<../MATLAB/fig/intener11.jpg, id=706, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intener11.jpg, id=687, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intener11.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intener11.jpg>
 Package pdftex.def Info: ../MATLAB/fig/intener11.jpg used on input line 60.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/intener12.jpg, id=707, 1204.5pt x 903.375pt>
+<../MATLAB/fig/intener12.jpg, id=688, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/intener12.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/intener12.jpg>
 Package pdftex.def Info: ../MATLAB/fig/intener12.jpg used on input line 66.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
- [29 <../MATLAB/fig/intconv11r.jpg> <../MATLAB/fig/intconv12r.jpg> <../MATLAB/f
+ [27 <../MATLAB/fig/intconv11r.jpg> <../MATLAB/fig/intconv12r.jpg> <../MATLAB/f
 ig/intconv13r.jpg> <../MATLAB/fig/intconv11.jpg> <../MATLAB/fig/intconv12.jpg> 
 <../MATLAB/fig/intconv13.jpg>]
-<../MATLAB/fig/exactconvtraperr.jpg, id=716, 1204.5pt x 903.375pt>
+<../MATLAB/fig/exactconvtraperr.jpg, id=695, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/exactconvtraperr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/exactconvtraperr.jpg>
@@ -1532,7 +1549,7 @@ Underfull \hbox (badness 7326) in paragraph at lines 80--80
 []\T1/futs/m/n/10.95 (a) |Con-ver-gence of the ex-
  []
 
-<../MATLAB/fig/exactconvmiderr.jpg, id=717, 1204.5pt x 903.375pt>
+<../MATLAB/fig/exactconvmiderr.jpg, id=696, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/exactconvmiderr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/exactconvmiderr.jpg>
@@ -1568,7 +1585,7 @@ Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
 (hyperref)                removing `math shift' on input line 97.
 
-<../MATLAB/fig/lcompareError.jpg, id=719, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lcompareError.jpg, id=698, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lcompareError.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lcompareError.jpg>
@@ -1576,7 +1593,7 @@ Package pdftex.def Info: ../MATLAB/fig/lcompareError.jpg used on input line 101
 .
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/lcompareEnergy.jpg, id=720, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lcompareEnergy.jpg, id=699, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lcompareEnergy.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lcompareEnergy.jpg>
@@ -1584,7 +1601,7 @@ Package pdftex.def Info: ../MATLAB/fig/lcompareEnergy.jpg used on input line 10
 7.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/lcompareIter.jpg, id=721, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lcompareIter.jpg, id=700, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lcompareIter.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lcompareIter.jpg>
@@ -1592,7 +1609,7 @@ Package pdftex.def Info: ../MATLAB/fig/lcompareIter.jpg used on input line 113.
 
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/lcompareErrorw.jpg, id=722, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lcompareErrorw.jpg, id=701, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lcompareErrorw.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lcompareErrorw.jpg>
@@ -1600,7 +1617,7 @@ Package pdftex.def Info: ../MATLAB/fig/lcompareErrorw.jpg used on input line 11
 9.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/lcompareEnergyw.jpg, id=723, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lcompareEnergyw.jpg, id=702, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lcompareEnergyw.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lcompareEnergyw.jpg>
@@ -1608,7 +1625,7 @@ Package pdftex.def Info: ../MATLAB/fig/lcompareEnergyw.jpg used on input line 1
 25.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/lcompareIterw.jpg, id=724, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lcompareIterw.jpg, id=703, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lcompareIterw.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lcompareIterw.jpg>
@@ -1620,972 +1637,1015 @@ Underfull \hbox (badness 10000) in paragraph at lines 132--132
 []\T1/futs/m/n/10.95 (f) |Num-ber of restarts for
  []
 
-[30 <../MATLAB/fig/intener11.jpg> <../MATLAB/fig/intener12.jpg> <../MATLAB/fig/
+[28 <../MATLAB/fig/intener11.jpg> <../MATLAB/fig/intener12.jpg> <../MATLAB/fig/
 exactconvtraperr.jpg> <../MATLAB/fig/exactconvmiderr.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 138--140
+Underfull \hbox (badness 10000) in paragraph at lines 138--139
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
+Underfull \hbox (badness 10000) in paragraph at lines 140--141
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 143--144
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
 
  []
 
-[31 <../MATLAB/fig/lcompareError.jpg> <../MATLAB/fig/lcompareEnergy.jpg> <../MA
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--145
+
+ []
+
+[29 <../MATLAB/fig/lcompareError.jpg> <../MATLAB/fig/lcompareEnergy.jpg> <../MA
 TLAB/fig/lcompareIter.jpg> <../MATLAB/fig/lcompareErrorw.jpg> <../MATLAB/fig/lc
 ompareEnergyw.jpg> <../MATLAB/fig/lcompareIterw.jpg>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 145.
+(hyperref)                removing `math shift' on input line 146.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 145.
+(hyperref)                removing `subscript' on input line 146.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 145.
+(hyperref)                removing `math shift' on input line 146.
 
-<../MATLAB/fig/cierr2.jpg, id=743, 1204.5pt x 903.375pt>
+<../MATLAB/fig/cierr2.jpg, id=722, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/cierr2.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/cierr2.jpg>
-Package pdftex.def Info: ../MATLAB/fig/cierr2.jpg used on input line 149.
+Package pdftex.def Info: ../MATLAB/fig/cierr2.jpg used on input line 150.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 150.
+(Font)              scaled to size 10.07397pt on input line 151.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 150.
+(Font)              scaled to size 7.63599pt on input line 151.
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 150.
+(Font)              scaled to size 5.51999pt on input line 151.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 10.07397pt on input line 150.
+(Font)              scaled to size 10.07397pt on input line 151.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 7.63599pt on input line 150.
+(Font)              scaled to size 7.63599pt on input line 151.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 5.51999pt on input line 150.
+(Font)              scaled to size 5.51999pt on input line 151.
 
-<../MATLAB/fig/ciene2.jpg, id=744, 1204.5pt x 903.375pt>
+<../MATLAB/fig/ciene2.jpg, id=723, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/ciene2.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/ciene2.jpg>
-Package pdftex.def Info: ../MATLAB/fig/ciene2.jpg used on input line 155.
+Package pdftex.def Info: ../MATLAB/fig/ciene2.jpg used on input line 156.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/cierr1.jpg, id=745, 1204.5pt x 903.375pt>
+<../MATLAB/fig/cierr1.jpg, id=724, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/cierr1.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/cierr1.jpg>
-Package pdftex.def Info: ../MATLAB/fig/cierr1.jpg used on input line 161.
+Package pdftex.def Info: ../MATLAB/fig/cierr1.jpg used on input line 162.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/ciene1.jpg, id=746, 1204.5pt x 903.375pt>
+<../MATLAB/fig/ciene1.jpg, id=725, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/ciene1.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/ciene1.jpg>
-Package pdftex.def Info: ../MATLAB/fig/ciene1.jpg used on input line 167.
+Package pdftex.def Info: ../MATLAB/fig/ciene1.jpg used on input line 168.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 174--176
+Underfull \hbox (badness 10000) in paragraph at lines 175--177
 
  []
 
-[32 <../MATLAB/fig/cierr2.jpg> <../MATLAB/fig/ciene2.jpg> <../MATLAB/fig/cierr1
+[30 <../MATLAB/fig/cierr2.jpg> <../MATLAB/fig/ciene2.jpg> <../MATLAB/fig/cierr1
 .jpg> <../MATLAB/fig/ciene1.jpg>]
 LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
-(Font)              scaled to size 15.89755pt on input line 179.
+(Font)              scaled to size 15.89755pt on input line 180.
 LaTeX Font Info:    Font shape `U/futm/m/n' will be
-(Font)              scaled to size 15.89755pt on input line 179.
+(Font)              scaled to size 15.89755pt on input line 180.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 179.
+(hyperref)                removing `math shift' on input line 180.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 179.
+(hyperref)                removing `math shift' on input line 180.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 183.
+(hyperref)                removing `math shift' on input line 184.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 183.
+(hyperref)                removing `math shift' on input line 184.
 
-<../MATLAB/fig/nerrorwA.jpg, id=755, 1204.5pt x 903.375pt>
+<../MATLAB/fig/nerrorwA.jpg, id=734, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/nerrorwA.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/nerrorwA.jpg>
-Package pdftex.def Info: ../MATLAB/fig/nerrorwA.jpg used on input line 187.
+Package pdftex.def Info: ../MATLAB/fig/nerrorwA.jpg used on input line 188.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 188--188
+Underfull \hbox (badness 10000) in paragraph at lines 189--189
 []\T1/futs/m/n/10.95 (a) |Er-ror for \T1/cmtt/m/n/10.95 KPM \T1/futs/m/n/10.95 
 with-out
  []
 
-<../MATLAB/fig/nerrorwS.jpg, id=756, 1204.5pt x 903.375pt>
+<../MATLAB/fig/nerrorwS.jpg, id=735, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/nerrorwS.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/nerrorwS.jpg>
-Package pdftex.def Info: ../MATLAB/fig/nerrorwS.jpg used on input line 193.
+Package pdftex.def Info: ../MATLAB/fig/nerrorwS.jpg used on input line 194.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 194--194
+Underfull \hbox (badness 10000) in paragraph at lines 195--195
 []\T1/futs/m/n/10.95 (b) |Er-ror for \T1/cmtt/m/n/10.95 SLM \T1/futs/m/n/10.95 
 with-out
  []
 
-<../MATLAB/fig/reserrA.jpg, id=757, 1204.5pt x 903.375pt>
+<../MATLAB/fig/reserrA.jpg, id=736, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/reserrA.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/reserrA.jpg>
-Package pdftex.def Info: ../MATLAB/fig/reserrA.jpg used on input line 199.
+Package pdftex.def Info: ../MATLAB/fig/reserrA.jpg used on input line 200.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/reserrS.jpg, id=758, 1204.5pt x 903.375pt>
+<../MATLAB/fig/reserrS.jpg, id=737, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/reserrS.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/reserrS.jpg>
-Package pdftex.def Info: ../MATLAB/fig/reserrS.jpg used on input line 205.
+Package pdftex.def Info: ../MATLAB/fig/reserrS.jpg used on input line 206.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
- [33 <../MATLAB/fig/nerrorwA.jpg> <../MATLAB/fig/nerrorwS.jpg> <../MATLAB/fig/r
-eserrA.jpg> <../MATLAB/fig/reserrS.jpg>]
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--214
+
+ []
+
+[31 <../MATLAB/fig/nerrorwA.jpg> <../MATLAB/fig/nerrorwS.jpg> <../MATLAB/fig/re
+serrA.jpg> <../MATLAB/fig/reserrS.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 215--216
+
+ []
+
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 216.
+(hyperref)                removing `math shift' on input line 219.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 216.
+(hyperref)                removing `subscript' on input line 219.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 216.
+(hyperref)                removing `math shift' on input line 219.
 
-<../MATLAB/fig/terrorwA.jpg, id=768, 1204.5pt x 903.375pt>
+<../MATLAB/fig/terrorwA.jpg, id=748, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/terrorwA.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/terrorwA.jpg>
-Package pdftex.def Info: ../MATLAB/fig/terrorwA.jpg used on input line 221.
+Package pdftex.def Info: ../MATLAB/fig/terrorwA.jpg used on input line 224.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 222--222
+Underfull \hbox (badness 10000) in paragraph at lines 225--225
 []\T1/futs/m/n/10.95 (a) |Er-ror for \T1/cmtt/m/n/10.95 KPM \T1/futs/m/n/10.95 
 with-out
  []
 
-<../MATLAB/fig/terrorwS.jpg, id=769, 1204.5pt x 903.375pt>
+<../MATLAB/fig/terrorwS.jpg, id=749, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/terrorwS.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/terrorwS.jpg>
-Package pdftex.def Info: ../MATLAB/fig/terrorwS.jpg used on input line 227.
+Package pdftex.def Info: ../MATLAB/fig/terrorwS.jpg used on input line 230.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--228
+Underfull \hbox (badness 10000) in paragraph at lines 231--231
 []\T1/futs/m/n/10.95 (b) |Er-ror for \T1/cmtt/m/n/10.95 SLM \T1/futs/m/n/10.95 
 with-out
  []
 
-<../MATLAB/fig/terrorwAr.jpg, id=770, 1204.5pt x 903.375pt>
+<../MATLAB/fig/terrorwAr.jpg, id=750, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/terrorwAr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/terrorwAr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/terrorwAr.jpg used on input line 233.
+Package pdftex.def Info: ../MATLAB/fig/terrorwAr.jpg used on input line 236.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/terrorwSr.jpg, id=771, 1204.5pt x 903.375pt>
+<../MATLAB/fig/terrorwSr.jpg, id=751, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/terrorwSr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/terrorwSr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/terrorwSr.jpg used on input line 239.
+Package pdftex.def Info: ../MATLAB/fig/terrorwSr.jpg used on input line 242.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 247--249
+Underfull \hbox (badness 10000) in paragraph at lines 250--251
 
  []
 
-[34 <../MATLAB/fig/terrorwA.jpg> <../MATLAB/fig/terrorwS.jpg> <../MATLAB/fig/te
+
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
+
+ []
+
+[32 <../MATLAB/fig/terrorwA.jpg> <../MATLAB/fig/terrorwS.jpg> <../MATLAB/fig/te
 rrorwAr.jpg> <../MATLAB/fig/terrorwSr.jpg>]
-<../MATLAB/fig/longtime2err.jpg, id=778, 1204.5pt x 903.375pt>
+<../MATLAB/fig/longtime2err.jpg, id=758, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/longtime2err.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/longtime2err.jpg>
-Package pdftex.def Info: ../MATLAB/fig/longtime2err.jpg used on input line 260.
+Package pdftex.def Info: ../MATLAB/fig/longtime2err.jpg used on input line 264.
 
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/longtime2ene.jpg, id=779, 1204.5pt x 903.375pt>
+<../MATLAB/fig/longtime2ene.jpg, id=759, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/longtime2ene.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/longtime2ene.jpg>
-Package pdftex.def Info: ../MATLAB/fig/longtime2ene.jpg used on input line 266.
+Package pdftex.def Info: ../MATLAB/fig/longtime2ene.jpg used on input line 270.
 
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/longtime2rerr.jpg, id=780, 1204.5pt x 903.375pt>
+<../MATLAB/fig/longtime2rerr.jpg, id=760, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/longtime2rerr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/longtime2rerr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/longtime2rerr.jpg used on input line 272
+Package pdftex.def Info: ../MATLAB/fig/longtime2rerr.jpg used on input line 276
 .
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/longtime2rene.jpg, id=781, 1204.5pt x 903.375pt>
+<../MATLAB/fig/longtime2rene.jpg, id=761, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/longtime2rene.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/longtime2rene.jpg>
-Package pdftex.def Info: ../MATLAB/fig/longtime2rene.jpg used on input line 278
+Package pdftex.def Info: ../MATLAB/fig/longtime2rene.jpg used on input line 282
 .
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/longtime2rite.jpg, id=782, 1204.5pt x 903.375pt>
+<../MATLAB/fig/longtime2rite.jpg, id=762, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/longtime2rite.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/longtime2rite.jpg>
-Package pdftex.def Info: ../MATLAB/fig/longtime2rite.jpg used on input line 284
+Package pdftex.def Info: ../MATLAB/fig/longtime2rite.jpg used on input line 288
 .
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 294--295
-
- []
-
-[35 <../MATLAB/fig/longtime2err.jpg> <../MATLAB/fig/longtime2ene.jpg> <../MATLA
-B/fig/longtime2rerr.jpg> <../MATLAB/fig/longtime2rene.jpg> <../MATLAB/fig/longt
-ime2rite.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 297--298
+ [33 <../MATLAB/fig/longtime2err.jpg> <../MATLAB/fig/longtime2ene.jpg> <../MATL
+AB/fig/longtime2rerr.jpg> <../MATLAB/fig/longtime2rene.jpg> <../MATLAB/fig/long
+time2rite.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 299--300
+Underfull \hbox (badness 10000) in paragraph at lines 301--302
 
  []
 
-<../MATLAB/fig/Kversuskerror0.jpg, id=790, 1204.5pt x 903.375pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 303--304
+
+ []
+
+<../MATLAB/fig/Kversuskerror0.jpg, id=770, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/Kversuskerror0.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/Kversuskerror0.jpg>
 Package pdftex.def Info: ../MATLAB/fig/Kversuskerror0.jpg used on input line 30
-5.
+9.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/Kversuskenergy0.jpg, id=791, 1204.5pt x 903.375pt>
+<../MATLAB/fig/Kversuskenergy0.jpg, id=771, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/Kversuskenergy0.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/Kversuskenergy0.jpg>
 Package pdftex.def Info: ../MATLAB/fig/Kversuskenergy0.jpg used on input line 3
-11.
+15.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/Kversuskerror.jpg, id=792, 1204.5pt x 903.375pt>
+<../MATLAB/fig/Kversuskerror.jpg, id=772, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/Kversuskerror.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/Kversuskerror.jpg>
-Package pdftex.def Info: ../MATLAB/fig/Kversuskerror.jpg used on input line 317
+Package pdftex.def Info: ../MATLAB/fig/Kversuskerror.jpg used on input line 321
 .
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/Kversuskenergy.jpg, id=793, 1204.5pt x 903.375pt>
+<../MATLAB/fig/Kversuskenergy.jpg, id=773, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/Kversuskenergy.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/Kversuskenergy.jpg>
 Package pdftex.def Info: ../MATLAB/fig/Kversuskenergy.jpg used on input line 32
-3.
+7.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
- [36 <../MATLAB/fig/Kversuskerror0.jpg> <../MATLAB/fig/Kversuskenergy0.jpg> <..
+ [34 <../MATLAB/fig/Kversuskerror0.jpg> <../MATLAB/fig/Kversuskenergy0.jpg> <..
 /MATLAB/fig/Kversuskerror.jpg> <../MATLAB/fig/Kversuskenergy.jpg>]
-<../MATLAB/fig/vlongerr.jpg, id=800, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vlongerr.jpg, id=780, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vlongerr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vlongerr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vlongerr.jpg used on input line 339.
+Package pdftex.def Info: ../MATLAB/fig/vlongerr.jpg used on input line 343.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/vlongerrr.jpg, id=801, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vlongerrr.jpg, id=781, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vlongerrr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vlongerrr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vlongerrr.jpg used on input line 345.
+Package pdftex.def Info: ../MATLAB/fig/vlongerrr.jpg used on input line 349.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/vlongerrrK.jpg, id=802, 1204.5pt x 903.375pt>
-File: ../MATLAB/fig/vlongerrrK.jpg Graphic file (type jpg)
-
-<use ../MATLAB/fig/vlongerrrK.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vlongerrrK.jpg used on input line 351.
-(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
-
-<../MATLAB/fig/vlongene.jpg, id=803, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vlongene.jpg, id=782, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vlongene.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vlongene.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vlongene.jpg used on input line 357.
+Package pdftex.def Info: ../MATLAB/fig/vlongene.jpg used on input line 355.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/vlongener.jpg, id=804, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vlongener.jpg, id=783, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vlongener.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vlongener.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vlongener.jpg used on input line 363.
+Package pdftex.def Info: ../MATLAB/fig/vlongener.jpg used on input line 361.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/vlongenerK.jpg, id=805, 1204.5pt x 903.375pt>
+Underfull \hbox (badness 10000) in paragraph at lines 368--369
+
+ []
+
+[35 <../MATLAB/fig/vlongerr.jpg> <../MATLAB/fig/vlongerrr.jpg> <../MATLAB/fig/v
+longene.jpg> <../MATLAB/fig/vlongener.jpg>]
+<../MATLAB/fig/vlongerrrK.jpg, id=790, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/vlongerrrK.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/vlongerrrK.jpg>
+Package pdftex.def Info: ../MATLAB/fig/vlongerrrK.jpg used on input line 373.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+
+<../MATLAB/fig/vlongenerK.jpg, id=791, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vlongenerK.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vlongenerK.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vlongenerK.jpg used on input line 369.
+Package pdftex.def Info: ../MATLAB/fig/vlongenerK.jpg used on input line 379.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 370--370
-[]\T1/futs/m/n/10.95 (f) |En-ergy with win-dow-ing
+Underfull \hbox (badness 10000) in paragraph at lines 380--380
+[]\T1/futs/m/n/10.95 (b) |En-ergy with win-dow-ing
  []
 
+<../MATLAB/fig/vlongerrrKr.jpg, id=792, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/vlongerrrKr.jpg Graphic file (type jpg)
 
-Underfull \hbox (badness 10000) in paragraph at lines 377--378
+<use ../MATLAB/fig/vlongerrrKr.jpg>
+Package pdftex.def Info: ../MATLAB/fig/vlongerrrKr.jpg used on input line 385.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
+Underfull \hbox (badness 1418) in paragraph at lines 386--386
+[]\T1/futs/m/n/10.95 (c) |Er-ror for win-dow-ing with
  []
 
-[37 <../MATLAB/fig/vlongerr.jpg> <../MATLAB/fig/vlongerrr.jpg> <../MATLAB/fig/v
-longerrrK.jpg> <../MATLAB/fig/vlongene.jpg> <../MATLAB/fig/vlongener.jpg> <../M
-ATLAB/fig/vlongenerK.jpg>]
-<../MATLAB/fig/energswA.jpg, id=812, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vlongenerKr.jpg, id=793, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/vlongenerKr.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/vlongenerKr.jpg>
+Package pdftex.def Info: ../MATLAB/fig/vlongenerKr.jpg used on input line 391.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 392--392
+[]\T1/futs/m/n/10.95 (d) |En-ergy with win-dow-ing
+ []
+
+<../MATLAB/fig/energswA.jpg, id=794, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energswA.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energswA.jpg>
-Package pdftex.def Info: ../MATLAB/fig/energswA.jpg used on input line 385.
+Package pdftex.def Info: ../MATLAB/fig/energswA.jpg used on input line 406.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/energswS.jpg, id=813, 1204.5pt x 903.375pt>
+<../MATLAB/fig/energswS.jpg, id=795, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/energswS.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/energswS.jpg>
-Package pdftex.def Info: ../MATLAB/fig/energswS.jpg used on input line 391.
+Package pdftex.def Info: ../MATLAB/fig/energswS.jpg used on input line 412.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
-
-<../MATLAB/fig/SLMpes.jpg, id=814, 570.13pt x 422.57875pt>
+ [36 <../MATLAB/fig/vlongerrrK.jpg> <../MATLAB/fig/vlongenerK.jpg> <../MATLAB/f
+ig/vlongerrrKr.jpg> <../MATLAB/fig/vlongenerKr.jpg>] <../MATLAB/fig/SLMpes.jpg,
+ id=801, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/SLMpes.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/SLMpes.jpg>
-Package pdftex.def Info: ../MATLAB/fig/SLMpes.jpg used on input line 404.
-(pdftex.def)             Requested size: 212.41261pt x 157.43495pt.
+Package pdftex.def Info: ../MATLAB/fig/SLMpes.jpg used on input line 425.
+(pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 410--411
-
- []
-
-[38 <../MATLAB/fig/energswA.jpg> <../MATLAB/fig/energswS.jpg> <../MATLAB/fig/SL
-Mpes.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 413--414
+Underfull \hbox (badness 10000) in paragraph at lines 431--432
 
  []
 
-<../MATLAB/fig/ideaerr20.jpg, id=821, 1204.5pt x 903.375pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 434--435
+
+ []
+
+[37 <../MATLAB/fig/energswA.jpg> <../MATLAB/fig/energswS.jpg> <../MATLAB/fig/SL
+Mpes.jpg>] <../MATLAB/fig/ideaerr20.jpg, id=809, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/ideaerr20.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/ideaerr20.jpg>
-Package pdftex.def Info: ../MATLAB/fig/ideaerr20.jpg used on input line 424.
+Package pdftex.def Info: ../MATLAB/fig/ideaerr20.jpg used on input line 445.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/ideaener20.jpg, id=822, 1204.5pt x 903.375pt>
+<../MATLAB/fig/ideaener20.jpg, id=810, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/ideaener20.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/ideaener20.jpg>
-Package pdftex.def Info: ../MATLAB/fig/ideaener20.jpg used on input line 430.
+Package pdftex.def Info: ../MATLAB/fig/ideaener20.jpg used on input line 451.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 437--439
+Underfull \hbox (badness 10000) in paragraph at lines 458--460
 
  []
 
-[39 <../MATLAB/fig/ideaerr20.jpg> <../MATLAB/fig/ideaener20.jpg>]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 442.
-
-<../MATLAB/fig/expmAerr.jpg, id=828, 1204.5pt x 903.375pt>
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 463.
+<../MATLAB/fig/expmAerr.jpg, id=811, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/expmAerr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/expmAerr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/expmAerr.jpg used on input line 447.
+Package pdftex.def Info: ../MATLAB/fig/expmAerr.jpg used on input line 468.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
 
-<../MATLAB/fig/expmAener.jpg, id=829, 1204.5pt x 903.375pt>
+<../MATLAB/fig/expmAener.jpg, id=812, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/expmAener.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/expmAener.jpg>
-Package pdftex.def Info: ../MATLAB/fig/expmAener.jpg used on input line 453.
+Package pdftex.def Info: ../MATLAB/fig/expmAener.jpg used on input line 474.
 (pdftex.def)             Requested size: 212.41261pt x 159.30602pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 460--462
+ [38 <../MATLAB/fig/ideaerr20.jpg> <../MATLAB/fig/ideaener20.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 481--483
 
  []
 
-<../MATLAB/fig/timem.jpg, id=830, 1204.5pt x 903.375pt>
+<../MATLAB/fig/timem.jpg, id=818, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/timem.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/timem.jpg>
-Package pdftex.def Info: ../MATLAB/fig/timem.jpg used on input line 472.
+Package pdftex.def Info: ../MATLAB/fig/timem.jpg used on input line 493.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 7740) in paragraph at lines 473--473
+Underfull \hbox (badness 7740) in paragraph at lines 494--494
 []\T1/futs/m/n/10.95 (a) |Com-pu-ta-tion time as a
  []
 
-<../MATLAB/fig/timek.jpg, id=831, 1204.5pt x 903.375pt>
+<../MATLAB/fig/timek.jpg, id=819, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/timek.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/timek.jpg>
-Package pdftex.def Info: ../MATLAB/fig/timek.jpg used on input line 478.
+Package pdftex.def Info: ../MATLAB/fig/timek.jpg used on input line 499.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 6995) in paragraph at lines 479--479
+Underfull \hbox (badness 6995) in paragraph at lines 500--500
 []\T1/futs/m/n/10.95 (b) |Com-pu-ta-tion time as a
  []
 
-<../MATLAB/fig/timek1.jpg, id=832, 1204.5pt x 903.375pt>
+<../MATLAB/fig/timek1.jpg, id=820, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/timek1.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/timek1.jpg>
-Package pdftex.def Info: ../MATLAB/fig/timek1.jpg used on input line 484.
+Package pdftex.def Info: ../MATLAB/fig/timek1.jpg used on input line 505.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 8019) in paragraph at lines 485--485
+Underfull \hbox (badness 8019) in paragraph at lines 506--506
 []\T1/futs/m/n/10.95 (c) |Com-pu-ta-tion time as a
  []
 
-<../MATLAB/fig/timemr.jpg, id=833, 1204.5pt x 903.375pt>
+<../MATLAB/fig/timemr.jpg, id=821, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/timemr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/timemr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/timemr.jpg used on input line 490.
+Package pdftex.def Info: ../MATLAB/fig/timemr.jpg used on input line 511.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 6995) in paragraph at lines 491--491
+Underfull \hbox (badness 6995) in paragraph at lines 512--512
 []\T1/futs/m/n/10.95 (d) |Com-pu-ta-tion time as a
  []
 
-<../MATLAB/fig/timekr.jpg, id=834, 1204.5pt x 903.375pt>
+<../MATLAB/fig/timekr.jpg, id=822, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/timekr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/timekr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/timekr.jpg used on input line 496.
+Package pdftex.def Info: ../MATLAB/fig/timekr.jpg used on input line 517.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 7814) in paragraph at lines 497--497
+Underfull \hbox (badness 7814) in paragraph at lines 518--518
 []\T1/futs/m/n/10.95 (e) |Com-pu-ta-tion time as a
  []
 
-<../MATLAB/fig/timekr1.jpg, id=835, 1204.5pt x 903.375pt>
+<../MATLAB/fig/timekr1.jpg, id=823, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/timekr1.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/timekr1.jpg>
-Package pdftex.def Info: ../MATLAB/fig/timekr1.jpg used on input line 502.
+Package pdftex.def Info: ../MATLAB/fig/timekr1.jpg used on input line 523.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
- [40 <../MATLAB/fig/expmAerr.jpg> <../MATLAB/fig/expmAener.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 510--511
+ [39 <../MATLAB/fig/expmAerr.jpg> <../MATLAB/fig/expmAener.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 531--532
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 512--513
+Underfull \hbox (badness 10000) in paragraph at lines 533--534
 
  []
 
-<../MATLAB/fig/timemt.jpg, id=843, 1204.5pt x 903.375pt>
+<../MATLAB/fig/timemt.jpg, id=831, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/timemt.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/timemt.jpg>
-Package pdftex.def Info: ../MATLAB/fig/timemt.jpg used on input line 519.
+Package pdftex.def Info: ../MATLAB/fig/timemt.jpg used on input line 540.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 7740) in paragraph at lines 520--520
+Underfull \hbox (badness 7740) in paragraph at lines 541--541
 []\T1/futs/m/n/10.95 (a) |Com-pu-ta-tion time as a
  []
 
-<../MATLAB/fig/timekt.jpg, id=844, 1204.5pt x 903.375pt>
+<../MATLAB/fig/timekt.jpg, id=832, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/timekt.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/timekt.jpg>
-Package pdftex.def Info: ../MATLAB/fig/timekt.jpg used on input line 525.
+Package pdftex.def Info: ../MATLAB/fig/timekt.jpg used on input line 546.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 6995) in paragraph at lines 526--526
+Underfull \hbox (badness 6995) in paragraph at lines 547--547
 []\T1/futs/m/n/10.95 (b) |Com-pu-ta-tion time as a
  []
 
-<../MATLAB/fig/timemtr.jpg, id=845, 1204.5pt x 903.375pt>
+<../MATLAB/fig/timemtr.jpg, id=833, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/timemtr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/timemtr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/timemtr.jpg used on input line 531.
+Package pdftex.def Info: ../MATLAB/fig/timemtr.jpg used on input line 552.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 8019) in paragraph at lines 532--532
+Underfull \hbox (badness 8019) in paragraph at lines 553--553
 []\T1/futs/m/n/10.95 (c) |Com-pu-ta-tion time as a
  []
 
-<../MATLAB/fig/timektr.jpg, id=846, 1204.5pt x 903.375pt>
+<../MATLAB/fig/timektr.jpg, id=834, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/timektr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/timektr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/timektr.jpg used on input line 537.
-(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
-
-Underfull \hbox (badness 6995) in paragraph at lines 538--538
-[]\T1/futs/m/n/10.95 (d) |Com-pu-ta-tion time as a
- []
-
-[41 <../MATLAB/fig/timem.jpg> <../MATLAB/fig/timek.jpg> <../MATLAB/fig/timek1.j
-pg> <../MATLAB/fig/timemr.jpg> <../MATLAB/fig/timekr.jpg> <../MATLAB/fig/timekr
-1.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 545--546
-
- []
-
-<../MATLAB/fig/timeme.jpg, id=853, 1204.5pt x 903.375pt>
-File: ../MATLAB/fig/timeme.jpg Graphic file (type jpg)
-
-<use ../MATLAB/fig/timeme.jpg>
-Package pdftex.def Info: ../MATLAB/fig/timeme.jpg used on input line 552.
-(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
-
-Underfull \hbox (badness 7740) in paragraph at lines 553--553
-[]\T1/futs/m/n/10.95 (a) |Com-pu-ta-tion time as a
- []
-
-<../MATLAB/fig/timeke.jpg, id=854, 1204.5pt x 903.375pt>
-File: ../MATLAB/fig/timeke.jpg Graphic file (type jpg)
-
-<use ../MATLAB/fig/timeke.jpg>
-Package pdftex.def Info: ../MATLAB/fig/timeke.jpg used on input line 558.
+Package pdftex.def Info: ../MATLAB/fig/timektr.jpg used on input line 558.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
 Underfull \hbox (badness 6995) in paragraph at lines 559--559
+[]\T1/futs/m/n/10.95 (d) |Com-pu-ta-tion time as a
+ []
+
+[40 <../MATLAB/fig/timem.jpg> <../MATLAB/fig/timek.jpg> <../MATLAB/fig/timek1.j
+pg> <../MATLAB/fig/timemr.jpg> <../MATLAB/fig/timekr.jpg> <../MATLAB/fig/timekr
+1.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 566--567
+
+ []
+
+<../MATLAB/fig/timeme.jpg, id=841, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/timeme.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/timeme.jpg>
+Package pdftex.def Info: ../MATLAB/fig/timeme.jpg used on input line 573.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+
+Underfull \hbox (badness 7740) in paragraph at lines 574--574
+[]\T1/futs/m/n/10.95 (a) |Com-pu-ta-tion time as a
+ []
+
+<../MATLAB/fig/timeke.jpg, id=842, 1204.5pt x 903.375pt>
+File: ../MATLAB/fig/timeke.jpg Graphic file (type jpg)
+
+<use ../MATLAB/fig/timeke.jpg>
+Package pdftex.def Info: ../MATLAB/fig/timeke.jpg used on input line 579.
+(pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
+
+Underfull \hbox (badness 6995) in paragraph at lines 580--580
 []\T1/futs/m/n/10.95 (b) |Com-pu-ta-tion time as a
  []
 
-[42 <../MATLAB/fig/timemt.jpg> <../MATLAB/fig/timekt.jpg> <../MATLAB/fig/timemt
-r.jpg> <../MATLAB/fig/timektr.jpg>]) [43 <../MATLAB/fig/timeme.jpg> <../MATLAB/
+[41 <../MATLAB/fig/timemt.jpg> <../MATLAB/fig/timekt.jpg> <../MATLAB/fig/timemt
+r.jpg> <../MATLAB/fig/timektr.jpg>]) [42 <../MATLAB/fig/timeme.jpg> <../MATLAB/
 fig/timeke.jpg>]
 \openout2 = `chapter05.aux'.
 
  (./chapter05.tex
 Chapter 5.
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 6.
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 6.
+(hyperref)                removing `math shift' on input line 7.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 6.
+(hyperref)                removing `math shift' on input line 7.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 6.
+(hyperref)                removing `math shift' on input line 7.
 
-<../MATLAB/fig/varconv11r.jpg, id=871, 1204.5pt x 903.375pt>
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 7.
+
+<../MATLAB/fig/varconv11r.jpg, id=859, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/varconv11r.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/varconv11r.jpg>
-Package pdftex.def Info: ../MATLAB/fig/varconv11r.jpg used on input line 11.
+Package pdftex.def Info: ../MATLAB/fig/varconv11r.jpg used on input line 12.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 12--12
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
 []\T1/futs/m/n/10.95 (a) |Con-ver-gence for \T1/cmtt/m/n/10.95 wave
  []
 
 
-Underfull \hbox (badness 1226) in paragraph at lines 12--12
+Underfull \hbox (badness 1226) in paragraph at lines 13--13
 \T1/futs/m/n/10.95 with trape-zoidal rule with-out
  []
 
-<../MATLAB/fig/varconv13r.jpg, id=872, 1204.5pt x 903.375pt>
+<../MATLAB/fig/varconv13r.jpg, id=860, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/varconv13r.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/varconv13r.jpg>
-Package pdftex.def Info: ../MATLAB/fig/varconv13r.jpg used on input line 17.
+Package pdftex.def Info: ../MATLAB/fig/varconv13r.jpg used on input line 18.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/varconv11.jpg, id=873, 1204.5pt x 903.375pt>
+<../MATLAB/fig/varconv11.jpg, id=861, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/varconv11.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/varconv11.jpg>
-Package pdftex.def Info: ../MATLAB/fig/varconv11.jpg used on input line 22.
+Package pdftex.def Info: ../MATLAB/fig/varconv11.jpg used on input line 23.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/varconv13.jpg, id=874, 1204.5pt x 903.375pt>
+<../MATLAB/fig/varconv13.jpg, id=862, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/varconv13.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/varconv13.jpg>
-Package pdftex.def Info: ../MATLAB/fig/varconv13.jpg used on input line 28.
+Package pdftex.def Info: ../MATLAB/fig/varconv13.jpg used on input line 29.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
- [44
+ [43
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 37--38
+Underfull \hbox (badness 10000) in paragraph at lines 38--39
 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 39.
+(hyperref)                removing `math shift' on input line 40.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\iota' on input line 39.
+(hyperref)                removing `\iota' on input line 40.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 39.
+(hyperref)                removing `math shift' on input line 40.
 
-<../MATLAB/fig/varyEnergy.jpg, id=879, 1204.5pt x 903.375pt>
+<../MATLAB/fig/varyEnergy.jpg, id=868, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/varyEnergy.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/varyEnergy.jpg>
-Package pdftex.def Info: ../MATLAB/fig/varyEnergy.jpg used on input line 44.
+Package pdftex.def Info: ../MATLAB/fig/varyEnergy.jpg used on input line 45.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/varyError.jpg, id=880, 1204.5pt x 903.375pt>
+<../MATLAB/fig/varyError.jpg, id=869, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/varyError.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/varyError.jpg>
-Package pdftex.def Info: ../MATLAB/fig/varyError.jpg used on input line 50.
+Package pdftex.def Info: ../MATLAB/fig/varyError.jpg used on input line 51.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/varyIter.jpg, id=881, 1204.5pt x 903.375pt>
+<../MATLAB/fig/varyIter.jpg, id=870, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/varyIter.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/varyIter.jpg>
-Package pdftex.def Info: ../MATLAB/fig/varyIter.jpg used on input line 56.
+Package pdftex.def Info: ../MATLAB/fig/varyIter.jpg used on input line 57.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/varyEnergyw.jpg, id=882, 1204.5pt x 903.375pt>
+<../MATLAB/fig/varyEnergyw.jpg, id=871, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/varyEnergyw.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/varyEnergyw.jpg>
-Package pdftex.def Info: ../MATLAB/fig/varyEnergyw.jpg used on input line 62.
+Package pdftex.def Info: ../MATLAB/fig/varyEnergyw.jpg used on input line 63.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/varyErrorw.jpg, id=883, 1204.5pt x 903.375pt>
+<../MATLAB/fig/varyErrorw.jpg, id=872, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/varyErrorw.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/varyErrorw.jpg>
-Package pdftex.def Info: ../MATLAB/fig/varyErrorw.jpg used on input line 68.
+Package pdftex.def Info: ../MATLAB/fig/varyErrorw.jpg used on input line 69.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/varyIterw.jpg, id=884, 1204.5pt x 903.375pt>
+<../MATLAB/fig/varyIterw.jpg, id=873, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/varyIterw.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/varyIterw.jpg>
-Package pdftex.def Info: ../MATLAB/fig/varyIterw.jpg used on input line 74.
+Package pdftex.def Info: ../MATLAB/fig/varyIterw.jpg used on input line 75.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--75
+Underfull \hbox (badness 10000) in paragraph at lines 76--76
 []\T1/futs/m/n/10.95 (f) |Num-ber of restarts for
  []
 
-[45 <../MATLAB/fig/varconv11r.jpg> <../MATLAB/fig/varconv13r.jpg> <../MATLAB/fi
+[44 <../MATLAB/fig/varconv11r.jpg> <../MATLAB/fig/varconv13r.jpg> <../MATLAB/fi
 g/varconv11.jpg> <../MATLAB/fig/varconv13.jpg>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 83.
+(hyperref)                removing `math shift' on input line 84.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 83.
+(hyperref)                removing `math shift' on input line 84.
 
-<../MATLAB/fig/lnerrorwA.jpg, id=891, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lnerrorwA.jpg, id=880, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lnerrorwA.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lnerrorwA.jpg>
-Package pdftex.def Info: ../MATLAB/fig/lnerrorwA.jpg used on input line 88.
+Package pdftex.def Info: ../MATLAB/fig/lnerrorwA.jpg used on input line 89.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--89
+Underfull \hbox (badness 10000) in paragraph at lines 90--90
 []\T1/futs/m/n/10.95 (a) |Er-ror for \T1/cmtt/m/n/10.95 KPM \T1/futs/m/n/10.95 
 with-out
  []
 
-<../MATLAB/fig/lreserrA.jpg, id=892, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lreserrA.jpg, id=881, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lreserrA.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lreserrA.jpg>
-Package pdftex.def Info: ../MATLAB/fig/lreserrA.jpg used on input line 94.
+Package pdftex.def Info: ../MATLAB/fig/lreserrA.jpg used on input line 95.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/lterrorwA.jpg, id=893, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lterrorwA.jpg, id=882, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lterrorwA.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lterrorwA.jpg>
-Package pdftex.def Info: ../MATLAB/fig/lterrorwA.jpg used on input line 100.
+Package pdftex.def Info: ../MATLAB/fig/lterrorwA.jpg used on input line 101.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--101
+Underfull \hbox (badness 10000) in paragraph at lines 102--102
 []\T1/futs/m/n/10.95 (c) |Er-ror for \T1/cmtt/m/n/10.95 KPM \T1/futs/m/n/10.95 
 with-out
  []
 
-<../MATLAB/fig/lnerrorwS.jpg, id=894, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lnerrorwS.jpg, id=883, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lnerrorwS.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lnerrorwS.jpg>
-Package pdftex.def Info: ../MATLAB/fig/lnerrorwS.jpg used on input line 107.
+Package pdftex.def Info: ../MATLAB/fig/lnerrorwS.jpg used on input line 108.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--108
+Underfull \hbox (badness 10000) in paragraph at lines 109--109
 []\T1/futs/m/n/10.95 (d) |Er-ror for \T1/cmtt/m/n/10.95 SLM \T1/futs/m/n/10.95 
 with-out
  []
 
-<../MATLAB/fig/lreserrS.jpg, id=895, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lreserrS.jpg, id=884, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lreserrS.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lreserrS.jpg>
-Package pdftex.def Info: ../MATLAB/fig/lreserrS.jpg used on input line 113.
+Package pdftex.def Info: ../MATLAB/fig/lreserrS.jpg used on input line 114.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/lterrorwS.jpg, id=896, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lterrorwS.jpg, id=885, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lterrorwS.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lterrorwS.jpg>
-Package pdftex.def Info: ../MATLAB/fig/lterrorwS.jpg used on input line 119.
+Package pdftex.def Info: ../MATLAB/fig/lterrorwS.jpg used on input line 120.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
- [46 <../MATLAB/fig/varyEnergy.jpg> <../MATLAB/fig/varyError.jpg> <../MATLAB/fi
+ [45 <../MATLAB/fig/varyEnergy.jpg> <../MATLAB/fig/varyError.jpg> <../MATLAB/fi
 g/varyIter.jpg> <../MATLAB/fig/varyEnergyw.jpg> <../MATLAB/fig/varyErrorw.jpg> 
 <../MATLAB/fig/varyIterw.jpg>]
-<../MATLAB/fig/vlongtime2err.jpg, id=907, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vlongtime2err.jpg, id=896, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vlongtime2err.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vlongtime2err.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vlongtime2err.jpg used on input line 136
+Package pdftex.def Info: ../MATLAB/fig/vlongtime2err.jpg used on input line 137
 .
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/vlongtime2ene.jpg, id=908, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vlongtime2ene.jpg, id=897, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vlongtime2ene.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vlongtime2ene.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vlongtime2ene.jpg used on input line 142
+Package pdftex.def Info: ../MATLAB/fig/vlongtime2ene.jpg used on input line 143
 .
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/vlongtime2rerr.jpg, id=909, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vlongtime2rerr.jpg, id=898, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vlongtime2rerr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vlongtime2rerr.jpg>
 Package pdftex.def Info: ../MATLAB/fig/vlongtime2rerr.jpg used on input line 14
-8.
+9.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/vlongtime2rene.jpg, id=910, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vlongtime2rene.jpg, id=899, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vlongtime2rene.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vlongtime2rene.jpg>
 Package pdftex.def Info: ../MATLAB/fig/vlongtime2rene.jpg used on input line 15
-4.
+5.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/vlongtime2rite.jpg, id=911, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vlongtime2rite.jpg, id=900, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vlongtime2rite.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vlongtime2rite.jpg>
 Package pdftex.def Info: ../MATLAB/fig/vlongtime2rite.jpg used on input line 16
-0.
+1.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
- [47 <../MATLAB/fig/lnerrorwA.jpg> <../MATLAB/fig/lreserrA.jpg> <../MATLAB/fig/
+ [46 <../MATLAB/fig/lnerrorwA.jpg> <../MATLAB/fig/lreserrA.jpg> <../MATLAB/fig/
 lterrorwA.jpg> <../MATLAB/fig/lnerrorwS.jpg> <../MATLAB/fig/lreserrS.jpg> <../M
 ATLAB/fig/lterrorwS.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 168--170
+Underfull \hbox (badness 10000) in paragraph at lines 169--171
 
  []
 
-<../MATLAB/fig/longererr.jpg, id=921, 1204.5pt x 903.375pt>
+<../MATLAB/fig/longererr.jpg, id=910, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/longererr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/longererr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/longererr.jpg used on input line 176.
+Package pdftex.def Info: ../MATLAB/fig/longererr.jpg used on input line 177.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/longerene.jpg, id=922, 1204.5pt x 903.375pt>
+<../MATLAB/fig/longerene.jpg, id=911, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/longerene.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/longerene.jpg>
-Package pdftex.def Info: ../MATLAB/fig/longerene.jpg used on input line 182.
+Package pdftex.def Info: ../MATLAB/fig/longerene.jpg used on input line 183.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/longererrr.jpg, id=923, 1204.5pt x 903.375pt>
+<../MATLAB/fig/longererrr.jpg, id=912, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/longererrr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/longererrr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/longererrr.jpg used on input line 188.
+Package pdftex.def Info: ../MATLAB/fig/longererrr.jpg used on input line 189.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/longerener.jpg, id=924, 1204.5pt x 903.375pt>
+<../MATLAB/fig/longerener.jpg, id=913, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/longerener.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/longerener.jpg>
-Package pdftex.def Info: ../MATLAB/fig/longerener.jpg used on input line 194.
+Package pdftex.def Info: ../MATLAB/fig/longerener.jpg used on input line 195.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/longeriter.jpg, id=925, 1204.5pt x 903.375pt>
+<../MATLAB/fig/longeriter.jpg, id=914, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/longeriter.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/longeriter.jpg>
-Package pdftex.def Info: ../MATLAB/fig/longeriter.jpg used on input line 200.
+Package pdftex.def Info: ../MATLAB/fig/longeriter.jpg used on input line 201.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
- [48 <../MATLAB/fig/vlongtime2err.jpg> <../MATLAB/fig/vlongtime2ene.jpg> <../MA
+ [47 <../MATLAB/fig/vlongtime2err.jpg> <../MATLAB/fig/vlongtime2ene.jpg> <../MA
 TLAB/fig/vlongtime2rerr.jpg> <../MATLAB/fig/vlongtime2rene.jpg> <../MATLAB/fig/
 vlongtime2rite.jpg>]
-<../MATLAB/fig/vwaveerr.jpg, id=932, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vwaveerr.jpg, id=921, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vwaveerr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vwaveerr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vwaveerr.jpg used on input line 213.
+Package pdftex.def Info: ../MATLAB/fig/vwaveerr.jpg used on input line 214.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/vwaveene.jpg, id=933, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vwaveene.jpg, id=922, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vwaveene.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vwaveene.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vwaveene.jpg used on input line 219.
+Package pdftex.def Info: ../MATLAB/fig/vwaveene.jpg used on input line 220.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/vwavererr.jpg, id=934, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vwavererr.jpg, id=923, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vwavererr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vwavererr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vwavererr.jpg used on input line 225.
+Package pdftex.def Info: ../MATLAB/fig/vwavererr.jpg used on input line 226.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/vwaverene.jpg, id=935, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vwaverene.jpg, id=924, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vwaverene.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vwaverene.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vwaverene.jpg used on input line 231.
+Package pdftex.def Info: ../MATLAB/fig/vwaverene.jpg used on input line 232.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/vwaveiter.jpg, id=936, 1204.5pt x 903.375pt>
+<../MATLAB/fig/vwaveiter.jpg, id=925, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/vwaveiter.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/vwaveiter.jpg>
-Package pdftex.def Info: ../MATLAB/fig/vwaveiter.jpg used on input line 237.
+Package pdftex.def Info: ../MATLAB/fig/vwaveiter.jpg used on input line 238.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
- [49 <../MATLAB/fig/longererr.jpg> <../MATLAB/fig/longerene.jpg> <../MATLAB/fig
+ [48 <../MATLAB/fig/longererr.jpg> <../MATLAB/fig/longerene.jpg> <../MATLAB/fig
 /longererrr.jpg> <../MATLAB/fig/longerener.jpg> <../MATLAB/fig/longeriter.jpg>]
 
-<../MATLAB/fig/lversuskerror0.jpg, id=943, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lversuskerror0.jpg, id=931, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lversuskerror0.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lversuskerror0.jpg>
 Package pdftex.def Info: ../MATLAB/fig/lversuskerror0.jpg used on input line 25
-1.
+2.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/lversuskenergy0.jpg, id=944, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lversuskenergy0.jpg, id=932, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lversuskenergy0.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lversuskenergy0.jpg>
 Package pdftex.def Info: ../MATLAB/fig/lversuskenergy0.jpg used on input line 2
-57.
+58.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/lversuskerror0r.jpg, id=945, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lversuskerror0r.jpg, id=933, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lversuskerror0r.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lversuskerror0r.jpg>
 Package pdftex.def Info: ../MATLAB/fig/lversuskerror0r.jpg used on input line 2
-63.
+64.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-<../MATLAB/fig/lversuskenergy0r.jpg, id=946, 1204.5pt x 903.375pt>
+<../MATLAB/fig/lversuskenergy0r.jpg, id=934, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/lversuskenergy0r.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/lversuskenergy0r.jpg>
 Package pdftex.def Info: ../MATLAB/fig/lversuskenergy0r.jpg used on input line 
-269.
+270.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
- [50 <../MATLAB/fig/vwaveerr.jpg> <../MATLAB/fig/vwaveene.jpg> <../MATLAB/fig/v
+ [49 <../MATLAB/fig/vwaveerr.jpg> <../MATLAB/fig/vwaveene.jpg> <../MATLAB/fig/v
 wavererr.jpg> <../MATLAB/fig/vwaverene.jpg> <../MATLAB/fig/vwaveiter.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+Underfull \hbox (badness 10000) in paragraph at lines 277--278
 
  []
 
-<../MATLAB/fig/ltimem.jpg, id=953, 1204.5pt x 903.375pt>
+<../MATLAB/fig/ltimem.jpg, id=942, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/ltimem.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/ltimem.jpg>
-Package pdftex.def Info: ../MATLAB/fig/ltimem.jpg used on input line 284.
+Package pdftex.def Info: ../MATLAB/fig/ltimem.jpg used on input line 286.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 7740) in paragraph at lines 285--285
+Underfull \hbox (badness 7740) in paragraph at lines 287--287
 []\T1/futs/m/n/10.95 (a) |Com-pu-ta-tion time as a
  []
 
-<../MATLAB/fig/ltimek.jpg, id=954, 1204.5pt x 903.375pt>
+<../MATLAB/fig/ltimek.jpg, id=943, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/ltimek.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/ltimek.jpg>
-Package pdftex.def Info: ../MATLAB/fig/ltimek.jpg used on input line 290.
+Package pdftex.def Info: ../MATLAB/fig/ltimek.jpg used on input line 292.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 6995) in paragraph at lines 291--291
+Underfull \hbox (badness 6995) in paragraph at lines 293--293
 []\T1/futs/m/n/10.95 (b) |Com-pu-ta-tion time as a
  []
 
-<../MATLAB/fig/ltimek1.jpg, id=955, 1204.5pt x 903.375pt>
+<../MATLAB/fig/ltimek1.jpg, id=944, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/ltimek1.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/ltimek1.jpg>
-Package pdftex.def Info: ../MATLAB/fig/ltimek1.jpg used on input line 296.
+Package pdftex.def Info: ../MATLAB/fig/ltimek1.jpg used on input line 298.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 8019) in paragraph at lines 297--297
+Underfull \hbox (badness 8019) in paragraph at lines 299--299
 []\T1/futs/m/n/10.95 (c) |Com-pu-ta-tion time as a
  []
 
-<../MATLAB/fig/ltimemr.jpg, id=956, 1204.5pt x 903.375pt>
+<../MATLAB/fig/ltimemr.jpg, id=945, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/ltimemr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/ltimemr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/ltimemr.jpg used on input line 302.
+Package pdftex.def Info: ../MATLAB/fig/ltimemr.jpg used on input line 304.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 6995) in paragraph at lines 303--303
+Underfull \hbox (badness 6995) in paragraph at lines 305--305
 []\T1/futs/m/n/10.95 (d) |Com-pu-ta-tion time as a
  []
 
-<../MATLAB/fig/ltimekr.jpg, id=957, 1204.5pt x 903.375pt>
+<../MATLAB/fig/ltimekr.jpg, id=946, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/ltimekr.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/ltimekr.jpg>
-Package pdftex.def Info: ../MATLAB/fig/ltimekr.jpg used on input line 308.
+Package pdftex.def Info: ../MATLAB/fig/ltimekr.jpg used on input line 310.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
 
-Underfull \hbox (badness 7814) in paragraph at lines 309--309
+Underfull \hbox (badness 7814) in paragraph at lines 311--311
 []\T1/futs/m/n/10.95 (e) |Com-pu-ta-tion time as a
  []
 
-<../MATLAB/fig/ltimekr1.jpg, id=958, 1204.5pt x 903.375pt>
+<../MATLAB/fig/ltimekr1.jpg, id=947, 1204.5pt x 903.375pt>
 File: ../MATLAB/fig/ltimekr1.jpg Graphic file (type jpg)
 
 <use ../MATLAB/fig/ltimekr1.jpg>
-Package pdftex.def Info: ../MATLAB/fig/ltimekr1.jpg used on input line 314.
+Package pdftex.def Info: ../MATLAB/fig/ltimekr1.jpg used on input line 316.
 (pdftex.def)             Requested size: 141.61081pt x 106.2086pt.
- [51 <../MATLAB/fig/lversuskerror0.jpg> <../MATLAB/fig/lversuskenergy0.jpg> <..
-/MATLAB/fig/lversuskerror0r.jpg> <../MATLAB/fig/lversuskenergy0r.jpg>]) [52 <..
+ [50 <../MATLAB/fig/lversuskerror0.jpg> <../MATLAB/fig/lversuskenergy0.jpg> <..
+/MATLAB/fig/lversuskerror0r.jpg> <../MATLAB/fig/lversuskenergy0r.jpg>]) [51 <..
 /MATLAB/fig/ltimem.jpg> <../MATLAB/fig/ltimek.jpg> <../MATLAB/fig/ltimek1.jpg> 
 <../MATLAB/fig/ltimemr.jpg> <../MATLAB/fig/ltimekr.jpg> <../MATLAB/fig/ltimekr1
 .jpg>]
@@ -2594,94 +2654,101 @@ Package pdftex.def Info: ../MATLAB/fig/ltimekr1.jpg used on input line 314.
  (./chapter06.tex
 Chapter 6.
 
+Underfull \hbox (badness 10000) in paragraph at lines 2--3
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 6--7
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 8--9
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 15--17
+LaTeX Font Info:    Try loading font information for TS1+futs on input line 8.
+(/usr/lib/texlive/texmf-dist/tex/latex/fourier/ts1futs.fd
+File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 16--18
 
  []
 
-[53
+[52
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 18--19
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--22
+Underfull \hbox (badness 10000) in paragraph at lines 21--23
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 23--24
+Underfull \hbox (badness 10000) in paragraph at lines 24--25
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--26
+Underfull \hbox (badness 10000) in paragraph at lines 26--27
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--28
+Underfull \hbox (badness 10000) in paragraph at lines 28--29
 
  []
 
-[54]
-Underfull \hbox (badness 10000) in paragraph at lines 31--33
+[53]
+Underfull \hbox (badness 10000) in paragraph at lines 32--34
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 34--35
+Underfull \hbox (badness 10000) in paragraph at lines 35--36
 
  []
 
-) [55] (./thesis.bbl [56
 
+Underfull \hbox (badness 10000) in paragraph at lines 41--42
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 66--71
-[]\T1/futs/m/n/12 Allie Brosh.  The Alot is Bet-ter Than You at Ev-ery-thing.
  []
 
+)
+Underfull \hbox (badness 10000) in paragraph at lines 43--53
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--71
-\T1/futs/m/n/12 http://hyperboleandahalf.blogspot.no/2010/04/alot-is-better-tha
-n-you-at-
  []
 
-[57] [58])
+[54] [55] (./thesis.bbl [56
+
+
+] [57])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 71.
- [59]
+ [58]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 71.
- (./thesis.aux (./front.aux) (./preface.aux)
-(./acknowledgment.aux) (./summary.aux) (./chapter01.aux) (./chapter02.aux)
-(./chapter03.aux) (./chapter04.aux) (./chapter05.aux) (./chapter06.aux))
+ (./thesis.aux (./front.aux)
+(./preface.aux) (./acknowledgment.aux) (./summary.aux) (./chapter01.aux)
+(./chapter02.aux) (./chapter03.aux) (./chapter04.aux) (./chapter05.aux)
+(./chapter06.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 71.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 71.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 81340ADA1C0C1A843A94DE6710DACB1D;4274.
+(rerunfilecheck)             Checksum: 7D389F8F540552EB45EF27A0193D1E1F;4132.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 71.
  ) 
 Here is how much of TeX's memory you used:
- 11812 strings out of 493089
- 176841 string characters out of 6137984
- 280009 words of memory out of 5000000
- 14601 multiletter control sequences out of 15000+600000
- 128866 words of font info for 177 fonts, out of 8000000 for 9000
+ 11819 strings out of 493089
+ 177013 string characters out of 6137984
+ 277502 words of memory out of 5000000
+ 14609 multiletter control sequences out of 15000+600000
+ 129330 words of font info for 179 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,15n,46p,978b,676s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,15n,46p,986b,680s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/lib/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/l
 ib/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/lib/texlive/texmf-dist/
 fonts/type1/public/fourier/fourier-bb.pfb></usr/lib/texlive/texmf-dist/fonts/ty
@@ -2697,10 +2764,10 @@ m-super/sftt1095.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/s
 ftt1200.pfb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1440.p
 fb></usr/lib/texlive/texmf-dist/fonts/type1/public/cm-super/sftt1728.pfb></usr/
 lib/texlive/texmf-dist/fonts/type1/public/wasy2-ps/wasy10.pfb>
-Output written on thesis.pdf (65 pages, 6380359 bytes).
+Output written on thesis.pdf (64 pages, 7239360 bytes).
 PDF statistics:
- 1117 PDF objects out of 1200 (max. 8388607)
- 911 compressed objects within 10 object streams
- 258 named destinations out of 1000 (max. 500000)
- 1027 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1101 PDF objects out of 1200 (max. 8388607)
+ 897 compressed objects within 9 object streams
+ 252 named destinations out of 1000 (max. 500000)
+ 1011 words of extra memory for PDF output out of 10000 (max. 10000000)
 

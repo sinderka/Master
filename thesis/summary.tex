@@ -4,10 +4,8 @@
 %%=========================================
 \addcontentsline{toc}{section}{Summary and Conclusions}
 \section*{Summary and Conclusions}
-Projection methods are methods that can transform big linear systems to a smaller linear systems with similar properties. 
-Two such methods (the symplectic Lanczos method (\texttt{SLM}) and the Krylov projection method (\texttt{KPM})) are compared to each other on linear Hamiltonian differential equations. The behavior of error, energy as a function of time is examined. Computation time for the different methods are also shown.  \\
-The projection methods are also compered to each other on non autonomous linear Hamiltonian differential equation.\\
-
-\noindent Energy preservation for the symplectic Lanczos method is proved under some assumptions, along with convergence for both projection methods. \texttt{SLM} has no advantage over \texttt{KPM} in error estimation. On autonomous systems the computation times for \texttt{SLM} and \texttt{KPM} are similar, and both methods can be well utilized. On non autonomous systems \texttt{KPM} is much faster than \texttt{SLM}. Since it has a comparable error and energy estimate \texttt{KPM} might be considered a better choice in this case.
+Krylov methods are projection methods that can transform big linear ODE's to a smaller linear ODE's with similar properties. 
+Two such methods (the symplectic Lanczos method (\texttt{SLM}) and the Krylov projection method (\texttt{KPM})) are compared with each other on linear Hamiltonian differential equations. The behavior of global error, energy as a function of time is examined. Computation time for the different methods are also shown. The projection methods are also compared to each other on non autonomous linear Hamiltonian differential equation.
+Energy preservation for the symplectic Lanczos method is proved under some assumptions, along with convergence for both projection methods. \texttt{SLM} has no advantage over \texttt{KPM} when considering error. On autonomous systems the computation times for \texttt{SLM} and \texttt{KPM} are similar, and both methods can be well utilized. On non autonomous systems \texttt{KPM} is faster than \texttt{SLM}. Since it has comparable error and energy preservation \texttt{KPM} might be considered a better choice in this case.
 
 

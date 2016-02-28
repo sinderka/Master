@@ -111,7 +111,7 @@ if m(1) == -2
             tstr = ['KPM(',nstr,')'];
         elseif alg == 2
             tstr = ['SLM(',nstr,')'];
-        elseif alg == 3 %&& ~( data == 1 || data == 5 || data == 6 )
+        elseif alg == 3 && ~( data == 1 || data == 5 || data == 6 )
             tstr = ['DM'];
         end
         
@@ -305,7 +305,7 @@ if length(alg) == 1 || length(alg) == 2
         stri = strcat('KPM(',tstr,')');
     elseif alg(end) == 2
         stri = strcat('SLM(',tstr,')');
-    elseif alg(end) == 3
+    elseif alg(end) == 3 
         stri = 'DM';
     end
     additionalInfo(end+1) = {stri};

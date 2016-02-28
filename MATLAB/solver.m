@@ -29,11 +29,11 @@ function utdata = solver(m,n,simtime,K,k,eqn,alg,integrator,restart,prob,conv,pa
 
 %%% Initiell data
 if nargin < 13
-    m = 4;
-    simtime = 1;
+    m = 9;
+    simtime = 1000;
     K = 1;
-    k = 20;
-    n = 2*(m-2)^2+2;
+    k = 10000;
+    n = 8;
     restart = 0;
     prob = 1;
     conv = 1e-10;
@@ -60,7 +60,7 @@ elseif integrator == 3
 end
 
 %%% Initsiell data
-utdata = zeros(1,13);
+utdata = zeros(1,14);
 X = linspace(0,1,m);hs =X(2)-X(1);
 T = linspace(0,simtime,K*k); ht = T(2)-T(1);
 [vec,height,lastrelevant] = helpvector(m,eqn);
@@ -68,12 +68,12 @@ T = linspace(0,simtime,K*k); ht = T(2)-T(1);
 % Get problem information
 [A] = getMatrix( m , hs, eqn );
 [U0,V,F,correctsolution] = getTestFunctions( prob,X,T,eqn );
-
+%V(:,1) = 
 % Se om det går ann å skrive saken nedenfor litt penere!!!!
 % Chose solution method and solve
 if alg == 1 || alg == 2
     if alg == 1
-       PMalg = @Arnoldi;
+        PMalg = @Arnoldi;
     elseif alg == 2
         PMalg = @SLM;
         n = n/2;
@@ -139,6 +139,8 @@ end
 Time = toc;
 
 
+
+
 % Alt her er nokså teit!!!!!!%%%%%%
 U1 = zeros(height,K*k/timestep);
 Utemp1 = Utemp1(:,1:timestep:end); k = k/timestep;
@@ -197,6 +199,28 @@ else
 end
 utdata(13) = max(abs(getEnergy(A,U1(vec,:))));
 
+
+if prob == 1 && length(A) <= 100
+    udiag = zeros(2*m^2,k*K);
+    %for i = 1:size(F,1)
+    
+    udiag(vec,:) = real(myexpm(full(A),U0,T) + U0*ones(1,length(T)));
+    utdata(14) = max(abs(getError(U,udiag)));
+    if figvar
+        figure(1231)
+        plot(T,getError(U,udiag));
+        %hold on
+        %%plot(T,getError(udiag,correctsolution));
+        %hold off
+        figure(1223)
+        plot(T,getEnergy(A,udiag(vec,:)))
+    end
+    utdata(14)
+else
+    utdata(14) = -1;
+end
+
+
 %figure(31);loglog(T,abs(energy(A,U(vec,:))),'k:o'); hold on;
 
 
@@ -216,7 +240,7 @@ if figvar && 0
     %video(correctsolution(m^2+1:end,:) - U1(m^2+1:end,:),m,0.05,eqn)
     video(U(1:m^2,:),m,0.5,eqn)
     %video(correctsolution(1:m^2,:),m,0.05,eqn)
-    %video(correctsolution(1:m^2,:)-U(1:m^2,:),m,0.05,eqn)
+    video(correctsolution(1:m^2,:)-udiag(1:m^2,:),m,0.05,eqn)
     
     %video(correctsolution(m^2+1:end,:),m,0.05,eqn)
 end

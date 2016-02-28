@@ -2,7 +2,8 @@
 \chapter{Results for test problems with varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:varyener} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 This chapter will look at many of the same elements that was discussed in Chapter \ref{sec:constres}, but not all. The excluded results are mostly theoretical results that needed verification, which has already been done in Chapter \ref{sec:constres}. This chapter will try to find out if there is any reason to use \texttt{SLM} instead of \texttt{KPM} on non autonomous Hamiltonian systems. \\
-The exact solvers does not work when the energy is varying, thus there will be no discussion about that in this chapter.
+
+\noindent The exact solvers does not work due to the time dependent source term in equation \eqref{eqn:PDE1}, thus there will be no discussion about that in this chapter.
 \section{Convergence with $m$ and $k$} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:vconv}
 \begin{figure}[H]
@@ -276,6 +277,7 @@ All methods in Figure \ref{fig:vwave} performs very similarly. With \texttt{wave
 \noindent Figure \ref{fig:lversuskenergy} shows that windowing does not work with varying energy, thus a very promising solution strategy from the previous chapter has a limiting factor.\\
 
 \section{Computation time} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:vruntime}
 Computation times are somewhat different from the case with constant energy due to the difficulties with convergence. 
 %\subsection{Without restart}
 \begin{figure}[H]

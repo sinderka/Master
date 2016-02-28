@@ -3,10 +3,6 @@
 \bibitem{expm}
 http://se.mathworks.com/help/matlab/ref/expm.html.
 
-\bibitem{elenaperson}
-{Elena Celledoni}.
-\newblock https://www.ntnu.no/ansatte/elena.celledoni, february 2016.
-
 \bibitem{SLMinteresting}
 Peter~Benner a, Heike Fa{\ss}bender, and Martin Stoll.
 \newblock {A Hamiltonian Krylov--Schur-type method based on the symplectic
@@ -62,13 +58,6 @@ M.~A. Botchev.
   ordinary differential equation systems}.
 \newblock {\em Numer. Linear Algebra Appl. 2013; 20:557--574}, page 557.
 
-\bibitem{alot}
-Allie Brosh.
-\newblock {The Alot is Better Than You at Everything}.
-\newblock
-  http://hyperboleandahalf.blogspot.no/2010/04/alot-is-better-than-you-at-everything.html,
-  April 2010.
-
 \bibitem{energy}
 E.~Celledoni, V.~Grimm, R.I. McLachlan, D.I. McLaren, D.~O{\rq}Neale, B.~Owren,
   and G.R.W. Quispel.
@@ -99,12 +88,7 @@ Celledoni E. and Moret I.
 \bibitem{min}
 Sindre Eskeland.
 \newblock {A Krylov projection Method for the heat equation}.
-
-\bibitem{SLMprop}
-HEIKE FASSBENDER.
-\newblock {ERROR ANALYSIS OF THE SYMPLECTIC LANCZOS METHOD FOR THE SYMPLECTIC
-  EIGENVALUE PROBLEM}.
-\newblock {\em SIAM J. S CI. C OMPUT . Vol. 35, No. 3, pp. A1376--A1397}.
+\newblock 2015.
 
 \bibitem{SLM4}
 HEIKE FASSBENDER.
@@ -122,6 +106,12 @@ K.~Fatahalian, P.~Hanrahan, and J.~Sugerman.
 Joel Feldman.
 \newblock {Derivation of the Wave Equation}.
 \newblock 2000.
+
+\bibitem{symplecticintegrator}
+Ernst Hairer, Christian Lubich, and Gerhard Wanner.
+\newblock {\em {Geometric Numerical Integration}}, chapter VI.8 Conjugate
+  Symplecticity, page 223.
+\newblock Springer, second edition edition, 2006.
 
 \bibitem{linearerrorgrowth}
 Ernst Hairer, Gerhard Wanner, and Christian Lubich.
@@ -146,32 +136,26 @@ Abramowitz Milton and Stegun {Irene A.}
 Arup~Kumar Nandy and C.~S. Jog.
 \newblock {Conservation properties of the trapezoidal rule in linear time
   domain analysis of acoustics and structures}.
-\newblock {\em FRITA Lab,Department of Mechanical Engineering, Indian Institu
-  te of Science, Bangalore, India-560012}, januar 2014.
+\newblock {\em FRITA Lab,Department of Mechanical Engineering, Indian Institute
+  of Science, Bangalore, India-560012}, januar 2014.
 
 \bibitem{trapezoidal}
 Endre S{\"u}li and David~F. Mayers.
 \newblock {\em {An Introduction to Numerical Analysis}}, chapter 7.2
   Newton--Cotes formulae, pages 202--203.
-\newblock cambridge university press, 2003.
+\newblock Cambridge university press, 2003.
 
 \bibitem{forwardeuler}
 Endre S{\"u}li and David~F. Mayers.
 \newblock {\em {An Introduction to Numerical Analysis}}, chapter 12.2 One-step
   methods, page 317.
-\newblock cambridge university press, 2003.
+\newblock Cambridge university press, 2003.
 
 \bibitem{midpoint}
 Endre S{\"u}li and David~F. Mayers.
 \newblock {\em {An Introduction to Numerical Analysis}}, chapter Definition
   10.1, page 286.
-\newblock cambridge university press, 2003.
-
-\bibitem{symplecticintegrator}
-Endre S{\"u}li and David~F. Mayers.
-\newblock {\em {An Introduction to Numerical Analysis}}, chapter 12.5
-  Runge--Kutta methods, page 328.
-\newblock cambridge university press, 2003.
+\newblock Cambridge university press, 2003.
 
 \bibitem{SLM2}
 David~S. Watkins.
@@ -192,5 +176,11 @@ Saad Yousef.
   EDITION, chapter 6.3.1, page 154.
 \newblock Siam, 2003.
 \newblock Algorithm 6.1.
+
+\bibitem{arnoldconv}
+Saad Yousef.
+\newblock {\em {Iterative Methods for Sparse Linear Systems}}, volume SECOND
+  EDITION, chapter Proposition 6.6., page 155.
+\newblock Siam, 2003.
 
 \end{thebibliography}

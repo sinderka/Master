@@ -72,7 +72,7 @@
 }
 
 @article{SLMO,
-	author = "{Peter Benner}, Heike Fa{\ss}bender",
+	author = "Benner, Peter and Fa{\ss}bender, Heike",
 	chapter = "6. NUMERICAL PROPERTIES OF THE IMPLICITLY RESTARTED SYMPLECTIC LANCZOS METHOD",
 	journal = "LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111",
 	owner = "sindreka",
@@ -84,7 +84,7 @@
 }
 
 @article{SLM,
-	author = "{Peter Benner}, Heike Fa{\ss}bender Martin Stoll",
+	author = "Benner, Peter and Fa{\ss}bender, Heike and Stoll, Martin",
 	journal = "Linear Algebra and its Applications",
 	number = "435",
 	owner = "sindreka",
@@ -199,7 +199,7 @@
 }
 
 @article{Hamiltonian,
-	author = "{Peter Benner a}, ∗ Heike Fa{\ss}bender b Martin Stoll c",
+	author = "Benner, Peter and Fa{\ss}bender, Heike and Stoll, Martin",
 	chapter = "Equation 3",
 	journal = "Linear Algebra and its Applications 435 (2011) 578--600",
 	pages = "579",
@@ -224,7 +224,7 @@
 }
 
 @article{energy,
-	author = "{E. Celledoni a}, V. Grimm b R.I. McLachlan c ⇑ D.I. McLaren d D. O{\rq}Neale d e B. Owren a G.R.W. Quispel",
+	author = "Celledoni, E. and Grimm, V. and McLachlan, R.I. and McLaren, D.I. and O{\rq}Neale, D. and Owren, B. and Quispel, G.R.W.",
 	chapter = "Lemma 1",
 	journal = "Journal of Computational Physics 231 (2012) 6770--6789",
 	pages = "6772",
@@ -237,7 +237,7 @@
 }
 
 @article{convtrap,
-	author = "{Arup Kumar Nandy}, C. S. Jog",
+	author = "Nandy, Arup Kumar and Jog, C. S.",
 	journal = "FRITA Lab,Department of Mechanical Engineering, Indian Institu te of Science, Bangalore, India-560012",
 	month = "januar",
 	title = "{Conservation properties of the trapezoidal rule in linear time domain analysis of acoustics and structures}",
@@ -259,7 +259,7 @@
 }
 
 @article{SLMconv,
-	author = "{Peter Benner a}, ∗ Heike Fa{\ss}bender b Martin Stoll",
+	author = "Benner, Peter and Fa{\ss}bender, Heike and Stoll, Martin",
 	chapter = "2. The symplectic Lanczos method",
 	journal = "Linear Algebra and its Applications 435 (2011) 578--600",
 	pages = "581",
@@ -292,14 +292,14 @@
 
 @book{iota,
 	author = "Bancroft, Archbishop Richard",
-	chapter = "New Testament (Matthew 5:18)",
+	pages = "New Testament (Matthew 5:18)",
 	publisher = "King's Printer Robert Barker",
 	title = "{King James Bible}",
 	year = "1604"
 }
 
 @article{SLMpreserve,
-	author = "{E. Celledoni a}, V. Grimm b R.I. McLachlan c ⇑ D.I. McLaren d D. O{\rq}Neale d e B. Owren a G.R.W. Quispel",
+	author = "Celledoni, E. and Grimm, V. and McLachlan, R.I. and McLaren, D.I. and O{\rq}Neale, D. and Owren, B. and Quispel, G.R.W.",
 	chapter = "Example 4",
 	journal = "Journal of Computational Physics 231 (2012) 6770--6789",
 	pages = "6778",
@@ -307,14 +307,14 @@
 }
 
 @article{SLMinteresting,
-	author = "{Peter Benner a}, ∗ Heike Fa{\ss}bender b Martin Stoll",
+	author = "a, Peter Benner and Fa{\ss}bender, Heike and Stoll, Martin",
 	chapter = "4. Krylov--Schur-like restarted symplectic Lanczos method",
 	journal = "Linear Algebra and its Applications 435 (2011) 578--600",
 	title = "{A Hamiltonian Krylov--Schur-type method based on the symplectic Lanczos process side 581}"
 }
 
 @inbook{symplecticintegrator,
-	author = "Mayers, {Endre S ̈ uli and David F.}",
+	author = "S{\"u}li, Endre and Mayers, David F.",
 	chapter = "12.5 Runge--Kutta methods",
 	pages = "328",
 	publisher = "cambridge university press",
@@ -324,7 +324,7 @@
 }
 
 @inbook{linearerrorgrowth,
-	author = "Wanner, Ernst Hairer Christian Lubich Gerhard",
+	author = "Hairer, Ernst and Wanner, Gerhard and Lubich, Christian",
 	chapter = "X.3 Linear Error Growth and Near-Preservation of First Integrals",
 	edition = "second edition",
 	pages = "413",
@@ -334,11 +334,11 @@
 }
 
 @article{graphics,
-	author = "{K. Fatahalian}, J. Sugerman and {. Hanrahan}, P",
+	author = "Fatahalian, K. and Hanrahan, P. and Sugerman, J.",
 	edition = "T . Ak enine-M{\"o}ller , M. McCool",
 	journal = "Graphics Hardware",
 	school = "Stanford University",
-	title = "{Understanding the Efciency of GPU Algorithms f or Matrix-Matrix Multiplication}",
+	title = "{Understanding the Efficiency of GPU Algorithms for Matrix-Matrix Multiplication}",
 	year = "2005"
 }
 
@@ -346,5 +346,14 @@
 	author = "Feldman, Joel",
 	title = "{Derivation of the Wave Equation}",
 	year = "2000"
+}
+
+@misc{alot,
+	author = "Brosh, Allie",
+	howpublished = "http://hyperboleandahalf.blogspot.no/2010/04/alot-is-better-than-you-at-everything.html",
+	month = "April",
+	organization = "TouchstonePublicity@simonandschuster.com",
+	title = "{The Alot is Better Than You at Everything}",
+	year = "2010"
 }
 

@@ -59,7 +59,7 @@ res1 = max(abs(getEnergy(A,U,v)));
 
 %U1 = int(A,v*F,ht);
 diff = hnext;
-if (restart && diff > conv)% || (restart && conv >= 0.9) % comment in if i_r is chosen instead of iota
+if (restart && diff > conv) %|| (restart && conv >= 0.9) % comment in if i_r is chosen instead of iota
     
     
     h = hnext; v = vnext;
@@ -79,7 +79,7 @@ if (restart && diff > conv)% || (restart && conv >= 0.9) % comment in if i_r is 
         energy2 = max(energySMALL(Hn,Vn,Zn,v,h,ht,figvar,int));
         energy3 = max(abs(energyBIG(A,Zn,v,h,ht,0,int)-energySMALL(Hn,Vn,Zn,v,h,ht,0,int)));
     end
-    while (conv < 1 && diff > conv)% || (conv > 1 && conv > iter) % comment in if i_r is chosen instead of iota
+    while (conv < 1 && diff > conv) %|| (conv > 1 && conv > iter) % comment in if i_r is chosen instead of iota
         h = hnext; v = vnext;
         [Vn,Hn,vnext,hnext] = PMalg(A,v,n,conv);
         [Zn] = int(Hn,[h*Zn(end,:);sparse(length(Hn)-1,k)],ht);

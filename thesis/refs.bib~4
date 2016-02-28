@@ -292,9 +292,8 @@
 
 @book{iota,
 	author = "Bancroft, Archbishop Richard",
-	chapter = "New Testament (Matthew 5:18)",
 	publisher = "King's Printer Robert Barker",
-	title = "{King James Bible}",
+	title = "{King James Bible. New Testament (Matthew 5:18)}",
 	year = "1604"
 }
 
@@ -338,8 +337,7 @@
 	edition = "T . Ak enine-M{\"o}ller , M. McCool",
 	journal = "Graphics Hardware",
 	school = "Stanford University",
-	title = "{Understanding the Efficiency of GPU Algorithms
-for Matrix-Matrix Multiplication}",
+	title = "{Understanding the Efficiency of GPU Algorithms for Matrix-Matrix Multiplication}",
 	year = "2005"
 }
 
@@ -347,5 +345,14 @@ for Matrix-Matrix Multiplication}",
 	author = "Feldman, Joel",
 	title = "{Derivation of the Wave Equation}",
 	year = "2000"
+}
+
+@misc{alot,
+	author = "Brosh, Allie",
+	howpublished = "http://hyperboleandahalf.blogspot.no/2010/04/alot-is-better-than-you-at-everything.html",
+	month = "April",
+	organization = "TouchstonePublicity@simonandschuster.com",
+	title = "{The Alot is Better Than You at Everything}",
+	year = "2010"
 }
 
