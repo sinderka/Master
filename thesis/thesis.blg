@@ -14,12 +14,11 @@ A level-1 auxiliary file: chapter06.aux
 The style file: plain.bst
 Database file #1: refs.bib
 Warning--to sort, need author or key in expm
-Warning--empty year in SLMinteresting
 Warning--empty year in SLM1
-Warning--empty year in SLM3
 Warning--empty year in Hamiltonian
 Warning--empty year in SLMconv
 Warning--there's a number but no volume in SLM
+Warning--empty journal in future
 Warning--empty year in zerotransf
 Warning--empty year in energy
 Warning--empty year in SLMpreserve
@@ -30,43 +29,43 @@ Warning--empty journal in fivepoint
 Warning--empty year in SLM2
 You've used 30 entries,
             2118 wiz_defined-function locations,
-            658 strings with 8058 characters,
-and the built_in function-call counts, 9217 in all, are:
-= -- 868
+            665 strings with 8312 characters,
+and the built_in function-call counts, 9304 in all, are:
+= -- 881
 > -- 419
 < -- 25
 + -- 166
 - -- 136
-* -- 548
-:= -- 1502
+* -- 557
+:= -- 1513
 add.period$ -- 91
 call.type$ -- 30
 change.case$ -- 150
 chr.to.int$ -- 0
-cite$ -- 45
-duplicate$ -- 440
-empty$ -- 694
+cite$ -- 44
+duplicate$ -- 441
+empty$ -- 703
 format.name$ -- 136
-if$ -- 1978
+if$ -- 1998
 int.to.chr$ -- 0
 int.to.str$ -- 30
 missing$ -- 37
 newline$ -- 154
 num.names$ -- 58
-pop$ -- 231
+pop$ -- 227
 preamble$ -- 1
 purify$ -- 128
 quote$ -- 0
-skip$ -- 328
+skip$ -- 330
 stack$ -- 0
-substring$ -- 315
-swap$ -- 144
+substring$ -- 340
+swap$ -- 143
 text.length$ -- 25
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 102
-warning$ -- 15
-while$ -- 78
+warning$ -- 14
+while$ -- 80
 width$ -- 32
-write$ -- 311
-(There were 15 warnings)
+write$ -- 313
+(There were 14 warnings)

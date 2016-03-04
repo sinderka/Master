@@ -125,7 +125,7 @@ for kk = 1:length(data)
     close all
     pause(0.5)
     for i = 1:ant2
-        if (data(kk) == 1 || data(kk) == 5 || data(kk) == 6) && alg(i+1) == 3
+        if (~length(alg) == 1 && length(alg(i+1)) ~= 3) && (data(kk) == 1 || data(kk) == 5 || data(kk) == 6) && alg(i+1) == 3
             continue
         elseif strcmp(type(kk),'plot')
             plot(p(2:end),utdata(i,:,data(kk)),char(linetype(i)),'LineWidth',4)
@@ -149,7 +149,7 @@ for kk = 1:length(data)
         continue
     end
     %iter = max(max(utdata(1,:,:)));
-    [ylab,xlab,leg,additionalInfo,helpinfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data(kk),PMint);
+    [ylab,xlab,leg,additionalInfo,helpinfo] = getLabels(ant2,m,n,simtime,K,k,eqn,alg,int,restart,prob,conv,para,data(kk),PMint,conv);
     if help(kk,1)
         plot(p(2:end),p(2:end).^help(kk,2)*help(kk,3),'k-')
         number = num2str(help(kk,2));

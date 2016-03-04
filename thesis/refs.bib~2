@@ -361,3 +361,38 @@ Integration}",
 	year = "2010"
 }
 
+@inbook{arnoldconv,
+	author = "Yousef, Saad",
+	chapter = "Proposition 6.6.",
+	owner = "sindreka",
+	pages = "155",
+	publisher = "Siam",
+	timestamp = "2015.09.13",
+	title = "{Iterative Methods for Sparse Linear Systems}",
+	volume = "SECOND EDITION",
+	year = "2003"
+}
+
+@article{future,
+	author = "Benner, Peter and Fassbender, Heike and Yang, Chao",
+	institution = "Max Planck Institute Magdeburg
+Preprints",
+	month = "july",
+	publisher = "Max Planck Institute for
+Dynamics of Complex Technical Systems",
+	title = "{Some Remarks on the Complex
+J
+-Symmetric Eigenproblem}",
+	year = "2015"
+}
+
+@article{benner2016solution,
+	author = "Benner, Peter and Bujanovi{\'c}, Zvonimir",
+	journal = "Linear Algebra and its Applications",
+	pages = "430--459",
+	publisher = "Elsevier",
+	title = "{On the solution of large-scale algebraic Riccati equations by using low-dimensional invariant subspaces}",
+	volume = "488",
+	year = "2016"
+}
+

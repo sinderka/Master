@@ -3,33 +3,27 @@
 \bibitem{expm}
 http://se.mathworks.com/help/matlab/ref/expm.html.
 
-\bibitem{SLMinteresting}
-Peter~Benner a, Heike Fa{\ss}bender, and Martin Stoll.
-\newblock {A Hamiltonian Krylov--Schur-type method based on the symplectic
-  Lanczos process side 581}.
-\newblock {\em Linear Algebra and its Applications 435 (2011) 578--600}.
-
 \bibitem{iota}
 Archbishop~Richard Bancroft.
 \newblock {\em {King James Bible. New Testament (Matthew 5:18)}}.
 \newblock King's Printer Robert Barker, 1604.
 
+\bibitem{benner2016solution}
+Peter Benner and Zvonimir Bujanovi{\'c}.
+\newblock {On the solution of large-scale algebraic Riccati equations by using
+  low-dimensional invariant subspaces}.
+\newblock {\em Linear Algebra and its Applications}, 488:430--459, 2016.
+
 \bibitem{SLM1}
 Peter Benner and Heike FaBbender.
-\newblock {An Implicitly Restarted SymplecUc Lanczos Method for the Hamlltonlan
-  Eigenvalue Problem}.
-\newblock {\em LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111 (1997)}.
-
-\bibitem{SLM3}
-Peter Benner and Heike FaBbender.
-\newblock {An Implicitly Restarted SymplecUc Lanczos Method for the Hamlltonlan
-  Eigenvalue Problem}.
+\newblock {An Implicitly Restarted Symplectic Lanczos Method for the
+  Hamlltonlan Eigenvalue Problem}.
 \newblock {\em LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111 (1997)}.
 
 \bibitem{SLMO}
 Peter Benner and Heike Fa{\ss}bender.
-\newblock {An Implicitly Restarted SymplecUc Lanczos Method for the Hamlltonlan
-  Eigenvalue Problem}.
+\newblock {An Implicitly Restarted Symplectic Lanczos Method for the
+  Hamlltonlan Eigenvalue Problem}.
 \newblock {\em LINEAR ALGEBRA AND ITS APPLICATIONS 263:75-111}, 1997.
 
 \bibitem{Hamiltonian}
@@ -51,6 +45,11 @@ Peter Benner, Heike Fa{\ss}bender, and Martin Stoll.
 \newblock {A Hamiltonian Krylov--Schur-type method based on the symplectic
   Lanczos process}.
 \newblock {\em Linear Algebra and its Applications}, (435):578--600, 2011.
+
+\bibitem{future}
+Peter Benner, Heike Fassbender, and Chao Yang.
+\newblock {Some Remarks on the Complex J -Symmetric Eigenproblem}.
+\newblock july 2015.
 
 \bibitem{zerotransf}
 M.~A. Botchev.

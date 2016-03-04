@@ -5,200 +5,206 @@
 \@writefile{lot}{\addvspace {10\p@ }}
 \newlabel{sec:constres}{{4}{26}{Results for test problems with constant energy}{chapter.4}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Convergence}{26}{section.4.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1} With Numerical integrations }{27}{subsection.4.1.1}}
-\newlabel{fig:intconv11r}{{4.1a}{27}{Convergence of trapezoidal rule without restart. \relax }{figure.caption.10}{}}
-\newlabel{sub@fig:intconv11r}{{a}{27}{Convergence of trapezoidal rule without restart. \relax }{figure.caption.10}{}}
-\newlabel{fig:intconv12r}{{4.1b}{27}{Convergence of forward Euler without restart. \relax }{figure.caption.10}{}}
-\newlabel{sub@fig:intconv12r}{{b}{27}{Convergence of forward Euler without restart. \relax }{figure.caption.10}{}}
-\newlabel{fig:intconv13r}{{4.1c}{27}{Convergence of midpoint rule without restart. \relax }{figure.caption.10}{}}
-\newlabel{sub@fig:intconv13r}{{c}{27}{Convergence of midpoint rule without restart. \relax }{figure.caption.10}{}}
-\newlabel{fig:intconv11}{{4.1d}{27}{Convergence of trapezoidal rule with restart. \relax }{figure.caption.10}{}}
-\newlabel{sub@fig:intconv11}{{d}{27}{Convergence of trapezoidal rule with restart. \relax }{figure.caption.10}{}}
-\newlabel{fig:intconv12}{{4.1e}{27}{Convergence of forward Euler with restart. \relax }{figure.caption.10}{}}
-\newlabel{sub@fig:intconv12}{{e}{27}{Convergence of forward Euler with restart. \relax }{figure.caption.10}{}}
-\newlabel{fig:intconv13}{{4.1f}{27}{Convergence of midpoint rule with restart. \relax }{figure.caption.10}{}}
-\newlabel{sub@fig:intconv13}{{f}{27}{Convergence of midpoint rule with restart. \relax }{figure.caption.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces  Convergence for the different integration methods. Notice that forward Euler uses $k^2$ points in time where the other methods uses $k$ points in time to obtain the same accuracy. $n=2$ is kept constant for all plots, since smaller $n$ generally gives poorer convergence. For the figures with restart enabled $\iota = 1e-10$. 1 second is simulated. \relax }}{27}{figure.caption.10}}
-\newlabel{fig:intconv}{{4.1}{27}{Convergence for the different integration methods. Notice that forward Euler uses $k^2$ points in time where the other methods uses $k$ points in time to obtain the same accuracy. $n=2$ is kept constant for all plots, since smaller $n$ generally gives poorer convergence. For the figures with restart enabled $\iota = 1e-10$. 1 second is simulated. \relax }{figure.caption.10}{}}
-\newlabel{fig:fe1}{{4.2a}{28}{Energy for trapezoidal rule. \relax }{figure.caption.11}{}}
-\newlabel{sub@fig:fe1}{{a}{28}{Energy for trapezoidal rule. \relax }{figure.caption.11}{}}
-\newlabel{fig:fe2}{{4.2b}{28}{Energy for forward Euler. \relax }{figure.caption.11}{}}
-\newlabel{sub@fig:fe2}{{b}{28}{Energy for forward Euler. \relax }{figure.caption.11}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces  A figure showing the difference in energy between trapezoidal rule and forward Euler. 1 second is simulated and restart is not enabled. \relax }}{28}{figure.caption.11}}
-\newlabel{fig:forwardenergy}{{4.2}{28}{A figure showing the difference in energy between trapezoidal rule and forward Euler. 1 second is simulated and restart is not enabled. \relax }{figure.caption.11}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}With exact solvers}{28}{subsection.4.1.2}}
-\newlabel{sec:exactconv}{{4.1.2}{28}{With exact solvers}{subsection.4.1.2}{}}
-\newlabel{fig:exactconvtraperr}{{4.3a}{28}{Convergence of the exact solver using \texttt {diag} without restart. \relax }{figure.caption.12}{}}
-\newlabel{sub@fig:exactconvtraperr}{{a}{28}{Convergence of the exact solver using \texttt {diag} without restart. \relax }{figure.caption.12}{}}
-\newlabel{fig:exactconvmiderr}{{4.3b}{28}{Convergence of the exact solver using \texttt {expm} without restart. \relax }{figure.caption.12}{}}
-\newlabel{sub@fig:exactconvmiderr}{{b}{28}{Convergence of the exact solver using \texttt {expm} without restart. \relax }{figure.caption.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Convergence for exact solvers, with trapezoidal rule. Note that the exactness of the methods are for the integration in time, and not the spacial discretization. The expected convergence is therefore still quadratic with $m$. $n = 2$ because taking the matrix exponential is a costly operation and it is harder for the methods to converge when $n$ is small. 1 second is simulated. \relax }}{28}{figure.caption.12}}
-\newlabel{fig:intexactt}{{4.3}{28}{Convergence for exact solvers, with trapezoidal rule. Note that the exactness of the methods are for the integration in time, and not the spacial discretization. The expected convergence is therefore still quadratic with $m$. $n = 2$ because taking the matrix exponential is a costly operation and it is harder for the methods to converge when $n$ is small. 1 second is simulated. \relax }{figure.caption.12}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Convergence with the restart}{28}{section.4.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}As a function of $\iota $}{29}{subsection.4.2.1}}
-\newlabel{fig:lcompareError}{{4.4a}{29}{Error for \texttt {wave}. \relax }{figure.caption.13}{}}
-\newlabel{sub@fig:lcompareError}{{a}{29}{Error for \texttt {wave}. \relax }{figure.caption.13}{}}
-\newlabel{fig:lcompareEnergy}{{4.4b}{29}{Energy for \texttt {wave}. \relax }{figure.caption.13}{}}
-\newlabel{sub@fig:lcompareEnergy}{{b}{29}{Energy for \texttt {wave}. \relax }{figure.caption.13}{}}
-\newlabel{fig:lcompareIter}{{4.4c}{29}{Number of restarts for \texttt {wave}. \relax }{figure.caption.13}{}}
-\newlabel{sub@fig:lcompareIter}{{c}{29}{Number of restarts for \texttt {wave}. \relax }{figure.caption.13}{}}
-\newlabel{fig:lcompareErrorw}{{4.4d}{29}{Error for \texttt {semirandom}. \relax }{figure.caption.13}{}}
-\newlabel{sub@fig:lcompareErrorw}{{d}{29}{Error for \texttt {semirandom}. \relax }{figure.caption.13}{}}
-\newlabel{fig:lcompareEnergyw}{{4.4e}{29}{Energy for \texttt {semirandom}. \relax }{figure.caption.13}{}}
-\newlabel{sub@fig:lcompareEnergyw}{{e}{29}{Energy for \texttt {semirandom}. \relax }{figure.caption.13}{}}
-\newlabel{fig:lcompareIterw}{{4.4f}{29}{Number of restarts for \texttt {semirandom}. \relax }{figure.caption.13}{}}
-\newlabel{sub@fig:lcompareIterw}{{f}{29}{Number of restarts for \texttt {semirandom}. \relax }{figure.caption.13}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces  These figures show how choosing different $\iota $ affects the solution. The pictures on the top are for \texttt  {wave} and the pictures at the bottom are for \texttt  {semirandom}. This plot considers 100 seconds, with $k = 2000$, $n = m = 20$ and midpoint rule. \hfill $\unhbox \voidb@x \hbox {\fontencoding  {U}\fontfamily  {wasy}\selectfont  \char 91}$ \relax }}{29}{figure.caption.13}}
-\newlabel{fig:lcompare}{{4.4}{29}{These figures show how choosing different $\iota $ affects the solution. The pictures on the top are for \texttt {wave} and the pictures at the bottom are for \texttt {semirandom}. This plot considers 100 seconds, with $k = 2000$, $n = m = 20$ and midpoint rule. \hfill $\neptune $ \relax }{figure.caption.13}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2} As a function of $i_r$}{30}{subsection.4.2.2}}
-\newlabel{fig:cierr2}{{4.5a}{30}{Error as a function of $i_r$. \relax }{figure.caption.14}{}}
-\newlabel{sub@fig:cierr2}{{a}{30}{Error as a function of $i_r$. \relax }{figure.caption.14}{}}
-\newlabel{fig:ciene2}{{4.5b}{30}{Energy as a function of $i_r$. \relax }{figure.caption.14}{}}
-\newlabel{sub@fig:ciene2}{{b}{30}{Energy as a function of $i_r$. \relax }{figure.caption.14}{}}
-\newlabel{fig:cierr1}{{4.5c}{30}{Error with constant \\ $i_r = 20$. \relax }{figure.caption.14}{}}
-\newlabel{sub@fig:cierr1}{{c}{30}{Error with constant \\ $i_r = 20$. \relax }{figure.caption.14}{}}
-\newlabel{fig:ciene1}{{4.5d}{30}{Energy with constant \\ $i_r = 20$. \relax }{figure.caption.14}{}}
-\newlabel{sub@fig:ciene1}{{d}{30}{Energy with constant \\ $i_r = 20$. \relax }{figure.caption.14}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces  The top figures shows how the error and energy changes as a function of $i_r$. $T_s = 10$ is chosen to better show the decrease. The bottom pictures show how error and energy behaves with increasing time domain, with constant $i_r = 20$. $m = 20$. \relax }}{30}{figure.caption.14}}
-\newlabel{fig:ci}{{4.5}{30}{The top figures shows how the error and energy changes as a function of $i_r$. $T_s = 10$ is chosen to better show the decrease. The bottom pictures show how error and energy behaves with increasing time domain, with constant $i_r = 20$. $m = 20$. \relax }{figure.caption.14}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.3}How to choose $n$}{31}{section.4.3}}
-\newlabel{sec:resultat}{{4.3}{31}{How to choose $n$}{section.4.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}With different $m$}{31}{subsection.4.3.1}}
-\newlabel{fig:nerrorwA}{{4.6a}{31}{Error for \texttt {KPM} without restart. \relax }{figure.caption.15}{}}
-\newlabel{sub@fig:nerrorwA}{{a}{31}{Error for \texttt {KPM} without restart. \relax }{figure.caption.15}{}}
-\newlabel{fig:nerrorwS}{{4.6b}{31}{Error for \texttt {SLM} without restart. \relax }{figure.caption.15}{}}
-\newlabel{sub@fig:nerrorwS}{{b}{31}{Error for \texttt {SLM} without restart. \relax }{figure.caption.15}{}}
-\newlabel{fig:reserrA}{{4.6c}{31}{Error for \texttt {KPM} with restart. \relax }{figure.caption.15}{}}
-\newlabel{sub@fig:reserrA}{{c}{31}{Error for \texttt {KPM} with restart. \relax }{figure.caption.15}{}}
-\newlabel{fig:reseneS}{{4.6d}{31}{Error for \texttt {SLM} with restart. \relax }{figure.caption.15}{}}
-\newlabel{sub@fig:reseneS}{{d}{31}{Error for \texttt {SLM} with restart. \relax }{figure.caption.15}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces  The pictures shows which $n$ gives convergence for different $m$. Restart is not enabled for the top pictures, restart is enabled for the bottom pictures. $k = 200$ over 10 seconds. \relax }}{31}{figure.caption.15}}
-\newlabel{fig:n}{{4.6}{31}{The pictures shows which $n$ gives convergence for different $m$. Restart is not enabled for the top pictures, restart is enabled for the bottom pictures. $k = 200$ over 10 seconds. \relax }{figure.caption.15}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}With different $T_s$}{32}{subsection.4.3.2}}
-\newlabel{fig:terrorwA}{{4.7a}{32}{Error for \texttt {KPM} without restart. \relax }{figure.caption.16}{}}
-\newlabel{sub@fig:terrorwA}{{a}{32}{Error for \texttt {KPM} without restart. \relax }{figure.caption.16}{}}
-\newlabel{fig:terrorwS}{{4.7b}{32}{Error for \texttt {SLM} without restart. \relax }{figure.caption.16}{}}
-\newlabel{sub@fig:terrorwS}{{b}{32}{Error for \texttt {SLM} without restart. \relax }{figure.caption.16}{}}
-\newlabel{fig:terrorwAr}{{4.7c}{32}{Error for \texttt {KPM} with restart. \relax }{figure.caption.16}{}}
-\newlabel{sub@fig:terrorwAr}{{c}{32}{Error for \texttt {KPM} with restart. \relax }{figure.caption.16}{}}
-\newlabel{fig:terrorwSr}{{4.7d}{32}{Error for \texttt {SLM} with restart. \relax }{figure.caption.16}{}}
-\newlabel{sub@fig:terrorwSr}{{d}{32}{Error for \texttt {SLM} with restart. \relax }{figure.caption.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces  The pictures shows which $n$ gives convergence for different $T_s$, with $k = 20 \cdot T_s$ and $m = 20$. The top plots are with restart, and the bottom are without restart.\relax }}{32}{figure.caption.16}}
-\newlabel{fig:rest}{{4.7}{32}{The pictures shows which $n$ gives convergence for different $T_s$, with $k = 20 \cdot T_s$ and $m = 20$. The top plots are with restart, and the bottom are without restart.\relax }{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1} Convergence with numerical integration }{27}{subsection.4.1.1}}
+\newlabel{fig:intconv11r}{{4.1a}{27}{Convergence of trapezoidal rule without restart. \relax }{figure.caption.11}{}}
+\newlabel{sub@fig:intconv11r}{{a}{27}{Convergence of trapezoidal rule without restart. \relax }{figure.caption.11}{}}
+\newlabel{fig:intconv12r}{{4.1b}{27}{Convergence of forward Euler without restart. \relax }{figure.caption.11}{}}
+\newlabel{sub@fig:intconv12r}{{b}{27}{Convergence of forward Euler without restart. \relax }{figure.caption.11}{}}
+\newlabel{fig:intconv13r}{{4.1c}{27}{Convergence of midpoint rule without restart. \relax }{figure.caption.11}{}}
+\newlabel{sub@fig:intconv13r}{{c}{27}{Convergence of midpoint rule without restart. \relax }{figure.caption.11}{}}
+\newlabel{fig:intconv11}{{4.1d}{27}{Convergence of trapezoidal rule with restart. \relax }{figure.caption.11}{}}
+\newlabel{sub@fig:intconv11}{{d}{27}{Convergence of trapezoidal rule with restart. \relax }{figure.caption.11}{}}
+\newlabel{fig:intconv12}{{4.1e}{27}{Convergence of forward Euler with restart. \relax }{figure.caption.11}{}}
+\newlabel{sub@fig:intconv12}{{e}{27}{Convergence of forward Euler with restart. \relax }{figure.caption.11}{}}
+\newlabel{fig:intconv13}{{4.1f}{27}{Convergence of midpoint rule with restart. \relax }{figure.caption.11}{}}
+\newlabel{sub@fig:intconv13}{{f}{27}{Convergence of midpoint rule with restart. \relax }{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces  Convergence for the different integration methods. Notice that forward Euler uses $k^2$ points in time where the other methods use $k$ points in time to obtain the same accuracy. $n=2$ is kept constant for all plots, since smaller $n$ generally gives poorer convergence. For the figures with restart enabled: the tolerance $\iota = 1e-10$. 1 second is simulated. \relax }}{27}{figure.caption.11}}
+\newlabel{fig:intconv}{{4.1}{27}{Convergence for the different integration methods. Notice that forward Euler uses $k^2$ points in time where the other methods use $k$ points in time to obtain the same accuracy. $n=2$ is kept constant for all plots, since smaller $n$ generally gives poorer convergence. For the figures with restart enabled: the tolerance $\iota = 1e-10$. 1 second is simulated. \relax }{figure.caption.11}{}}
+\newlabel{fig:fe1}{{4.2a}{28}{Energy error for trapezoidal rule. \relax }{figure.caption.12}{}}
+\newlabel{sub@fig:fe1}{{a}{28}{Energy error for trapezoidal rule. \relax }{figure.caption.12}{}}
+\newlabel{fig:fe2}{{4.2b}{28}{Energy error for forward Euler. \relax }{figure.caption.12}{}}
+\newlabel{sub@fig:fe2}{{b}{28}{Energy error for forward Euler. \relax }{figure.caption.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces  A figure showing the difference in energy between trapezoidal rule and forward Euler. 1 second is simulated and restart is not enabled. \relax }}{28}{figure.caption.12}}
+\newlabel{fig:forwardenergy}{{4.2}{28}{A figure showing the difference in energy between trapezoidal rule and forward Euler. 1 second is simulated and restart is not enabled. \relax }{figure.caption.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1.2}Convergence with an exact solver}{28}{subsection.4.1.2}}
+\newlabel{sec:exactconv}{{4.1.2}{28}{Convergence with an exact solver}{subsection.4.1.2}{}}
+\newlabel{fig:exactconvtraperr}{{4.3a}{28}{Convergence of the exact solver without restart. \relax }{figure.caption.13}{}}
+\newlabel{sub@fig:exactconvtraperr}{{a}{28}{Convergence of the exact solver without restart. \relax }{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Convergence for exact solvers. \texttt  {DM} uses the trapezoidal rule, and is included to show the difference between this figure, and Figure \ref  {fig:intconv}. Note that the exactness of the method is for the integration in time, the spacial step-size is kept constant. The expected convergence is therefore still quadratic with $m$. $n = 2$ because taking the matrix exponential is a costly operation and it is harder for the methods to converge when $n$ is small. 1 second is simulated. The exact solver is defined in Table \ref  {tab:intcorrect}. \relax }}{28}{figure.caption.13}}
+\newlabel{fig:intexactt}{{4.3}{28}{Convergence for exact solvers. \texttt {DM} uses the trapezoidal rule, and is included to show the difference between this figure, and Figure \ref {fig:intconv}. Note that the exactness of the method is for the integration in time, the spacial step-size is kept constant. The expected convergence is therefore still quadratic with $m$. $n = 2$ because taking the matrix exponential is a costly operation and it is harder for the methods to converge when $n$ is small. 1 second is simulated. The exact solver is defined in Table \ref {tab:intcorrect}. \relax }{figure.caption.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Convergence with the restart}{29}{section.4.2}}
+\newlabel{sec:crestart}{{4.2}{29}{Convergence with the restart}{section.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Convergence as a function of $\iota $}{29}{subsection.4.2.1}}
+\newlabel{fig:lcompareError}{{4.4a}{29}{Error for \texttt {wave}. \relax }{figure.caption.14}{}}
+\newlabel{sub@fig:lcompareError}{{a}{29}{Error for \texttt {wave}. \relax }{figure.caption.14}{}}
+\newlabel{fig:lcompareEnergy}{{4.4b}{29}{Energy error for \texttt {wave}. \relax }{figure.caption.14}{}}
+\newlabel{sub@fig:lcompareEnergy}{{b}{29}{Energy error for \texttt {wave}. \relax }{figure.caption.14}{}}
+\newlabel{fig:lcompareIter}{{4.4c}{29}{Number of restarts for \texttt {wave}. \relax }{figure.caption.14}{}}
+\newlabel{sub@fig:lcompareIter}{{c}{29}{Number of restarts for \texttt {wave}. \relax }{figure.caption.14}{}}
+\newlabel{fig:lcompareErrorw}{{4.4d}{29}{Error for \texttt {semirandom}. \\ .\relax }{figure.caption.14}{}}
+\newlabel{sub@fig:lcompareErrorw}{{d}{29}{Error for \texttt {semirandom}. \\ .\relax }{figure.caption.14}{}}
+\newlabel{fig:lcompareEnergyw}{{4.4e}{29}{Energy error for \texttt {semirandom}. \relax }{figure.caption.14}{}}
+\newlabel{sub@fig:lcompareEnergyw}{{e}{29}{Energy error for \texttt {semirandom}. \relax }{figure.caption.14}{}}
+\newlabel{fig:lcompareIterw}{{4.4f}{29}{Number of restarts for \texttt {semirandom}. \relax }{figure.caption.14}{}}
+\newlabel{sub@fig:lcompareIterw}{{f}{29}{Number of restarts for \texttt {semirandom}. \relax }{figure.caption.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces  These figures show how choosing different tolerances $\iota $ affects the solution. The pictures on the top are for \texttt  {wave} and the pictures at the bottom are for \texttt  {semirandom}. This plot considers 10 seconds and uses the midpoint rule. Remember that $\text  {error}^{\text  {diag}}$ is the relative difference between the specified method (eg. \texttt  {KPM} or \texttt  {SLM}), and an exact solver. \hfill $\unhbox \voidb@x \hbox {\fontencoding  {U}\fontfamily  {wasy}\selectfont  \char 91}$ \relax }}{29}{figure.caption.14}}
+\newlabel{fig:lcompare}{{4.4}{29}{These figures show how choosing different tolerances $\iota $ affects the solution. The pictures on the top are for \texttt {wave} and the pictures at the bottom are for \texttt {semirandom}. This plot considers 10 seconds and uses the midpoint rule. Remember that $\text {error}^{\text {diag}}$ is the relative difference between the specified method (eg. \texttt {KPM} or \texttt {SLM}), and an exact solver. \hfill $\neptune $ \relax }{figure.caption.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Convergence as a function of $i_r$}{30}{subsection.4.2.2}}
+\newlabel{fig:cierr2}{{4.5a}{30}{Error as a function of $i_r$. \\.\relax }{figure.caption.15}{}}
+\newlabel{sub@fig:cierr2}{{a}{30}{Error as a function of $i_r$. \\.\relax }{figure.caption.15}{}}
+\newlabel{fig:ciene2}{{4.5b}{30}{Energy error as a function of $i_r$. \relax }{figure.caption.15}{}}
+\newlabel{sub@fig:ciene2}{{b}{30}{Energy error as a function of $i_r$. \relax }{figure.caption.15}{}}
+\newlabel{fig:cierr1}{{4.5c}{30}{Error as a function of time with constant $i_r = 10$. \relax }{figure.caption.15}{}}
+\newlabel{sub@fig:cierr1}{{c}{30}{Error as a function of time with constant $i_r = 10$. \relax }{figure.caption.15}{}}
+\newlabel{fig:ciene1}{{4.5d}{30}{Energy error a function of time with constant $i_r = 10$. \relax }{figure.caption.15}{}}
+\newlabel{sub@fig:ciene1}{{d}{30}{Energy error a function of time with constant $i_r = 10$. \relax }{figure.caption.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces  The top figures show how the error and energy change as a function of the number of restarts $i_r$. The bottom pictures show how error and energy behave with increasing time domain, with constant $i_r = 10$, and $T_s = 10$.\relax }}{30}{figure.caption.15}}
+\newlabel{fig:ci}{{4.5}{30}{The top figures show how the error and energy change as a function of the number of restarts $i_r$. The bottom pictures show how error and energy behave with increasing time domain, with constant $i_r = 10$, and $T_s = 10$.\relax }{figure.caption.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}How to choose the restart variable $n$}{31}{section.4.3}}
+\newlabel{sec:resultat}{{4.3}{31}{How to choose the restart variable $n$}{section.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Restart variable as a function of $m$}{32}{subsection.4.3.1}}
+\newlabel{fig:nerrorwA}{{4.6a}{32}{Error for \texttt {KPM} without restart. \relax }{figure.caption.16}{}}
+\newlabel{sub@fig:nerrorwA}{{a}{32}{Error for \texttt {KPM} without restart. \relax }{figure.caption.16}{}}
+\newlabel{fig:nerrorwS}{{4.6b}{32}{Error for \texttt {SLM} without restart. \relax }{figure.caption.16}{}}
+\newlabel{sub@fig:nerrorwS}{{b}{32}{Error for \texttt {SLM} without restart. \relax }{figure.caption.16}{}}
+\newlabel{fig:reserrA}{{4.6c}{32}{Error for \texttt {KPM} with restart. \relax }{figure.caption.16}{}}
+\newlabel{sub@fig:reserrA}{{c}{32}{Error for \texttt {KPM} with restart. \relax }{figure.caption.16}{}}
+\newlabel{fig:reseneS}{{4.6d}{32}{Error for \texttt {SLM} with restart. \relax }{figure.caption.16}{}}
+\newlabel{sub@fig:reseneS}{{d}{32}{Error for \texttt {SLM} with restart. \relax }{figure.caption.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces  The pictures show which $n$ gives convergence for different $m$, where the size of the matrix $A$, is given by $\mathaccentV {hat}002{m} = 2(m-2)^2$. The top pictures are without restart, and the bottom pictures are with restart. 10 seconds is simulated. \relax }}{32}{figure.caption.16}}
+\newlabel{fig:n}{{4.6}{32}{The pictures show which $n$ gives convergence for different $m$, where the size of the matrix $A$, is given by $\hat {m} = 2(m-2)^2$. The top pictures are without restart, and the bottom pictures are with restart. 10 seconds is simulated. \relax }{figure.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Restart variable as a function of $T_s$}{33}{subsection.4.3.2}}
+\newlabel{fig:terrorwA}{{4.7a}{33}{Error for \texttt {KPM} without restart. \relax }{figure.caption.17}{}}
+\newlabel{sub@fig:terrorwA}{{a}{33}{Error for \texttt {KPM} without restart. \relax }{figure.caption.17}{}}
+\newlabel{fig:terrorwS}{{4.7b}{33}{Error for \texttt {SLM} without restart. \relax }{figure.caption.17}{}}
+\newlabel{sub@fig:terrorwS}{{b}{33}{Error for \texttt {SLM} without restart. \relax }{figure.caption.17}{}}
+\newlabel{fig:terrorwAr}{{4.7c}{33}{Error for \texttt {KPM} with restart. \relax }{figure.caption.17}{}}
+\newlabel{sub@fig:terrorwAr}{{c}{33}{Error for \texttt {KPM} with restart. \relax }{figure.caption.17}{}}
+\newlabel{fig:terrorwSr}{{4.7d}{33}{Error for \texttt {SLM} with restart. \relax }{figure.caption.17}{}}
+\newlabel{sub@fig:terrorwSr}{{d}{33}{Error for \texttt {SLM} with restart. \relax }{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces  The pictures show which $n$ gives convergence for different $T_s$. The top plots are without restart, and the bottom pictures are with restart.\relax }}{33}{figure.caption.17}}
+\newlabel{fig:rest}{{4.7}{33}{The pictures show which $n$ gives convergence for different $T_s$. The top plots are without restart, and the bottom pictures are with restart.\relax }{figure.caption.17}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.4} Energy and error }{33}{section.4.4}}
 \newlabel{sec:resultconsterergy}{{4.4}{33}{Energy and error}{section.4.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1} Energy and error as a function of time. }{33}{subsection.4.4.1}}
-\newlabel{fig:longtime2err}{{4.8a}{33}{Error without restart. \relax }{figure.caption.17}{}}
-\newlabel{sub@fig:longtime2err}{{a}{33}{Error without restart. \relax }{figure.caption.17}{}}
-\newlabel{fig:longtime8err}{{4.8b}{33}{Energy without restart. \relax }{figure.caption.17}{}}
-\newlabel{sub@fig:longtime8err}{{b}{33}{Energy without restart. \relax }{figure.caption.17}{}}
-\newlabel{fig:longtime2rerr}{{4.8c}{33}{Error with restart. \relax }{figure.caption.17}{}}
-\newlabel{sub@fig:longtime2rerr}{{c}{33}{Error with restart. \relax }{figure.caption.17}{}}
-\newlabel{fig:longtime8rerr}{{4.8d}{33}{Energy with restart. \relax }{figure.caption.17}{}}
-\newlabel{sub@fig:longtime8rerr}{{d}{33}{Energy with restart. \relax }{figure.caption.17}{}}
-\newlabel{fig:longtime2rene}{{4.8e}{33}{Number of restarts. \relax }{figure.caption.17}{}}
-\newlabel{sub@fig:longtime2rene}{{e}{33}{Number of restarts. \relax }{figure.caption.17}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces  The figures show how error and energy changes with as a function of time. $m = 20$. The top pictures are without restart, and the bottom pictures are with restart. \relax }}{33}{figure.caption.17}}
-\newlabel{fig:SLMenergyerror0}{{4.8}{33}{The figures show how error and energy changes with as a function of time. $m = 20$. The top pictures are without restart, and the bottom pictures are with restart. \relax }{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1} Energy and error as a function of time }{34}{subsection.4.4.1}}
+\newlabel{fig:longtime2err}{{4.8a}{34}{Error without restart. \\. \relax }{figure.caption.18}{}}
+\newlabel{sub@fig:longtime2err}{{a}{34}{Error without restart. \\. \relax }{figure.caption.18}{}}
+\newlabel{fig:longtime8err}{{4.8b}{34}{Energy error without restart. \relax }{figure.caption.18}{}}
+\newlabel{sub@fig:longtime8err}{{b}{34}{Energy error without restart. \relax }{figure.caption.18}{}}
+\newlabel{fig:longtime2rerr}{{4.8c}{34}{Error with restart. \relax }{figure.caption.18}{}}
+\newlabel{sub@fig:longtime2rerr}{{c}{34}{Error with restart. \relax }{figure.caption.18}{}}
+\newlabel{fig:longtime8rerr}{{4.8d}{34}{Energy error with restart. \relax }{figure.caption.18}{}}
+\newlabel{sub@fig:longtime8rerr}{{d}{34}{Energy error with restart. \relax }{figure.caption.18}{}}
+\newlabel{fig:longtime2rene}{{4.8e}{34}{Number of restarts. \relax }{figure.caption.18}{}}
+\newlabel{sub@fig:longtime2rene}{{e}{34}{Number of restarts. \relax }{figure.caption.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces  The figures show how the error and energy changes with as a function of time. The top pictures are without restart, and the bottom pictures are with restart and $\iota = 1e-6$. \relax }}{34}{figure.caption.18}}
+\newlabel{fig:SLMenergyerror0}{{4.8}{34}{The figures show how the error and energy changes with as a function of time. The top pictures are without restart, and the bottom pictures are with restart and $\iota = 1e-6$. \relax }{figure.caption.18}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Energy and error as a function of time for windowing.}{34}{subsection.4.4.2}}
-\newlabel{fig:Kversuskerror0}{{4.9a}{34}{Error without restart. \relax }{figure.caption.18}{}}
-\newlabel{sub@fig:Kversuskerror0}{{a}{34}{Error without restart. \relax }{figure.caption.18}{}}
-\newlabel{fig:Kversuskenergy0}{{4.9b}{34}{Energy without restart. \relax }{figure.caption.18}{}}
-\newlabel{sub@fig:Kversuskenergy0}{{b}{34}{Energy without restart. \relax }{figure.caption.18}{}}
-\newlabel{fig:Kversuskerror}{{4.9c}{34}{Error with restart. \relax }{figure.caption.18}{}}
-\newlabel{sub@fig:Kversuskerror}{{c}{34}{Error with restart. \relax }{figure.caption.18}{}}
-\newlabel{fig:Kversuskenergy}{{4.9d}{34}{Energy with restart. \relax }{figure.caption.18}{}}
-\newlabel{sub@fig:Kversuskenergy}{{d}{34}{Energy with restart. \relax }{figure.caption.18}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces  The figures shows how the error and energy changes over time. $m = 20$, $k= 20$. The top pictures are with restart, and the bottom pictures are without restart. \relax }}{34}{figure.caption.18}}
-\newlabel{fig:Kversusk}{{4.9}{34}{The figures shows how the error and energy changes over time. $m = 20$, $k= 20$. The top pictures are with restart, and the bottom pictures are without restart. \relax }{figure.caption.18}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Behavior on long time domains}{35}{subsection.4.4.3}}
-\newlabel{sec:longtime}{{4.4.3}{35}{Behavior on long time domains}{subsection.4.4.3}{}}
-\newlabel{fig:vlongerr}{{4.10a}{35}{Error without restart. \relax }{figure.caption.19}{}}
-\newlabel{sub@fig:vlongerr}{{a}{35}{Error without restart. \relax }{figure.caption.19}{}}
-\newlabel{fig:vlongerrr}{{4.10b}{35}{Error with restart. \relax }{figure.caption.19}{}}
-\newlabel{sub@fig:vlongerrr}{{b}{35}{Error with restart. \relax }{figure.caption.19}{}}
-\newlabel{fig:vlongene}{{4.10c}{35}{Energy without restart. \relax }{figure.caption.19}{}}
-\newlabel{sub@fig:vlongene}{{c}{35}{Energy without restart. \relax }{figure.caption.19}{}}
-\newlabel{fig:vlongener}{{4.10d}{35}{Energy with restart. \relax }{figure.caption.19}{}}
-\newlabel{sub@fig:vlongener}{{d}{35}{Energy with restart. \relax }{figure.caption.19}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces  This figure shows how different methods perform on a very long time domain. $m = 20$, $k = 20$ unless stated. \relax }}{35}{figure.caption.19}}
-\newlabel{fig:vlong}{{4.10}{35}{This figure shows how different methods perform on a very long time domain. $m = 20$, $k = 20$ unless stated. \relax }{figure.caption.19}{}}
-\newlabel{fig:vlongerrrK}{{4.11a}{36}{Error for windowing without restart. \relax }{figure.caption.20}{}}
-\newlabel{sub@fig:vlongerrrK}{{a}{36}{Error for windowing without restart. \relax }{figure.caption.20}{}}
-\newlabel{fig:vlongenerK}{{4.11b}{36}{Energy with windowing without restart. \relax }{figure.caption.20}{}}
-\newlabel{sub@fig:vlongenerK}{{b}{36}{Energy with windowing without restart. \relax }{figure.caption.20}{}}
-\newlabel{fig:vlongerrrK}{{4.11c}{36}{Error for windowing with restart. \relax }{figure.caption.20}{}}
-\newlabel{sub@fig:vlongerrrK}{{c}{36}{Error for windowing with restart. \relax }{figure.caption.20}{}}
-\newlabel{fig:vlongenerK}{{4.11d}{36}{Energy with windowing with restart. \relax }{figure.caption.20}{}}
-\newlabel{sub@fig:vlongenerK}{{d}{36}{Energy with windowing with restart. \relax }{figure.caption.20}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces  This figure shows how windowing perform on a very long time domain. $m = 20$, $k = 20$ unless stated. \relax }}{36}{figure.caption.20}}
-\newlabel{fig:windowingc}{{4.11}{36}{This figure shows how windowing perform on a very long time domain. $m = 20$, $k = 20$ unless stated. \relax }{figure.caption.20}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Energy in the transformations}{36}{subsection.4.4.4}}
-\newlabel{sec:transf}{{4.4.4}{36}{Energy in the transformations}{subsection.4.4.4}{}}
-\newlabel{fig:energyswA}{{4.12a}{37}{Energy for \texttt {KPM}(200). \relax }{figure.caption.21}{}}
-\newlabel{sub@fig:energyswA}{{a}{37}{Energy for \texttt {KPM}(200). \relax }{figure.caption.21}{}}
-\newlabel{fig:energswS}{{4.12b}{37}{Energy for \texttt {SLM}(200). \relax }{figure.caption.21}{}}
-\newlabel{sub@fig:energswS}{{b}{37}{Energy for \texttt {SLM}(200). \relax }{figure.caption.21}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces  The figures shows how the transformation between $z(t)$ and $u(t)$ changes the energy. Restart is not enabled and $m = 20$. \relax }}{37}{figure.caption.21}}
-\newlabel{fig:energs}{{4.12}{37}{The figures shows how the transformation between $z(t)$ and $u(t)$ changes the energy. Restart is not enabled and $m = 20$. \relax }{figure.caption.21}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.5}Residual energy}{37}{subsection.4.4.5}}
-\newlabel{sec:residualenergy}{{4.4.5}{37}{Residual energy}{subsection.4.4.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces  A plot of $\mathcal  {H}_3$ and $\mathcal  {H}_4$ for different time domains. \relax }}{37}{figure.caption.22}}
-\newlabel{fig:SLMpes}{{4.13}{37}{A plot of $\mathcal {H}_3$ and $\mathcal {H}_4$ for different time domains. \relax }{figure.caption.22}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.5}Energy and error with exact solvers}{38}{section.4.5}}
-\newlabel{sec:diag}{{4.5}{38}{Energy and error with exact solvers}{section.4.5}{}}
-\newlabel{fig:ideaerr20}{{4.14a}{38}{Error. \relax }{figure.caption.23}{}}
-\newlabel{sub@fig:ideaerr20}{{a}{38}{Error. \relax }{figure.caption.23}{}}
-\newlabel{fig:ideaener20}{{4.14b}{38}{Energy. \relax }{figure.caption.23}{}}
-\newlabel{sub@fig:ideaener20}{{b}{38}{Energy. \relax }{figure.caption.23}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.14}{\ignorespaces  A figure showing how the error and energy changes over time when an exact solver (\texttt  {diag}) is used. $n = 20$, $m = 20$, restart is not enabled. \texttt  {DM} uses trapezoidal rule. \relax }}{38}{figure.caption.23}}
-\newlabel{fig:idea0}{{4.14}{38}{A figure showing how the error and energy changes over time when an exact solver (\texttt {diag}) is used. $n = 20$, $m = 20$, restart is not enabled. \texttt {DM} uses trapezoidal rule. \relax }{figure.caption.23}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}MATLABs \texttt  {expm} function}{39}{subsection.4.5.1}}
-\newlabel{sec:resultexpm}{{4.5.1}{39}{MATLABs \texttt {expm} function}{subsection.4.5.1}{}}
-\newlabel{fig:expmSerr}{{4.15a}{39}{Error. \relax }{figure.caption.24}{}}
-\newlabel{sub@fig:expmSerr}{{a}{39}{Error. \relax }{figure.caption.24}{}}
-\newlabel{fig:expmSener}{{4.15b}{39}{Energy. \relax }{figure.caption.24}{}}
-\newlabel{sub@fig:expmSener}{{b}{39}{Energy. \relax }{figure.caption.24}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.15}{\ignorespaces A figure showing the difference in error and energy for the different exact integration methods. Restart is not enabled, $m = 20$. \relax }}{39}{figure.caption.24}}
-\newlabel{fig:expm}{{4.15}{39}{A figure showing the difference in error and energy for the different exact integration methods. Restart is not enabled, $m = 20$. \relax }{figure.caption.24}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.6}Computation time}{39}{section.4.6}}
-\newlabel{sec:cruntime}{{4.6}{39}{Computation time}{section.4.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Na\IeC {\"\i }ve implementation}{39}{subsection.4.6.1}}
-\newlabel{sec:naive}{{4.6.1}{39}{Naïve implementation}{subsection.4.6.1}{}}
-\newlabel{fig:timem}{{4.16a}{40}{Computation time as a function of $m$ without restart. \relax }{figure.caption.25}{}}
-\newlabel{sub@fig:timem}{{a}{40}{Computation time as a function of $m$ without restart. \relax }{figure.caption.25}{}}
-\newlabel{fig:timek}{{4.16b}{40}{Computation time as a function of $k$ without restart. \relax }{figure.caption.25}{}}
-\newlabel{sub@fig:timek}{{b}{40}{Computation time as a function of $k$ without restart. \relax }{figure.caption.25}{}}
-\newlabel{fig:timek1}{{4.16c}{40}{Computation time as a function of $k$ without restart. \relax }{figure.caption.25}{}}
-\newlabel{sub@fig:timek1}{{c}{40}{Computation time as a function of $k$ without restart. \relax }{figure.caption.25}{}}
-\newlabel{fig:timemr}{{4.16d}{40}{Computation time as a function of $m$ with restart. \relax }{figure.caption.25}{}}
-\newlabel{sub@fig:timemr}{{d}{40}{Computation time as a function of $m$ with restart. \relax }{figure.caption.25}{}}
-\newlabel{fig:timekr}{{4.16e}{40}{Computation time as a function of $k$ with restart. \relax }{figure.caption.25}{}}
-\newlabel{sub@fig:timekr}{{e}{40}{Computation time as a function of $k$ with restart. \relax }{figure.caption.25}{}}
-\newlabel{fig:timekr1}{{4.16f}{40}{Computation time as a function of $n$ with restart. \relax }{figure.caption.25}{}}
-\newlabel{sub@fig:timekr1}{{f}{40}{Computation time as a function of $n$ with restart. \relax }{figure.caption.25}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.16}{\ignorespaces  A figure of computation times with and without restart for different $m$, $k$ and $n$. $n = 200$, $T_s = 100$, $k = 2000$, $m = 20$ unless stated. \relax }}{40}{figure.caption.25}}
-\newlabel{fig:time0}{{4.16}{40}{A figure of computation times with and without restart for different $m$, $k$ and $n$. $n = 200$, $T_s = 100$, $k = 2000$, $m = 20$ unless stated. \relax }{figure.caption.25}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}Windowing}{41}{subsection.4.6.2}}
-\newlabel{fig:timemt}{{4.17a}{41}{Computation time as a function of $m$ without restart. \relax }{figure.caption.26}{}}
-\newlabel{sub@fig:timemt}{{a}{41}{Computation time as a function of $m$ without restart. \relax }{figure.caption.26}{}}
-\newlabel{fig:timekt}{{4.17b}{41}{Computation time as a function of $k$ without restart. \relax }{figure.caption.26}{}}
-\newlabel{sub@fig:timekt}{{b}{41}{Computation time as a function of $k$ without restart. \relax }{figure.caption.26}{}}
-\newlabel{fig:timemtr}{{4.17c}{41}{Computation time as a function of $m$ with restart. \relax }{figure.caption.26}{}}
-\newlabel{sub@fig:timemtr}{{c}{41}{Computation time as a function of $m$ with restart. \relax }{figure.caption.26}{}}
-\newlabel{fig:timektr}{{4.17d}{41}{Computation time as a function of $k$ with restart. \relax }{figure.caption.26}{}}
-\newlabel{sub@fig:timektr}{{d}{41}{Computation time as a function of $k$ with restart. \relax }{figure.caption.26}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.17}{\ignorespaces  A figure of the computation times when windowing is used. $n = 20$, $T_s = 100$, $k = 20$ per second, and $m = 20$ unless stated. \relax }}{41}{figure.caption.26}}
-\newlabel{fig:time2}{{4.17}{41}{A figure of the computation times when windowing is used. $n = 20$, $T_s = 100$, $k = 20$ per second, and $m = 20$ unless stated. \relax }{figure.caption.26}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.3}With \texttt  {diag}}{42}{subsection.4.6.3}}
-\newlabel{fig:timeme}{{4.18a}{42}{Computation time as a function of $m$. \relax }{figure.caption.27}{}}
-\newlabel{sub@fig:timeme}{{a}{42}{Computation time as a function of $m$. \relax }{figure.caption.27}{}}
-\newlabel{fig:timeke}{{4.18b}{42}{Computation time as a function of $k$. \relax }{figure.caption.27}{}}
-\newlabel{sub@fig:timeke}{{b}{42}{Computation time as a function of $k$. \relax }{figure.caption.27}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.18}{\ignorespaces  A figure of the computation times with \texttt  {diag}. $n = 20$, $T_s = 100$, $k = 2000$, $m = 20$ unless stated. \relax }}{42}{figure.caption.27}}
-\newlabel{fig:time3}{{4.18}{42}{A figure of the computation times with \texttt {diag}. $n = 20$, $T_s = 100$, $k = 2000$, $m = 20$ unless stated. \relax }{figure.caption.27}{}}
+\newlabel{fig:Kversuskerror0}{{4.9a}{35}{Error without restart. \\.\relax }{figure.caption.19}{}}
+\newlabel{sub@fig:Kversuskerror0}{{a}{35}{Error without restart. \\.\relax }{figure.caption.19}{}}
+\newlabel{fig:Kversuskenergy0}{{4.9b}{35}{Energy error without restart. \relax }{figure.caption.19}{}}
+\newlabel{sub@fig:Kversuskenergy0}{{b}{35}{Energy error without restart. \relax }{figure.caption.19}{}}
+\newlabel{fig:Kversuskerror}{{4.9c}{35}{Error with restart. \relax }{figure.caption.19}{}}
+\newlabel{sub@fig:Kversuskerror}{{c}{35}{Error with restart. \relax }{figure.caption.19}{}}
+\newlabel{fig:Kversuskenergy}{{4.9d}{35}{Energy error with restart. \relax }{figure.caption.19}{}}
+\newlabel{sub@fig:Kversuskenergy}{{d}{35}{Energy error with restart. \relax }{figure.caption.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces  The figures show how the error and energy change over time when windowing is used. The top pictures are without restart, and the bottom pictures are with restart and $\iota = 1e-6$. \relax }}{35}{figure.caption.19}}
+\newlabel{fig:Kversusk}{{4.9}{35}{The figures show how the error and energy change over time when windowing is used. The top pictures are without restart, and the bottom pictures are with restart and $\iota = 1e-6$. \relax }{figure.caption.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Behavior of energy and error on long time domains}{35}{subsection.4.4.3}}
+\newlabel{sec:longtime}{{4.4.3}{35}{Behavior of energy and error on long time domains}{subsection.4.4.3}{}}
+\newlabel{fig:vlongerr}{{4.10a}{36}{Error without restart. \\. \relax }{figure.caption.20}{}}
+\newlabel{sub@fig:vlongerr}{{a}{36}{Error without restart. \\. \relax }{figure.caption.20}{}}
+\newlabel{fig:vlongene}{{4.10b}{36}{Energy error without restart. \relax }{figure.caption.20}{}}
+\newlabel{sub@fig:vlongene}{{b}{36}{Energy error without restart. \relax }{figure.caption.20}{}}
+\newlabel{fig:vlongerrr}{{4.10c}{36}{Error with restart. \relax }{figure.caption.20}{}}
+\newlabel{sub@fig:vlongerrr}{{c}{36}{Error with restart. \relax }{figure.caption.20}{}}
+\newlabel{fig:vlongener}{{4.10d}{36}{Energy error with restart. \relax }{figure.caption.20}{}}
+\newlabel{sub@fig:vlongener}{{d}{36}{Energy error with restart. \relax }{figure.caption.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces  This figure shows how different methods perform on a long time domain. \relax }}{36}{figure.caption.20}}
+\newlabel{fig:vlong}{{4.10}{36}{This figure shows how different methods perform on a long time domain. \relax }{figure.caption.20}{}}
+\newlabel{fig:vlongerrrK}{{4.11a}{37}{Error for windowing without restart. \relax }{figure.caption.21}{}}
+\newlabel{sub@fig:vlongerrrK}{{a}{37}{Error for windowing without restart. \relax }{figure.caption.21}{}}
+\newlabel{fig:vlongenerK}{{4.11b}{37}{Energy error for windowing without restart. \relax }{figure.caption.21}{}}
+\newlabel{sub@fig:vlongenerK}{{b}{37}{Energy error for windowing without restart. \relax }{figure.caption.21}{}}
+\newlabel{fig:vlongerrrKr}{{4.11c}{37}{Error for windowing with restart. \relax }{figure.caption.21}{}}
+\newlabel{sub@fig:vlongerrrKr}{{c}{37}{Error for windowing with restart. \relax }{figure.caption.21}{}}
+\newlabel{fig:vlongenerKr}{{4.11d}{37}{Energy error for windowing with restart. \relax }{figure.caption.21}{}}
+\newlabel{sub@fig:vlongenerKr}{{d}{37}{Energy error for windowing with restart. \relax }{figure.caption.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces  This figure shows how windowing performs on a very long time domain. \relax }}{37}{figure.caption.21}}
+\newlabel{fig:windowingc}{{4.11}{37}{This figure shows how windowing performs on a very long time domain. \relax }{figure.caption.21}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Energy and error with exact solvers}{37}{section.4.5}}
+\newlabel{sec:diag}{{4.5}{37}{Energy and error with exact solvers}{section.4.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Exact solver vs. numerical integration}{38}{subsection.4.5.1}}
+\newlabel{fig:ideaerr20}{{4.12a}{38}{Error as a function of time. \relax }{figure.caption.22}{}}
+\newlabel{sub@fig:ideaerr20}{{a}{38}{Error as a function of time. \relax }{figure.caption.22}{}}
+\newlabel{fig:ideaener20}{{4.12b}{38}{Energy error as a function of time. \relax }{figure.caption.22}{}}
+\newlabel{sub@fig:ideaener20}{{b}{38}{Energy error as a function of time. \relax }{figure.caption.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces  A figure showing how the error and energy changes over time when an exact solver (\texttt  {diag}) is used. Restart is not enabled, and \texttt  {DM} uses the trapezoidal rule. \relax }}{38}{figure.caption.22}}
+\newlabel{fig:idea0}{{4.12}{38}{A figure showing how the error and energy changes over time when an exact solver (\texttt {diag}) is used. Restart is not enabled, and \texttt {DM} uses the trapezoidal rule. \relax }{figure.caption.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Exact solver with restart}{39}{subsection.4.5.2}}
+\newlabel{fig:winduerr}{{4.13a}{39}{Error with and without restart. \relax }{figure.caption.23}{}}
+\newlabel{sub@fig:winduerr}{{a}{39}{Error with and without restart. \relax }{figure.caption.23}{}}
+\newlabel{fig:winduene}{{4.13b}{39}{Energy error with and without restart. \relax }{figure.caption.23}{}}
+\newlabel{sub@fig:winduene}{{b}{39}{Energy error with and without restart. \relax }{figure.caption.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces A figure showing how restarting after using an exact solver changes the error and energy. $i_r = 1$ means that restart is not used, while $i_r > 1$ means that restart is used. \relax }}{39}{figure.caption.23}}
+\newlabel{fig:windu}{{4.13}{39}{A figure showing how restarting after using an exact solver changes the error and energy. $i_r = 1$ means that restart is not used, while $i_r > 1$ means that restart is used. \relax }{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5.3}Exact solver with windowing}{39}{subsection.4.5.3}}
+\newlabel{fig:restarterr}{{4.14a}{39}{Error with and without restart. \relax }{figure.caption.24}{}}
+\newlabel{sub@fig:restarterr}{{a}{39}{Error with and without restart. \relax }{figure.caption.24}{}}
+\newlabel{fig:restartene}{{4.14b}{39}{Energy error with and without restart. \relax }{figure.caption.24}{}}
+\newlabel{sub@fig:restartene}{{b}{39}{Energy error with and without restart. \relax }{figure.caption.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.14}{\ignorespaces A figure showing how windowing with an exact solver changes the error and the energy. $i_r = 1$ means that restart is not used, while $i_r > 1$ means that restart is used. \relax }}{39}{figure.caption.24}}
+\newlabel{fig:restart}{{4.14}{39}{A figure showing how windowing with an exact solver changes the error and the energy. $i_r = 1$ means that restart is not used, while $i_r > 1$ means that restart is used. \relax }{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Energy in the transformations}{40}{section.4.6}}
+\newlabel{sec:transf}{{4.6}{40}{Energy in the transformations}{section.4.6}{}}
+\newlabel{fig:energyswA}{{4.15a}{40}{Energy error for \texttt {KPM}(40). \relax }{figure.caption.25}{}}
+\newlabel{sub@fig:energyswA}{{a}{40}{Energy error for \texttt {KPM}(40). \relax }{figure.caption.25}{}}
+\newlabel{fig:energswS}{{4.15b}{40}{Energy error for \texttt {SLM}(40). \relax }{figure.caption.25}{}}
+\newlabel{sub@fig:energswS}{{b}{40}{Energy error for \texttt {SLM}(40). \relax }{figure.caption.25}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.15}{\ignorespaces  The figures show how the transformation between $z(t)$ and $u(t)$ changes the energy. Restart is not enabled.\relax }}{40}{figure.caption.25}}
+\newlabel{fig:energs}{{4.15}{40}{The figures show how the transformation between $z(t)$ and $u(t)$ changes the energy. Restart is not enabled.\relax }{figure.caption.25}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Computation time}{40}{section.4.7}}
+\newlabel{sec:cruntime}{{4.7}{40}{Computation time}{section.4.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.1}Computation time for the numerical integration}{41}{subsection.4.7.1}}
+\newlabel{sec:naive}{{4.7.1}{41}{Computation time for the numerical integration}{subsection.4.7.1}{}}
+\newlabel{fig:timem}{{4.16a}{41}{Computation time as a function of $m$ without restart. \relax }{figure.caption.26}{}}
+\newlabel{sub@fig:timem}{{a}{41}{Computation time as a function of $m$ without restart. \relax }{figure.caption.26}{}}
+\newlabel{fig:timek}{{4.16b}{41}{Computation time as a function of $k$ without restart. \relax }{figure.caption.26}{}}
+\newlabel{sub@fig:timek}{{b}{41}{Computation time as a function of $k$ without restart. \relax }{figure.caption.26}{}}
+\newlabel{fig:timek1}{{4.16c}{41}{Computation time as a function of $n$ without restart. \relax }{figure.caption.26}{}}
+\newlabel{sub@fig:timek1}{{c}{41}{Computation time as a function of $n$ without restart. \relax }{figure.caption.26}{}}
+\newlabel{fig:timemr}{{4.16d}{41}{Computation time as a function of $m$ with restart. \relax }{figure.caption.26}{}}
+\newlabel{sub@fig:timemr}{{d}{41}{Computation time as a function of $m$ with restart. \relax }{figure.caption.26}{}}
+\newlabel{fig:timekr}{{4.16e}{41}{Computation time as a function of $k$ with restart. \relax }{figure.caption.26}{}}
+\newlabel{sub@fig:timekr}{{e}{41}{Computation time as a function of $k$ with restart. \relax }{figure.caption.26}{}}
+\newlabel{fig:timekr1}{{4.16f}{41}{Computation time as a function of $n$ with restart. \relax }{figure.caption.26}{}}
+\newlabel{sub@fig:timekr1}{{f}{41}{Computation time as a function of $n$ with restart. \relax }{figure.caption.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.16}{\ignorespaces  A figure of computation times with and without restart for different $m$, $k$ and $n$. Assume that $n = 200$, $T_s = 100$, $k = 2000$, and $m = 20$. \relax }}{41}{figure.caption.26}}
+\newlabel{fig:time0}{{4.16}{41}{A figure of computation times with and without restart for different $m$, $k$ and $n$. Assume that $n = 200$, $T_s = 100$, $k = 2000$, and $m = 20$. \relax }{figure.caption.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.2} Computation time with windowing}{42}{subsection.4.7.2}}
+\newlabel{fig:timemt}{{4.17a}{42}{Computation time as a function of $m$ without restart. \relax }{figure.caption.27}{}}
+\newlabel{sub@fig:timemt}{{a}{42}{Computation time as a function of $m$ without restart. \relax }{figure.caption.27}{}}
+\newlabel{fig:timekt}{{4.17b}{42}{Computation time as a function of $k$ without restart. \relax }{figure.caption.27}{}}
+\newlabel{sub@fig:timekt}{{b}{42}{Computation time as a function of $k$ without restart. \relax }{figure.caption.27}{}}
+\newlabel{fig:timemtr}{{4.17c}{42}{Computation time as a function of $m$ with restart. \relax }{figure.caption.27}{}}
+\newlabel{sub@fig:timemtr}{{c}{42}{Computation time as a function of $m$ with restart. \relax }{figure.caption.27}{}}
+\newlabel{fig:timektr}{{4.17d}{42}{Computation time as a function of $k$ with restart. \relax }{figure.caption.27}{}}
+\newlabel{sub@fig:timektr}{{d}{42}{Computation time as a function of $k$ with restart. \relax }{figure.caption.27}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.17}{\ignorespaces  A figure of the computation times when windowing is used. Assume that $n = 20$, $T_s = 100$, $k = 20$ per second, and $m = 20$. \relax }}{42}{figure.caption.27}}
+\newlabel{fig:time2}{{4.17}{42}{A figure of the computation times when windowing is used. Assume that $n = 20$, $T_s = 100$, $k = 20$ per second, and $m = 20$. \relax }{figure.caption.27}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7.3}Computation time with \texttt  {diag}}{43}{subsection.4.7.3}}
+\newlabel{fig:timeme}{{4.18a}{43}{Computation time as a function of $m$ without restart. \relax }{figure.caption.28}{}}
+\newlabel{sub@fig:timeme}{{a}{43}{Computation time as a function of $m$ without restart. \relax }{figure.caption.28}{}}
+\newlabel{fig:timeke}{{4.18b}{43}{Computation time as a function of $k$ without restart. \relax }{figure.caption.28}{}}
+\newlabel{sub@fig:timeke}{{b}{43}{Computation time as a function of $k$ without restart. \relax }{figure.caption.28}{}}
+\newlabel{fig:timemer}{{4.18c}{43}{Computation time as a function of $m$ with restart. \relax }{figure.caption.28}{}}
+\newlabel{sub@fig:timemer}{{c}{43}{Computation time as a function of $m$ with restart. \relax }{figure.caption.28}{}}
+\newlabel{fig:timeker}{{4.18d}{43}{Computation time as a function of $k$ with restart. \relax }{figure.caption.28}{}}
+\newlabel{sub@fig:timeker}{{d}{43}{Computation time as a function of $k$ with restart. \relax }{figure.caption.28}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.18}{\ignorespaces  A figure of the computation times with \texttt  {diag}. Assume that $n = 20$, $T_s = 100$, $k = 2000$, and $m = 20$. \relax }}{43}{figure.caption.28}}
+\newlabel{fig:time3}{{4.18}{43}{A figure of the computation times with \texttt {diag}. Assume that $n = 20$, $T_s = 100$, $k = 2000$, and $m = 20$. \relax }{figure.caption.28}{}}
 \@setckpt{chapter04}{
-\setcounter{page}{43}
+\setcounter{page}{44}
 \setcounter{equation}{0}
 \setcounter{enumi}{0}
 \setcounter{enumii}{0}
@@ -208,7 +214,7 @@
 \setcounter{mpfootnote}{0}
 \setcounter{part}{0}
 \setcounter{chapter}{4}
-\setcounter{section}{6}
+\setcounter{section}{7}
 \setcounter{subsection}{3}
 \setcounter{subsubsection}{0}
 \setcounter{paragraph}{0}
@@ -220,7 +226,7 @@
 \setcounter{NAT@ctr}{0}
 \setcounter{Item}{0}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{47}
+\setcounter{bookmark@seq@number}{49}
 \setcounter{ALC@unique}{45}
 \setcounter{ALC@line}{24}
 \setcounter{ALC@rem}{24}
@@ -228,7 +234,7 @@
 \setcounter{float@type}{8}
 \setcounter{algorithm}{3}
 \setcounter{ContinuedFloat}{0}
-\setcounter{subfigure}{2}
+\setcounter{subfigure}{4}
 \setcounter{subtable}{0}
 \setcounter{section@level}{2}
 }

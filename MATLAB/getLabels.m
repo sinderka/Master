@@ -18,6 +18,10 @@ elseif data(1) == 8
     ylab = {'energy \it H_4'};
 elseif data(1) == 9
     ylab = {'abs(\it H_3-H_4\rm)'};
+elseif data(1) == 14
+    ylab = {'\it error^{\rm diag}'};
+elseif data(1) == -3
+    ylab = {'\it energy'};
 else
     ylab = {'energy \it H_1'};
 end
@@ -154,6 +158,12 @@ elseif n(1) == -2
         end
         for i = 1:ant2
             stri = [tstr,num2str(n(i+1)),')'];
+            if length(restart) < 1 && restart (i) == 1
+                stri = [stri, ' i_r=1'];
+            elseif length(restart) < 1 && restart (i) == 0
+                stri = [stri, ' i_r>1'];
+            end
+            
             leg(i) = {stri};
         end
     else
@@ -164,6 +174,13 @@ elseif n(1) == -2
                 tstr = 'SLM(';
             end
             stri = [tstr,num2str(n(i+1)),')'];
+            
+            if length(restart) > 1 && restart (i+1) == 1
+                stri = [stri, ' i_r=1'];
+            elseif length(restart) > 1 && restart (i+1) == 0
+                stri = [stri, ' i_r>',iter];
+            end
+            
             leg(i) = {stri};
         end
     end
@@ -202,7 +219,12 @@ elseif alg(1) == -2
         
         if alg(i+1) == 1
             if PMint(1) == -2
-                if PMint(i+1) == 1
+
+                if length(restart) > 1 && restart (i+1) == 1
+                    str = ' i_r=1';
+                elseif length(restart) > 1 && restart (i+1) == 0
+                    str = ' i_r>1';
+                elseif PMint(i+1) == 1
                     str = ' trap';
                 elseif PMint(i+1) == 2
                     str = ' expm';
@@ -212,11 +234,24 @@ elseif alg(1) == -2
             else
                 str = '';
             end
+            
+            %if length(restart) < 1 && restart (i+1) == 1
+            %    str = ' i_r=1';
+            %elseif length(restart) < 1 && restart (i+1) == 0
+            %    str = ' i_r>1';
+            %end
             stri = ['KPM(',tstr,')' , str];
+
+            
+            
             leg(i) = {stri};
         elseif alg(i+1) == 2
             if PMint(1) == -2
-                if PMint(i+1) == 1
+                if length(restart) > 1 && restart (i+1) == 1
+                    str = ' i_r=1';
+                elseif length(restart) > 1 && restart (i+1) == 0
+                    str = ' i_r>1';
+                elseif PMint(i+1) == 1
                     str = ' trap';
                 elseif PMint(i+1) == 2
                     str = ' expm';
@@ -226,6 +261,13 @@ elseif alg(1) == -2
             else
                 str = '';
             end
+            
+            if length(restart) > 1 && restart (i+1) == 1
+                str = ' i_r=1';
+            elseif length(restart) > 1 && restart (i+1) == 0
+                str = ' i_r>1';
+            end
+            
             stri = ['SLM(',tstr,')',str];
             leg(i) = {stri};
         elseif alg(i+1) == 3 && ~( data == 1 || data == 5 || data == 6 )

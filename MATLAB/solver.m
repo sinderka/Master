@@ -30,9 +30,9 @@ function utdata = solver(m,n,simtime,K,k,eqn,alg,integrator,restart,prob,conv,pa
 %%% Initiell data
 if nargin < 13
     m = 9;
-    simtime = 1000;
+    simtime = 0.01;
     K = 1;
-    k = 10000;
+    k = 400;
     n = 8;
     restart = 0;
     prob = 1;
@@ -200,7 +200,7 @@ end
 utdata(13) = max(abs(getEnergy(A,U1(vec,:))));
 
 
-if prob == 1 && length(A) <= 100
+if prob == 1 && length(A) <= 2*(30-2)^2
     udiag = zeros(2*m^2,k*K);
     %for i = 1:size(F,1)
     
@@ -208,14 +208,14 @@ if prob == 1 && length(A) <= 100
     utdata(14) = max(abs(getError(U,udiag)));
     if figvar
         figure(1231)
-        plot(T,getError(U,udiag));
-        %hold on
-        %%plot(T,getError(udiag,correctsolution));
+        loglog(T,getError(U,udiag));
+        hold on
+        plot(T,getError(udiag,correctsolution));
         %hold off
         figure(1223)
         plot(T,getEnergy(A,udiag(vec,:)))
     end
-    utdata(14)
+    %utdata(14)
 else
     utdata(14) = -1;
 end

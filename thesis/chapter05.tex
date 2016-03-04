@@ -1,9 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Results for test problems with varying energy}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:varyener} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-This chapter will look at many of the same elements that was discussed in Chapter \ref{sec:constres}, but not all. The excluded results are mostly theoretical results that needed verification, which has already been done in Chapter \ref{sec:constres}. This chapter will try to find out if there is any reason to use \texttt{SLM} instead of \texttt{KPM} on non autonomous Hamiltonian systems. \\
+In this chapter we will investigate the performance of \texttt{SLM} and \texttt{KPM} when applied to non autonomous Hamiltonian systems of type \eqref{eqn:PDE1}. The error and energy as a function of time $T_s$, together with computation time as a function of $m$ and $k$, is shown. $k$ is the number of steps in time, and $m$ is used to calculate the size of the matrix $\hat{m}$, given by the following relation $\hat{m} = 2(m-2)^2$. We also make a numerical study to find out what the best strategy for choosing the restart variable $n$ is.\\%How the restart variable $n$ can be chosen is also explored.\\
 
-\noindent The exact solvers does not work due to the time dependent source term in equation \eqref{eqn:PDE1}, thus there will be no discussion about that in this chapter.
+\noindent The exact solver in Table \ref{tab:intcorrect} does not work in this case due to the presence of the time dependent source term in equation \eqref{eqn:PDE1}. When \texttt{semirandom} is used, the error and energy will be measured as the difference between \texttt{DM} and the Krylov method used. This will be marked with $\text{error}^{\text{comp}}$ and $\text{energy}^{\text{comp}}$. This makes the error seem a lot smaller than it really is. 
+Another approach that could be used is to apply the midpoint rule with a very small step-size, this has not been considered here.  \\
+
+\noindent Since it is interesting to compare the results in this chapter to the previous chapter, all values will remain the same, meaning: $m = 8$, $n = 8$ with restart, $n = 40$ without restart, and $k = 20$ per second, unless stated otherwise. The tolerance $\iota = 1e-6$ is used on all figures with restart. 
 \section{Convergence with $m$ and $k$} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:vconv}
 \begin{figure}[H]
@@ -16,7 +19,7 @@ This chapter will look at many of the same elements that was discussed in Chapte
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/varconv13r.jpg}
-                \caption{ Convergence for \texttt{wave} with midpoint rule without restart. }
+                \caption{ Convergence for \texttt{wave} with midpoint rule without restart.\\ }
                 \label{fig:varconv13r}
         \end{subfigure}
         \begin{subfigure}[b]{0.3\textwidth}
@@ -27,15 +30,15 @@ This chapter will look at many of the same elements that was discussed in Chapte
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/varconv13.jpg}
-                \caption{ Convergence for \texttt{wave} with midpoint rule rule and restart. }
+                \caption{ Convergence for \texttt{wave} with midpoint rule and restart. }
                 \label{fig:varconv13}
         \end{subfigure}
 
-        \caption{ Convergence plot with different integrators, simulated over 1 second. }
+        \caption{ Convergence plot with different integrators, simulated over 1 second. The top pictures are without restart, the bottom pictures are with restart and $\iota = 1e-6$. }
         \label{fig:varconv}
 \end{figure}
 
-Midpoint rule performs better than trapezoidal rule. It is interesting to see that without restart the methods does not converge with $n = 20$, while they converged with $n = 2$ when the energy was constant. Clearly convergence is a lot harder to achieve in this case. Only midpoint rule will be used further in this chapter.\\
+Figure \ref{fig:varconv} shows that without restart, the methods does not converge with $n = 20$, while they converged with $n = 2$ with constant energy (see Figure \ref{fig:intconv}). Clearly convergence is a lot harder to achieve in this case, though the restart can effectively be used to ensure this. With restart, all methods converge quadratically. The midpoint rule performs better than the trapezoidal rule, therefore only the midpoint rule will be used further in this chapter.\\
 
 \section{Convergence with $\iota$} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -43,7 +46,7 @@ Midpoint rule performs better than trapezoidal rule. It is interesting to see th
         \centering
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/varyEnergy.jpg}
-                \caption{ Energy for \texttt{wave}. }
+                \caption{ Energy error for \texttt{wave}. }
                 \label{fig:varyEnergy}
         \end{subfigure}%
         ~
@@ -61,13 +64,13 @@ Midpoint rule performs better than trapezoidal rule. It is interesting to see th
         
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/varyEnergyw.jpg}
-                \caption{ Energy for \texttt{semirandom}. }
+                \caption{ Energy error for \texttt{semirandom}. }
                 \label{fig:varyEnergyw}
         \end{subfigure}
 		~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/varyErrorw.jpg}
-                \caption{ Error for \texttt{semirandom}. }
+                \caption{ Error for \texttt{semirandom}. \\.}
                 \label{fig:varyErrorw}
         \end{subfigure}
         ~
@@ -76,72 +79,77 @@ Midpoint rule performs better than trapezoidal rule. It is interesting to see th
                 \caption{ Number of restarts for \texttt{semirandom}. }
                 \label{fig:varyIterw}
         \end{subfigure}
-        \caption{ These figures show how restarting can improve the solution. The pictures on the top are for \texttt{wave} and on the bottom are for \texttt{semirandom}. This plot considers 100 seconds, with  $n=m=20$, $k = 2000$, $m = 20$, and midpoint rule. }
+        \caption{ These figures show how restarting changes energy and error. The pictures on the top are for \texttt{wave} and the pictures on the bottom are for \texttt{semirandom}. The time integration is over a time interval of 1 second. }
         \label{fig:variota}
 \end{figure}
-These figures look very similar to the figures in Section \ref{fig:lcompare}, one important difference is that the energy for \texttt{SLM} no longer starts at $1e-15$.% The difference between \texttt{SLM} and \texttt{KPM} seams to be smaller in this case.
+Figure \ref{fig:variota} looks very similar to Figure \ref{fig:lcompare}, one important difference is that the energy for \texttt{SLM} no longer starts at $1e-15$, suggesting that \texttt{SLM} cannot estimate the energy precisely, without decreasing the error. The two Krylov methods behave very similarly. \\
 
-\section{How to choose $n$} \label{sec:resultatv}
+\noindent \texttt{wave} has no need for the restart, while \texttt{semirandom} can have a great decrease in error and energy. In the interest of showing how the restart can best be utilized, only \texttt{semirandom} is used in the rest of this chapter.
+
+\section{How to choose the restart variable $n$} \label{sec:resultatv}
 
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.30\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/lnerrorwA.jpg}
-                \caption{ Error for \texttt{KPM} without restart. }
+                \caption{ Error for \texttt{KPM} without restart, for different $m$.\\. }
                 \label{fig:lnerrorwA}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.30\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/lreserrA.jpg}
-                \caption{ Error for \texttt{KPM} with restart.\\ }
+                \caption{ Error for \texttt{KPM} with restart, for different $m$.\\ }
                 \label{fig:lreserrA}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.30\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/lterrorwA.jpg}
-                \caption{ Error for \texttt{KPM} without restart. }
+                \caption{ Error for \texttt{KPM} without restart, for different $T_s$.\\. }
                 \label{fig:lterrorwA}
         \end{subfigure}
 
         
         \begin{subfigure}[b]{0.30\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/lnerrorwS.jpg}
-                \caption{ Error for \texttt{SLM} without restart. }
+                \caption{ Error for \texttt{SLM} without restart, for different $m$.\\. }
                 \label{fig:lnerrorwS}
         \end{subfigure}
 		~
         \begin{subfigure}[b]{0.30\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/lreserrS.jpg}
-                \caption{ Error for \texttt{SLM} with restart.\\ }
+                \caption{ Error for \texttt{SLM} with restart, for different $m$.\\ }
                 \label{fig:lreserrS}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.30\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/lterrorwS.jpg}
-                \caption{ Error for \texttt{SLM} without restart. }
+                \caption{ Error for \texttt{SLM} without restart, for different $T_s$.\\. }
                 \label{fig:lterrorwS}
         \end{subfigure}
         
         
-        \caption{ The pictures shows which $n$ gives convergence for different $m$ and $T_s$. $k = 200$ over 10 seconds unless stated. }
+        \caption{ The pictures show which $n$ gives convergence for different $m$ and $T_s$. The size of the interval of integration is 10 seconds. }
         \label{fig:lerror}
 \end{figure}
-Figure \ref{fig:lerror} shows that $n$ depends linearly on both $m$ and $T_s$. This explains why the divergence in Section \ref{sec:vconv} occurs, since $m$ becomes too large without $n$ increasing. If $n$ is too small, restarting will make the error increase. All of this makes convergence more difficult.
+Figure \ref{fig:lerror} shows that $n$ depends linearly on both $m$ and $T_s$. This explains why the divergence in Section \ref{sec:vconv} occurs: $m$ becomes too large without $n$ increasing. If $n$ is too small, restarting will make the error increase. \\
+
+\noindent The values chosen based on this picture will remain $n = 8$ when restart is not enabled, and $n = 40$ when restart is enabled. The reason for the large $n$ when restart is not enabled is that $T_s = 100$ is considered later.
 
 \section{Energy and error as a function of time } %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Suitable $n$ is the same in Section \ref{sec:resultatv} as in Section \ref{sec:resultat} for $m = 20$, thus $n$ will be kept at the same value as in Chapter \ref{sec:constres}. This means that $n = 200$ when restart is not enabled, $n = 20$ and $\iota = 1e-6$ when restart is enabled.
-\subsection{For \texttt{semirandom}} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This section will show how error and energy changes as a function of time. 
+
+\subsection{Energy and error without windowing} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/vlongtime2err.jpg}
-                \caption{ Error without restart. }
+                \caption{ Error without restart.\\. }
                 \label{fig:vlongtime2err}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/vlongtime2ene.jpg}
-                \caption{ Energy without restart. }
+                \caption{ Energy error without restart. }
                 \label{fig:vlongtime8err}
         \end{subfigure}
 
@@ -153,7 +161,7 @@ Suitable $n$ is the same in Section \ref{sec:resultatv} as in Section \ref{sec:r
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/vlongtime2rene.jpg}
-                \caption{ Energy with restart. }
+                \caption{ Energy error with restart. }
                 \label{fig:vlongtime8rerr}
         \end{subfigure}
      	~
@@ -163,25 +171,24 @@ Suitable $n$ is the same in Section \ref{sec:resultatv} as in Section \ref{sec:r
                 \label{fig:vlongtime2rene}
         \end{subfigure}        
         
-        \caption{ The pictures show the change in error and energy as a function of time.  Restart is not enabled for the top pictures, restart is enabled for the bottom pictures, $m = 20$. }
+        \caption{ The pictures show the change in the error and energy as a function of time.  Restart is not enabled for the top pictures, restart is enabled for the bottom pictures. }
         \label{fig:vSLMenergyerror1}
 \end{figure}
-\noindent Figure \ref{fig:vSLMenergyerror1} is very similar to Figure \ref{fig:SLMenergyerror0}. The only difference is the more powerful divergence occurring at the last points. 
-The restart makes \texttt{SLM} and \texttt{KPM} behave very similar. The restart also gives a much better estimate of error and energy than not restarting. This makes restarting a better idea here than in Chapter \ref{sec:constres}. \\
+Figure \ref{fig:vSLMenergyerror1} shows that \texttt{SLM} preserves the energy a little longer than \texttt{KPM} when restart is not enabled. Apart from that, the methods are almost identical. These pictures look very similar to Figure \ref{fig:idea0}, this is because we only look at the error the Krylov methods create, and not the error made by the time integration method. The restart gives a much better estimate of the error and energy throughout the time domain, than when restart is not enabled. \\
 
-\noindent Figure \ref{fig:vSLMenergyerror0} shows the divergence for the projection methods. The figure also shows the linear increase in the number of restarts, and that \texttt{SLM}'s energy is preserved a little longer than the energy for \texttt{KPM}.
+\noindent Figure \ref{fig:vSLMenergyerror0} shows the divergence occurring on long time domains for the Krylov methods. Figure \ref{fig:longeriter} shows the linear increase in the number of restarts.
 
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/longererr.jpg}
-                \caption{ Error without restart. }
+                \caption{ Error without restart.\\. }
                 \label{fig:longererr}
         \end{subfigure}
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/longerene.jpg}
-                \caption{ Energy without restart. }
+                \caption{ Energy error without restart. }
                 \label{fig:longerene}
         \end{subfigure}
 
@@ -193,7 +200,7 @@ The restart makes \texttt{SLM} and \texttt{KPM} behave very similar. The restart
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/longerener.jpg}
-                \caption{ Energy with restart. }
+                \caption{ Energy error with restart. }
                 \label{fig:longerener}
         \end{subfigure}
      	~
@@ -203,60 +210,22 @@ The restart makes \texttt{SLM} and \texttt{KPM} behave very similar. The restart
                 \label{fig:longeriter}
         \end{subfigure}        
         
-        \caption{ The pictures show the change in error and energy over a very long time domain. $m = 20$, restart is not enabled for the top pictures, restart is enabled for the bottom pictures. }
+        \caption{ The pictures show the change in error and energy over a long time domain. Restart is not enabled for the top pictures, restart is enabled for the bottom pictures. }
         \label{fig:vSLMenergyerror0}
 \end{figure}
-%!!!!!!!!!!!!!!!!!!!!!!her må det skrives en tekst!!!!!!!!!!!!!!\\
-\subsection{For \texttt{wave}}
-\begin{figure}[H]
-        \centering
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/vwaveerr.jpg}
-                \caption{ Error without restart. }
-                \label{fig:vwaveerr}
-        \end{subfigure}
-        ~
-		\begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/vwaveene.jpg}
-                \caption{ Energy without restart. }
-                \label{fig:vwaveene}
-        \end{subfigure}    
 
-        \begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/vwavererr.jpg}
-                \caption{ Error with restart. }
-                \label{fig:vwavererr}
-        \end{subfigure}
-        ~
-		\begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/vwaverene.jpg}
-                \caption{ Energy with restart. }
-                \label{fig:vwaverene}
-        \end{subfigure}
-        ~
-		\begin{subfigure}[b]{0.3\textwidth}
-                \includegraphics[width=\textwidth]{../MATLAB/fig/vwaveiter.jpg}
-                \caption{ Number of restarts. }
-                \label{fig:vwaveiter}
-        \end{subfigure}        
-        
-        \caption{ The change in error and energy as a function of time. $m = 20$, restart is not enabled for the top pictures, restart is enabled for the bottom pictures. Since \texttt{wave} is used, error and energy are compared to the analytical solution. }
-        \label{fig:vwave}
-\end{figure}
-All methods in Figure \ref{fig:vwave} performs very similarly. With \texttt{wave} and $m = 20$ there is no need to use a particularly big $n$ or restart. This is the reason why \texttt{wave} is so little used in this chapter. It also shows that it is not possible to see the difference between \texttt{DM} and the projection methods.% when comparing it to the analytical solution.
-
-\subsection{Windowing}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Energy and error with windowing}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/lversuskerror0.jpg}
-                \caption{ Error without restart. }
+                \caption{ Error without restart.\\. }
                 \label{fig:lversuskerror0}
         \end{subfigure}
 		~
 		\begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/lversuskenergy0.jpg}
-                \caption{ Energy without restart. }
+                \caption{ Energy error without restart. }
                 \label{fig:lversuskenergy0}
         \end{subfigure}
         
@@ -268,18 +237,17 @@ All methods in Figure \ref{fig:vwave} performs very similarly. With \texttt{wave
 		~
 		\begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/lversuskenergy0r.jpg}
-                \caption{ Energy with restart. }
+                \caption{ Energy error with restart. }
                 \label{fig:lversuskenergy0r}
         \end{subfigure}
-                \caption{ Windowing with $m = 20$, $k = 20$.}
+                \caption{ The change in error and energy as a function of time with windowing.}
         \label{fig:lversuskenergy}
 \end{figure}
 \noindent Figure \ref{fig:lversuskenergy} shows that windowing does not work with varying energy, thus a very promising solution strategy from the previous chapter has a limiting factor.\\
 
 \section{Computation time} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:vruntime}
-Computation times are somewhat different from the case with constant energy due to the difficulties with convergence. 
-%\subsection{Without restart}
+Computation times are somewhat different in this case, compared to the case with constant energy. Windowing is not included since the method did not give the correct answer.
 \begin{figure}[H]
         \centering
         \begin{subfigure}[b]{0.3\textwidth}
@@ -296,7 +264,7 @@ Computation times are somewhat different from the case with constant energy due 
         ~
         \begin{subfigure}[b]{0.3\textwidth}
                 \includegraphics[width=\textwidth]{../MATLAB/fig/ltimek1.jpg}
-                \caption{ Computation time as a function of $ns$ without restart. }
+                \caption{ Computation time as a function of $n$ without restart. }
                 \label{fig:ltimek1}
         \end{subfigure}
         
@@ -317,7 +285,10 @@ Computation times are somewhat different from the case with constant energy due 
                 \caption{ Computation time as a function of $n$ with restart. }
                 \label{fig:ltimekr1}
         \end{subfigure}
-        \caption{ A figure of the computation times with and without restart. $n = 200$, $T_s = 100$, $k = 2000$, and $m = 20$ unless stated. }
+        \caption{ A figure of the computation times with and without restart. $n = 200$, $T_s = 100$, $k = 2000$, and $m = 20$. }
         \label{fig:ltime0}
 \end{figure}
-\noindent Figure \ref{fig:ltime0} shows that the computation times here are quite similar to the computation times in Section \ref{sec:naive}. The exceptions are shown in Figure \ref{fig:ltimem}, in this case both \texttt{KPM} and \texttt{SLM} is slower than \texttt{DM}. This means that \texttt{SLM} is never faster than \texttt{DM}. \texttt{KPM} is only faster if $m$ is large, $T_s$ is small, $n$ is well chosen, and restart is enabled.
+
+\noindent Figure \ref{fig:ltime0} shows that when restart is not enabled, both \texttt{KPM} and \texttt{SLM} are slower than \texttt{DM} for $m \geq 100$. \texttt{KPM} is faster than \texttt{DM} after this, while \texttt{SLM} always is slower than \texttt{DM}. 
+When restart is enabled, \texttt{KPM} can be faster if $m$ is large, and $k$ is small. \texttt{SLM} is still slower than \texttt{DM}.
+Figure \ref{fig:ltimekr1} shows that when restart is not enabled, smaller $n$ gives lower computation times.  

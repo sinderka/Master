@@ -1,13 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Practice}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Programming }%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-This section will be concerned with test problems, implementation, and calculation of out data.
+This section explains the test problems, the implementation, and how important results are found.
 
 \section{Test problems} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \label{sec:testprob}
-This section will present the test problems used to obtain in the result sections. \\
+This section will present the test problems used in the result sections. \\
 
-\noindent Two Hamiltonian matrices are implemented, one is sparse and random, and the other is a discretization of the wave equation. These matrices have two test problems each, one test problem with constant energy, and one test problem with varying energy. All test problems satisfies the condition $$u(t,0,y) = u(t,1,y) = u(t,x,0) = u(t,x,1) = 0.$$ 
+\noindent Two Hamiltonian matrices are implemented, one is sparse and random, and the other is a discretization of the wave equation. These matrices have two test problems each, one test problem with constant energy, and one test problem with varying energy. All test problems satisfy the condition $$u(t,0,y) = u(t,1,y) = u(t,x,0) = u(t,x,1) = 0.$$ 
 
 \subsection{The wave equation} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:wave}
@@ -19,8 +19,8 @@ The first test problem is based on the 2 dimensional wave equation,
 \label{eqn:wave}
 \end{equation}
 
-\noindent The spacial domain is the unit square. Each direction is divided in $m$ pieces, each with length $h_s = 1/m$, so that $x_i  = h_s\cdot i$ , $y_j = h_s\cdot j$, with $i,j = 1,\dots,m-1$. 
-\noindent The discretization of the wave equation can be obtained by approximating $\frac{\partial^2 \xi}{\partial x^2}+ \frac{\partial^2 \xi}{\partial y^2}$ with $\tilde{A}$, where $\tilde{A}$ is the five point stencil\cite{fivepoint}, and approximate $p(x_i,y_j)$ with $\tilde{b}_{i+(m-2)(j-1)}$, where $i,j = 1,\dots,m-1$. The wave equation can then be written as a system of ODE's:
+\noindent The spacial domain is the unit square. Each direction is divided in $m$ sub intervals, each of length $h_s = 1/m$, so that $x_i  = h_s\cdot i$ , $y_j = h_s\cdot j$, with $i,j = 1,\dots,m-1$. 
+\noindent The discretization of the wave equation can be obtained by approximating $\frac{\partial^2 \xi}{\partial x^2}+ \frac{\partial^2 \xi}{\partial y^2}$ with $\tilde{A}$, where $\tilde{A}$ is the five point stencil \cite{fivepoint}, and approximate $p(x_i,y_j)$ with $\tilde{b}_{i+(m-2)(j-1)}$, where $i,j = 1,\dots,m-1$. This results in the following system of ODEs:
 \begin{equation*}
 \begin{aligned}
 \dot{q}(t) &= I w(t) \\
@@ -37,10 +37,10 @@ A &=
 \end{bmatrix},
 \end{aligned}
 \end{equation*}
-This will be referred to as \texttt{wave}, and is a second order approximation of the wave equation. \\
+This will be referred to as \texttt{wave}, and is a second order approximation of the wave equation. The size of the matrix $A$ is $\hat{m} = 2(m-2)^2$, where $m$ is the number of steps in each spacial direction. \\
 
-\noindent Two test problems are used to check the integrity of the solver. 
-In the case with constant energy, the test problem is 
+\noindent Two test problems are implemented. 
+We consider one test problem with constant energy, which is
 \begin{equation*}
 \begin{aligned}
 q(t,x,y) &= \sin(\pi x) \sin( 2 \pi y) \cos(\sqrt{5} \pi t) \\
@@ -50,7 +50,7 @@ w_0(x,y) & = 0 \\
 f(t,x,y) &= 0 .
 \end{aligned}
 \end{equation*}
-For varying energy it is
+We also test the methods on a test problem with varying energy, a non autonomous Hamiltonian system:
 \begin{equation*}
 \begin{aligned}
 q(t,x,y) &= \sin(\pi x) y (y-1) (t^2+1) \\
@@ -61,9 +61,10 @@ f(t,x,y) & = 2  \sin(\pi x) y (y-1) -(t^2+1) \sin(\pi x) (2-\pi^2 y (y-1)).
 \end{aligned}
 \end{equation*}
 
-\noindent Both $q$ and $w$ are used when measuring the error. \\
+%\noindent Both $q$ and $w$ are compared to the analytical solution when measuring the error. \\
 
 \subsection{A random test problem} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\label{sec:random}
 The second implemented Hamiltonian matrix is random, and given by
 \begin{equation*}
 \begin{aligned}
@@ -72,7 +73,7 @@ D1 & = \text{rand}(\hat{m}-1,1) \\
 A &= J_{\hat{m}} \text{ gallery}(\text{'tridiag'},D1,D,D1)
 \end{aligned}
 \end{equation*}
-This matrix is referred to as \texttt{semirandom}. The part $5 I_{\hat{m}} $ is added to make $J_{\hat{m}}A$ diagonally dominant, since a fully random problem will not converge in general. The matrix is simulated as a 2 dimensional system, to make implementations easier. Since the projection methods are only usable with sparse matrices, it is $J$-tridiagonal.\\
+This matrix is referred to as \texttt{semirandom}, its size is $\hat{m} = 2(m-2)^2$, which is the same for the wave equation, this is done to easier be able to compare the two methods. The part $5 I_{\hat{m}} $ is added to make $J_{\hat{m}}A$ diagonally dominant, this is done to guarantee good convergence of the methods. Our experiments on fully random problems have shown that the convergence is significantly deteriorated. %The matrix is simulated as a 2 dimensional system, to make implementations easier.\\ %Since the Krylov methods are only usable with sparse matrices, it is $J$-tridiagonal.\\
 
 \noindent The test problem is given by
 \begin{equation*}
@@ -92,30 +93,30 @@ f(t,x,y) &= \text{rand} (2 (m-2)^2,1) \cdot \text{rand}(1,k), \\
 \end{equation*}
 when the energy is varying.\\
 
-\noindent Since we are interested in comparing the different methods to each other, the matrix and the test problems are saved and reused.
-The analytical solutions to the test problems are unknown, therefore it is impossible to show convergence in the traditional sense. A larger $m$ does not give a better approximation of some equation, it gives a new matrix, with no relation to any matrix with different $m$. This test problem might therefore seam uninteresting, but there are some important reasons to use it. It gives a sparse Hamiltonian matrix with much randomness, the randomness makes it difficult for the Krylov methods to find an approximated solution, which gives more interesting results. Specifically \texttt{semirandom} will show more correctly how restarting can improve the solution, compared to \texttt{wave}.  \\
+\noindent Since we are interested in comparing the different methods to each other, the matrix and the test problems are saved and reused. 
+The analytical solutions to the test problems are in general unknown, but can be computed accurately by an efficient implementation of the matrix exponential and/or of the variation of constants formula. Therefore it is impossible to show convergence in the traditional sense. But there are are some important reasons to use it. It gives a sparse Hamiltonian matrix with much randomness, the randomness makes it difficult for the Krylov methods to find an approximated solution, which gives more interesting results. Specifically \texttt{semirandom} will show more correctly how restarting can improve the solution, compared to \texttt{wave} (the discreticatizon of the wave equation given in Section \ref{sec:wave}).  \\
 
-\noindent The error will be measured as the difference between the solution obtained by a Krylov method and \texttt{DM}, it will be marked $\text{error}^{\text{comp}}$. This will make the error seam a lot smaller than it really is, but as shown in Section \ref{sec:DM}, it is correct to compare the solutions in this manner. When the energy is constant there is no need to compare it to anything, but test problems with varying energy will be compared with its non-projected equivalent, and be marked with $\text{energy}^{\text{comp}}$.
+\noindent The error will be measured as the difference between the solution obtained by a Krylov method and a different method depending on the problem type. The exact solver \texttt{diag} will be used if the energy is constant, it will be marked $\text{error}^{\text{diag}}$. In the case with varying energy, the exact solvers does not work, in this case the error and energy will be measured as the difference between the Krylov method, and the midpoint rule, and is marked with $\text{error}^{\text{comp}}$. This will make the error seem a lot smaller than it really is, but it gives good results.
 
-\section{Outdata} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Output data} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \label{sec:outdata}
 This section will explain how different interesting values are calculated in the program. \\
 
-\noindent All errors are obtained with the same function. At each time step, this function finds the maximum absolute difference between the approximated solution and the correct solution. The resulting vector of absolute errors is then divided by the correct solution, so that the error is relative to the correct solution. This will be marked with "error" on the plots. In the case where the correct solution is unknown, as in \texttt{semirandom}, the error is measured as the difference between the projected solution and \texttt{DM}. This case is marked with "$\text{error}^{\text{comp}}$". In some results $\text{error}^{\text{comp}}$ will also be used with \texttt{wave}.  \\
+\noindent All errors are obtained with the same function. At each time step, this function finds the maximum absolute difference between the approximated solution and the exact solution. The resulting vector of absolute errors is then divided by the exact solution, so that the error is relative to the exact solution. This will be marked with "error" on the plots. In the case where the correct solution is unknown, as in \texttt{semirandom} (the random test problem implemented in Section \ref{sec:random}), the error is measured as the difference between the numerical approximations produced by \texttt{SLM} or \texttt{KPM} and \texttt{diag} if the energy is constant, or \texttt{DM} if the energy is varying. These cases are marked with "$\text{error}^{\text{diag}}$" and "$\text{error}^{\text{comp}}$", respectively. In some results $\text{error}^{\text{diag}}$ and $\text{error}^{\text{comp}}$ will also be used with \texttt{wave} for comparative reasons.  \\
 
-\noindent The energy is found with one dedicated energy function. The exceptions are $\mathcal{H}_3$ and $\mathcal{H}_4$ which are calculated by a different function. The energy is calculated for each time step, and then initial energy is subtracted from this. In the case where the energy is constant, the energy is calculated without comparing it to anything. This is because the correct solution would sometimes have more energy than the approximation, making it difficult to draw any conclusions. This is done for all energies in Chapter \ref{sec:constres}. When comparing approximated energy with analytical energy, the energies are calculated independently, and then subtracted from each other. This is done for all energies in Chapter \ref{sec:varyener}. If the energies are compared to the analytical solution they are marked "energy", and "$\text{energy}^{\text{comp}}$" if \texttt{DM} and a projection method is compared. \\
+\noindent The energy is found with one dedicated energy function. The energy is calculated for each time step, and then initial energy is subtracted from these values to obtain the absolute energy error. When comparing approximated energy with analytical energy, the energies are calculated independently, and then subtracted from each other. This is done for all energies in Chapter \ref{sec:varyener}. If the energies are compared to the analytical solution they are marked "energy", and "$\text{energy}^{\text{comp}}$" if they are compared to \texttt{DM}.\\
 
-\noindent Other interesting results are the number of restarts, and computation time. \\
+\noindent Other interesting results are the number of restarts, and computation time.
 The number of restarts is $1$ if a Krylov method is used without restart. Any restart is then counted and added to this. The reason for this is that when plotting the number of restarts on a logarithmic scale MATLAB removes all zeros from the plot. The symbol for the number of restarts will be $i_r$.
-Computation times are measured as the time it takes to calculate the solution of the test problem. Calculations common to all methods are not included in the computation time.
+Computation times are measured as the time it takes to calculate the solution of the test problem. Calculations common to all methods are not included.
 The symbol for computation time is $T_c$.  \\
 
 \section{Figure}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-All figure are plotted with a dedicated plot tool. This makes it easier to change plots, or uncover programming faults. The program uses the solver to obtain data described in section \ref{sec:outdata}. Each run of the solver then gives information about one point on the figure, this means that the solver is run several times for each plot. This removes noisy data, and makes it easy to choose the position of each point. \\
+All figures are plotted with a dedicated plot tool. This makes it easier to change plots, or uncover programming faults. The program uses the solver to obtain data described in section \ref{sec:outdata}. Each run of the solver then gives information about one point on the figure, this means that the solver is run several times for each plot. This removes noisy data, and makes it easy to choose the position of each point. \\
 
-All labels and legend are generated with a dedicated label tool.
-On some plots, a black solid line is placed. This line is used to show trends, it is marked with $\propto \xi^a$, where $a$ is the increase, and $\xi$ is the data the line is increasing with.
-\texttt{SLM} and \texttt{KPM} will on pictures be called \texttt{KPM}($n$) and \texttt{SLM}($n$) where $n$ is the restart variable.
+\noindent All labels and legends are generated with a dedicated label tool.
+On some plots, a black solid line is placed. This line is used to show trends, it is marked with "$\propto \xi^a$", where $a \in \mathbb{N}$ is the increase, and $\xi$ is the data the line is increasing with.
+\texttt{SLM} and \texttt{KPM} will on pictures be called \texttt{KPM}($n$) and \texttt{SLM}($n$), where $n$ is the restart variable.
 
 
 
@@ -126,9 +127,9 @@ All algorithms and methods are implemented in MATLAB R2014b on an ubuntu 14.04 L
 The program is divided into several small functions, each function is individually tested. Functions are reused as much as possible.
 MATLAB's backslash operator is used to solve the linear systems in the trapezoidal rule and  the midpoint rule, sparse matrices are used where possible. \\
 
-\noindent There are two ways to implement the number of restarts the Krylov methods should perform. One way is to choose a number of iterations and hope it converges. The other method is to iterate until the change in the solution is below a certain threshold tolerance. Both of these methods are implemented, but mostly the last will be used since this gives more information about how well the solution is approximated. The tolerance will be called $\iota$ (iota) since iota is used to describe something small\cite{iota}, and both $\epsilon$ and $\delta$ were unavailable.\\
+\noindent There are two ways to implement the number of restarts the Krylov methods should perform. One way is to choose a number of iterations and hope it converges. The other method is to iterate until the change in the solution is below a certain threshold tolerance. Both of these methods are implemented, but mostly the last will be used since this gives more information about how well the solution is approximated. The tolerance will be called $\iota$ (iota) since iota is used to describe something small\cite{iota}.\\
 
-\noindent All code used to create results in the text can be found on github: \\
+\noindent All codes used to create results in the text can be found on github: \\
 \url{https://github.com/sindreka/Master}
 
 

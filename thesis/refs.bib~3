@@ -316,13 +316,15 @@
 }
 
 @inbook{symplecticintegrator,
-	author = "S{\"u}li, Endre and Mayers, David F.",
-	chapter = "12.5 Runge--Kutta methods",
-	pages = "328",
-	publisher = "Cambridge university press",
-	school = "University of Oxford",
-	title = "{An Introduction to Numerical Analysis}",
-	year = "2003"
+	author = "Hairer, Ernst and Lubich, Christian and Wanner, Gerhard",
+	chapter = "VI.8 Conjugate Symplecticity",
+	edition = "Second Edition",
+	pages = "223",
+	publisher = "Springer",
+	school = "Universit{\'e} de Gen{\`e}ve",
+	title = "{Geometric Numerical
+Integration}",
+	year = "2006"
 }
 
 @inbook{linearerrorgrowth,
@@ -357,5 +359,17 @@
 	organization = "TouchstonePublicity@simonandschuster.com",
 	title = "{The Alot is Better Than You at Everything}",
 	year = "2010"
+}
+
+@inbook{arnoldconv,
+	author = "Yousef, Saad",
+	chapter = "Proposition 6.6.",
+	owner = "sindreka",
+	pages = "155",
+	publisher = "Siam",
+	timestamp = "2015.09.13",
+	title = "{Iterative Methods for Sparse Linear Systems}",
+	volume = "SECOND EDITION",
+	year = "2003"
 }
 

@@ -1,60 +1,61 @@
 \BOOKMARK [1][-]{Doc-Start}{Preface}{}% 1
 \BOOKMARK [1][-]{section*.1}{Acknowledgment}{}% 2
-\BOOKMARK [1][-]{section*.2}{Summary and Conclusions}{}% 3
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 4
-\BOOKMARK [0][-]{chapter.2}{Background theory}{}% 5
-\BOOKMARK [1][-]{section.2.1}{Zero initial condition}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.2}{Energy}{chapter.2}% 7
-\BOOKMARK [1][-]{section.2.3}{Integration methods}{chapter.2}% 8
-\BOOKMARK [2][-]{subsection.2.3.1}{Energy conservation for the trapezoidal rule}{section.2.3}% 9
-\BOOKMARK [1][-]{section.2.4}{Windowing}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.5}{Solution methods}{chapter.2}% 11
-\BOOKMARK [2][-]{subsection.2.5.1}{Arnoldi's Algorithm and the Krylov projection method}{section.2.5}% 12
-\BOOKMARK [2][-]{subsection.2.5.2}{Symplectic Lanczos method}{section.2.5}% 13
-\BOOKMARK [2][-]{subsection.2.5.3}{Linearity of the methods}{section.2.5}% 14
-\BOOKMARK [2][-]{subsection.2.5.4}{A comment on the restart}{section.2.5}% 15
-\BOOKMARK [2][-]{subsection.2.5.5}{Direct method}{section.2.5}% 16
-\BOOKMARK [2][-]{subsection.2.5.6}{Number of operations}{section.2.5}% 17
-\BOOKMARK [1][-]{section.2.6}{SLM and its eigenvalue solving properties}{chapter.2}% 18
-\BOOKMARK [0][-]{chapter.3}{Practice}{}% 19
-\BOOKMARK [1][-]{section.3.1}{Test problems}{chapter.3}% 20
-\BOOKMARK [2][-]{subsection.3.1.1}{The wave equation}{section.3.1}% 21
-\BOOKMARK [2][-]{subsection.3.1.2}{A random test problem}{section.3.1}% 22
-\BOOKMARK [1][-]{section.3.2}{Outdata}{chapter.3}% 23
-\BOOKMARK [1][-]{section.3.3}{Figure}{chapter.3}% 24
-\BOOKMARK [1][-]{section.3.4}{Implementation}{chapter.3}% 25
-\BOOKMARK [0][-]{chapter.4}{Results for test problems with constant energy}{}% 26
-\BOOKMARK [1][-]{section.4.1}{Convergence}{chapter.4}% 27
-\BOOKMARK [2][-]{subsection.4.1.1}{ With Numerical integrations }{section.4.1}% 28
-\BOOKMARK [2][-]{subsection.4.1.2}{With exact solvers}{section.4.1}% 29
-\BOOKMARK [1][-]{section.4.2}{Convergence with the restart}{chapter.4}% 30
-\BOOKMARK [2][-]{subsection.4.2.1}{As a function of }{section.4.2}% 31
-\BOOKMARK [2][-]{subsection.4.2.2}{ As a function of ir}{section.4.2}% 32
-\BOOKMARK [1][-]{section.4.3}{How to choose n}{chapter.4}% 33
-\BOOKMARK [2][-]{subsection.4.3.1}{With different m}{section.4.3}% 34
-\BOOKMARK [2][-]{subsection.4.3.2}{With different Ts}{section.4.3}% 35
-\BOOKMARK [1][-]{section.4.4}{ Energy and error }{chapter.4}% 36
-\BOOKMARK [2][-]{subsection.4.4.1}{ Energy and error as a function of time. }{section.4.4}% 37
-\BOOKMARK [2][-]{subsection.4.4.2}{Energy and error as a function of time for windowing.}{section.4.4}% 38
-\BOOKMARK [2][-]{subsection.4.4.3}{Behavior on long time domains}{section.4.4}% 39
-\BOOKMARK [2][-]{subsection.4.4.4}{Energy in the transformations}{section.4.4}% 40
-\BOOKMARK [2][-]{subsection.4.4.5}{Residual energy}{section.4.4}% 41
-\BOOKMARK [1][-]{section.4.5}{Energy and error with exact solvers}{chapter.4}% 42
-\BOOKMARK [2][-]{subsection.4.5.1}{MATLABs expm function}{section.4.5}% 43
-\BOOKMARK [1][-]{section.4.6}{Computation time}{chapter.4}% 44
-\BOOKMARK [2][-]{subsection.4.6.1}{Na\357ve implementation}{section.4.6}% 45
-\BOOKMARK [2][-]{subsection.4.6.2}{Windowing}{section.4.6}% 46
-\BOOKMARK [2][-]{subsection.4.6.3}{With diag}{section.4.6}% 47
-\BOOKMARK [0][-]{chapter.5}{Results for test problems with varying energy}{}% 48
-\BOOKMARK [1][-]{section.5.1}{Convergence with m and k}{chapter.5}% 49
-\BOOKMARK [1][-]{section.5.2}{Convergence with }{chapter.5}% 50
-\BOOKMARK [1][-]{section.5.3}{How to choose n}{chapter.5}% 51
-\BOOKMARK [1][-]{section.5.4}{Energy and error as a function of time }{chapter.5}% 52
-\BOOKMARK [2][-]{subsection.5.4.1}{For semirandom}{section.5.4}% 53
-\BOOKMARK [2][-]{subsection.5.4.2}{For wave}{section.5.4}% 54
-\BOOKMARK [2][-]{subsection.5.4.3}{Windowing}{section.5.4}% 55
-\BOOKMARK [1][-]{section.5.5}{Computation time}{chapter.5}% 56
-\BOOKMARK [0][-]{chapter.6}{ Conclusion }{}% 57
-\BOOKMARK [1][-]{section.6.1}{Constant energy}{chapter.6}% 58
-\BOOKMARK [1][-]{section.6.2}{Varying energy}{chapter.6}% 59
-\BOOKMARK [1][-]{section.6.3}{Further work}{chapter.6}% 60
+\BOOKMARK [1][-]{section*.2}{Summary}{}% 3
+\BOOKMARK [1][-]{section*.3}{Sammendrag}{}% 4
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 5
+\BOOKMARK [0][-]{chapter.2}{Background theory}{}% 6
+\BOOKMARK [1][-]{section.2.1}{Zero initial condition}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.2}{Energy}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.3}{Integration methods}{chapter.2}% 9
+\BOOKMARK [2][-]{subsection.2.3.1}{Energy conservation for the trapezoidal rule}{section.2.3}% 10
+\BOOKMARK [1][-]{section.2.4}{Windowing}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.5}{Solution methods}{chapter.2}% 12
+\BOOKMARK [2][-]{subsection.2.5.1}{Arnoldi's Algorithm and the Krylov projection method}{section.2.5}% 13
+\BOOKMARK [2][-]{subsection.2.5.2}{Symplectic Lanczos method}{section.2.5}% 14
+\BOOKMARK [2][-]{subsection.2.5.3}{Linearity of the methods}{section.2.5}% 15
+\BOOKMARK [2][-]{subsection.2.5.4}{A comment on the restart}{section.2.5}% 16
+\BOOKMARK [2][-]{subsection.2.5.5}{Direct method}{section.2.5}% 17
+\BOOKMARK [2][-]{subsection.2.5.6}{Number of operations}{section.2.5}% 18
+\BOOKMARK [1][-]{section.2.6}{SLM as a method for eigenvalue problems}{chapter.2}% 19
+\BOOKMARK [0][-]{chapter.3}{Programming }{}% 20
+\BOOKMARK [1][-]{section.3.1}{Test problems}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.1.1}{The wave equation}{section.3.1}% 22
+\BOOKMARK [2][-]{subsection.3.1.2}{A random test problem}{section.3.1}% 23
+\BOOKMARK [1][-]{section.3.2}{Output data}{chapter.3}% 24
+\BOOKMARK [1][-]{section.3.3}{Figure}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.4}{Implementation}{chapter.3}% 26
+\BOOKMARK [0][-]{chapter.4}{Results for test problems with constant energy}{}% 27
+\BOOKMARK [1][-]{section.4.1}{Convergence}{chapter.4}% 28
+\BOOKMARK [2][-]{subsection.4.1.1}{ Convergence with numerical integration }{section.4.1}% 29
+\BOOKMARK [2][-]{subsection.4.1.2}{Convergence with an exact solver}{section.4.1}% 30
+\BOOKMARK [1][-]{section.4.2}{Convergence with the restart}{chapter.4}% 31
+\BOOKMARK [2][-]{subsection.4.2.1}{Convergence as a function of }{section.4.2}% 32
+\BOOKMARK [2][-]{subsection.4.2.2}{Convergence as a function of ir}{section.4.2}% 33
+\BOOKMARK [1][-]{section.4.3}{How to choose the restart variable n}{chapter.4}% 34
+\BOOKMARK [2][-]{subsection.4.3.1}{Restart variable as a function of m}{section.4.3}% 35
+\BOOKMARK [2][-]{subsection.4.3.2}{Restart variable as a function of Ts}{section.4.3}% 36
+\BOOKMARK [1][-]{section.4.4}{ Energy and error }{chapter.4}% 37
+\BOOKMARK [2][-]{subsection.4.4.1}{ Energy and error as a function of time }{section.4.4}% 38
+\BOOKMARK [2][-]{subsection.4.4.2}{Energy and error as a function of time for windowing.}{section.4.4}% 39
+\BOOKMARK [2][-]{subsection.4.4.3}{Behavior of energy and error on long time domains}{section.4.4}% 40
+\BOOKMARK [1][-]{section.4.5}{Energy and error with exact solvers}{chapter.4}% 41
+\BOOKMARK [2][-]{subsection.4.5.1}{Exact solver vs. numerical integration}{section.4.5}% 42
+\BOOKMARK [2][-]{subsection.4.5.2}{Exact solver with restart}{section.4.5}% 43
+\BOOKMARK [2][-]{subsection.4.5.3}{Exact solver with windowing}{section.4.5}% 44
+\BOOKMARK [1][-]{section.4.6}{Energy in the transformations}{chapter.4}% 45
+\BOOKMARK [1][-]{section.4.7}{Computation time}{chapter.4}% 46
+\BOOKMARK [2][-]{subsection.4.7.1}{Computation time for the numerical integration}{section.4.7}% 47
+\BOOKMARK [2][-]{subsection.4.7.2}{ Computation time with windowing}{section.4.7}% 48
+\BOOKMARK [2][-]{subsection.4.7.3}{Computation time with diag}{section.4.7}% 49
+\BOOKMARK [0][-]{chapter.5}{Results for test problems with varying energy}{}% 50
+\BOOKMARK [1][-]{section.5.1}{Convergence with m and k}{chapter.5}% 51
+\BOOKMARK [1][-]{section.5.2}{Convergence with }{chapter.5}% 52
+\BOOKMARK [1][-]{section.5.3}{How to choose the restart variable n}{chapter.5}% 53
+\BOOKMARK [1][-]{section.5.4}{Energy and error as a function of time }{chapter.5}% 54
+\BOOKMARK [2][-]{subsection.5.4.1}{Energy and error without windowing}{section.5.4}% 55
+\BOOKMARK [2][-]{subsection.5.4.2}{Energy and error with windowing}{section.5.4}% 56
+\BOOKMARK [1][-]{section.5.5}{Computation time}{chapter.5}% 57
+\BOOKMARK [0][-]{chapter.6}{ Conclusion }{}% 58
+\BOOKMARK [1][-]{section.6.1}{Constant energy}{chapter.6}% 59
+\BOOKMARK [1][-]{section.6.2}{Varying energy}{chapter.6}% 60
+\BOOKMARK [1][-]{section.6.3}{Further work}{chapter.6}% 61

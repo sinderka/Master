@@ -1,43 +1,30 @@
 \chapter{ Conclusion }
-The conclusion is, for simplicity, divided in the same two cases that the results were divided into. \\
+%The conclusion is, for simplicity, divided in the same two cases that the results were divided into. \\
+%The goals with this thesis was to see how the error and energy for the Krylov methods compared 
 
+\noindent The aim with this thesis is was to study two Krylov methods and the restart, and compare them to other popular solution methods in: 
+global error, energy preservation, and computation time. The energy preservation for \texttt{SLM} was also examined, together with derivation of the methods and proof of convergence. \\
 
+\noindent The Krylov methods have been compared to \texttt{DM} (see Section \ref{sec:DM}), in error, energy and computation time. Two different Hamiltonian ODEs were used, one was random (See Section \ref{sec:random}), and the other was a discretization of the wave equation (See Section \ref{sec:wave}). Two very different cases were also tested: constant energy, and varying energy. These cases were handled differently. In the case with constant energy, the error was measured with an exact solver, see Table \ref{tab:intcorrect}. When the energy was varying, both error and energy was measured against \texttt{DM}. Because of this, the conclusion is divided into two parts, Section \ref{sec:Konkconst} and \ref{sec:Konkvari}. \\
 
-!!!!!!!!!!!!!!!!!!!Et par ting!!!!!!!!!!!!!!!!!!!!!!!\\
-\begin{itemize}
-\item teksten i begynnelsen av denne seksjonene skal forbedres, slik at man kan lese sammendrag, introduksjon og deretter forstå alt som står i dette kapitelet.
-\item Innføre ODe45 som en løsemetoden i oppgaven min for å sammenligne metodene.
-\item Lese nøye gjennom SLM og Praktical (og så videre)!!!!!!!!!!!!
-\item Fikse resultatene mine, de er dårlige!!!!!!!!!!!!!!
-\item Legg til en tabell om hvor gode metodene mine er i konklusjonen?
-\item referer windowing!!!
-\end{itemize}
+\noindent The wave equation gave nice results for any $n$, which made the restart uninteresting. To better show how the restarts can be used to improve the solution, only the random test case was used. If you want to use a Krylov method to solve the wave equation, this is very efficient.
+
 \section{Constant energy} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The error for both \texttt{KPM} and \texttt{SLM} is found to increase linearly, when a suitable $n$ is used. On large time domains or with small $n$ it was found a sudden increase in error. If restart is enabled the sudden increase is unbounded and exponential, while it is bounded when restart is not enabled.
-The sudden increase vanishes when windowing is used. \\
+\label{sec:Konkconst}
+The restart can be effectively used to improve the error if a small restart variable (see Section \ref{sec:KPM}) is preferred (see Figure \ref{fig:lcompareErrorw}). \\
 
-\noindent The energy for both projection methods is increasing very slowly with the length of the time domain, and about as fast as for \texttt{DM}. This suggests that the increase is actually a result of rounding errors, and not a fault in the methods. The energy for \texttt{SLM} is always preserved if restart is not enabled.\\
+\noindent \textbf{When restart is not enabled:} The error for all methods increase linearly with time (see Figure \ref{fig:longtime2err}). \texttt{SLM} is energy preserving (see Figure \ref{fig:vlongene}). \texttt{KPM}s energy is not preserved, but it is bounded. Using an  exact solver instead of the trapezoidal rule gives a smaller error, but does not change the energy (see Figure \ref{fig:idea0}). Both \texttt{SLM} and \texttt{KPM} is faster than \texttt{DM} (see Figure \ref{fig:time0}). This makes \texttt{SLM} an excellent solver on linear Hamiltonian ODEs, when restart is not used.\\
 
-\noindent Because of \texttt{SLM}'s energy preserving properties it was predicted that it would massively outperform \texttt{KPM}. This has proven to only be partially true, as the error will be equally big for both projection methods.
-If a small error is necessary there are two ways this can be done: Either by restarting or with a larger $n$. If restarting is used, \texttt{SLM} looses its energy preserving property, and behaves very similarly to \texttt{KPM}. If $n$ is chosen larger, \texttt{SLM}'s error will decrease, but so will \texttt{KPM}'s error and energy. The two methods will again perform similarly. Thus, in practice \texttt{SLM}'s energy preserving property only gives \texttt{SLM} a small advantage over \texttt{KPM}.\\
+\noindent \textbf{When restart is enabled:} \texttt{SLM} and \texttt{KPM} behave very similar. The error increases linearly with time, but diverges on long time domains (see Figure \ref{fig:SLMenergyerror0} and \ref{fig:vlong}). The energy also increases slowly with time, and diverges on long time domains. Using windowing, the performance of the methods is improved, see Section \ref{sec:windu} and Figure \ref{fig:windowingc}. Using an exact solver instead of the trapezoidal rule gives a smaller error, but does not change the energy (see Figure \ref{fig:idea0}). \texttt{SLM} is very slow, making it less useful  (see Figure \ref{fig:time0}). \texttt{KPM}, on the other hand, is quite fast, but only if the matrix is big, the number of steps in time is small, and the restart variable is well chosen (see Figure \ref{fig:timekr1}). This means that \texttt{KPM} often will be the better alternative of the two methods, when restart is used. \\
 
-\noindent Suitable $n$ is found to be independent of the size of the matrix, and increase linearly with the length of the time domain. If restart is used, $n$ can be about a tenth of the $n$ used without restart.\\
-
-\noindent \texttt{SLM} is near its fastest performance if restart is not enabled. In this case it performed about equal to \texttt{KPM} under the same conditions. \texttt{KPM} is equally fast if $n$ is chosen optimal, and restarting is used. The optimal value for all $m$ and $k$ is not explored thoroughly enough in this text to give a general rule. Both projection methods can be faster than \texttt{DM}. \\
-
-\noindent If an exact solver is used it is possible to achieve better accuracy with small computation time. The energy for \texttt{SLM} increases linearly in this case, and is constant for \texttt{KPM}. This case is unfortunately not directly comparable to the case where the numerical integrators are used because of the limitations of the test problems. \\
-
-\noindent I conclude that \texttt{SLM} is better when error is no concern. If the error should be small, \texttt{KPM}'s error and energy is just as small as \texttt{SLM}'s, while being faster. The divergence problem happening on large time domains can be solved with windowing, without hurting computation time. %Using an exact solver can also increase the accuracy, without any downsides.
+\noindent Using windowing and/or an exact solver does not change the computation time, see Figure \ref{fig:time2} and \ref{fig:time3}.
 \section{Varying energy} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\texttt{SLM} has a slight advantage over \texttt{KPM} regarding energy estimation, but only when restart is not enabled. 
-Windowing and the exact solvers does not work. Thus, some of the important reasons to use the projection methods are removed. Both \texttt{SLM} and \texttt{KPM} manages to get error and energy close to \texttt{DM} on small time domains. On large time domains a sudden increase happens, much the same as with constant energy. Since windowing is not possible, this makes the projection methods useless on time domains over a certain size. This size will depend on $n$m this relationship has not been thoroughly enough explored. This restriction might not be too big since the linearly increasing error of \texttt{DM} will make any approximation useless when time domains are above a certain size.\\
+\label{sec:Konkvari}
 
-\noindent Suitable $n$ is found to be depending linearly on the length of the time domain, and on $m$.\\% jeg er en solståle for alle som ikke kjenner meg
-
-\noindent Convergence is more difficult for the projection methods in this case than when the energy was constant. This means that either a larger $n$, or more restarts are necessary to achieve convergence. This results in longer computation times,
-making \texttt{SLM} consistently run slower than \texttt{DM}. This eliminates the reason to use \texttt{SLM} in the first place. \texttt{KPM} is barely faster in some cases. Since \texttt{KPM} has a comparable error and energy it may, under some assumptions, be more desirable than \texttt{DM}.
+For \texttt{SLM} and \texttt{KPM} without restart, the energy and error are bounded, but not constant (see Figure \ref{fig:vSLMenergyerror1}). When restart is enabled, the energy and error increases slower, but diverges on long time domains (see Figure \ref{fig:vSLMenergyerror0}). The divergence cannot be removed by windowing (see Figure \ref{fig:lversuskenergy}). Compared to \texttt{DM}, \texttt{SLM} is slow, while \texttt{KPM} is fast if the size of the matrix is large, the number of time steps is small, and $n$ is well chosen (see Figure \ref{fig:ltime0}). This makes \texttt{KPM} the better choice if this is the case, and \texttt{DM} better in the other cases.
 
 \section{Further work}
-It could be interesting to see how the error and energy behave with a random Hamiltonian matrix, with a known analytical solution. Specifically with an exact solver for the initial problem, and trapezoidal rule for the restarts. The relation between $n$, $k$, and $m$ could also be explored more thoroughly. \\
+It could be interesting to see how the error and energy behave with a random Hamiltonian matrix with different structures (eg. full random, sparse 5-diagonal, 1-diagonal), with a known analytical solution (eg. make an accurate eigenvalue/eigenvector decomposition of the matrix and then take the exponential of the diagonal matrix of eigenvalues, or use the method based on the shur decomposition).
+This could shed more light on when and how to best utilize the Krylov methods.\\
 
-\noindent Graphics cards are designed to be used on small matrices in parallel \cite{graphics}. When the energy is constant, windowing can be used to ensure convergence. This could then be used to solve non linear Hamiltonian problems in parallel under optimized conditions. \\
+\noindent The Krylov methods ability to create small matrices can make it possible to utilize graphics cards as the processing unit. Graphics cards are designed to be used on small matrices \cite{graphics}. They consists of thousands of processing units, which could be used to solve non linear Hamiltonian problems in parallel (see Section \ref{sec:linear}).

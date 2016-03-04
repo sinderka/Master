@@ -45,10 +45,13 @@
 
 @unpublished{min,
 	author = "Eskeland, Sindre",
+	journal = "Project thesis",
 	owner = "sindreka",
+	school = "NTNU",
 	timestamp = "2015.12.06",
 	title = "{A Krylov projection Method for the heat equation}",
-	url = "https://github.com/sindreka/Master/tree/master/Resurser"
+	url = "https://github.com/sindreka/Master/tree/master/Resurser",
+	year = "2015"
 }
 
 @article{complex,
@@ -98,7 +101,7 @@
 	author = "S{\"u}li, Endre and Mayers, David F.",
 	chapter = "12.2 One-step methods",
 	pages = "317",
-	publisher = "cambridge university press",
+	publisher = "Cambridge university press",
 	school = "University of Oxford",
 	title = "{An Introduction to Numerical Analysis}",
 	year = "2003"
@@ -108,7 +111,7 @@
 	author = "S{\"u}li, Endre and Mayers, David F.",
 	chapter = "Definition 10.1",
 	pages = "286",
-	publisher = "cambridge university press",
+	publisher = "Cambridge university press",
 	school = "University of Oxford",
 	title = "{An Introduction to Numerical Analysis}",
 	year = "2003"
@@ -118,7 +121,7 @@
 	author = "S{\"u}li, Endre and Mayers, David F.",
 	chapter = "7.2 Newton--Cotes formulae",
 	pages = "202--203",
-	publisher = "cambridge university press",
+	publisher = "Cambridge university press",
 	school = "University of Oxford",
 	title = "{An Introduction to Numerical Analysis}",
 	year = "2003"
@@ -238,7 +241,7 @@
 
 @article{convtrap,
 	author = "Nandy, Arup Kumar and Jog, C. S.",
-	journal = "FRITA Lab,Department of Mechanical Engineering, Indian Institu te of Science, Bangalore, India-560012",
+	journal = "FRITA Lab,Department of Mechanical Engineering, Indian Institute of Science, Bangalore, India-560012",
 	month = "januar",
 	title = "{Conservation properties of the trapezoidal rule in linear time domain analysis of acoustics and structures}",
 	year = "2014"
@@ -292,9 +295,8 @@
 
 @book{iota,
 	author = "Bancroft, Archbishop Richard",
-	pages = "New Testament (Matthew 5:18)",
 	publisher = "King's Printer Robert Barker",
-	title = "{King James Bible}",
+	title = "{King James Bible. New Testament (Matthew 5:18)}",
 	year = "1604"
 }
 
@@ -314,13 +316,15 @@
 }
 
 @inbook{symplecticintegrator,
-	author = "S{\"u}li, Endre and Mayers, David F.",
-	chapter = "12.5 Runge--Kutta methods",
-	pages = "328",
-	publisher = "cambridge university press",
-	school = "University of Oxford",
-	title = "{An Introduction to Numerical Analysis}",
-	year = "2003"
+	author = "Hairer, Ernst and Lubich, Christian and Wanner, Gerhard",
+	chapter = "VI.8 Conjugate Symplecticity",
+	edition = "Second Edition",
+	pages = "223",
+	publisher = "Springer",
+	school = "Universit{\'e} de Gen{\`e}ve",
+	title = "{Geometric Numerical
+Integration}",
+	year = "2006"
 }
 
 @inbook{linearerrorgrowth,

@@ -2,10 +2,14 @@
 %!TEX root = thesis.tex
 % !TEX spellcheck = en-US
 %%=========================================
-\addcontentsline{toc}{section}{Summary and Conclusions}
-\section*{Summary and Conclusions}
-Krylov methods are projection methods that can transform big linear ODE's to a smaller linear ODE's with similar properties. 
-Two such methods (the symplectic Lanczos method (\texttt{SLM}) and the Krylov projection method (\texttt{KPM})) are compared with each other on linear Hamiltonian differential equations. The behavior of global error, energy as a function of time is examined. Computation time for the different methods are also shown. The projection methods are also compared to each other on non autonomous linear Hamiltonian differential equation.
-Energy preservation for the symplectic Lanczos method is proved under some assumptions, along with convergence for both projection methods. \texttt{SLM} has no advantage over \texttt{KPM} when considering error. On autonomous systems the computation times for \texttt{SLM} and \texttt{KPM} are similar, and both methods can be well utilized. On non autonomous systems \texttt{KPM} is faster than \texttt{SLM}. Since it has comparable error and energy preservation \texttt{KPM} might be considered a better choice in this case.
+\addcontentsline{toc}{section}{Summary}
+\section*{Summary}
+\noindent Krylov methods are projection methods that can transform big linear ODEs to smaller linear ODEs with similar properties. 
+Two such methods (the symplectic Lanczos method (\texttt{SLM}) and the Krylov projection method (\texttt{KPM})), together with a more classical method, are compared with each other on linear Hamiltonian differential equations, restarts are used to improve the solutions via iterative refinement. The behavior of global error and energy as a function of time is examined. Computation time for the different methods are also shown. The methods are also compared to each other on non autonomous linear Hamiltonian differential equation.
+Energy preservation for the symplectic Lanczos method is proved and shown when restart is not used, along with convergence for both Krylov methods. % \texttt{SLM} has no advantage over \texttt{KPM} when considering error. On autonomous systems, the computation times for \texttt{SLM} and \texttt{KPM} are similar, and both methods can be well utilized. On non autonomous systems \texttt{KPM} is faster than \texttt{SLM}. Since it has comparable error and energy preservation, \texttt{KPM} might be considered a better choice in this case. \\
 
 
+\addcontentsline{toc}{section}{Sammendrag}
+\section*{Sammendrag}
+\noindent Krylovmetoder er projeksjonsmetoder som kan transformere store lineære differensialligninger til mindre lineære differesialligninger med lignende egenskaper. 
+To slike metoder (symplectic Lanczos method og Krylov projection method), sammen med en mer vanlig metode, er sammenlignet med hverandre på lineære Hamiltonske differensiallikninger, omstarter er brukt for å forbedre løsningen via iterativ forfining. Oppførsel av global feil og energi som en funksjon av tid er er utforsket. Metodene er også sammenlignet med hverandre på ikke autonome lineære Hamiltonian differensiallikningen. Energibevaring for symplectic Lanczos method er bevist og vist om omstart ikke er benyttet, sammen med konvergens for begge Krylov metodene.% \texttt{SLM} har ingen fordeler framfor \texttt{KPM} når man ser på feilen. På autonome systemer er kjøretiden for \texttt{SLM} og \texttt{KPM} lik, og begge metodene kan bli brukt effektivt. På ikke autonome systemer er \texttt{KPM} reskere enn \texttt{SLM}. Siden den har en sammenlignbar feil og energibevaring,  kan \texttt{KPM} bli sett på som et bedre valg i dette tilfellet.

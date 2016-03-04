@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Hamiltonian differential equations is found in several branches of physics and mathematics, eg. in planetary motion, in particle physics and in control theory. This text will be examining how projection methods can be utilized on linear Hamiltonian differential equations on the form 
+Hamiltonian differential equations are found in several branches of physics and mathematics, eg. in planetary motion, in particle physics and in control theory. This text will be examining how Krylov methods can be utilized on linear Hamiltonian differential equations on the form 
 \begin{equation} 
 \begin{aligned}
 \dot{u}(t) &= A u(t)\\
@@ -24,18 +24,21 @@ and $I_j$ is the $j \times j$ identity matrix. \\
 
 \noindent The matrix $A$ is often large and sparse. Computing good approximations of the linear system can be computationally costly. Krylov methods that exploits these properties can therefore be a valuable tool. These methods can transform a big linear system to a small linear system, leading to less computationally demanding calculations. This text will consider two such methods, the symplectic Lanczos method (\texttt{SLM}), and the Krylov projection method (\texttt{KPM}). 
 
-\texttt{SLM} only works with Hamiltonian matrix, it has the property that the projected system also is Hamiltonian.
-This property has made \texttt{SLM} a popular choice when finding eigenvalues of large Hamiltonian matrices, see eg. \cite{SLM1}, \cite{SLM2} and \cite{SLM3}. Since \texttt{SLM} preserves the Hamiltonian structure of the matrix, and the projected problem has the same energy as equation \eqref{eqn:PDE}, the produced approximation is energy preserving. \texttt{KPM} is not designed to have any structure preserving property, but require less computations per step. It also works on any ODE on the form of equation \ref{eqn:PDE}, not just in the case where $A$ is Hamiltonian. 
-The Krylov methods can utilize restarts to improve the solutions via iterative refinement.
-This text will look at these two projection methods and the restart, and compare them to other popular solution methods in: global error, energy preservation, and computation time. The energy preservation for \texttt{SLM} will also be examined, together with derivation of the methods and proof of convergence. \\
+\noindent \texttt{SLM} only works with Hamiltonian matrices, it has the property that the projected system also is Hamiltonian.
+This property has made \texttt{SLM} a popular choice when finding eigenvalues of large Hamiltonian matrices, see eg. \cite{SLM1} and \cite{SLM2}. Since \texttt{SLM} preserves the Hamiltonian structure of the matrix, and the projected problem has the same structure as equation \eqref{eqn:PDE}, the produced approximation is energy preserving. \texttt{KPM} is not designed to have any structure preserving property, but require less computations per step. It also works on any ODE on the form of equation \eqref{eqn:PDE}, not just in the cases where $A$ is Hamiltonian. 
+The Krylov methods can utilize restarts to improve the solutions via iterative refinement.\\
+
+\noindent The aim with this thesis is to study these two Krylov methods and the restart, and compare them to other popular solution methods in: 
+%This text will look at these two Krylov methods and the restart, and compare them to other popular solution methods in: 
+global error, energy preservation, and computation time. The energy preservation for \texttt{SLM} will also be examined, together with derivation of the methods and proof of convergence. \\
 
 \noindent Equation \eqref{eqn:PDE} has the well known analytical solution 
 \begin{equation*}
 u(t) = \text{exp}(At)u_0.
 \end{equation*}
-Computing the matrix exponential is a very costly operation. But the Krylov subspace methods presented leads to problems with a size suitable for such computations. How energy and error behaves in this case will be examined.\\
+Computing the matrix exponential is a very costly operation. But the Krylov subspace methods presented leads to problems with a size suitable for such computations. How energy, error and computation time behaves in this case will be examined.\\
 
-\noindent In addition to the case with Hamiltonian linear ODE's with constant energy, as in equation \eqref{eqn:PDE}, the Krylov methods will be tested on problems with a source term:
+\noindent In addition to the case with Hamiltonian linear ODEs with constant energy, as in equation \eqref{eqn:PDE}, the Krylov methods will be tested on problems with a source term:
 \begin{equation}
 \begin{aligned}
 \dot{u}(t) &= A u(t) + b f(t)\\
@@ -43,6 +46,6 @@ u(0)&= u_0,
 \end{aligned}
 \label{eqn:PDE1}
 \end{equation}
-where $A$ is an Hamiltonian matrix, $p$ is a vector, and $f(t)$ is a scalar time dependent function. Behavior of error and energy as a function of time, together with computation time will be explored.
+where $A$ is an Hamiltonian matrix, $p$ is a vector, and $f(t)$ is a scalar time dependent function. Behavior of the error and energy as a function of time, together with computation time will be explored.
 MATLAB notation will be used where applicable.\\
 
